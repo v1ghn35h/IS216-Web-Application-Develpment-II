@@ -10,7 +10,7 @@ h2 {
 
 
 .profile-page > img {
-    width: 150px;
+    width: 175px;
     height: 150px;
     margin-left: auto;
     margin-right: auto;
@@ -31,6 +31,7 @@ h2 {
 
 .category {
     width: 30%;
+    font-weight: bold;
 }
 
 .next-button {
