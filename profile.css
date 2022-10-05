@@ -9,10 +9,6 @@ h2 {
     padding-top: 40px;
 }
 
-/* .page {
-    padding-top: 40px;
-
-} */
 
 
 .profile-page > img {
@@ -21,15 +17,6 @@ h2 {
     margin-left: auto;
     margin-right: auto;
     margin-top: 25px;
-}
-
-.profile-ud-page > img {
-    width: 25%;
-    display: block;
-    margin: 20px;
-    margin-left: auto;
-    margin-right: auto;
-
 }
 
 .category {
@@ -67,7 +54,7 @@ border-radius: 50%;
 }
 
 td {
-    height: 90px;
+    height: 100px;
     vertical-align: middle;
 }
 
@@ -88,3 +75,6 @@ td {
     background-color: #f0f3f4;
 }
 
+.payment {
+    margin-top: 20px;
+}
