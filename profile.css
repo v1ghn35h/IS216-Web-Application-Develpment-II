@@ -6,14 +6,21 @@
 h2 {
     text-align: center;
     padding: 20px;
+    padding-top: 40px;
+}
+
+.page {
+    padding-top: 40px;
+
 }
 
 
 .profile-page > img {
-    width: 175px;
-    height: 150px;
+    width: 233px;
+    height: 200px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 25px;
 }
 
 .profile-ud-page > img {
@@ -23,10 +30,6 @@ h2 {
     margin-left: auto;
     margin-right: auto;
 
-}
-
-.profile-ud-page table {
-    margin-top: 40px;
 }
 
 .category {
@@ -61,6 +64,11 @@ color: grey;
 
 .round {
 border-radius: 50%;
+}
+
+td {
+    height: 80px;
+    vertical-align: middle;
 }
 
 
