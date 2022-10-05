@@ -2,6 +2,7 @@
 
 ### 1. Login Page
 - Ryan
+- Files: login.css / login.html
 
 ### 2. Home Page
 - Kanika
