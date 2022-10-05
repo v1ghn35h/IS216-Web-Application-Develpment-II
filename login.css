@@ -19,6 +19,11 @@ body {
     background-color: #eeeeee;
 }
 
+.button-login {
+    background-color: #104547;
+    color: white;
+}
+
 .carousel {
     z-index: -99;
     position: fixed;
