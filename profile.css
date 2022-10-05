@@ -31,6 +31,7 @@ h2 {
 
 .category {
     width: 30%;
+    font-weight: bold;
 }
 
 .next-button {
