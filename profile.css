@@ -10,6 +10,11 @@ h2 {
 }
 
 
+#events h2, .payment h2 {
+    padding-bottom: 60px;
+}
+
+
 
 .profile-page > img {
     width: 233px;
@@ -77,4 +82,21 @@ td {
 
 .payment {
     margin-top: 20px;
+}
+
+
+#events {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding-bottom: 40px;
+}
+
+#events .card {
+    display: inline-block;
+    width: 18rem;
+    height: 350px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 0px;
 }
