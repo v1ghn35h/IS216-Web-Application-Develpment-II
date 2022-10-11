@@ -1,14 +1,5 @@
 /*----  Explore Page CSS   ----*/
 
-.apost {
-
-        display: inline-block;
-        width: 18rem;
-        height: 25rem;
-        margin-left: 5px;
-        margin-right: 5px;
-        margin-top: 0px;
-}
 
 #cards_landscape_wrap-2{
     text-align: center;
@@ -23,7 +14,7 @@
     outline: none;
 }
 #cards_landscape_wrap-2 .card-flyer {
-    border-radius: 5px;
+    border-radius: 5px; 
 }
 #cards_landscape_wrap-2 .card-flyer .image-box{
     background: #ffffff;
