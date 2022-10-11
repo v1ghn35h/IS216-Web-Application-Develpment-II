@@ -33,10 +33,10 @@
 
                 <!-- Login Header Text -->
                 <h3>Welcome Back!</h3>
-                <h4 class="mb-3 fw-normal fst-italic">Are you ready for a new day?</h4>
+                <h4 class="mb-3 fw-normal">Are you ready for a new day?</h4>
 
                 <!-- Login with Google -->
-                <button class="w-100 py-2 btn btn-outline-dark" type="submit">
+                <button class="w-100 py-2 btn btn-outline-dark btn-light" type="submit">
                     <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Google" height="16" class="me-1">
                     Login with Google
                 </button>
@@ -51,15 +51,16 @@
                 </div>
 
                 <!-- Password Input Box -->
-                <div class="form-floating mb-2">
+                <div class="form-floating mb-1">
                     <input type="password" class="form-control" id="loginPassword" placeholder="password" />
                     <label for="loginPassword">Password</label>
+                    <div id="forgotPassword" class="form-text fst-italic text-start"><a href="passreset.html" class="text-decoration-none">Forgot your password?</a></div>
                 </div>
 
                 <!-- Remember Me Checkbox -->
-                <div class="checkbox mb-3">
+                <div class="form-check mb-3">
                     <label>
-                        <input type="checkbox" value="remember-me" /> Remember me
+                        <input class="form-check-input" type="checkbox" value="remember-me" /> Remember me!
                     </label>
                 </div>
 
@@ -68,8 +69,11 @@
                     Login
                 </button>
 
+                <!-- Sign Up -->
+                <p class="my-2">Don't have an account? <a href="signup.html" class="fw-bold text-decoration-none">Sign Up!</a></p>
+
                 <!-- "Footer" -->
-                <p class="text-muted fst-italic mt-3 mb-2">Built with ♡ by Team 7 (IS216 G7 / 2022 T1)</p>
+                <p class="text-muted fst-italic mb-0 fw-light">Built with ♡ by Team 7 (IS216 G7 / 2022 T1)</p>
             </form>
 
         </main>
@@ -202,10 +206,7 @@
 
         <!--
             To-Do:
-            - Forgot Password / Can't login?
             - Password Reset page
-
-            - Sign Up button
             - Sign Up page
 
             References:
