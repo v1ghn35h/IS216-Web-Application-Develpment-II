@@ -19,6 +19,16 @@ body {
     background-color: #eeeeee;
 }
 
+.sep {
+    border-bottom: 1px solid #aaaaaa;
+    line-height: 0.1rem;
+}
+
+.sep span {
+    background: #eeeeee;
+    padding: 0 10px;
+}
+
 .button-login {
     background-color: #104547;
     color: white;
