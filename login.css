@@ -24,6 +24,11 @@ body {
     color: white;
 }
 
+.button-login:hover {
+    background-color: #3F6A6B;
+    color: white;
+}
+
 .carousel {
     z-index: -99;
     position: fixed;
