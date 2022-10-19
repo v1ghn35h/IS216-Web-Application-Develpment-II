@@ -72,9 +72,62 @@
         </div>
     </nav>
 
+    <!--Search bar-->
+    <div id="search-bar">
+        <form action="" class="row justify-content-center">
+            <div class="col-4">
+                <!-- search input box-->
+                <input class="form-control " list="datalistOptions" type="text" placeholder="Search" >
+                <!-- auto completion for now- can be further improved on - check past samples-->
+                <datalist id="datalistOptions">
+                    <option value="SMU-X">
+                    <option value="WhiteHats">
+                    <option value="Ellipsis">
+                    <option value=".Hack">
+                    <option value="BIA">
+                  </datalist>
+
+                <!--Search button-->
+                <button type="button" class="btn btn-outline-info mt-3 btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Search</button>
+
+                <!--  Sort button -->
+                <button type="button" class="btn btn-outline-info mt-3 btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Sort By
+                </button>
+
+                <!--Filter Button trigger modal -->
+                <button type="button" class="btn btn-outline-info mt-3 btn-sm" data-bs-toggle="modal" data-bs-target="#filter-modal">
+                    Filter
+                </button>
+
+                <!-- Modal for filter -->
+                <div class="modal fade" id="filter-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        ...
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
     <!-- Topic Cards -->
-    <div id="cards_landscape_wrap-2">
-    <div class="container ">
+    <div id="cards_landscape_wrap-2" class="mt-0">
+
+    <h2>All Events</h2>
+    <div class="container pt-0">
         
         <div class="row d-flex justify-content-left">  
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 ">
@@ -82,11 +135,24 @@
                     <div class="card-flyer">
                         <div class="text-box">
                             <div class="image-box">
-                                <img src="https://cdn.pixabay.com/photo/2018/03/30/15/11/deer-3275594_960_720.jpg" alt="" />
+                                <img src="https://images.squarespace-cdn.com/content/v1/5c39a8f55ffd2092c1c46d7e/1629738296149-42USDKGHV1WSC5M4U4UR/how+to+organise+a+beach+clean-up.jpg" alt="" />
                             </div>
                             <div class="text-container">
-                                <h6>Title 01</h6>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                <!-- <h6>Title 01</h6>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p> -->
+                                <h5 class="card-title">Art Jam</h5>  
+                                <!-- SUBTITLE -->
+                                <h6 class="card-subtitle mb-2 ">SMU Artdicted</h6>
+                                <!-- BODY -->
+                                <p class="card-text text-wrap">
+                                    Date: 13 October 2022
+                                    <br>
+                                    Time: 1700-1900
+                                    <br>
+                                    Fees: 10 SGD
+                                    <br>
+                                    Location: LKCSB Classroom 2-3, near to elevator
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -97,7 +163,7 @@
                     <div class="card-flyer">
                         <div class="text-box">
                             <div class="image-box">
-                                <img src="https://cdn.pixabay.com/photo/2018/04/09/19/55/low-poly-3305284_960_720.jpg" alt="" />
+                                <img src="https://mymodernmet.com/wp/wp-content/uploads/2018/05/painting-ideas-thumbnail-jpg.jpg" alt="" />
                             </div>
                             <div class="text-container">                                    
                                 <h6>Title 02</h6>
@@ -112,7 +178,7 @@
                     <div class="card-flyer">
                         <div class="text-box">
                             <div class="image-box">
-                                <img src="https://cdn.pixabay.com/photo/2018/04/06/13/46/poly-3295856_960_720.png" alt="" />
+                                <img src="https://images.squarespace-cdn.com/content/v1/5c39a8f55ffd2092c1c46d7e/1629738296149-42USDKGHV1WSC5M4U4UR/how+to+organise+a+beach+clean-up.jpg" alt="" />
                             </div>
 
                             <div class="text-container">
@@ -128,7 +194,7 @@
                     <div class="card-flyer">
                         <div class="text-box">
                             <div class="image-box">
-                                <img src="https://cdn.pixabay.com/photo/2018/03/30/15/12/dog-3275593_960_720.jpg" alt="" />
+                                <img src="https://mymodernmet.com/wp/wp-content/uploads/2018/05/painting-ideas-thumbnail-jpg.jpg" alt="" />
                             </div>
                             <div class="text-container">
                                 <h6>Title 04</h6>
@@ -143,7 +209,7 @@
                     <div class="card-flyer">
                         <div class="text-box">
                             <div class="image-box">
-                                <img src="https://cdn.pixabay.com/photo/2018/03/30/15/12/dog-3275593_960_720.jpg" alt="" />
+                                <img src="https://images.squarespace-cdn.com/content/v1/5c39a8f55ffd2092c1c46d7e/1629738296149-42USDKGHV1WSC5M4U4UR/how+to+organise+a+beach+clean-up.jpg" alt="" />
                             </div>
                             <div class="text-container">
                                 <h6>Title 04</h6>
@@ -158,7 +224,7 @@
                     <div class="card-flyer">
                         <div class="text-box">
                             <div class="image-box">
-                                <img src="https://cdn.pixabay.com/photo/2018/03/30/15/12/dog-3275593_960_720.jpg" alt="" />
+                                <img src="https://mymodernmet.com/wp/wp-content/uploads/2018/05/painting-ideas-thumbnail-jpg.jpg" alt="" />
                             </div>
                             <div class="text-container">
                                 <h6>Title 04</h6>
@@ -173,7 +239,7 @@
                     <div class="card-flyer">
                         <div class="text-box">
                             <div class="image-box">
-                                <img src="https://cdn.pixabay.com/photo/2018/03/30/15/12/dog-3275593_960_720.jpg" alt="" />
+                                <img src="https://images.squarespace-cdn.com/content/v1/5c39a8f55ffd2092c1c46d7e/1629738296149-42USDKGHV1WSC5M4U4UR/how+to+organise+a+beach+clean-up.jpg" alt="" />
                             </div>
                             <div class="text-container">
                                 <h6>Title 04</h6>
@@ -187,7 +253,8 @@
     </div>
 </div>
     
-    
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
 </body>
 </html>
 

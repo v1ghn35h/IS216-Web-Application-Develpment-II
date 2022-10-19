@@ -1,6 +1,10 @@
 /*----  Explore Page CSS   ----*/
 
-
+#search-bar {
+    background: #F7F7F7;
+    padding: 20px;
+    
+}
 #cards_landscape_wrap-2{
     text-align: center;
     background: #F7F7F7;
@@ -82,4 +86,14 @@
     font-family: 'Roboto Black', sans-serif;
     letter-spacing: 1px;
     color: #00acc1;
+}
+#cards_landscape_wrap-2 .card-flyer .text-box h5{
+    margin-top: 0px;
+    margin-bottom: 4px; 
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Roboto Black', sans-serif;
+    letter-spacing: 1px;
+    color: #104547;
 }
