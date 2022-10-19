@@ -77,6 +77,8 @@
         <form action="" class="row justify-content-center">
             <div class="col-4">
                 <!-- search input box-->
+                <!--Search button-->
+                <div class="input-group ">
                 <input class="form-control " list="datalistOptions" type="text" placeholder="Search" >
                 <!-- auto completion for now- can be further improved on - check past samples-->
                 <datalist id="datalistOptions">
@@ -87,30 +89,78 @@
                     <option value="BIA">
                   </datalist>
 
-                <!--Search button-->
-                <button type="button" class="btn btn-outline-info mt-3 btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Search</button>
-
+                    <button type="button" class="btn btn-outline-info " data-bs-toggle="modal" data-bs-target="#exampleModal">Search</button>
+                </div>
                 <!--  Sort button -->
-                <button type="button" class="btn btn-outline-info mt-3 btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-outline-info mt-3 btn-sm" data-bs-toggle="modal" data-bs-target="#sort-modal">
                     Sort By
                 </button>
 
                 <!--Filter Button trigger modal -->
                 <button type="button" class="btn btn-outline-info mt-3 btn-sm" data-bs-toggle="modal" data-bs-target="#filter-modal">
-                    Filter
+                    Filter By
                 </button>
 
                 <!-- Modal for filter -->
                 <div class="modal fade" id="filter-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Filter by</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                        ...
+                        
+                        Organising Club: 
+                        <select class="form-select multiple form-select-sm" aria-label=".form-select-sm example">
+                            <option selected>Open this select menu</option>
+                                <option value="SMU-X">SMU-X</option>
+                                <option value="WhiteHats">WhiteHats</option>
+                                <option value="Ellipsis">Ellipsis</option>
+                                <option value=".Hack">.Hack</option>
+                                <option value="BIA">BIA</option>
+                        </select>
+
+                        <!--start date-->
+                        <label for="start-date">Start Date: </label>
+                        <input class="form-control" id="start-date" type="date" placeholder="Search" >
+
+                        <!-- end date-->
+                        <label for="end-date">End Date: </label>
+                        <input class="form-control" id="end-date" type="date" placeholder="Search" >
+
+
+
+
                         </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>  <!-- end of div model filter-->
+
+                <!-- Modal for sort -->
+                <div class="modal fade" id="sort-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Sort By</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <select class="form-select multiple form-select-sm" aria-label=".form-select-sm example">
+                                <option selected>Open this select menu</option>
+                                    <option value="event">Event</option>
+                                    <option value="date">Date</option>
+                                    <option value="fee">Fee</option>
+                            </select>
+
+                        
+                        </div> <!-- end of div modal body-->
+
                         <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary">Save changes</button>
@@ -119,9 +169,11 @@
                     </div>
                 </div>
 
-            </div>
-        </form>
-    </div>
+
+
+            </div> <!-- end of div col-4-->
+        </form> <!-- end of form-->
+    </div> <!-- end of div search bar-->
 
     <!-- Topic Cards -->
     <div id="cards_landscape_wrap-2" class="mt-0">
