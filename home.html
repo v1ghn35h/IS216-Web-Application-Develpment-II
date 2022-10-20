@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <title>CalendaREADY</title>
+    <title>Home | CalendaREADY</title>
     <link rel="icon" href="greenlogo.png">
     <style>
         #intro {
@@ -77,9 +77,7 @@
 
         <input class="btn btn-light" type="button" value="Are you bored?" onclick="call_bored_api()">
         <input class="btn btn-light" type="button" value="Read a quote" onclick="call_quote_api()">
-        <p id = "bored" class = "display-5 text-italics mt-2" style = "color: #AF929D"></p>
-        <p id = "quote" class = "display-5 text-italics mt-2" style = "color: #D2D6EF"></p>
-
+        <p id = "api" class = "display-5 text-italics mt-2" style = "color: #fbdbe7"></p>
     </div>
 
     
@@ -420,7 +418,7 @@
             console.log(response);
             //DOM manipulation
 
-            let body = document.getElementById("bored");
+            let body = document.getElementById("api");
             let temp = response.data.activity
             body.innerText = temp;
         }
@@ -447,7 +445,7 @@
             console.log(response);
             //DOM manipulation
 
-            let body = document.getElementById("quote");
+            let body = document.getElementById("api");
             let quote = response.data.content
             let author = response.data.author
             body.innerHTML = 
@@ -455,7 +453,7 @@
             <blockquote class="blockquote">
                 <p class = "display-5">${quote}</p>
             </blockquote>
-            <figcaption class="blockquote-footer display-6" style = "color: #AF929D;">
+            <figcaption class="blockquote-footer display-6" style = "color: white;">
                 ${author}
             </figcaption>
             </figure>`;
