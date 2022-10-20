@@ -35,7 +35,7 @@
     </nav>
     <div class = "container">
     <div class = "container ">
-        <h3 class = "display-4 text-dark text-center m-5 text-bold"><span class = "auto-type"></span></h3>
+        <h3 class = "display-2 text-dark text-center m-5 text-bold"><span class = "auto-type"></span></h3>
     </div>
     <div class = "container">
     <div class = "row">
@@ -45,7 +45,7 @@
                     <p id = "temperature" class = "display-6" style = "color: pink;"></p>
                     <input class="btn btn-light" type="button" value="Are you bored?" onclick="call_bored_api()">
                     <input class="btn btn-light" type="button" value="Read a quote" onclick="call_quote_api()">
-                    <p id = "api" class = "text-italics" style = "color: #fbdbe7; font-size: 20px;"></p>
+                    <span id = "api" class = "pt-4" style = "color: #fde7ef;"></span>
                 </div>
             </div>
         </div>
@@ -480,7 +480,7 @@
 
             let body = document.getElementById("api");
             let temp = response.data.activity
-            body.innerText = temp;
+            body.innerHTML = `<p style = "font-size: 25px;">${text}</p>`;
         }
         )
         .catch(error => {
@@ -511,9 +511,9 @@
             body.innerHTML = 
             `<figure>
             <blockquote class="blockquote">
-                <p class = "display-5">${quote}</p>
+                <p style = "font-size: 25px">${quote}</p>
             </blockquote>
-            <figcaption class="blockquote-footer display-7" style = "color: white;">
+            <figcaption class="blockquote-footer text-italics" style = "color: white; font-size: 17px">
                 ${author}
             </figcaption>
             </figure>`;
