@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <title>Home</title>
+    <title>Home | calendaREADY</title>
+    <link rel="icon" href="logo/logo-greenbg.png">
     <style>
         #intro {
             background-color: #4B5358;
@@ -61,7 +62,6 @@
                     <a class="nav-item nav-link text-white" href="explore.html">Event</a>
                     <a class="nav-item nav-link text-white" href="calendar.html">Calendar</a>
                     <a class="nav-item nav-link text-white" href="profile.html">Profile</a>
-
                 </div>
             </div>
 
@@ -76,9 +76,7 @@
 
         <input class="btn btn-light" type="button" value="Are you bored?" onclick="call_bored_api()">
         <input class="btn btn-light" type="button" value="Read a quote" onclick="call_quote_api()">
-        <p id = "bored" class = "display-5 text-italics mt-2" style = "color: #AF929D"></p>
-        <p id = "quote" class = "display-5 text-italics mt-2" style = "color: #D2D6EF"></p>
-
+        <p id = "api" class = "display-6 text-italics mt-2" style = "color: #fbdbe7"></p>
     </div>
 
     
@@ -108,7 +106,45 @@
 
             </p>
             <!-- BUTTON -->
-            <a href="#" class="btn btn-dark">Sign Up Now!</a>
+            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                More info
+            </button>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Beach Clean Up</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                        <img src = "https://images.squarespace-cdn.com/content/v1/5c39a8f55ffd2092c1c46d7e/1629738296149-42USDKGHV1WSC5M4U4UR/how+to+organise+a+beach+clean-up.jpg" width= "750px" height = "150px" alt="...">
+                        </div>
+                        <p class = "display-6 lead text-center mt-3">Event Information</p>
+                        <div class="container text-break p-3 mt-3" style= "border: solid 1px black">
+                        CCA: SMU Verts
+                        <br>
+                        Date: 7 October 2022
+                        <br>
+                        Time: 1130-1300
+                        <br>
+                        Fees: NA
+                        <br>
+                        Location: East Coast Park near Carpark 4
+                        <br>
+                        Additional notes: Wear comfortable clothes and bring one large black trash bag
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-dark">Sign up now</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
         </div>
         </div>
 
@@ -132,7 +168,7 @@
                 Location: SMU Administration Building level 5
             </p>
             <!-- BUTTON -->
-            <a href="#" class="btn btn-dark">Sign Up Now!</a>
+            <a href="#" class="btn btn-dark">More info</a>
         </div>
         </div>
 
@@ -156,7 +192,7 @@
                 Location: LKCSB Classroom 2-3, near to elevator
             </p>
             <!-- BUTTON -->
-            <a href="#" class="btn btn-dark">Sign Up Now!</a>
+            <a href="#" class="btn btn-dark">More info</a>
         </div>
         </div>
 
@@ -180,7 +216,7 @@
                 Location: Outside SCIS Level 1
             </p>
             <!-- BUTTON -->
-            <a href="#" class="btn btn-dark">Sign Up Now!</a>
+            <a href="#" class="btn btn-dark">More info</a>
         </div>
         </div>
 
@@ -204,7 +240,7 @@
                 Location: SMU Administration Building Level 5
             </p>
             <!-- BUTTON -->
-            <a href="#" class="btn btn-dark">Sign Up Now!</a>
+            <a href="#" class="btn btn-dark">More info</a>
         </div>
         </div>
         
@@ -234,7 +270,7 @@
                     Location: SMU Administration Building Level 5
                 </p>
                 <!-- BUTTON -->
-                <a href="#" class="btn btn-dark">Sign Up Now!</a>
+                <a href="#" class="btn btn-dark">More info</a>
             </div>
             </div>
     
@@ -258,7 +294,7 @@
                     Location: Esplanade Auditorium 3
                 </p>
                 <!-- BUTTON -->
-                <a href="#" class="btn btn-dark">Sign Up Now!</a>
+                <a href="#" class="btn btn-dark">More info</a>
             </div>
             </div>
     
@@ -282,7 +318,7 @@
                     Location: SOL B1 Hall
                 </p>
                 <!-- BUTTON -->
-                <a href="#" class="btn btn-dark">Sign Up Now!</a>
+                <a href="#" class="btn btn-dark">More info</a>
             </div>
             </div>
     
@@ -306,7 +342,7 @@
                     Location: Macritchie Reservoir
                 </p>
                 <!-- BUTTON -->
-                <a href="#" class="btn btn-dark">Sign Up Now!</a>
+                <a href="#" class="btn btn-dark">More info</a>
             </div>
             </div>
     
@@ -330,7 +366,7 @@
                     Location: SCIS SR 3-3 / Zoom
                 </p>
                 <!-- BUTTON -->
-                <a href="#" class="btn btn-dark">Sign Up Now!</a>
+                <a href="#" class="btn btn-dark">More info</a>
             </div>
             </div>
 
@@ -354,7 +390,7 @@
                     Location: SOE SR 3-3 / Zoom
                 </p>
                 <!-- BUTTON -->
-                <a href="#" class="btn btn-dark">Sign Up Now!</a>
+                <a href="#" class="btn btn-dark">More info</a>
             </div>
             </div>
 
@@ -419,7 +455,7 @@
             console.log(response);
             //DOM manipulation
 
-            let body = document.getElementById("bored");
+            let body = document.getElementById("api");
             let temp = response.data.activity
             body.innerText = temp;
         }
@@ -446,7 +482,7 @@
             console.log(response);
             //DOM manipulation
 
-            let body = document.getElementById("quote");
+            let body = document.getElementById("api");
             let quote = response.data.content
             let author = response.data.author
             body.innerHTML = 
@@ -454,7 +490,7 @@
             <blockquote class="blockquote">
                 <p class = "display-5">${quote}</p>
             </blockquote>
-            <figcaption class="blockquote-footer display-6" style = "color: #AF929D;">
+            <figcaption class="blockquote-footer display-7" style = "color: white;">
                 ${author}
             </figcaption>
             </figure>`;
@@ -471,11 +507,12 @@
 </script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script>
     var typed = new Typed(".auto-type", {
         strings: ["Welcome Natasha!", "How are you today?"],
-        typeSpeed: 150,
-        backspeed: 150,
+        typeSpeed: 100,
+        backspeed: 300,
         loop: true
     })
 </script>
