@@ -26,6 +26,11 @@ h2 {
 .category {
     width: 30%;
     font-weight: bold;
+    font-size: 20px;
+}
+
+.details {
+    font-size: 20px;
 }
 
 .next-button {
@@ -58,7 +63,7 @@ border-radius: 50%;
 }
 
 td {
-    height: 100px;
+    height: 80px;
     vertical-align: middle;
 }
 
