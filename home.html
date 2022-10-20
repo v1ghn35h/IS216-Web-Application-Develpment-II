@@ -34,14 +34,33 @@
 
     </nav>
     <div class = "container">
-    <div id = "intro">
-        <h3 class = "display-4"><span class = "auto-type"></span></h3>
-        <hr style = "color: whitesmoke">
-        <p style = "font-size: 20px;" id = "temperature"></p>
-
-        <input class="btn btn-light" type="button" value="Are you bored?" onclick="call_bored_api()">
-        <input class="btn btn-light" type="button" value="Read a quote" onclick="call_quote_api()">
-        <p id = "api" class = "display-6 text-italics mt-2" style = "color: #fbdbe7"></p>
+    <div class = "container ">
+        <h3 class = "display-4 text-dark text-center m-5 text-bold"><span class = "auto-type"></span></h3>
+    </div>
+    <div class = "container">
+    <div class = "row">
+        <div class = "col-6">
+            <div class = "container">
+                <div id = "intro">
+                    <p style = "font-size: 20px;" id = "temperature"></p>
+                    <input class="btn btn-light" type="button" value="Are you bored?" onclick="call_bored_api()">
+                    <input class="btn btn-light" type="button" value="Read a quote" onclick="call_quote_api()">
+                    <p id = "api" class = "display-6 text-italics" style = "color: #fbdbe7"></p>
+                </div>
+            </div>
+        </div>
+        <div class = "col-6">
+            <div class = "container">
+                <div id = "intro">
+                    <p class = "display-6">Your upcoming events</p>
+                    <hr style = "color: whitesmoke">
+                    <input class="btn btn-light" type="button" value="Are you bored?" onclick="call_bored_api()">
+                    <input class="btn btn-light" type="button" value="Read a quote" onclick="call_quote_api()">
+                    <p id = "api" class = "display-6 text-italics mt-2" style = "color: #fbdbe7"></p>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 
     
@@ -373,6 +392,7 @@
     </div>
 
     </div>
+</div>
 </body>
 
 <script>
@@ -381,7 +401,7 @@
         console.log("**** [START] call_weather_api() *****")
 
         // 1) API endpoint
-        let api_endpoint_url = "https://api.openweathermap.org/data/2.5/weather?q=Singapore&appid=";
+        let api_endpoint_url = "https://api.openweathermap.org/data/2.5/weather?q=Singapore&appid=4665f83693c7ff637473b76e846e2a19";
 
         // 2) Use Axios to call API asynchronously
         axios.get(api_endpoint_url)
