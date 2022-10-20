@@ -6,50 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <title>Home | calendaREADY</title>
-    <link rel="icon" href="logo/logo-greenbg.png">
-    <style>
-        #intro {
-            background-color: #4B5358;
-            margin-top: 5%;
-            color: white;
-            border-radius: 15px;
-            padding: 30px
-        }
-        .scrolling-wrapper {
-            overflow-x: scroll;
-            overflow-y: hidden;
-            white-space: nowrap;
-        }
-        #upcoming {
-            overflow-x: scroll;
-            overflow-y: hidden;
-            white-space: nowrap;
-        }
-        #for_you {
-            overflow-x: scroll;
-            overflow-y: hidden;
-            white-space: nowrap;
-        }
-        .card {
-            display: inline-block;
-            width: 18rem;
-            height: 25rem;
-            margin-left: 5px;
-            margin-right: 5px;
-            margin-top: 0px;
-        }
-        .navbar-nav {
-            font-size: 20px;
-            font-family: 'Courier New', Courier, monospace;
-        }
-
-    </style>
+    <link rel="icon" href="img/logo/logo-greenbg.png">
+    <!-- External CSS -->
+    <link href="css/home.css" rel="stylesheet" />
 </head>
 <body onload="call_weather_api()">
 
     <nav class="navbar navbar-expand-md navbar-dark" style = "background-color: #104547">
         <div class="container">
-            <img src="logo/logo-white.png" style="width:100px; height:100px">
+            <img src="img/logo/logo-white.png" style="width:100px; height:100px">
 
             <button class="navbar-toggler" data-toggle="collapse" data-target="#myMenu">
                 <span class="navbar-toggler-icon"></span>
@@ -69,19 +34,76 @@
 
     </nav>
     <div class = "container">
-    <div id = "intro">
-        <h3 class = "display-4"><span class = "auto-type"></span></h3>
-        <hr style = "color: whitesmoke">
-        <p style = "font-size: 20px;" id = "temperature"></p>
-
-        <input class="btn btn-light" type="button" value="Are you bored?" onclick="call_bored_api()">
-        <input class="btn btn-light" type="button" value="Read a quote" onclick="call_quote_api()">
-        <p id = "api" class = "display-5 text-italics mt-2" style = "color: #fbdbe7"></p>
+    <div class = "container ">
+        <h3 class = "display-2 text-dark text-center m-5 text-bold"><span class = "auto-type"></span></h3>
+    </div>
+    <div class = "container">
+    <div class = "row">
+        <div class = "col-6">
+            <div class = "container">
+                <div id = "intro">
+                    <p id = "temperature" class = "display-6" style = "color: pink;"></p>
+                    <input class="btn btn-light" type="button" value="Are you bored?" onclick="call_bored_api()">
+                    <input class="btn btn-light" type="button" value="Read a quote" onclick="call_quote_api()">
+                    <span id = "api" class = "pt-4" style = "color: #fde7ef;"></span>
+                </div>
+            </div>
+        </div>
+        <div class = "col-6">
+            <div class = "container">
+                <div id = "intro">
+                    <p class = "display-6">Your upcoming events</p>
+                    <hr style = "color: whitesmoke">
+                    <div class="mx-auto box"><!-- put the carousel in a box and center it -->
+                        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                          <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                          </div>
+                          <div class="carousel-inner">
+                            <div class="carousel-item active">
+                              <img src="https://images.squarespace-cdn.com/content/v1/5c39a8f55ffd2092c1c46d7e/1629738296149-42USDKGHV1WSC5M4U4UR/how+to+organise+a+beach+clean-up.jpg" class="d-block w-100" alt="...">
+                              <div class="carousel-caption d-none d-md-block">
+                                <h5>Beach Clean Up</h5>
+                                <p>25 October 2022</p>
+                              </div>
+                            </div>
+                            <div class="carousel-item">
+                              <img src="https://www.ntu.edu.sg/images/default-source/cao/mass-recruitment/41d0833af-4623-42de-8aa6-6a4884c783a4.png?sfvrsn=c91a3e5d_5" class="d-block w-100" alt="...">
+                              <div class="carousel-caption d-none d-md-block">
+                                <h5>Career Fair</h5>
+                                <p>26 October 2022</p>
+                              </div>
+                            </div>
+                            <div class="carousel-item">
+                              <img src="https://trafeka.com/uploads/media/TREKKING_AND_HIKING_4_1366x610.jpg" class="d-block w-100" alt="...">
+                              <div class="carousel-caption d-none d-md-block">
+                                <h5>Macritchie Hiking</h5>
+                                <p>27 October 2022</p>
+                              </div>
+                            </div>
+                          </div>
+                          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                          </button>
+                          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                          </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 
     
         <h3 class = "display-5 mt-4">Upcoming events</h3>
         <hr style = "color: #104547">
+        
 
 
         <div id = "upcoming">
@@ -106,7 +128,45 @@
 
             </p>
             <!-- BUTTON -->
-            <a href="#" class="btn btn-dark">More info</a>
+            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                More info
+            </button>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Beach Clean Up</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                        <img src = "https://images.squarespace-cdn.com/content/v1/5c39a8f55ffd2092c1c46d7e/1629738296149-42USDKGHV1WSC5M4U4UR/how+to+organise+a+beach+clean-up.jpg" width= "750px" height = "150px" alt="...">
+                        </div>
+                        <p class = "display-6 lead text-center mt-3">Event Information</p>
+                        <div class="container text-break p-3 mt-3" style= "border: solid 1px black">
+                        CCA: SMU Verts
+                        <br>
+                        Date: 7 October 2022
+                        <br>
+                        Time: 1130-1300
+                        <br>
+                        Fees: NA
+                        <br>
+                        Location: East Coast Park near Carpark 4
+                        <br>
+                        Additional notes: Wear comfortable clothes and bring one large black trash bag
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-dark">Sign up now</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
         </div>
         </div>
 
@@ -370,6 +430,7 @@
     </div>
 
     </div>
+</div>
 </body>
 
 <script>
@@ -378,7 +439,7 @@
         console.log("**** [START] call_weather_api() *****")
 
         // 1) API endpoint
-        let api_endpoint_url = "https://api.openweathermap.org/data/2.5/weather?q=Singapore&appid=";
+        let api_endpoint_url = "https://api.openweathermap.org/data/2.5/weather?q=Singapore&appid=4665f83693c7ff637473b76e846e2a19";
 
         // 2) Use Axios to call API asynchronously
         axios.get(api_endpoint_url)
@@ -419,7 +480,7 @@
 
             let body = document.getElementById("api");
             let temp = response.data.activity
-            body.innerText = temp;
+            body.innerHTML = `<p style = "font-size: 25px;">${text}</p>`;
         }
         )
         .catch(error => {
@@ -450,9 +511,9 @@
             body.innerHTML = 
             `<figure>
             <blockquote class="blockquote">
-                <p class = "display-5">${quote}</p>
+                <p style = "font-size: 25px">${quote}</p>
             </blockquote>
-            <figcaption class="blockquote-footer display-6" style = "color: white;">
+            <figcaption class="blockquote-footer text-italics" style = "color: white; font-size: 17px">
                 ${author}
             </figcaption>
             </figure>`;
@@ -472,9 +533,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script>
     var typed = new Typed(".auto-type", {
-        strings: ["Welcome Natasha!", "How are you today?"],
-        typeSpeed: 150,
-        backspeed: 150,
+        strings: ["Welcome Natasha!", "How are you doing today?"],
+        typeSpeed: 100,
+        backspeed: 300,
         loop: true
     })
 </script>
