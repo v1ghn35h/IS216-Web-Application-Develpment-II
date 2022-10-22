@@ -1,3 +1,21 @@
+/* nav bar */
+.navbar-nav {
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* titles */
+h2 {
+    text-align: center;
+    padding: 20px;
+    padding-top: 40px;
+}
+
+#events h2 {
+    padding-bottom: 60px;
+}
+
+/* image */
 .profile-pic {
     border-radius: 50%;
     height: 150px;
@@ -36,34 +54,9 @@
 form input[type="file"] {
           display: none;
           cursor: pointer;
- }
-
-/* nav bar */
-.navbar-nav {
-    font-size: 20px;
-    font-family: 'Courier New', Courier, monospace;
 }
 
-/* titles */
-h2 {
-    text-align: center;
-    padding: 20px;
-    padding-top: 40px;
-}
-
-#events h2 {
-    padding-bottom: 60px;
-}
-
-/* personal information */
-#info > img {
-    width: 233px;
-    height: 200px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 25px;
-}
-
+/* personal details */
 .category {
     width: 30%;
     font-weight: bold;
@@ -106,11 +99,7 @@ td {
     vertical-align: middle;
 }
 
-
-
-
 /* event cards */
-
 #events {
     overflow-x: scroll;
     overflow-y: hidden;
@@ -128,6 +117,7 @@ td {
     margin-top: 0px;
 }
 
+/* modal button */
 .button-green {
     background-color: #104547;
     color: white;
