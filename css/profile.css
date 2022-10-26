@@ -11,7 +11,7 @@ h2 {
     padding-top: 40px;
 }
 
-#events h2 {
+#clubs h2, #events h2 {
     padding-bottom: 60px;
 }
 
@@ -136,7 +136,6 @@ td {
 }
 
 #clubs h5, #clubs p {
-    /* width: 174px; */
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -144,4 +143,67 @@ td {
 
 #clubs a {
     color: black;
+}
+
+/* checkbox */
+/* * {
+    padding: 0;
+    margin: 0;
+    font-family: Tahoma, sans-serif;
+} */
+
+.country {
+    padding: 20px;
+}
+
+.country label {
+    /* display: flex; */
+    border: solid 2px #3F6A6B;
+    border-radius: 15px;
+    width: 200px;
+    height: 80px;
+    margin: 10px;
+    color: #3F6A6B;
+    background-color: white;
+    text-align: center;
+    line-height: 80px;
+    float: left;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease-in-out;
+
+}
+.country label img {
+    width: 20px;
+    margin-right: 5px;
+}
+
+.country input[type=checkbox] {
+    display: none;
+}
+
+.country input:checked+label {
+    transition: all 0.5s ease-in-out;
+    border: solid 2px #3F6A6B;
+    color: white;
+    background-color: #3F6A6B;
+  
+}
+.country label:hover {
+    cursor: pointer;
+}
+.country input[type="reset"], .country input[type="submit"]{
+     border-radius: 15px;
+    width: 100px;
+    height: 40px;
+    margin: 10px;
+  margin-top:30px;
+  float:left;
+
+}
+.country input[type="reset"]:hover, .country input[type="submit"]:hover{
+  cursor:pointer;
+  background-color:black;
+  color:white;
+  
 }
