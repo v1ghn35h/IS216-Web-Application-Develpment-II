@@ -137,8 +137,8 @@
             <div class="row justify-content-md-center">
 
                 <div class="card border-0" style="width: 15rem;">
-                    <div class="image-center">
-                        <img style="border-radius: 50%; width: 8rem; " src="https://scontent-xsp1-2.xx.fbcdn.net/v/t1.18169-9/12439268_901451069904014_4473980561867047737_n.png?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=V8Uf2ot62QwAX-qEdWG&_nc_oc=AQld4npQyNLwvqnUH_9bWrFzHY1MxBX8SjXClYgnYwdUDYsJ7na6gUEVX1UhbZQQ_Q8&_nc_ht=scontent-xsp1-2.xx&oh=00_AT9lGLXlh_rzjolkgQUUbHym1277ketUJwKJJspkPEJfmQ&oe=637D85D0" class="card-img-top" alt="...">
+                    <div class="image-center" >
+                        <img style="border-radius: 50%; height: 8rem; width: auto;" src="https://scontent-xsp1-2.xx.fbcdn.net/v/t1.18169-9/12439268_901451069904014_4473980561867047737_n.png?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=V8Uf2ot62QwAX-qEdWG&_nc_oc=AQld4npQyNLwvqnUH_9bWrFzHY1MxBX8SjXClYgnYwdUDYsJ7na6gUEVX1UhbZQQ_Q8&_nc_ht=scontent-xsp1-2.xx&oh=00_AT9lGLXlh_rzjolkgQUUbHym1277ketUJwKJJspkPEJfmQ&oe=637D85D0" class="card-img-top" alt="...">
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">
@@ -150,9 +150,36 @@
                     </div>
                 </div>
 
-                
+                <div class="card border-0" style="width: 15rem;">
+                    <div class="image-center">
+                        <img style="border-radius: 50%; height: 8rem; width: auto;" src="https://vivace.smu.edu.sg/sites/vivace.smu.edu.sg/files/styles/profilephoto2/public/vivace/profilephotos/1.%20SMU%20TT%20Logo%20%281%29.jpg?itok=pHOcCubg" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="https://vivace.smu.edu.sg/explore/ssu/racket-sports/smu-table-tennis" target="_blank" class="stretched-link">
+                                SMU Judo
+                            </a>
+                        </h5>
+                        <p class="text-muted">SSU</p>
+                    </div>
+                </div>
 
-                <!-- add button -->
+                <div class="card border-0" style="width: 15rem;">
+                    <div class="image-center">
+                        <img style="border-radius: 50%; height: 8rem; width: auto;" src="https://vivace.smu.edu.sg/sites/vivace.smu.edu.sg/files/styles/profilephoto2/public/vivace/profilephotos/vivacelogo%20%28300x300%29.jpg?itok=ux9JQRVi" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="https://vivace.smu.edu.sg/explore/smux/smux-kayaking-team" target="_blank" class="stretched-link">
+                                SMUX Kayaking
+                            </a>
+                        </h5>
+                        <p class="text-muted">SMUX</p>
+                    </div>
+                </div>
+
+
+                <!-- ADD BUTTON -->
                 <div class="card border-0" style="width: 15rem;">
                     <div class="image-center">
                         <img style="border-radius: 50%; width: 8rem; " src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Circled_plus.svg/800px-Circled_plus.svg.png" class="card-img-top" alt="...">
@@ -302,9 +329,6 @@
         <div class="modal-body">
 
             <div>
-                <!-- list available clubs -->
-                <!-- allow search -->
-                <!-- allow filter -->
                 <div id="search-bar">
                     <form action="" class="row justify-content-center">
                         <div class="col-8">
@@ -330,6 +354,32 @@
                         </div> <!-- end of div col-8-->
                     </form> <!-- end of form-->
                 </div> <!-- end of div search bar-->
+
+
+                <!-- CLUBS AVAILABLE -->
+                <form class="country" method="get" action="#">
+                    <!-- https://codepen.io/eamalindu/pen/yLjQORL -->
+                    <div class="row justify-content-md-center">
+
+                        <input id="lk" type="checkbox" name="lk" value="lk"/>
+                        <label for="lk"><img src="https://cdn-icons-png.flaticon.com/512/206/206725.png"> Sri Lanka </label>
+                        <input id="usa" type="checkbox" name="usa" />
+                        <label for="usa"><img src="https://cdn-icons-png.flaticon.com/512/206/206626.png"> USA</label>
+                        <input id="aus" type="checkbox" name="aus" />
+                        <label for="aus"><img src="https://cdn-icons-png.flaticon.com/512/206/206618.png">Australia</label>
+                        <input id="sg" type="checkbox" name="sg" />
+                        <label for="sg"><img src="https://cdn-icons-png.flaticon.com/512/206/206618.png">Singapore</label>
+                        <input id="ms" type="checkbox" name="ms" />
+                        <label for="ms"><img src="https://cdn-icons-png.flaticon.com/512/206/206618.png">Malaysia</label>
+                    </div>
+                    <div class="row justify-content-md-end">
+                        <input type="reset" value="Reset">
+
+                        <input type="submit" value="Add">
+                    </div>
+                </form>
+
+
             </div>
 
         </div>
@@ -342,7 +392,7 @@
         </div>
     </div>
 
-        <!-- MODAL (BEACH)-->
+    <!-- MODAL (BEACH)-->
     <div>
         <div class="modal fade" id="beach" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" width="100%">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
