@@ -1,0 +1,47 @@
+#intro {
+    background-color: #4B5358;
+    margin-top: 5%;
+    color: white;
+    border-radius: 15px;
+    padding: 30px
+}
+#carousel_events{
+    background-color: #4B5358;
+    margin-top: 5%;
+    color: white;
+    border-radius: 15px;
+    padding: 30px
+}
+.scrolling-wrapper {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+#upcoming {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+#for_you {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+.card {
+    display: inline-block;
+    width: 18rem;
+    height: 25rem;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 0px;
+}
+.navbar-nav {
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }

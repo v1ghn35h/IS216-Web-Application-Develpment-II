@@ -1,0 +1,288 @@
+/* navbar css */
+#intro {
+  background-color: #4B5358;
+  margin-top: 5%;
+  color: white;
+  border-radius: 15px;
+  padding: 30px
+}
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+#upcoming {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+#for_you {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+.card {
+  display: inline-block;
+  width: 18rem;
+  height: 25rem;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 0px;
+}
+.navbar-nav {
+  font-size: 20px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* -------------------------------------------- */
+
+/* DOCUMENT */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+/* -------------------------------------------- */
+
+/* TO DO LIST */
+
+/* Basic Style */
+.form-control {
+  background-color: transparent;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  border-radius: 0;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+li * {
+  float: left;
+}
+li, h3 {
+  clear:both;
+  list-style:none;
+}
+input, button {
+  outline: none;
+}
+button {
+  background: none;
+  border: 0px;
+  color: #888;
+  font-size: 15px;
+  width: 60px;
+  margin: 10px 0 0;
+  font-family: Lato, sans-serif;
+  cursor: pointer;
+}
+button:hover {
+  color: #333;
+}
+/* Heading */
+h3,
+label[for='new-task'] {
+  color: #104547;
+  font-weight: 700;
+  font-size: 15px;
+  border-bottom: 2px solid #104547;
+  padding: 30px 0 10px;
+  margin: 0;
+  text-transform: uppercase;
+}
+input[type="text"]:focus {
+  color: #333;
+}
+input[type="text"] {
+  border: 1px solid #333;
+  float: left;
+  margin: 0;
+  padding: 0;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  height: 40px;
+  width: 200px;
+}
+
+/* New Task */
+label[for='new-task'] {
+  display: block;
+  margin: 0 0 20px;
+}
+
+/* Task list */
+li {
+  overflow: hidden;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+}
+li > input[type="checkbox"] {
+  margin: 0 10px;
+  position: relative;
+  top: 18px;
+}
+li > label {
+  margin: 0 10px;
+  font-size: 14px;
+  line-height: 50px;
+  text-align: left;
+  width: 120px;
+  padding: 0 0 0 10px;
+}
+li >  input[type="text"] {
+  width: 150px;
+}
+li > .delete:hover {
+  color: #CF2323;
+}
+
+/* Completed */
+#completed-tasks label {
+  text-decoration: line-through;
+  color: #888;
+}
+
+/* Edit Task */
+ul li input[type=text] {
+  display:none;
+}
+
+ul li.editMode input[type=text] {
+  display:block;
+}
+
+ul li.editMode label {
+  display:none;
+}
+
+/* -------------------------------------------- */
+
+/* CALENDAR */
+
+#calendar {
+  max-width: 1100px;
+  margin: 40px auto;
+}
+
+/* overwrite default button colour */
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: #104547 !important;
+  border-color: #104547 !important;
+}
+
+/* modal */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* dropdown option colours */
+
+.wrapper-dropdown {
+    position: relative;
+    width: 200px;
+    background: #FFF;
+    color: #2e2e2e;
+    outline: none;
+    cursor: pointer;
+}
+.wrapper-dropdown > span {
+  width: 100%;
+  display: block;
+  border: 1px solid #ababab;
+  padding: 5px;
+}
+.wrapper-dropdown > span > span {
+  padding: 0 12px;
+  margin-right: 5px;
+}
+.wrapper-dropdown > span:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 16px;
+    top: calc(50% + 4px);
+    margin-top: -6px;
+    border-width: 6px 6px 0 6px;
+    border-style: solid;
+    border-color: #2e2e2e transparent;
+}
+
+.wrapper-dropdown .dropdown {
+    position: absolute;
+    z-index: 10;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    font-weight: normal;
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+    border: 1px solid #ababab;
+    border-top: 0;
+}
+
+.wrapper-dropdown .dropdown li {
+    display: block;
+    text-decoration: none;
+    color: #2e2e2e;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.wrapper-dropdown .dropdown li > span {
+  padding: 0 12px;
+  margin-right: 5px;
+}
+
+.wrapper-dropdown .dropdown li:hover {
+    background: #eee;
+    cursor: pointer;
+}
+
+/* dot */
+.dot {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
