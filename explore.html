@@ -146,9 +146,6 @@
                                 <option value="Online">Volunteer</option>
                         </select>
 
-
-
-
                         </div>
                         <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -225,13 +222,78 @@
                                 </p>
                                 <!-- sign up button-->
                                 <div>
-                                    <button type="button" class="btn signup-btn mt-3" data-bs-target="#SignUpPage" data-bs-toggle="modal">Sign up now</button>
+                                    <button type="button" class="btn signup-btn mt-3" data-bs-target="#InfoPage" data-bs-toggle="modal">Details</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 <!-- </a> -->
             </div>
+            <!-- MORE INFO & THE SIGNUp -->
+                <!-- BUTTON -->
+            
+            <!-- Modal -->
+            <div class="modal fade" id="InfoPage" tabindex="-1" aria-labelledby="InfoPageLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="InfoPageLabel">Beach Clean Up</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                        <img src = "https://images.squarespace-cdn.com/content/v1/5c39a8f55ffd2092c1c46d7e/1629738296149-42USDKGHV1WSC5M4U4UR/how+to+organise+a+beach+clean-up.jpg" width= "300px" height = "250px" alt="..." class="center">
+                        </div>
+                        <p class = "display-6 lead text-center mt-3">Event Information</p>
+                        <div class="container text-break p-3 mt-3 fs-6">
+                        CCA: SMU Verts
+                        <br>
+                        Date: 7 October 2022
+                        <br>
+                        Time: 1130-1300
+                        <br>
+                        Fees: NA
+                        <br>
+                        Location: East Coast Park near Carpark 4
+                        <br>
+                        Additional notes: Wear comfortable clothes and bring one large black trash bag
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-dark" data-bs-target="#SignUpPage" data-bs-toggle="modal">Sign up now</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="modal fade" id="SignUpPage" aria-hidden="true" aria-labelledby="SignUpPageLabel" tabindex="-1">
+                <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="SignUpPageLabel">Sign Up Page</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class = "display-6 lead text-center mt-3">Beach Clean Up</p>
+                        <div class="container text-break p-3 mt-3 fs-6">
+                        Name: John Doe
+                        <br>
+                        Matriculation number: 01367890
+                        <br>
+                        School: School of Computer Science and Information Systems
+                        <br>
+                        Payment: NA                        
+                        </div>
+                        <button class="btn btn-warning center">Confirm</button>
+                      
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-dark" data-bs-target="#InfoPage" data-bs-toggle="modal">Go back</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <!-- END OF SIGN UP & MORE INFO -->
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                 <a href="">
                     <div class="card-flyer">
