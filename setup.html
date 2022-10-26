@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="author" content="2022 Term 1: IS216 G7 - Team 7" />
-        <title>Login | calendaREADY</title>
+        <title>Setup Profile | calendaREADY</title>
         <link rel="icon" href="img/logo/logo-greenbg.png">
 
         <!-- Bootstrap CSS -->
@@ -33,45 +33,47 @@
                 />
 
                 <!-- Login Header Text -->
-                <h3>Welcome Back!</h3>
-                <h4 class="mb-3 fw-normal">Are you ready for a new day?</h4>
+                <h3>Setup Your Profile</h3>
+                <h4 class="mb-3 fw-normal">Tell us more about yourself!</h4>
 
-                <!-- Login with Google -->
-                <button class="w-100 py-2 btn btn-outline-dark btn-light" type="submit">
-                    <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Google" height="16" class="me-1">
-                    Login with Google
-                </button>
+                <!-- Name Input Box -->
+                <div class="form-floating mb-1">
+                    <input type="text" class="form-control" id="profileName" placeholder="name" required />
+                    <label for="profileName">Your Name</label>
+                </div>
+
+                <!-- Username Input Box -->
+                <div class="form-floating mb-1">
+                    <input type="text" class="form-control" id="profileUsername" placeholder="name" required />
+                    <label for="profileUsername">Your Username</label>
+                </div>
+
+                <!-- Gender Selection Box -->
+                <select class="form-select mb-1 py-3" id="profileGender">
+                    <option value="default">Gender unspecified</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
 
                 <!-- Login Separator -->
-                <p class="text-muted my-4 sep"><span>or</span></p>
+                <p class="text-muted my-3 sep"><span>optional fields below</span></p>
 
-                <!-- Email Input Box -->
+                <!-- Birthday Input Box -->
                 <div class="form-floating mb-1">
-                    <input type="email" class="form-control" id="loginEmail" placeholder="name@example.com" required />
-                    <label for="loginEmail">Email Address</label>
+                    <input type="date" class="form-control" id="profileBirthday" placeholder="2000-01-01" max="2022-11-12"/>
+                    <label for="profileBirthday">Your Birthday</label>
                 </div>
 
-                <!-- Password Input Box -->
-                <div class="form-floating mb-1">
-                    <input type="password" class="form-control" id="loginPassword" placeholder="password" required />
-                    <label for="loginPassword">Password</label>
-                    <div id="forgotPassword" class="form-text fst-italic text-start"><a href="forgotpass.html" class="text-decoration-none">Forgot your password?</a></div>
-                </div>
-
-                <!-- Remember Me Checkbox -->
-                <div class="form-check mb-3">
-                    <label>
-                        <input class="form-check-input" type="checkbox" value="remember-me" /> Remember me!
-                    </label>
+                <!-- Phone Number Input Box -->
+                <div class="form-floating mb-3">
+                    <input type="tel" class="form-control" id="profilePhone" placeholder="91234567" pattern="[0-9]{8}" />
+                    <label for="profilePhone">Your Phone Number (eg. 91234567)</label>
                 </div>
 
                 <!-- Login Button -->
-                <button class="w-100 btn btn-lg button-login" type="submit">
-                    Login
+                <button class="w-100 btn btn-lg button-login mb-2" type="submit">
+                    Complete Profile Setup
                 </button>
-
-                <!-- Sign Up -->
-                <p class="my-2">Don't have an account? <a href="signup.html" class="fw-bold text-decoration-none">Sign Up!</a></p>
 
                 <!-- "Footer" -->
                 <p class="text-muted fst-italic mb-0 fw-light">Built with ♡ by Team 7 (IS216 G7 / 2022 T1)</p>
@@ -204,26 +206,6 @@
                 </div>
             </div>
         </div>
-
-        <!--
-            To-Do:
-            - Backend!!!
-            - Autofill relevant sections (eg. setup.html especially if logged in through Google)
-            - Link up setup.html (optionally, passreset.html / verifyemail.html, autofilled and without email sending)
-            - Add SMU clubs interest selection in profile setup
-
-            References:
-            - https://getbootstrap.com/docs/5.2/examples/
-            - https://getbootstrap.com/docs/5.2/examples/modals/
-            - https://trailhead.salesforce.com/
-
-            - https://discord.com/login
-            - https://www.instagram.com/accounts/login/
-
-            - https://discord.com/register
-            - https://www.instagram.com/accounts/password/reset/
-            - https://www.instagram.com/accounts/emailsignup/
-        -->
 
         <!-- Bootstrap JS -->
         <script
