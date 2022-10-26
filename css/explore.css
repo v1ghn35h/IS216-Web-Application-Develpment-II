@@ -97,9 +97,12 @@
     letter-spacing: 1px;
     color: #104547;
 }
+#cards_landscape_wrap-2 .card-flyer .text-box .signup-btn{
+    background-color: #00acc1;
+    color: #FFFFFF;
+}
 
 
-/* for search button  */
 .filter-btn {
     border: 1px solid black;
     background-color: white;
