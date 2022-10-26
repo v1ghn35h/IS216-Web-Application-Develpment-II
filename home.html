@@ -41,11 +41,13 @@
     <div class = "row">
         <div class = "col-6">
             <div class = "container">
-                <div id = "intro">
+                <div id = "intro" height="100%">
                     <p id = "temperature" class = "display-6" style = "color: pink;"></p>
+                    <br>
                     <input class="btn btn-light" type="button" value="Are you bored?" onclick="call_bored_api()">
                     <input class="btn btn-light" type="button" value="Read a quote" onclick="call_quote_api()">
-                    <span id = "api" class = "pt-4" style = "color: #fde7ef;"></span>
+                    <br>
+                    <span id = "api" class = "pt-5" style = "color: #fde7ef;"></span>
                 </div>
             </div>
         </div>
@@ -63,21 +65,21 @@
                           </div>
                           <div class="carousel-inner">
                             <div class="carousel-item active">
-                              <img src="https://images.squarespace-cdn.com/content/v1/5c39a8f55ffd2092c1c46d7e/1629738296149-42USDKGHV1WSC5M4U4UR/how+to+organise+a+beach+clean-up.jpg" class="d-block w-100" alt="...">
+                              <img src="https://images.squarespace-cdn.com/content/v1/5c39a8f55ffd2092c1c46d7e/1629738296149-42USDKGHV1WSC5M4U4UR/how+to+organise+a+beach+clean-up.jpg" class="d-block w-100" alt="..." height="300" width="600">
                               <div class="carousel-caption d-none d-md-block">
                                 <h5>Beach Clean Up</h5>
                                 <p>25 October 2022</p>
                               </div>
                             </div>
                             <div class="carousel-item">
-                              <img src="https://www.ntu.edu.sg/images/default-source/cao/mass-recruitment/41d0833af-4623-42de-8aa6-6a4884c783a4.png?sfvrsn=c91a3e5d_5" class="d-block w-100" alt="...">
+                              <img src="https://www.ntu.edu.sg/images/default-source/cao/mass-recruitment/41d0833af-4623-42de-8aa6-6a4884c783a4.png?sfvrsn=c91a3e5d_5" class="d-block w-100" alt="..." height="300" width="600">
                               <div class="carousel-caption d-none d-md-block">
                                 <h5>Career Fair</h5>
                                 <p>26 October 2022</p>
                               </div>
                             </div>
                             <div class="carousel-item">
-                              <img src="https://trafeka.com/uploads/media/TREKKING_AND_HIKING_4_1366x610.jpg" class="d-block w-100" alt="...">
+                              <img src="https://trafeka.com/uploads/media/TREKKING_AND_HIKING_4_1366x610.jpg" class="d-block w-100" alt="..." height="300" width="600">
                               <div class="carousel-caption d-none d-md-block">
                                 <h5>Macritchie Hiking</h5>
                                 <p>27 October 2022</p>
@@ -480,7 +482,7 @@
 
             let body = document.getElementById("api");
             let temp = response.data.activity
-            body.innerHTML = `<p style = "font-size: 25px;">${text}</p>`;
+            body.innerHTML = `<p style = "font-size: 25px;">${temp}</p>`;
         }
         )
         .catch(error => {
