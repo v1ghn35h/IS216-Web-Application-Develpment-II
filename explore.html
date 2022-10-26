@@ -54,7 +54,7 @@
     <!-- nav bar  -->
     <nav class="navbar navbar-expand-md navbar-dark" style = "background-color: #104547">
         <div class="container">
-            <img src="logo/logo-white.png" style="width:100px; height:100px">
+            <img src="img/logo/logo-white.png" style="width:100px; height:100px">
 
             <button class="navbar-toggler" data-toggle="collapse" data-target="#myMenu">
                 <span class="navbar-toggler-icon"></span>
@@ -90,15 +90,17 @@
                     <option value="BIA">
                   </datalist>
 
-                    <button type="button" class="btn btn-outline-info " data-bs-toggle="modal" data-bs-target="#exampleModal">Search</button>
+                <!-- <button type="button" class="btn btn-outline-info " data-bs-toggle="modal" data-bs-target="#exampleModal">Search</button> -->
+                <button type="button" class="filter-btn fil-button-green " data-bs-toggle="modal" data-bs-target="#exampleModal">Search</button>
+
                 </div>
                 <!--  Sort button -->
-                <button type="button" class="btn btn-outline-info mt-3 btn-sm" data-bs-toggle="modal" data-bs-target="#sort-modal">
+                <button type="button" class="sort-btn fil-sort mt-2" data-bs-toggle="modal" data-bs-target="#sort-modal">
                     Sort By
                 </button>
 
                 <!--Filter Button trigger modal -->
-                <button type="button" class="btn btn-outline-info mt-3 btn-sm" data-bs-toggle="modal" data-bs-target="#filter-modal">
+                <button type="button" class="sort-btn fil-sort mt-2" data-bs-toggle="modal" data-bs-target="#filter-modal">
                     Filter By
                 </button>
 
@@ -220,21 +222,10 @@
                                     <br>
                                     Location: LKCSB Classroom 2-3, near to elevator
                                 </p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <a href="">
-                    <div class="card-flyer">
-                        <div class="text-box">
-                            <div class="image-box">
-                                <img src="https://mymodernmet.com/wp/wp-content/uploads/2018/05/painting-ideas-thumbnail-jpg.jpg" alt="" />
-                            </div>
-                            <div class="text-container">                                    
-                                <h6>Title 02</h6>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                <!-- sign up button-->
+                                <div>
+                                    <button type="button" class="btn signup-btn mt-3" data-bs-target="#SignUpPage" data-bs-toggle="modal">Sign up now</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -247,10 +238,26 @@
                             <div class="image-box">
                                 <img src="https://images.squarespace-cdn.com/content/v1/5c39a8f55ffd2092c1c46d7e/1629738296149-42USDKGHV1WSC5M4U4UR/how+to+organise+a+beach+clean-up.jpg" alt="" />
                             </div>
-
                             <div class="text-container">
-                                <h6>Title 03</h6>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                <!-- <h6>Title 01</h6>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p> -->
+                                <h5 class="card-title">Art Jam</h5>  
+                                <!-- SUBTITLE -->
+                                <h6 class="card-subtitle mb-2 ">SMU Artdicted</h6>
+                                <!-- BODY -->
+                                <p class="card-text text-wrap">
+                                    Date: 13 October 2022
+                                    <br>
+                                    Time: 1700-1900
+                                    <br>
+                                    Fees: 10 SGD
+                                    <br>
+                                    Location: LKCSB Classroom 2-3, near to elevator
+                                </p>
+                                <!-- sign up button-->
+                                <div>
+                                    <button type="button" class="btn signup-btn mt-3" data-bs-target="#SignUpPage" data-bs-toggle="modal">Sign up now</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -261,11 +268,60 @@
                     <div class="card-flyer">
                         <div class="text-box">
                             <div class="image-box">
-                                <img src="https://mymodernmet.com/wp/wp-content/uploads/2018/05/painting-ideas-thumbnail-jpg.jpg" alt="" />
+                                <img src="https://images.squarespace-cdn.com/content/v1/5c39a8f55ffd2092c1c46d7e/1629738296149-42USDKGHV1WSC5M4U4UR/how+to+organise+a+beach+clean-up.jpg" alt="" />
                             </div>
                             <div class="text-container">
-                                <h6>Title 04</h6>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                <!-- <h6>Title 01</h6>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p> -->
+                                <h5 class="card-title">Art Jam</h5>  
+                                <!-- SUBTITLE -->
+                                <h6 class="card-subtitle mb-2 ">SMU Artdicted</h6>
+                                <!-- BODY -->
+                                <p class="card-text text-wrap">
+                                    Date: 13 October 2022
+                                    <br>
+                                    Time: 1700-1900
+                                    <br>
+                                    Fees: 10 SGD
+                                    <br>
+                                    Location: LKCSB Classroom 2-3, near to elevator
+                                </p>
+                                <!-- sign up button-->
+                                <div>
+                                    <button type="button" class="btn signup-btn mt-2" data-bs-target="#SignUpPage" data-bs-toggle="modal">Sign up now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <a href="">
+                    <div class="card-flyer">
+                        <div class="text-box">
+                            <div class="image-box">
+                                <img src="https://images.squarespace-cdn.com/content/v1/5c39a8f55ffd2092c1c46d7e/1629738296149-42USDKGHV1WSC5M4U4UR/how+to+organise+a+beach+clean-up.jpg" alt="" />
+                            </div>
+                            <div class="text-container">
+                                <!-- <h6>Title 01</h6>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p> -->
+                                <h5 class="card-title">Art Jam</h5>  
+                                <!-- SUBTITLE -->
+                                <h6 class="card-subtitle mb-2 ">SMU Artdicted</h6>
+                                <!-- BODY -->
+                                <p class="card-text text-wrap">
+                                    Date: 13 October 2022
+                                    <br>
+                                    Time: 1700-1900
+                                    <br>
+                                    Fees: 10 SGD
+                                    <br>
+                                    Location: LKCSB Classroom 2-3, near to elevator
+                                </p>
+                                <!-- sign up button-->
+                                <div>
+                                    <button type="button" class="btn signup-btn mt-2" data-bs-target="#SignUpPage" data-bs-toggle="modal">Sign up now</button>
+                                </div>
                             </div>
                         </div>
                     </div>
