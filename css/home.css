@@ -44,4 +44,10 @@
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-  }
+}
+.card-title {
+    height: 48px;
+}
+.card-text {
+    height: 120px;
+}
