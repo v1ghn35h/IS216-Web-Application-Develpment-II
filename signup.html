@@ -20,7 +20,7 @@
     <body class="text-center">
 
         <!-- Login Box -->
-        <main class="form-login w-100 m-auto">
+        <main class="form-login w-100 m-auto" style="max-width:700px;">
 
             <form action="">
                 <!-- Logo -->
@@ -34,26 +34,35 @@
 
                 <!-- Login Header Text -->
                 <h3>Let's Get Started!</h3>
-                <h4 class="mb-3 fw-normal">A new day awaits you.<br>Create your account:</h4>
+                <h4 class="mb-3 fw-normal">A new day awaits you. Create your account:</h4>
 
-                <!-- Email Input Box -->
-                <div class="form-floating mb-1">
-                    <input type="email" class="form-control" id="loginEmail" placeholder="name@example.com" required />
-                    <label for="loginEmail">Email Address</label>
-                    <div id="loginEmailVerify" class="form-text fst-italic text-start">We'll send you a link to verify your email.</div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- Email Input Box -->
+                        <div class="form-floating mb-1">
+                            <input type="email" class="form-control" id="loginEmail" placeholder="name@example.com" required />
+                            <label for="loginEmail">Email Address</label>
+                            <div id="loginEmailVerify" class="form-text fst-italic text-start">We'll send you a link to verify your email.</div>
+                        </div>
+
+                        <!-- Password Input Box -->
+                        <div class="form-floating mb-1">
+                            <input type="password" class="form-control" id="loginPassword" placeholder="password" required />
+                            <label for="loginPassword">Password</label>
+                        </div>
+
+                        <!-- Confirm Password Input Box -->
+                        <div class="form-floating mb-2">
+                            <input type="password" class="form-control" id="loginPasswordConfirm" placeholder="passwordconfirm" required />
+                            <label for="loginPasswordConfirm">Confirm Password</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        Clubs Interest Selection Section, Pending.
+                    </div>
                 </div>
 
-                <!-- Password Input Box -->
-                <div class="form-floating mb-1">
-                    <input type="password" class="form-control" id="loginPassword" placeholder="password" required />
-                    <label for="loginPassword">Password</label>
-                </div>
-
-                <!-- Confirm Password Input Box -->
-                <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="loginPasswordConfirm" placeholder="passwordconfirm" required />
-                    <label for="loginPasswordConfirm">Confirm Password</label>
-                </div>
+                <p class="text-muted fst-italic mb-3">Your profile information will be retrieved from SMU based on your verified email!</p>
 
                 <!-- Login Button -->
                 <button class="w-100 btn btn-lg button-login" type="submit">
