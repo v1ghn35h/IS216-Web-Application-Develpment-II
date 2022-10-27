@@ -112,7 +112,6 @@ button.btn:hover, button.btn:active, button.btn:visited {
     letter-spacing: 1px;
     color: #104547;
 }
-<<<<<<< Updated upstream
 #cards_landscape_wrap-2 .card-flyer .text-box .signup-btn{
     background-color: #00acc1;
     color: #FFFFFF;
@@ -161,7 +160,6 @@ button.btn:hover, button.btn:active, button.btn:visited {
     background-color: #104547;
     color: white;
   }
-=======
 
 
 /* CSS FOR FILTER - EVENT TYPE - SCROLLING BOX WITH CHECKBOX MUTIPLE SELECT OPTIONS */
@@ -200,4 +198,3 @@ background-color: #0074d9;
 border-color: #0049bf;
 }
 /* END OF CSS FOR FILTER - EVENT TYPE - SCROLLING BOX WITH CHECKBOX MUTIPLE SELECT OPTIONS */
->>>>>>> Stashed changes
