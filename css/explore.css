@@ -131,12 +131,12 @@ button.btn:hover, button.btn:active, button.btn:visited {
   }
   
   .fil-button-green {
-    border-color: #4B5358;
+    border-color: #104547;
     color: 104547;
   }
   
   .fil-button-green:hover {
-    background-color: #4B5358;
+    background-color: #104547;
     color: white;
   }
 /* for sort and filter button  */
