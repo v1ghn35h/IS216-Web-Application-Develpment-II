@@ -286,3 +286,8 @@ ul li.editMode label {
   display: inline-block;
 }
 
+/* add event button */
+#addEventButton {
+  width: 100px;
+}
+

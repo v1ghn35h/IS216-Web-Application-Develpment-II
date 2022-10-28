@@ -200,7 +200,6 @@ var colors = [
 
 let event_class = ""
 let event_color = ""
-let normal_add = false
 
 // Vue Instance
 var app = Vue.createApp({
@@ -219,7 +218,19 @@ var app = Vue.createApp({
 
     // Methods
     methods: {
-      setColor: function(color, colorName) {
+
+      selector: function() {
+        if(!this.selectedColor) {
+          return 'Select a category';
+        }
+        else {
+          console.log('<span style="background: ' + this.selectedColor + '"></span>' + this.selectedColorName)
+          return '<span style="background: ' + this.selectedColor + '"></span>' + this.selectedColorName;
+        }
+      },
+
+      setColor: 
+        function(color, colorName) {
         this.selectedColor = color;
         this.selectedColorName = colorName;
         this.active = false;
@@ -228,21 +239,10 @@ var app = Vue.createApp({
         event_class = colorName
         event_color = color
       },
-      toggleDropdown: function() {
-        this.active = !this.active;
-      },
 
-      selector: function() {
-        let output = ''
-        // Nothing selected
-        if(!this.selectedColor) {
-          output = '<span class="text-muted"> choose one </span>';
+        toggleDropdown: function() {
+          this.active = !this.active;
         }
-        else {
-          output = '<span style="background: ' + this.selectedColor + '"></span> ' + this.selectedColorName;
-        }
-        return output
-      }
     }
 })
 
@@ -259,8 +259,6 @@ document.addEventListener('DOMContentLoaded', function() {
         text: '+',
         click: 
           function() {
-            let normal_add = true
-
             // get the modal
             var modal = document.getElementById("myModal");
             // get the <span> element that closes the modal
@@ -331,7 +329,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Click on date (to add event)
     dateClick: 
       function (info) {
-        normal_add = false
         
         // get the modal
         var modal = document.getElementById("myModal");
@@ -397,7 +394,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     // API Key
-    googleCalendarApiKey: 'AIzaSyBLxGXn-ZzMfSKIobD-6C4chf4qI8XXRn8',
+    googleCalendarApiKey: 'AIzaSyC4IyTr17PyenYfQSiFD3mI3xCGIV0LsOk',
+    // old: AIzaSyBLxGXn-ZzMfSKIobD-6C4chf4qI8XXRn8
 
     // Events from database (google calendar)
     eventSources: [
@@ -465,7 +463,7 @@ document.addEventListener('DOMContentLoaded', function() {
         className: 'Global Culture',
         color: '#ecbcfd' // purple
       },
-            {
+      {
         title: 'test school society',
         start: '2022-10-20',
         className: 'School Society',
@@ -512,7 +510,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // set icon based on category
         let event_icon = event_media[event_category][1]
         let icon = document.getElementById("eventIcon")
-        icon.innerHTML = `<img src=${event_icon} style='height: 50px;'>`
+        icon.innerHTML = `<img src="img/${event_icon}" style='height: 50px;'>`
 
         // set event title
         let eventTitle = document.getElementById("eventTitle")
