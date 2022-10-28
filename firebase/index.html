@@ -37,22 +37,34 @@
       const analytics = getAnalytics(app);
 
 
-        /* ADDED CODE */
-        // Import functions needed to read from realtime database
-        import { getDatabase, ref, onValue } from
-        "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
+      /* CONNECT TO DATABASE */
+      // Import functions needed to read from realtime database
+      import { getDatabase, ref, onValue } from
+      "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
 
-        // Connect to the realtime database
-        const db = getDatabase();
+      // Connect to the realtime database
+      const db = getDatabase();
 
-        // Get a reference to the data 'title'
-        const title = ref(db, 'title');
+      // Get a reference to the data 'title'
+      const title = ref(db, 'title');
+      const test = ref(db, 'test') 
 
-        // When the value of 'title' changes, update to <h1 id='target'>
-        onValue(title, (snapshot => {
-          const data = snapshot.val(); // get the new value
-          document.getElementById('target').innerText = data;
-        }))
+      // firebase console object syntax: { "creator": "Robin", "roomName": "Holy Robert Louis Stevenson" }
+
+      // When the value of 'title' changes, update to <h1 id='target'>
+      onValue(title, (snapshot => {
+        const data = snapshot.val(); // get the new value
+        document.getElementById('target').innerText = data;
+      }));
+
+      onValue(test, (snapshot => {
+        const data = snapshot.val(); // get the new value
+        document.getElementById('target').innerHTML += "<br>" + data.creator;
+      }));
+
+    // ADD DATA
+
+
 
     </script>
 
