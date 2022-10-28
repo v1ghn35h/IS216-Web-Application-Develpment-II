@@ -436,55 +436,53 @@ document.addEventListener('DOMContentLoaded', function() {
       },
     ],
 
-
-    // From firebase
-    events: "https://calendaready-g7t7-default-rtdb.asia-southeast1.firebaseio.com/users/user1/upcoming_events/event_1/",
+    events: "/events.json",
 
     // To populate new events
     // events: [
-      // test event
-      // {
-      //   title: 'test adventure',
-      //   start: '2022-10-16',
-      //   className: 'Adventure',
-      //   color: '#ffb700' // orange
-      // },
-      // {
-      //   title: 'test arts',
-      //   start: '2022-10-17',
-      //   className: 'Arts & Culture',
-      //   color: '#ffc2d1' // pink
-      // },
-      // {
-      //   title: 'test community',
-      //   start: '2022-10-18',
-      //   className: 'Community',
-      //   color: '#ffd81a' // yellow
-      // },
-      // {
-      //   title: 'test global culture',
-      //   start: '2022-10-19',
-      //   className: 'Global Culture',
-      //   color: '#ecbcfd' // purple
-      // },
-      // {
-      //   title: 'test school society',
-      //   start: '2022-10-20',
-      //   className: 'School Society',
-      //   color: '#adc178' // green
-      // },
-      // {
-      //   title: 'test sports',
-      //   start: '2022-10-21',
-      //   className: 'Sports',
-      //   color: '#01497c' // dark blue
-      // },
-      // {
-      //   title: 'test student bodies',
-      //   start: '2022-10-22',
-      //   className: 'Student Bodies',
-      //   color: '#8ecae6' // light blue
-      // }
+    //   // test event
+    //   {
+    //     title: 'test adventure',
+    //     start: '2022-10-16',
+    //     className: 'Adventure',
+    //     color: '#ffb700' // orange
+    //   },
+    //   {
+    //     title: 'test arts',
+    //     start: '2022-10-17',
+    //     className: 'Arts & Culture',
+    //     color: '#ffc2d1' // pink
+    //   },
+    //   {
+    //     title: 'test community',
+    //     start: '2022-10-18',
+    //     className: 'Community',
+    //     color: '#ffd81a' // yellow
+    //   },
+    //   {
+    //     title: 'test global culture',
+    //     start: '2022-10-19',
+    //     className: 'Global Culture',
+    //     color: '#ecbcfd' // purple
+    //   },
+    //   {
+    //     title: 'test school society',
+    //     start: '2022-10-20',
+    //     className: 'School Society',
+    //     color: '#adc178' // green
+    //   },
+    //   {
+    //     title: 'test sports',
+    //     start: '2022-10-21',
+    //     className: 'Sports',
+    //     color: '#01497c' // dark blue
+    //   },
+    //   {
+    //     title: 'test student bodies',
+    //     start: '2022-10-22',
+    //     className: 'Student Bodies',
+    //     color: '#8ecae6' // light blue
+    //   }
     // ],
 
     // When the user clicks on an event
