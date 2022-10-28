@@ -47,7 +47,7 @@ var incompleteTasksHolder = document.getElementById("details"); //incomplete-tas
 
 //Edit an existing task
 var editTask = function() {
-	console.log("Edit task...");
+	// console.log("Edit task...");
 
 	var listItem = this.parentNode;
 
@@ -83,7 +83,7 @@ var taskCompleted = function() {
 }
 
 var bindTaskEvents = function(taskListItem) {
-	console.log("Bind list item events");
+	// console.log("Bind list item events");
 	//select taskListItem's children
 	var editButton = taskListItem.querySelector("button.edit");
 
