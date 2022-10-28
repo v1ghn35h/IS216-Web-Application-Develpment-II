@@ -35,12 +35,12 @@ const users = ref(db, 'users')
 
 // firebase console object syntax: { "creator": "Robin", "roomName": "Holy Robert Louis Stevenson" }
 
-// When the value of 'test' changes, update to <h1 id='target'>
+// Update user's calendar
 onValue(users, (snapshot => {
   const data = snapshot.val(); // get the new value
 
-  let user_object = data.user1
-  let user_name = user_object.name
+  let user1 = data.user1
+  let user_name = user1.user_profile_info.username
 
   document.getElementById('target').innerText = user_name;
 }));
