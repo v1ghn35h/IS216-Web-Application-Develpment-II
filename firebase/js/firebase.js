@@ -42,5 +42,8 @@ onValue(users, (snapshot => {
   let user1 = data.user1
   let user_name = user1.user_profile_info.username
 
+  let all_users = data
+  console.log(all_users)
+
   document.getElementById('target').innerText = user_name;
 }));

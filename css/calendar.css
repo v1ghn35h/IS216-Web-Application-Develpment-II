@@ -253,3 +253,7 @@ ul li.editMode label {
   width: 100px;
 }
 
+/* delete event button */
+#deleteEventButton {
+  width: 120px;
+}

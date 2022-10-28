@@ -1,3 +1,43 @@
+// ----------------------------------------
+// CALENDAR FIREBASE
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-analytics.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyC_sRHAqy76KR30qWRWTT1HjahFEN0IN4Q",
+  authDomain: "calendaready-g7t7.firebaseapp.com",
+  databaseURL: "https://calendaready-g7t7-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "calendaready-g7t7",
+  storageBucket: "calendaready-g7t7.appspot.com",
+  messagingSenderId: "544037155570",
+  appId: "1:544037155570:web:c7e3ca7a1c55beaea8966b",
+  measurementId: "G-03K9PHBX7D"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+/* CONNECT TO DATABASE */
+// Import functions needed to read from realtime database
+import { getDatabase, ref, onValue, set, remove } from
+"https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
+
+// Connect to the realtime database
+const db = getDatabase();
+
+let all_events = []
+let current_user = "user1" // change according to user logged in
+
+let max_id = 0
+
+// ----------------------------------------
 // TO DO LIST
 // Problem: User interaction doesn't provide desired results.
 // Solution: Add interactivity so the user can manage daily tasks
@@ -202,7 +242,7 @@ let event_class = ""
 let event_color = ""
 
 // Vue Instance
-var app = Vue.createApp({
+var apps = Vue.createApp({
     // Element
     el: "#category",
 
@@ -246,7 +286,7 @@ var app = Vue.createApp({
     }
 })
 
-app.mount("#category")
+apps.mount("#category")
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -297,16 +337,20 @@ document.addEventListener('DOMContentLoaded', function() {
               }
               
               // add event to array
-              calendar.addEvent(
+              set(ref(db, 'users/' + current_user + '/upcoming_events/event_' + 2), 
                 {
                   title: document.getElementById('title').value,
                   start: start,
                   end: end,
-                  className: event_class,
-                  backgroundColor: event_color,
-                  borderColor: event_color,
+                  category: event_class,
+                  id: "3"
                 },
               )
+
+            // force page to reload
+            setTimeout(function(){
+              window.location.reload();
+            }, 2000);
           
               // reset modal 
               modal.style.display = "none";
@@ -326,10 +370,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     displayEventTime: true,
 
+    firstDay: 1, // set first day of week to monday
+
     // Click on date (to add event)
     dateClick: 
       function (info) {
-        
+
         // get the modal
         var modal = document.getElementById("myModal");
         // get the <span> element that closes the modal
@@ -374,6 +420,7 @@ document.addEventListener('DOMContentLoaded', function() {
           }
           
           // add event to array
+          // TO CHANGE!!!
           calendar.addEvent(
             {
               title: document.getElementById('title').value,
@@ -397,126 +444,82 @@ document.addEventListener('DOMContentLoaded', function() {
     googleCalendarApiKey: 'AIzaSyC4IyTr17PyenYfQSiFD3mI3xCGIV0LsOk',
     // old: AIzaSyBLxGXn-ZzMfSKIobD-6C4chf4qI8XXRn8
 
-    // Events from database (google calendar)
-    eventSources: [
-      {
-        googleCalendarId:'d55701d01ba1038768a0a98fba868aab7e3ce8954f4a78a63d4970026c34d4a2@group.calendar.google.com',
-        className: 'Adventure',
-        color: '#ffb700' // orange
-      },
-      {
-        googleCalendarId:'7a9df4f985d4443d3711619daf830984c0382e2b7dc9f2a3af052d96347fe077@group.calendar.google.com',
-        className: 'Arts & Culture',
-        color: '#ffc2d1' // pink
-      },
-      {
-        googleCalendarId:'bfbe99ec974a40336137e144b240bc6c0638f50120390e989db68dbaf6febc83@group.calendar.google.com',
-        className: 'Community',
-        color: '#ffd81a' // yellow
-      },
-      {
-        googleCalendarId:'34e6e342a1a4f0fac2dc4c3b018d8fc49fc4408fe7c339767f56732c7759407c@group.calendar.google.com',
-        className: 'Global Culture',
-        color: '#ecbcfd' // purple
-      },
-      {
-        googleCalendarId:'835cd39d1fefa4b47d0967c3049bd4e68676f5f08143e14dbd42ec97f0e9237e@group.calendar.google.com',
-        className: 'School Society',
-        color: '#adc178' // green
-      },
-      {
-        googleCalendarId:'f10659566b954502d50d0e59720982c28b6a17ffe79492e393cf6fb4566be0c2@group.calendar.google.com',
-        className: 'Sports',
-        color: '#01497c' // dark blue
-      },
-      {
-        googleCalendarId:'432fd38ca06006129addbc65d3ec1bc80260681f26bffed41e5e69d5c822ad57@group.calendar.google.com',
-        className: 'Student Bodies',
-        color: '#8ecae6' // light blue
-      },
-    ],
+    events: 
+      function(info, successCallback, failureCallback) {
 
-    events: "/events.json",
+      // Get a reference to the data 'title'
+      const users = ref(db, 'users') 
 
-    // To populate new events
-    // events: [
-    //   // test event
-    //   {
-    //     title: 'test adventure',
-    //     start: '2022-10-16',
-    //     className: 'Adventure',
-    //     color: '#ffb700' // orange
-    //   },
-    //   {
-    //     title: 'test arts',
-    //     start: '2022-10-17',
-    //     className: 'Arts & Culture',
-    //     color: '#ffc2d1' // pink
-    //   },
-    //   {
-    //     title: 'test community',
-    //     start: '2022-10-18',
-    //     className: 'Community',
-    //     color: '#ffd81a' // yellow
-    //   },
-    //   {
-    //     title: 'test global culture',
-    //     start: '2022-10-19',
-    //     className: 'Global Culture',
-    //     color: '#ecbcfd' // purple
-    //   },
-    //   {
-    //     title: 'test school society',
-    //     start: '2022-10-20',
-    //     className: 'School Society',
-    //     color: '#adc178' // green
-    //   },
-    //   {
-    //     title: 'test sports',
-    //     start: '2022-10-21',
-    //     className: 'Sports',
-    //     color: '#01497c' // dark blue
-    //   },
-    //   {
-    //     title: 'test student bodies',
-    //     start: '2022-10-22',
-    //     className: 'Student Bodies',
-    //     color: '#8ecae6' // light blue
-    //   }
-    // ],
+      // Update user's calendar
+      onValue(users, (snapshot => {
+        const data = snapshot.val(); // get the new value
+
+        let all_users = data
+        let user = data[current_user]
+
+        let upcoming_events = user.upcoming_events
+
+        for (let event in upcoming_events) {
+          let new_event_obj = upcoming_events[event]
+
+          // set event color by category
+          let new_event_category = new_event_obj.category
+          let find_object = colors.find(o => o.name === new_event_category); // find object with the name == new_event_category
+          let new_event_color = find_object.hex
+
+
+          // add color to event object
+          new_event_obj["color"] = new_event_color
+          all_events.push(new_event_obj)
+        }
+
+        successCallback(all_events)
+
+      }));
+
+    },
 
     // When the user clicks on an event
     eventClick: 
       function(info) {
+
+        let event_info = info.event._def
+
         // get the modal
         var modal = document.getElementById("myOtherModal");
+        var success_modal = document.getElementById("deleteSuccessModal");
+
         // get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[1];
 
         // when the user clicks on the button, open the modal
         modal.style.display = "block";
+        success_modal.style.display = "none";
 
         // when the user clicks on <span> (x), close the modal
         span.onclick = function() {
           modal.style.display = "none";
         }
 
-        // output event details
-        let event_category = info.event._def.ui.classNames[0]
+        // --- DISPLAY EVENT DETAILS ---
+        let event_id = event_info.publicId
+        let event_category = info.event._def.extendedProps.category
 
         // set color based on category
-        let event_colour = event_media[event_category][0]
+        let event_colour = info.event._def.ui.backgroundColor
         let dot = document.getElementById("eventColor")
         dot.style.background = event_colour
 
-        // set icon based on category
-        let event_icon = event_media[event_category][1]
-        let icon = document.getElementById("eventIcon")
-        icon.innerHTML = `<img src="img/${event_icon}" style='height: 50px;'>`
+        // if event_category is selected, set icon based on category
+        if (event_category != undefined) {
+          let event_icon = event_media[event_category][1]
+          let icon = document.getElementById("eventIcon")
+          icon.innerHTML = `<img src="img/${event_icon}" style='height: 50px;'>`
+        }
 
         // set event title
         let eventTitle = document.getElementById("eventTitle")
-        eventTitle.innerHTML = info.event.title
+        eventTitle.innerHTML = info.event._def.title
 
         // set event start details
         let eventStart = document.getElementById("eventStart")
@@ -547,12 +550,37 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         eventEnd.innerHTML = end_output
 
-
         // set event category
         let eventCategory = document.getElementById("eventCategory")
-        eventCategory.innerHTML = info.event._def.ui.classNames[0]
+        if (event_category != undefined) {
+          eventCategory.innerHTML = event_category
+        }
+        else {
+          eventCategory = "Not specified"
+        }
 
-      }
+        // --- DELETE EVENT ---
+        document.getElementById('deleteEventButton').onclick = 
+        function() {
+          console.log("button was clicked");
+
+          // Fetch event
+          let event_to_delete = calendar.getEventById(Number(event_id))
+
+          // Delete event
+          const tasksRef = ref(db, 'users/user1/upcoming_events/event_' + event_id);
+
+          remove(tasksRef).then(() => {
+            console.log(tasksRef)
+            success_modal.style.display = "block";
+            // force page to reload
+            setTimeout(function(){
+              window.location.reload();
+              }, 2000);
+          });
+
+      };
+    }
 
   });
 
