@@ -1,0 +1,27 @@
+{
+	"users": {
+		"user1": {
+
+            "user_profile_info": {
+                "name": "Natasha",
+                "username": "natasha.2021",
+                "gender": "Female",
+                "birthday": "7/7/1997",
+                "email": "natasha.2021@scis.smu.edu.sg",
+                "matric_no": "01441234",
+                "phone_number": "91234567",
+                "profile_picture": ""
+            },
+
+            "upcoming_events": {
+                "event_1": {
+                    "title": "Test Firebase",
+                    "start": "2022-10-15T10:00:00",
+                    "end": "2022-10-15T14:00:00",
+                    "category": "Adventure",
+                    "color": "#ffb700"
+                }
+            }
+        } 
+	}
+}
