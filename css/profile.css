@@ -82,6 +82,11 @@ h2 {
 
 /* -------------------------------------------------- */
 /* PERSONAL DETAILS */
+#info {
+    display: flex;
+    position: relative;
+}
+
 .category {
     width: 30%;
     font-weight: bold;
@@ -90,6 +95,11 @@ h2 {
 
 .details {
     font-size: 22px;
+    position: absolute;
+    top: 12px;
+    left: 25%;
+    z-index: 10;
+    width: 70%;
 }
 
 
@@ -97,7 +107,7 @@ h2 {
 /* EDIT BUTTON */
 
 /* Basic Style */
-#details .form-control {
+.details .form-control {
     background-color: transparent;
     border-top: 0;
     border-right: 0;
@@ -105,20 +115,20 @@ h2 {
     border-radius: 0;
 }
 
-#details ul {
+.details ul {
     margin: 0;
     padding: 0;
 }
 
-#details li * {
+.details li * {
     float: left;
 }
 
-#details input, button {
+.details input, button {
     outline: none;
 }
 
-#details button {
+.details button {
     background: none;
     border: 0px;
     color: #888;
@@ -128,16 +138,16 @@ h2 {
     float: right;
 }
 
-#details button:hover {
+.details button:hover {
     color: #333;
 }
 
 /* Heading */
-#details input[type="text"]:focus {
+.details input[type="text"]:focus {
     color: #333;
 }
 
-#details input[type="text"] {
+.details input[type="text"] {
     border: 1px solid #333;
     float: left;
     margin: 0;
@@ -150,33 +160,40 @@ h2 {
 }
 
 /* Task list */
-#details li {
+.details li {
     overflow: hidden;
     padding: 10px 0;
 }
 
-#details li > label {
+.details li > label {
     font-size: 22px;
     text-align: left;
     width: 70%;
+    margin-bottom: 27px;
 }
 
-#details li >  input[type="text"] {
+.details li >  input[type="text"] {
     width: 70%;
+
 }
 
 /* Edit Task */
-#details ul li input[type=text] {
+.details ul li input[type=text] {
     display:none;
 }
 
-#details ul li.editMode input[type=text] {
+.details ul li.editMode input[type=text] {
     display:block;
     font-size: 22px;
 }
 
-#details ul li.editMode label {
+.details ul li.editMode label {
     display:none;
+}
+
+.details li.editMode  {
+    
+    padding-bottom: 30px;
 }
 
 /* -------------------------------------------------- */
