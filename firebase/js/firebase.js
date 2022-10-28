@@ -39,8 +39,8 @@ const users = ref(db, 'users')
 onValue(users, (snapshot => {
   const data = snapshot.val(); // get the new value
 
-  // let user1 = data.user1
-  // let user_name = user1.user_profile_info.username
+  let user1 = data.user1
+  let user_name = user1.user_profile_info.username
 
-  // document.getElementById('target').innerText = user_name;
+  document.getElementById('target').innerText = user_name;
 }));
