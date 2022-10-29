@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/navbar.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
 
 </head>
 <body>
@@ -84,7 +85,7 @@
                             <td class="category">Matric No.</td>
                         </tr>
                         <tr>
-                            <td class="category">Phone number</td>
+                            <td class="category">Phone No.</td>
                         </tr>
 
                     </tbody>
@@ -95,43 +96,43 @@
                     <div class="container">
                         <ul id="details">
                             <li>
-                                <label id="name"></label><input type="text" value="Natasha">
+                                <label id="name"></label><input type="text">
                                 <button class="edit"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg></button>
                             </li>
                             <li>
-                                <label id="username"></label><input type="text">
+                                <label id="username"></label><input type="text" v-model="username">
                                 <button class="edit"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg></button>
                             </li>
                             <li>
-                                <label id="gender"></label><input type="text">
+                                <label id="gender"></label><input type="text" v-model="gender">
                                 <button class="edit"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg></button>
                             </li>
                             <li>
-                                <label id="birthday"></label><input type="text">
+                                <label id="birthday"></label><input type="text" v-model="birthday">
                                 <button class="edit"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg></button>
                             </li>
                             <li>
-                                <label id="email"></label><input type="text">
+                                <label id="email"></label><input type="text" v-model="email">
                                 <button class="edit"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg></button>
                             </li>
                             <li>
-                                <label id="matric_no"></label><input type="text">
+                                <label id="matric_no"></label><input type="text" v-model="matric_no">
                                 <button class="edit"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg></button>
                             </li>
                             <li>
-                                <label id="phone_number"></label><input type="text">
+                                <label id="phone_no"></label><input type="text" v-model="phone_no">
                                 <button class="edit"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg></button>
@@ -139,14 +140,13 @@
                         </ul>
                     </div>
                 </div>
-
-
             </div>
-
-
-    
+        </div>
+        <div style="display: flex;">
+            <button style="margin-left: auto; margin-right: auto;" type="button" class="btn btn-primary" id="save">Save Changes</button>
         </div>
     </div>
+
 
     <!-- CLUBS INTERESTED -->
     <div class="container">
@@ -167,9 +167,9 @@
     <!-- PAST EVENTS -->
     <div class="container">
         
+        <h2>Past Events</h2>
+        
         <div id="events">
-
-            <h2>Past Events</h2>
 
                 <div class="card mx-1" style="width: 18rem;">
                 <img src = "https://images.squarespace-cdn.com/content/v1/5c39a8f55ffd2092c1c46d7e/1629738296149-42USDKGHV1WSC5M4U4UR/how+to+organise+a+beach+clean-up.jpg" height = "125" class="card-img-top" alt="...">
@@ -291,62 +291,29 @@
         </div>
         <div class="modal-body">
 
-            <div>
-                <div id="search-bar">
-                    <form action="" class="row justify-content-center">
-                        <div class="col-8">
-                            <!-- search input box-->
-                            <!--Search button-->
-                            <div class="input-group ">
-                            <input class="form-control " list="datalistOptions" type="text" placeholder="Search" >
-                            <!-- auto completion for now- can be further improved on - check past samples-->
-                            <datalist id="datalistOptions">
-                                <option value="SMU Sports Union (SSU)">
-                                <option value="SMU Arts and Cultural Fraternity (ACF)">
-                                <option value="SMUXploration Crew (SMUX)">
-                                <option value="Special Interest and Community Service Sodality (SICS)">
-                                <option value="WhiteHats">
-                                <option value="Ellipsis">
-                                <option value=".Hack">
-                                <option value="BIA">
-                              </datalist>
-            
-                                <button type="button" class="btn btn-outline-info " data-bs-toggle="modal" data-bs-target="#exampleModal">Search</button>
-                            </div>
-            
-                        </div> <!-- end of div col-8-->
-                    </form> <!-- end of form-->
-                </div> <!-- end of div search bar-->
+            <!-- CLUBS AVAILABLE -->
+            <form class="country" method="get" action="#">
+                <!-- https://codepen.io/eamalindu/pen/yLjQORL -->
+                <div class="row justify-content-md-center">
 
+                    <input id="lk" type="checkbox" name="lk" value="lk"/>
+                    <label for="lk"><img src="https://cdn-icons-png.flaticon.com/512/206/206725.png"> Sri Lanka </label>
+                    <input id="usa" type="checkbox" name="usa" />
+                    <label for="usa"><img src="https://cdn-icons-png.flaticon.com/512/206/206626.png"> USA</label>
+                    <input id="aus" type="checkbox" name="aus" />
+                    <label for="aus"><img src="https://cdn-icons-png.flaticon.com/512/206/206618.png">Australia</label>
+                    <input id="sg" type="checkbox" name="sg" />
+                    <label for="sg"><img src="https://cdn-icons-png.flaticon.com/512/206/206618.png">Singapore</label>
+                    <input id="ms" type="checkbox" name="ms" />
+                    <label for="ms"><img src="https://cdn-icons-png.flaticon.com/512/206/206618.png">Malaysia</label>
+                </div>
+                <div class="row justify-content-md-end">
+                    <input type="reset" value="Reset">
 
-                <!-- CLUBS AVAILABLE -->
-                <form class="country" method="get" action="#">
-                    <!-- https://codepen.io/eamalindu/pen/yLjQORL -->
-                    <div class="row justify-content-md-center">
-
-                        <input id="lk" type="checkbox" name="lk" value="lk"/>
-                        <label for="lk"><img src="https://cdn-icons-png.flaticon.com/512/206/206725.png"> Sri Lanka </label>
-                        <input id="usa" type="checkbox" name="usa" />
-                        <label for="usa"><img src="https://cdn-icons-png.flaticon.com/512/206/206626.png"> USA</label>
-                        <input id="aus" type="checkbox" name="aus" />
-                        <label for="aus"><img src="https://cdn-icons-png.flaticon.com/512/206/206618.png">Australia</label>
-                        <input id="sg" type="checkbox" name="sg" />
-                        <label for="sg"><img src="https://cdn-icons-png.flaticon.com/512/206/206618.png">Singapore</label>
-                        <input id="ms" type="checkbox" name="ms" />
-                        <label for="ms"><img src="https://cdn-icons-png.flaticon.com/512/206/206618.png">Malaysia</label>
-                    </div>
-                    <div class="row justify-content-md-end">
-                        <input type="reset" value="Reset">
-
-                        <input type="submit" value="Add">
-                    </div>
-                </form>
-
-
-            </div>
-
+                    <input type="submit" value="Add">
+                </div>
+            </form>
         </div>
-
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

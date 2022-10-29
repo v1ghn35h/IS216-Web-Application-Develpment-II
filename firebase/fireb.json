@@ -9,8 +9,8 @@
                 "birthday": "7/7/1997",
                 "email": "natasha.2021@scis.smu.edu.sg",
                 "matric_no": "01441234",
-                "phone_number": "91234567",
-                "profile_picture": "https://firebasestorage.googleapis.com/v0/b/calendaready-g7t7.appspot.com/o/images%2Fnatasha.png?alt=media&token=0618a761-397e-4be5-85b8-6cb3feb2fb27"
+                "phone_no": "91234567",
+                "profile_picture": "url('https://firebasestorage.googleapis.com/v0/b/calendaready-g7t7.appspot.com/o/images%2Fnatasha1.png?alt=media&token=998da93a-be5a-4431-b762-f611b63180c1')"
             },
 
             "user_events": {
