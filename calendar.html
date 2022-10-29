@@ -181,18 +181,11 @@
             <input type="time" class="form-control" id="endTime">
           </div>
         </div>
-  
-        <!-- location -->
-        <div class="mb-3 row">
-          <label for="location" class="col-2 col-form-label"> Location </label>
-          <div class="col-10">
-            <input type="text" class="form-control" id="location">
-          </div>
-        </div>
 
         <!-- category -->
-        <div id="category">
-          <div class="wrapper-dropdown">
+        <div id="category" class="mb-3 row">
+          <label for="wrapper-dropdown" class="col-2 col-form-label"> Category </label>
+          <div class="col-4 wrapper-dropdown">
             <span v-on:click="toggleDropdown()" v-html="selector()"></span>
             <ul class="dropdown" v-show="active">
               <li v-for="color in colors" v-on:click="setColor(color.hex, color.name)">
@@ -213,6 +206,13 @@
       </div>
     </div>
   </form>
+
+  <!-- successful add modal -->
+  <div id="addSuccessModal" class="modal">
+    <div class="modal-content">
+      Event Added Successfully!
+    </div>
+  </div>
 
   <!-- display event modal -->
   <div id="myOtherModal" class="modal">
@@ -252,7 +252,7 @@
     <!-- successful delete modal -->
     <div id="deleteSuccessModal" class="modal">
       <div class="modal-content">
-        Event Delete Success!
+        Event Deleted Successfully!
       </div>
     </div>
 

@@ -26,7 +26,7 @@ const analytics = getAnalytics(app);
 
 /* CONNECT TO DATABASE */
 // Import functions needed to read from realtime database
-import { getDatabase, ref, onValue, set, remove } from
+import { getDatabase, ref, onValue, child, get, set, remove } from
 "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
 
 // Connect to the realtime database
@@ -35,7 +35,8 @@ const db = getDatabase();
 let all_events = []
 let current_user = "user1" // change according to user logged in
 
-let max_id = 0
+let new_db_size = 0
+
 
 // ----------------------------------------
 // TO DO LIST
@@ -76,7 +77,7 @@ var createNewTaskElement = function(taskString) {
   label.innerText = taskString;
   
     
-      // each element needs appending
+  // each element needs appending
   listItem.appendChild(checkBox);
   listItem.appendChild(label);
   listItem.appendChild(editInput);
@@ -198,12 +199,12 @@ for(var i = 0; i <  completedTasksHolder.children.length; i++) {
 // event icons & pictures
 // {'category': [color, icon, image], ...}
 let event_media = {'Adventure': ['#ffb700', 'icons/adventure.png'], 
-                    'Arts': ['#ffc2d1', 'icons/artsculture.png', ''],
+                    'Arts & Culture': ['#ffc2d1', 'icons/artsculture.png', ''],
                     'Community': ['#ffd81a', 'icons/community.png'],
-                    'Global': ['#ecbcfd', 'icons/globalculture.png'],
-                    'School': ['#adc178', 'icons/schoolsociety.png'],
+                    'Global Culture': ['#ecbcfd', 'icons/globalculture.png'],
+                    'School Society': ['#adc178', 'icons/schoolsociety.png'],
                     'Sports': ['#01497c', 'icons/sports.png'],
-                    'Student': ['#8ecae6', 'icons/studentbodies.png']
+                    'Student Bodies': ['#8ecae6', 'icons/studentbodies.png']
                   }
 
 /* colour picker */
@@ -264,7 +265,6 @@ var apps = Vue.createApp({
           return 'Select a category';
         }
         else {
-          console.log('<span style="background: ' + this.selectedColor + '"></span>' + this.selectedColorName)
           return '<span style="background: ' + this.selectedColor + '"></span>' + this.selectedColorName;
         }
       },
@@ -299,8 +299,11 @@ document.addEventListener('DOMContentLoaded', function() {
         text: '+',
         click: 
           function() {
+
             // get the modal
             var modal = document.getElementById("myModal");
+            var add_success_modal = document.getElementById("addSuccessModal");
+
             // get the <span> element that closes the modal
             var span = document.getElementsByClassName("close")[0];
           
@@ -317,6 +320,10 @@ document.addEventListener('DOMContentLoaded', function() {
           
             // when button is clicked
             document.getElementById('addEventButton').addEventListener("click", function() {
+
+              // fetch title
+              let title = document.getElementById('title').value
+              console.log(title)
           
               // fetch start
               let start = document.getElementById('startDate').value
@@ -335,22 +342,39 @@ document.addEventListener('DOMContentLoaded', function() {
               if (end_time != "") { // add end time if it's stated
                 end += `T${end_time}:00`
               }
+
+              // fetch items from db
+              const dbRef = ref(getDatabase());
+              get(child(dbRef, `users/${current_user}/upcoming_events/`)).then((snapshot) => {
+                if (snapshot.exists()) {
+                  let db_values = snapshot.val();
+                  let db_size = Object.keys(db_values).length
+                  let new_db_size = db_size
+                } else {
+                  console.log("No data available");
+                }
+              }).catch((error) => {
+                console.error(error);
+              });
               
               // add event to array
-              set(ref(db, 'users/' + current_user + '/upcoming_events/event_' + 2), 
+              set(ref(db, 'users/' + current_user + '/upcoming_events/event_' + new_db_size), 
                 {
-                  title: document.getElementById('title').value,
+                  title: title,
                   start: start,
                   end: end,
                   category: event_class,
-                  id: "3"
+                  id: new_db_size
                 },
               )
 
-            // force page to reload
-            setTimeout(function(){
-              window.location.reload();
-            }, 2000);
+              // display added successfully
+              add_success_modal.style.display = "block";
+
+              // force page to reload
+              setTimeout(function(){
+                window.location.reload();
+              }, 2000);
           
               // reset modal 
               modal.style.display = "none";
@@ -378,11 +402,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // get the modal
         var modal = document.getElementById("myModal");
+        var add_success_modal = document.getElementById("addSuccessModal");
         // get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
 
         // when the user clicks on the button, open the modal
         modal.style.display = "block";
+        add_success_modal.style.display = "none";
 
         // when the user clicks on <span> (x), close the modal
         span.onclick = function() {
@@ -402,43 +428,82 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('addEventButton').addEventListener("click", function() {
 
           // fetch start
-          let start = document.getElementById('startDate').value
-          let start_time = document.getElementById('startTime').value
+          var start = document.getElementById('startDate').value
+          var start_time = document.getElementById('startTime').value
           if (start_time != "") { // add start time if it's stated
             start += `T${start_time}:00`
           }
 
           // fetch end
-          let end = ""
-          let end_date = document.getElementById('endDate').value
+          var end = ""
+          var end_date = document.getElementById('endDate').value
           if (end_date != "") { // add end date if it is stated
             end += end_date
           }
-          let end_time = document.getElementById('endTime').value
+          var end_time = document.getElementById('endTime').value
           if (end_time != "") { // add end time if it's stated
             end += `T${end_time}:00`
           }
           
+          // fetch title
+          var title = document.getElementById('title').value
+      
+          // fetch start
+          var start = document.getElementById('startDate').value
+          var start_time = document.getElementById('startTime').value
+          if (start_time != "") { // add start time if it's stated
+            start += `T${start_time}:00`
+          }
+      
+          // fetch end
+          var end = ""
+          var end_date = document.getElementById('endDate').value
+          if (end_date != "") { // add end date if it is stated
+            end += end_date
+          }
+          var end_time = document.getElementById('endTime').value
+          if (end_time != "") { // add end time if it's stated
+            end += `T${end_time}:00`
+          }
+
+          // fetch items from db
+          const dbRef = ref(getDatabase());
+          get(child(dbRef, `users/${current_user}/upcoming_events/`)).then((snapshot) => {
+            if (snapshot.exists()) {
+              let db_values = snapshot.val();
+              let db_size = Object.keys(db_values).length
+              let new_db_size = db_size
+            } else {
+              console.log("No data available");
+            }
+          }).catch((error) => {
+            console.error(error);
+          });
+          
           // add event to array
-          // TO CHANGE!!!
-          calendar.addEvent(
+          set(ref(db, 'users/' + current_user + '/upcoming_events/event_' + new_db_size), 
             {
-              title: document.getElementById('title').value,
+              title: title,
               start: start,
               end: end,
-              className: event_class,
-              backgroundColor: event_color,
-              borderColor: event_color,
+              category: event_class,
+              id: new_db_size
             },
           )
 
+          // display added successfully
+          add_success_modal.style.display = "block";
+
+          // force page to reload
+          setTimeout(function(){
+            window.location.reload();
+          }, 2000);
+      
           // reset modal 
           modal.style.display = "none";
           document.getElementById("addEvent").reset();
-        })
-        
-      },
-
+        }
+    )},
 
     // API Key
     googleCalendarApiKey: 'AIzaSyC4IyTr17PyenYfQSiFD3mI3xCGIV0LsOk',
@@ -487,14 +552,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // get the modal
         var modal = document.getElementById("myOtherModal");
-        var success_modal = document.getElementById("deleteSuccessModal");
+        var delete_success_modal = document.getElementById("deleteSuccessModal");
 
         // get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[1];
 
         // when the user clicks on the button, open the modal
         modal.style.display = "block";
-        success_modal.style.display = "none";
+        delete_success_modal.style.display = "none";
 
         // when the user clicks on <span> (x), close the modal
         span.onclick = function() {
@@ -505,13 +570,16 @@ document.addEventListener('DOMContentLoaded', function() {
         let event_id = event_info.publicId
         let event_category = info.event._def.extendedProps.category
 
-        // set color based on category
-        let event_colour = info.event._def.ui.backgroundColor
-        let dot = document.getElementById("eventColor")
-        dot.style.background = event_colour
-
         // if event_category is selected, set icon based on category
         if (event_category != undefined) {
+          // set color based on category
+          let obj = colors.find(o => o.name === event_category); // find object with the name == new_event_category
+          let event_colour = obj.hex
+          let dot = document.getElementById("eventColor")
+          dot.style.background = event_colour
+
+          // set icon based on category
+          console.log(event_category)
           let event_icon = event_media[event_category][1]
           let icon = document.getElementById("eventIcon")
           icon.innerHTML = `<img src="img/${event_icon}" style='height: 50px;'>`
@@ -571,8 +639,9 @@ document.addEventListener('DOMContentLoaded', function() {
           const tasksRef = ref(db, 'users/user1/upcoming_events/event_' + event_id);
 
           remove(tasksRef).then(() => {
-            console.log(tasksRef)
-            success_modal.style.display = "block";
+            // display deleted successfully
+            delete_success_modal.style.display = "block";
+
             // force page to reload
             setTimeout(function(){
               window.location.reload();
