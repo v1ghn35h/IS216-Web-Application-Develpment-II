@@ -10,10 +10,10 @@
                 "email": "natasha.2021@scis.smu.edu.sg",
                 "matric_no": "01441234",
                 "phone_number": "91234567",
-                "profile_picture": ""
+                "profile_picture": "https://firebasestorage.googleapis.com/v0/b/calendaready-g7t7.appspot.com/o/images%2Fnatasha.png?alt=media&token=0618a761-397e-4be5-85b8-6cb3feb2fb27"
             },
 
-            "upcoming_events": {
+            "user_events": {
                 "event_1": {
                     "id": "1",
                     "title": "Test Firebase",
@@ -29,7 +29,54 @@
                     "category": "Sports"
                 }
 
+            },
+
+            "user_clubs": {
+                "ACF": {
+                    "SMU Ardiente": {
+                        "photo": "https://scontent-xsp1-1.xx.fbcdn.net/v/t31.18172-8/14107766_2641441575878710_1208931364238477794_o.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Ts0PJ4zsXvIAX_RWqHc&_nc_ht=scontent-xsp1-1.xx&oh=00_AfDapxEZajcqGko0vbiRm7EZCuNTZKcOwe4OYmRsQub0TQ&oe=638313DD",
+                        "website": "https://vivace.smu.edu.sg/explore/acf/dance/smu-ardiente"
+                    }, 
+                    "SMU Ballare": {
+                        "photo": "https://scontent-xsp1-3.xx.fbcdn.net/v/t39.30808-6/298926510_481155870678554_985354392778186089_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Ps9NWEVhQzIAX9a-HnL&_nc_ht=scontent-xsp1-3.xx&oh=00_AfCoAW7kK8Bo7zqEn-4E1yAwos5WSyXBKUqAKPOWJa9c-Q&oe=63618457",
+                        "website": "https://vivace.smu.edu.sg/explore/acf/dance/smu-ballare"
+                    }
+                },
+                "SSU": {
+                    "SMU Basketball": {
+                        "photo": "https://vivace.smu.edu.sg/sites/vivace.smu.edu.sg/files/styles/profilephoto2/public/vivace/profilephotos/SMU%20Basketball%20Logo.png?itok=MIElRL1e",
+                        "website": "https://vivace.smu.edu.sg/explore/ssu/ball-sports/smu-basketball"
+                    }, 
+                    "SMU Bowling": {
+                        "photo": "https://vivace.smu.edu.sg/sites/vivace.smu.edu.sg/files/styles/profilephoto2/public/vivace/profilephotos/Bowling%20Logo%202016-min_0.jpg?itok=ILwH7NY7",
+                        "website": "https://vivace.smu.edu.sg/explore/ssu/ball-sports/smu-bowling"
+                    }
+                }
             }
         } 
-	}
+	},
+
+    "clubs": {
+        "ACF": {
+            "SMU Ardiente": {
+                "photo": "https://scontent-xsp1-1.xx.fbcdn.net/v/t31.18172-8/14107766_2641441575878710_1208931364238477794_o.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Ts0PJ4zsXvIAX_RWqHc&_nc_ht=scontent-xsp1-1.xx&oh=00_AfDapxEZajcqGko0vbiRm7EZCuNTZKcOwe4OYmRsQub0TQ&oe=638313DD",
+                "website": "https://vivace.smu.edu.sg/explore/acf/dance/smu-ardiente"
+            }, 
+            "SMU Ballare": {
+                "photo": "https://scontent-xsp1-3.xx.fbcdn.net/v/t39.30808-6/298926510_481155870678554_985354392778186089_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Ps9NWEVhQzIAX9a-HnL&_nc_ht=scontent-xsp1-3.xx&oh=00_AfCoAW7kK8Bo7zqEn-4E1yAwos5WSyXBKUqAKPOWJa9c-Q&oe=63618457",
+                "website": "https://vivace.smu.edu.sg/explore/acf/dance/smu-ballare"
+            }
+        },
+        "SSU": {
+            "SMU Basketball": {
+                "photo": "https://vivace.smu.edu.sg/sites/vivace.smu.edu.sg/files/styles/profilephoto2/public/vivace/profilephotos/SMU%20Basketball%20Logo.png?itok=MIElRL1e",
+                "website": "https://vivace.smu.edu.sg/explore/ssu/ball-sports/smu-basketball"
+            }, 
+            "SMU Bowling": {
+                "photo": "https://vivace.smu.edu.sg/sites/vivace.smu.edu.sg/files/styles/profilephoto2/public/vivace/profilephotos/Bowling%20Logo%202016-min_0.jpg?itok=ILwH7NY7",
+                "website": "https://vivace.smu.edu.sg/explore/ssu/ball-sports/smu-bowling"
+            }
+        }
+    }
+
 }
