@@ -1,3 +1,4 @@
+// ----------------------------------------------------------------
 // FIREBASE SECTION
 // ----------------------------------------------------------------
 // Import the functions you need from the SDKs you need
@@ -24,6 +25,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
+
+// ----------------------------------------------------------------
+// LOGIN SECTION
+// ----------------------------------------------------------------
 
 // Check if user is logged in
 onAuthStateChanged(auth, (user) => {
@@ -67,7 +72,9 @@ function login(event) {
               
                 loginErrorBox.append(loginErrorWrapper)
             }
-            loginError(errorMessage);
+            // loginError(loginErrorMessages[errorCode]);
+            // If the above is required, create a loginErrorMessages object that links errorCode to readable text
+            loginError("Wrong/Invalid email or password!")
         });
 }
 // Add login function as global variable as this is a module type js file
