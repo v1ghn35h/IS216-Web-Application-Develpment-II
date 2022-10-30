@@ -32,7 +32,8 @@ import { getDatabase, ref, onValue, child, get, set, remove } from
 // Connect to the realtime database
 const db = getDatabase();
 
-let all_events = []
+var all_events = []
+var all_tasks = []
 let current_user = "user1" // change according to user logged in
 
 let new_db_size = 0
@@ -40,8 +41,6 @@ let new_db_size = 0
 
 // ----------------------------------------
 // TO DO LIST
-// Problem: User interaction doesn't provide desired results.
-// Solution: Add interactivity so the user can manage daily tasks
 
 var taskInput = document.getElementById("new-task");
 var addButton = document.getElementsByTagName("button")[1];
@@ -95,8 +94,6 @@ var addTask = function() {
   //Append listItem to incompleteTasksHolder
   incompleteTasksHolder.appendChild(listItem);
   bindTaskEvents(listItem, taskCompleted);  
-  
-  taskInput.value = "";   
 }
 
 // Edit an existing task
@@ -345,11 +342,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
               // fetch items from db
               const dbRef = ref(getDatabase());
-              get(child(dbRef, `users/${current_user}/upcoming_events/`)).then((snapshot) => {
+              get(child(dbRef, `users/${current_user}/user_events/`)).then((snapshot) => {
                 if (snapshot.exists()) {
                   let db_values = snapshot.val();
                   let db_size = Object.keys(db_values).length
-                  let new_db_size = db_size
+                  let new_db_size = db_size + 1
                 } else {
                   console.log("No data available");
                 }
@@ -358,7 +355,7 @@ document.addEventListener('DOMContentLoaded', function() {
               });
               
               // add event to array
-              set(ref(db, 'users/' + current_user + '/upcoming_events/event_' + new_db_size), 
+              set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
                 {
                   title: title,
                   start: start,
@@ -468,40 +465,44 @@ document.addEventListener('DOMContentLoaded', function() {
 
           // fetch items from db
           const dbRef = ref(getDatabase());
-          get(child(dbRef, `users/${current_user}/upcoming_events/`)).then((snapshot) => {
+          get(child(dbRef, `users/${current_user}/user_events/`)).then((snapshot) => {
             if (snapshot.exists()) {
-              let db_values = snapshot.val();
-              let db_size = Object.keys(db_values).length
-              let new_db_size = db_size
-            } else {
+              var db_values = snapshot.val();
+              var db_size = Object.keys(db_values).length
+              var new_db_size = db_size + 1
+
+              // add event to array
+              set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
+                {
+                  title: title,
+                  start: start,
+                  end: end,
+                  category: event_class,
+                  id: new_db_size
+                },
+              )
+
+              // display added successfully
+              add_success_modal.style.display = "block";
+
+              // force page to reload
+              setTimeout(function(){
+                window.location.reload();
+              }, 2000);
+          
+              // reset modal 
+              modal.style.display = "none";
+              document.getElementById("addEvent").reset();
+            } 
+            
+
+            else {
               console.log("No data available");
             }
           }).catch((error) => {
             console.error(error);
           });
           
-          // add event to array
-          set(ref(db, 'users/' + current_user + '/upcoming_events/event_' + new_db_size), 
-            {
-              title: title,
-              start: start,
-              end: end,
-              category: event_class,
-              id: new_db_size
-            },
-          )
-
-          // display added successfully
-          add_success_modal.style.display = "block";
-
-          // force page to reload
-          setTimeout(function(){
-            window.location.reload();
-          }, 2000);
-      
-          // reset modal 
-          modal.style.display = "none";
-          document.getElementById("addEvent").reset();
         }
     )},
 
@@ -522,7 +523,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let all_users = data
         let user = data[current_user]
 
-        let upcoming_events = user.upcoming_events
+        let upcoming_events = user.user_events
 
         for (let event in upcoming_events) {
           let new_event_obj = upcoming_events[event]
@@ -532,7 +533,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
           if (new_event_category != "") {
             let find_object = colors.find(o => o.name === new_event_category); // find object with the name == new_event_category
-          
             let new_event_color = find_object.hex
 
             // add color to event object
@@ -633,13 +633,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // --- DELETE EVENT ---
         document.getElementById('deleteEventButton').onclick = 
         function() {
-          console.log("button was clicked");
 
           // Fetch event
           let event_to_delete = calendar.getEventById(Number(event_id))
 
-          // Delete event
-          const tasksRef = ref(db, 'users/user1/upcoming_events/event_' + event_id);
+          // Delete event'
+          const tasksRef = ref(db, 'users/' + user + 'user_events/event_' + event_id);
 
           remove(tasksRef).then(() => {
             // display deleted successfully

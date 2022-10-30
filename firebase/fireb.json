@@ -13,6 +13,21 @@
                 "profile_picture": "url('https://firebasestorage.googleapis.com/v0/b/calendaready-g7t7.appspot.com/o/images%2Fnatasha1.png?alt=media&token=998da93a-be5a-4431-b762-f611b63180c1')"
             },
 
+            "user_tasks": {
+                "task_1": {
+                    "id": "1",
+                    "title": "BPAS Report"
+                },
+                "task_2": {
+                    "id": "2",
+                    "title": "WAD2 Quiz"
+                },
+                "task_3": {
+                    "id": "3",
+                    "title": "IDP Lecture"
+                }
+            },
+
             "user_events": {
                 "event_1": {
                     "id": "1",
@@ -28,7 +43,6 @@
                     "end": "2022-10-13",
                     "category": "Sports"
                 }
-
             },
 
             "user_clubs": {
