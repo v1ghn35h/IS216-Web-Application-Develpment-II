@@ -278,11 +278,11 @@ td {
 
 /* -------------------------------------------------- */
 /* checkbox */
-.country {
+.club {
     padding: 20px;
 }
 
-.country label {
+.club label {
     /* display: flex; */
     border: solid 2px #3F6A6B;
     border-radius: 15px;
@@ -299,26 +299,26 @@ td {
     transition: all 0.5s ease-in-out;
 
 }
-.country label img {
+.club label img {
     width: 20px;
     margin-right: 5px;
 }
 
-.country input[type=checkbox] {
+.club input[type=checkbox] {
     display: none;
 }
 
-.country input:checked+label {
+.club input:checked+label {
     transition: all 0.5s ease-in-out;
     border: solid 2px #3F6A6B;
     color: white;
     background-color: #3F6A6B;
   
 }
-.country label:hover {
+.club label:hover {
     cursor: pointer;
 }
-.country input[type="reset"], .country input[type="submit"]{
+.club input[type="reset"], .club input[type="submit"]{
      border-radius: 15px;
     width: 100px;
     height: 40px;
@@ -327,7 +327,7 @@ td {
   float:left;
 
 }
-.country input[type="reset"]:hover, .country input[type="submit"]:hover{
+.club input[type="reset"]:hover, .club input[type="submit"]:hover{
   cursor:pointer;
   background-color:black;
   color:white;

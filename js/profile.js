@@ -1,20 +1,20 @@
 //////////////////////////////////////////////////
 // SELECTION OF CLUBS
 $(document).ready(function() {
-  $(".country").submit(function() {
+  $(".club").submit(function() {
       let checked = $(":checkbox:checked").length
       if (checked === 0) {
-          alert("Choose at least one Country");
+        //   alert("Choose at least one Club");
       } else {
-          alert("Selected Countries : " + checked);
-          $(".country").submit(function(e) {
+        //   alert("Selected Club(s) : " + checked);
+          $(".club").submit(function(e) {
               return false;
           });
 
       }
 
   });
-  $(".country").submit(function(e) {
+  $(".club").submit(function(e) {
       return false;
   });
 });
@@ -68,6 +68,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 const users = ref(db, 'users') 
+const clubs = ref(db, 'clubs')
 
 
 //////////////////////////////////////////////////
@@ -82,64 +83,6 @@ onValue(users, (snapshot => {
 		}
 	}
 	document.getElementById('imagePreview').style.backgroundImage = userInfo["profile_picture"]
-}));
-
-
-//////////////////////////////////////////////////
-// FIREBASE POPULATE INTERESTED CLUBS
-onValue(users, (snapshot => {
-	const data = snapshot.val(); // get the new value
-
-	let tempHTML = ""
-	let userClubs = data.user1.user_clubs
-
-	for (let union in userClubs) {
-		if (Object.hasOwnProperty.call(userClubs, union)) {
-			let unionClubs = userClubs[union];
-
-			for (let club in unionClubs) {
-				if (Object.hasOwnProperty.call(unionClubs, club)) {
-					let clubDetails = unionClubs[club];
-
-					tempHTML += `
-					<div class="card border-0" style="width: 15rem; height: 260px;">
-						<div class="image-center" >
-							<img style="border-radius: 50%; height: 8rem; width: auto;" src="${clubDetails["photo"]}" class="card-img-top" alt="...">
-						</div>
-						<div class="card-body">
-							<h5 class="card-title">
-								<a href="${clubDetails["website"]}" target="_blank" class="stretched-link">
-									${club}
-								</a>
-							</h5>
-							<p class="text-muted">${union}</p>
-						</div>
-					</div>
-					`;
-				}
-			}
-		}
-	}
-	// ADD BUTTON
-	tempHTML += `
-	<div class="card border-0" style="width: 15rem; height: 260px">
-		<div class="image-center">
-			<img style="border-radius: 50%; width: 8rem; " src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Circled_plus.svg/800px-Circled_plus.svg.png" class="card-img-top" alt="...">
-		</div>
-		<div class="card-body">
-			<!-- modal -->
-			<h5 class="card-title">
-				<a href="#" data-bs-toggle="modal" data-bs-target="#add-club" class="stretched-link">
-					Add a Club
-				</a>
-			</h5>
-			<p class="text-muted">Pick a club you are interested in</p>
-		</div>
-	</div>
-	`
-
-	document.getElementById('interested-club').innerHTML = tempHTML
-
 }));
 
 
@@ -226,88 +169,9 @@ $("#imageUpload").change(function() {
 });
 
 
-// function res(item) {
-// 	console.log(item);
-// 	console.log("im in");
-// 	console.log(item.value);
-// }
-// document.getElementById("myBtn").addEventListener("click", res(this));
-
-
-// function writeUserData(userId, name, username, gender, birthday, email, matric_no, phone_no) {
-// 	const db = getDatabase();
-// 	set(ref(db, 'users/' + userId + '/user_profile_info'), {
-// 		name: name,
-// 		username: username,
-// 		gender: gender,
-// 		birthday: birthday,
-// 		email: email,
-// 		matric_no: matric_no,
-// 		phone_no: phone_no
-
-// 	});
-
-// 	console.log("Im in");
-// }
-
-// const apps = Vue.createApp({
-// 	el: "#info",
-
-//     // Data Properties
-//     data() {
-//         return {
-
-// 			name: "Natasha",
-// 			username: "",
-// 			gender: "",
-// 			birthday: "",
-// 			email: "",
-// 			matric_no: "",
-// 			phone_no: "",
-
-//         }
-//     },
-
-//     methods: {
-
-// 		writeUserData(userId, name, username, gender, birthday, email, matric_no, phone_no) {
-// 			const db = getDatabase();
-// 			set(ref(db, 'users/' + userId + '/user_profile_info'), {
-// 				name: name,
-// 				username: username,
-// 				gender: gender,
-// 				birthday: birthday,
-// 				email: email,
-// 				matric_no: matric_no,
-// 				phone_no: phone_no
-		
-// 			});
-		
-// 			console.log("Im in");
-// 		}
-
-//     }
-// })
-
-
-// // DO NOT MODIFY THIS
-// apps.mount("#info")
-
-// function writeUserData(userId, name, username, gender, birthday, email, matric_no, phone_no) {
-// 	const db = getDatabase();
-// 	set(ref(db, 'users/' + userId + '/user_profile_info'), {
-// 		name: name,
-// 		username: username,
-// 		gender: gender,
-// 		birthday: birthday,
-// 		email: email,
-// 		matric_no: matric_no,
-// 		phone_no: phone_no
-
-// 	})
-// }
-
-function writeUserData() {
+//////////////////////////////////////////////////
+// UDPATE USER INFO
+function updateUserInfo() {
 
 	let editCollection = document.getElementsByClassName('editMode');
 	console.log(editCollection);
@@ -338,5 +202,192 @@ function writeUserData() {
 	$('#successModal').modal('show');
 
 }
+document.getElementById('save').addEventListener("click", updateUserInfo)
 
-document.getElementById('save').addEventListener("click", writeUserData)
+
+//////////////////////////////////////////////////
+// FIREBASE POPULATE INTERESTED CLUBS
+let interestedArr = []
+let interested_clubs = {}
+onValue(users, (snapshot => {
+	const data = snapshot.val(); // get the new value
+
+	let tempHTML = ""
+	let userClubs = data.user1.user_clubs.interested_clubs
+	interested_clubs = userClubs
+
+	for (let union in userClubs) {
+		if (Object.hasOwnProperty.call(userClubs, union)) {
+			let unionClubs = userClubs[union];
+
+			for (let club in unionClubs) {
+				if (Object.hasOwnProperty.call(unionClubs, club)) {
+					interestedArr.push(club)
+					let clubDetails = unionClubs[club];
+
+					tempHTML += `
+					<div class="card border-0" style="width: 15rem; height: 260px;">
+						<div class="image-center" >
+							<img style="border-radius: 50%; height: 8rem; width: auto;" src="${clubDetails["photo"]}" class="card-img-top" alt="...">
+						</div>
+						<div class="card-body">
+							<h5 class="card-title">
+								<a href="${clubDetails["website"]}" target="_blank" class="stretched-link">
+									${club}
+								</a>
+							</h5>
+							<p class="text-muted">${union}</p>
+						</div>
+					</div>
+					`;
+				}
+			}
+		}
+	}
+	// ADD BUTTON
+	tempHTML += `
+	<div class="card border-0" style="width: 15rem; height: 260px">
+		<div class="image-center">
+			<img style="border-radius: 50%; width: 8rem; " src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Circled_plus.svg/800px-Circled_plus.svg.png" class="card-img-top" alt="...">
+		</div>
+		<div class="card-body">
+			<!-- modal -->
+			<h5 class="card-title">
+				<a href="#" data-bs-toggle="modal" data-bs-target="#add-club" class="stretched-link">
+					Add a Club
+				</a>
+			</h5>
+			<p class="text-muted">Pick a club you are interested in</p>
+		</div>
+	</div>
+	`
+
+	document.getElementById('interested-club').innerHTML = tempHTML
+
+}));
+
+function populateUninterested() {
+	let tempHTML = ""
+	for (let union in club_data) {
+		if (Object.hasOwnProperty.call(club_data, union)) {
+			let unionClubs = club_data[union];
+
+			if (unionClubs.length > 0) {
+				tempHTML += `
+				<h5>${union}</h5>
+				`
+			}
+
+			for (let club in unionClubs) {
+				if (Object.hasOwnProperty.call(unionClubs, club)) {
+					let clubDetails = unionClubs[club];
+					let ccaId = clubDetails["ccaId"]
+
+					// console.log(interestedArr.includes(club));
+
+					if (!interestedArr.includes(club)) {
+
+						let heading = `<h3>${union}</h3>`
+
+						if (!tempHTML.includes(heading)) {
+							tempHTML += heading
+						}
+
+						tempHTML += `
+						<input id="${ccaId}" type="checkbox" class="checked_clubs" name="checked_clubs" value="${ccaId}"/>
+						<label for="${ccaId}"> ${club} </label>
+						`
+					}
+				}
+			}
+		}
+	}
+
+	document.getElementById('chooseClub').innerHTML = tempHTML
+	console.log("in");
+}
+
+
+//////////////////////////////////////////////////
+// FIREBASE POPULATE UNINTERESTED CLUBS
+let clubsObj = {}
+let club_data = {}
+onValue(clubs, (snapshot => {
+	const data = snapshot.val(); // get the new value
+
+	
+	clubsObj = data
+	club_data = data
+	
+	populateUninterested()
+}));
+
+
+
+//////////////////////////////////////////////////
+// UPDATE CLUB
+function updateInterestedClubs() {
+
+	let toAdd = document.querySelectorAll('.checked_clubs:checked')
+	let toAddLength = toAdd.length
+	for (let i = 0; i < toAddLength; i ++) {
+		// console.log(toAdd[i].id);
+		for (let union in clubsObj) {
+			if (Object.hasOwnProperty.call(clubsObj, union)) {
+				let unionClubs = clubsObj[union]
+				// console.log(unionClubs);
+				for (let cca in unionClubs) {
+					if (Object.hasOwnProperty.call(unionClubs, cca)) {
+						let ccaDetails = unionClubs[cca]
+
+						let ccaId = ccaDetails["ccaId"]
+
+						if (ccaId == toAdd[i].id) {
+							
+							interested_clubs[union][cca] = ccaDetails
+							interestedArr.push(cca)
+							
+						}
+					}
+				}
+			}
+		}
+	}
+	console.log(interested_clubs);
+
+
+	const db = getDatabase();
+	set(ref(db, 'users/' + "user1" + '/user_clubs'), {
+		interested_clubs
+
+	})
+
+	console.log("change success");
+
+	
+	$('#add-club').modal('hide');
+	$('#successModal').modal('show');
+	populateUninterested()
+
+}
+document.getElementById('add').addEventListener("click", updateInterestedClubs)
+
+
+// function update() {
+
+// 	const db = getDatabase();
+
+// 	testInfo['test'] = "testresult"
+
+// 	set(ref(db, 'users/' + "user1" + '/user_profile_info'), {
+// 		testInfo
+
+// 	})
+
+// 	console.log(" success");
+
+
+// }
+// update()
+
+// 

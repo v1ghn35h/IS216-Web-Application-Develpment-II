@@ -282,7 +282,7 @@
 
     <!-- MODAL (CLUB) -->
     <div>
-        <div class="modal" id="add-club" tabindex="-1">
+        <div class="modal fade" id="add-club" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
         <div class="modal-content">
         <div class="modal-header">
@@ -291,9 +291,9 @@
         </div>
         <div class="modal-body">
             <!-- CLUBS AVAILABLE -->
-            <form class="country" method="get" action="#">
+            <form class="club" method="get" action="#">
                 <!-- https://codepen.io/eamalindu/pen/yLjQORL -->
-                <div class="row justify-content-md-center">
+                <div id="chooseClub" class="row justify-content-md-center">
 
                     <input id="lk" type="checkbox" name="lk" value="lk"/>
                     <label for="lk"><img src="https://cdn-icons-png.flaticon.com/512/206/206725.png"> Sri Lanka </label>
@@ -309,7 +309,7 @@
                 <div class="row justify-content-md-end">
                     <input type="reset" value="Reset">
 
-                    <input type="submit" value="Add">
+                    <input type="submit" value="Add" id="add">
                 </div>
             </form>
         </div>
@@ -319,10 +319,11 @@
         </div>
         </div>
         </div>
+    </div>
 
     <!-- MODAL (BEACH)-->
     <div>
-        <div class="modal" id="beach" tabindex="-1" >
+        <div class="modal fade" id="beach" tabindex="-1" >
         <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
         <div class="modal-content">
         <div class="modal-header">
@@ -361,7 +362,7 @@
 
     <!-- MODAL (SUCCESS)-->
     <div>
-        <div class="modal" id="successModal" tabindex="-1" >
+        <div class="modal fade" id="successModal" tabindex="-1" >
         <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
         <div class="modal-header">
