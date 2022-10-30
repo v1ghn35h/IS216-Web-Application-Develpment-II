@@ -163,8 +163,9 @@
                 <div id="unverifiedContent" v-bind:style="{display: displayUnverified}">
                     <!-- Unverified Header Text -->
                     <h4>Wait a moment!</h4>
-                    <p>To help you take control of your day, we first need you to verify your email.</p>
-                    <p class="mb-3">Please check your inbox for our email!</p>
+                    <p class="fw-bold mb-1">To help you take control of your day, we first need you to verify your email.</p>
+                    <p class="mb-1">Please check your inbox for our email!</p>
+                    <p class="mb-3 fst-italic">It may be in your spam inbox.</p>
 
                     <!-- Login Separator -->
                     <p class="text-muted my-4 sep"><span>or</span></p>
@@ -173,7 +174,7 @@
                     <h6 class="my-2 fw-bold text-decoration-none text-primary" v-on:click="loginPage()" onclick="logoutFunction()">Return to Login</h6>
 
                     <!-- Sign Up -->
-                    <p class="my-2">Don't have an account? <span class="fw-bold text-decoration-none text-primary" v-on:click="signupPage()" onclick="logoutFunction()">Sign Up!</span></p>
+                    <p class="my-2">If you've just verified your email,<br>please refresh this page to continue!</p>
                 </div>
 
             </div>

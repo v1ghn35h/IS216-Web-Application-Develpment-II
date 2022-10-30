@@ -62,7 +62,8 @@ import {
     GoogleAuthProvider,
     signInWithRedirect,
     signInWithEmailAndPassword,
-    createUserWithEmailAndPassword
+    createUserWithEmailAndPassword,
+    sendEmailVerification
 } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -216,6 +217,11 @@ function signup(event) {
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
+            sendEmailVerification(auth.currentUser)
+            .then(() => {
+              // Email verification sent!
+              // ...
+            });
             // ...
         })
         .catch((error) => {
