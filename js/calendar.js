@@ -529,12 +529,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
           // set event color by category
           let new_event_category = new_event_obj.category
-          let find_object = colors.find(o => o.name === new_event_category); // find object with the name == new_event_category
-          let new_event_color = find_object.hex
 
+          if (new_event_category != "") {
+            let find_object = colors.find(o => o.name === new_event_category); // find object with the name == new_event_category
+          
+            let new_event_color = find_object.hex
 
-          // add color to event object
-          new_event_obj["color"] = new_event_color
+            // add color to event object
+            new_event_obj["color"] = new_event_color
+          }
+          
           all_events.push(new_event_obj)
         }
 
@@ -571,7 +575,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let event_category = info.event._def.extendedProps.category
 
         // if event_category is selected, set icon based on category
-        if (event_category != undefined) {
+        if (event_category != "") {
           // set color based on category
           let obj = colors.find(o => o.name === event_category); // find object with the name == new_event_category
           let event_colour = obj.hex
@@ -579,7 +583,6 @@ document.addEventListener('DOMContentLoaded', function() {
           dot.style.background = event_colour
 
           // set icon based on category
-          console.log(event_category)
           let event_icon = event_media[event_category][1]
           let icon = document.getElementById("eventIcon")
           icon.innerHTML = `<img src="img/${event_icon}" style='height: 50px;'>`
