@@ -20,7 +20,8 @@
                 },
                 "task_2": {
                     "id": "2",
-                    "title": "WAD2 Quiz"
+                    "title": "WAD2 Quiz",
+                    "status": "done"
                 },
                 "task_3": {
                     "id": "3",

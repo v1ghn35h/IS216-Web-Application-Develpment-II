@@ -11,117 +11,68 @@ html, body {
 
 /* TO DO LIST */
 
-/* Basic Style */
-.form-control {
-  background-color: transparent;
-  border-top: 0;
-  border-right: 0;
-  border-left: 0;
+.card {
+  box-shadow: 0px 0px 3px 1px #ddd;
+}
+
+.list-group-item {
+  padding: .5rem .75rem;
+  border: 1px solid rgba(0, 0, 0, .07);
+  display: flex;
+  align-items: center;
+}
+
+.list-group-item:first-child {
   border-radius: 0;
 }
-ul {
-  margin: 0;
-  padding: 0;
+
+.list-group-item:last-child {
+  border-radius: 0;
 }
-li * {
-  float: left;
-}
-li, h3 {
-  clear:both;
-  list-style:none;
-}
-input, button {
-  outline: none;
-}
-button {
-  background: none;
-  border: 0px;
-  color: #888;
-  font-size: 15px;
-  width: 60px;
-  margin: 10px 0 0;
-  font-family: Lato, sans-serif;
+
+.list-group-item i.fa-square {
+  flex-grow: 0;
   cursor: pointer;
-}
-button:hover {
-  color: #333;
-}
-/* Heading */
-h3,
-label[for='new-task'] {
-  color: #104547;
-  font-weight: 700;
-  font-size: 15px;
-  border-bottom: 2px solid #104547;
-  padding: 30px 0 10px;
-  margin: 0;
-  text-transform: uppercase;
-}
-input[type="text"]:focus {
-  color: #333;
-}
-input[type="text"] {
-  border: 1px solid #333;
-  float: left;
-  margin: 0;
-  padding: 0;
-  border-top: 0px;
-  border-left: 0px;
-  border-right: 0px;
-  height: 40px;
-  width: 200px;
+  order: 1;
 }
 
-/* New Task */
-label[for='new-task'] {
+.list-group-item i.fa-check-square {
+  display: none;
+}
+
+.list-group-item i.fa-trash-alt {
+  flex-grow: 0;
+  cursor: pointer;
+  color: #dc3545;
+  order: 3;
+}
+
+.list-group-item i.fa-trash-alt:hover {
+  color: #af1e2c;
+}
+
+.list-group-item .todo-text {
+  flex-grow: 1;
+  margin: 0 10px;
+  order: 2;
+}
+
+.list-group-item.done i.fa-check-square {
+  flex-grow: 0;
+  cursor: pointer;
+  color: #28a745;
   display: block;
-  margin: 0 0 20px;
 }
 
-/* Task list */
-li {
-  overflow: hidden;
-  padding: 20px 0;
-  border-bottom: 1px solid #eee;
-}
-li > input[type="checkbox"] {
-  margin: 0 10px;
-  position: relative;
-  top: 18px;
-}
-li > label {
-  margin: 0 10px;
-  font-size: 14px;
-  line-height: 50px;
-  text-align: left;
-  width: 120px;
-  padding: 0 0 0 10px;
-}
-li >  input[type="text"] {
-  width: 150px;
-}
-li > .delete:hover {
-  color: #CF2323;
+.list-group-item.done i.fa-square {
+  display: none;
 }
 
-/* Completed */
-#completed-tasks label {
+.list-group-item.done .todo-text {
   text-decoration: line-through;
   color: #888;
 }
 
-/* Edit Task */
-ul li input[type=text] {
-  display:none;
-}
-
-ul li.editMode input[type=text] {
-  display:block;
-}
-
-ul li.editMode label {
-  display:none;
-}
 
 /* -------------------------------------------- */
 
