@@ -308,6 +308,18 @@ $("#imageUpload").change(function() {
 // }
 
 function writeUserData() {
+
+	let editCollection = document.getElementsByClassName('editMode');
+	console.log(editCollection);
+	for (let i = editCollection.length - 1; i >= 0; i --) {
+		let editItem = editCollection[i]
+		console.log(editItem);
+		let label = editItem.querySelector('label');
+		let editInput = editItem.querySelector("input[type=text]")
+		label.innerText = editInput.value
+		editItem.classList.remove('editMode')
+	}
+
 	const db = getDatabase();
 	set(ref(db, 'users/' + "user1" + '/user_profile_info'), {
 		name: document.getElementById('name').innerText,
@@ -322,6 +334,9 @@ function writeUserData() {
 	})
 
 	console.log("change success");
+
+	$('#successModal').modal('show');
+
 }
 
 document.getElementById('save').addEventListener("click", writeUserData)
