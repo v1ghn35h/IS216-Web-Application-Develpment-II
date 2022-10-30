@@ -62,6 +62,7 @@ import {
     GoogleAuthProvider,
     signInWithRedirect,
     signInWithEmailAndPassword,
+    sendPasswordResetEmail,
     createUserWithEmailAndPassword,
     sendEmailVerification
 } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
@@ -153,10 +154,10 @@ function login(event) {
             let loginError = (message) => {
                 let loginErrorWrapper = document.createElement('div')
                 loginErrorWrapper.innerHTML = [
-                  `<div class="alert alert-danger alert-dismissible" role="alert">`,
-                  `   <div>${message}</div>`,
-                  '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
-                  '</div>'
+                    `<div class="alert alert-danger alert-dismissible" role="alert">`,
+                    `   <div>${message}</div>`,
+                    '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                    '</div>'
                 ].join('')
                 loginErrorBox.append(loginErrorWrapper)
             }
@@ -175,10 +176,50 @@ function login(event) {
 document.loginFunction = login;
 
 // Forgot Password
+let forgotPassErrorMessages = {
+    "auth/user-not-found": "That account doesn't exist!"
+}
+
 function forgotPass(event) {
     event.preventDefault();
-    // something
-    console.log("forgotPass()")
+
+    let email = document.getElementById("forgotPassEmail").value;
+    let forgotPassErrorBox = document.getElementById("forgotPassErrors");
+    forgotPassErrorBox.innerHTML = "";
+    let forgotPassErrorWrapper = document.createElement('div');
+
+    sendPasswordResetEmail(auth, email)
+        .then(() => {
+            // Password reset email sent!
+            // ..
+            forgotPassErrorWrapper.innerHTML = [
+                `<div class="alert alert-info alert-dismissible" role="alert">`,
+                `   <div>Password Reset Email sent!</div>`,
+                '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                '</div>'
+            ].join('')
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            if (errorCode in forgotPassErrorMessages) {
+                forgotPassErrorWrapper.innerHTML = [
+                    `<div class="alert alert-danger alert-dismissible" role="alert">`,
+                    `   <div>${forgotPassErrorMessages[errorCode]}</div>`,
+                    '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                    '</div>'
+                ].join('')
+            } else {
+                forgotPassErrorWrapper.innerHTML = [
+                    `<div class="alert alert-danger alert-dismissible" role="alert">`,
+                    `   <div>Error: ${errorCode}</div>`,
+                    '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                    '</div>'
+                ].join('')
+            }
+            // ..
+        });
+    forgotPassErrorBox.append(forgotPassErrorWrapper)
 }
 document.forgotPassFunction = forgotPass;
 

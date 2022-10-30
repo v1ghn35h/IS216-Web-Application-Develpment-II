@@ -100,6 +100,10 @@
                             <label for="forgotPassEmail">Email Address</label>
                         </div>
 
+                        <!-- Forgot Password Errors component -->
+                        <div class="mb-3" id="forgotPassErrors">
+                        </div>
+
                         <!-- Login Button -->
                         <button class="w-100 btn btn-lg button-login" type="button" onclick="forgotPassFunction(event)">
                             Send Password Reset Link
@@ -322,11 +326,15 @@
                 - Console           https://console.firebase.google.com/u/0/
             
             - Ensure that logged out users are redirected back to login.html
+            - Implement logout in main pages
             - Figure out why enter key doesn't submit form
-            - Implement password reset
-            - Implement Logout
-            - Implement change password
+            - Implement change password / password reset in profile
             - Re-authenticate a user implementation, just in case.
+
+            - Localize verification/reset emails (optional, Manage Users documentation)
+            - Redirect user back to website after email verification (optional)
+                https://firebase.google.com/docs/reference/js/auth.md#sendemailverification
+                https://firebase.google.com/docs/auth/web/passing-state-in-email-actions
             - Implement account linking (optional, allow users to login via Google or email: https://firebase.google.com/docs/auth/web/account-linking)
             - Retrieve Google provider's OAuth token to access Google APIs (optional, Google Sign in documentation)
             - Obtain user profile via Firebase Auth, update user profile (optional)
