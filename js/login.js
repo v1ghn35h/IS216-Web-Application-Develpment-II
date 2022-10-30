@@ -27,7 +27,7 @@ const analytics = getAnalytics(app);
 const auth = getAuth(app);
 
 // ----------------------------------------------------------------
-// LOGIN SECTION
+// LOGIN FUNCTIONS SECTION
 // ----------------------------------------------------------------
 
 // Check if user is logged in
@@ -43,6 +43,13 @@ onAuthStateChanged(auth, (user) => {
 });
 
 // Login
+let loginErrorMessages = {
+    "auth/internal-error": true,
+    "auth/invalid-email": true,
+    "auth/user-not-found": true,
+    "auth/wrong-password": true
+}
+
 function login(event) {
     event.preventDefault();
     
@@ -74,11 +81,31 @@ function login(event) {
             }
             // loginError(loginErrorMessages[errorCode]);
             // If the above is required, create a loginErrorMessages object that links errorCode to readable text
-            loginError("Wrong/Invalid email or password!")
+
+            if (errorCode in loginErrorMessages) {
+                loginError("Wrong/Invalid email or password!")
+            } else {
+                loginError("Error: " + errorCode)
+            }
         });
 }
-// Add login function as global variable as this is a module type js file
-window.loginFunction = login;
+document.loginFunction = login;
+
+// Forgot Password
+function forgotPass(event) {
+    event.preventDefault();
+    // something
+    console.log("forgotPass()")
+}
+document.forgotPassFunction = forgotPass;
+
+// Signup
+function signup(event) {
+    event.preventDefault();
+    // something
+    console.log("signup()")
+}
+document.signupFunction = signup;
 
 // ----------------------------------------------------------------
 // VUE SECTION
@@ -89,17 +116,28 @@ const VueApp = Vue.createApp({
             // name:value pairs,
             // name:value pairs
             displayLogin: "block",
-            displayForgotPass: "none"
+            displayForgotPass: "none",
+            displaySignup: "none"
         }
     },
     methods: {
         loginPage() {
             this.displayLogin = "block",
-            this.displayForgotPass = "none"
+            this.displayForgotPass = "none",
+            this.displaySignup = "none",
+            document.title = "Login | calendaREADY"
         },
-        forgotPass() {
+        forgotPassPage() {
             this.displayLogin = "none",
-            this.displayForgotPass = "block"
+            this.displayForgotPass = "block",
+            this.displaySignup = "none",
+            document.title = "Forgot Password | calendaREADY"
+        },
+        signupPage() {
+            this.displayLogin = "none",
+            this.displayForgotPass = "none",
+            this.displaySignup = "block",
+            document.title = "Sign Up | calendaREADY"
         }
     },
     computed: {
