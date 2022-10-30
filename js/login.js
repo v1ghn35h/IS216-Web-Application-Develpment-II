@@ -8,7 +8,8 @@ const VueApp = Vue.createApp({
             // name:value pairs
             displayLogin: "block",
             displayForgotPass: "none",
-            displaySignup: "none"
+            displaySignup: "none",
+            displayUnverified: "none"
         }
     },
     methods: {
@@ -16,19 +17,29 @@ const VueApp = Vue.createApp({
             this.displayLogin = "block",
             this.displayForgotPass = "none",
             this.displaySignup = "none",
+            this.displayUnverified = "none",
             document.title = "Login | calendaREADY"
         },
         forgotPassPage() {
             this.displayLogin = "none",
             this.displayForgotPass = "block",
             this.displaySignup = "none",
+            this.displayUnverified = "none",
             document.title = "Forgot Password | calendaREADY"
         },
         signupPage() {
             this.displayLogin = "none",
             this.displayForgotPass = "none",
             this.displaySignup = "block",
+            this.displayUnverified = "none",
             document.title = "Sign Up | calendaREADY"
+        },
+        unverifiedPage() {
+            this.displayLogin = "none",
+            this.displayForgotPass = "none",
+            this.displaySignup = "none",
+            this.displayUnverified = "block",
+            document.title = "Unverified Email | calendaREADY"
         }
     },
     computed: {
@@ -47,6 +58,7 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.13.0/firebase
 import {
     getAuth,
     onAuthStateChanged,
+    signOut,
     GoogleAuthProvider,
     signInWithRedirect,
     signInWithEmailAndPassword,
@@ -80,14 +92,29 @@ const auth = getAuth(app);
 // Check if user is logged in
 onAuthStateChanged(auth, (user) => {
     if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      window.location.href = "home.html"
+        if (user.emailVerified) {
+            window.location.href = "home.html"
+        } else {
+            vm.unverifiedPage();
+        }
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
     } else {
       // User is signed out
       // ...
     }
 });
+
+// Logout
+function logoutFunction() {
+    signOut(auth)
+        .then(() => {
+            // Sign-out successful.
+        }).catch((error) => {
+            // An error happened.
+        });
+}
+document.logoutFunction = logoutFunction;
 
 // Login with Google
 function GoogleLogin(event) {
