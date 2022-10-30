@@ -323,7 +323,6 @@ onValue(clubs, (snapshot => {
 }));
 
 
-
 //////////////////////////////////////////////////
 // UPDATE CLUB
 function updateInterestedClubs() {
@@ -371,23 +370,3 @@ function updateInterestedClubs() {
 
 }
 document.getElementById('add').addEventListener("click", updateInterestedClubs)
-
-
-// function update() {
-
-// 	const db = getDatabase();
-
-// 	testInfo['test'] = "testresult"
-
-// 	set(ref(db, 'users/' + "user1" + '/user_profile_info'), {
-// 		testInfo
-
-// 	})
-
-// 	console.log(" success");
-
-
-// }
-// update()
-
-// 
