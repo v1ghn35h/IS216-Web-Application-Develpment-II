@@ -1,10 +1,55 @@
 // ----------------------------------------------------------------
+// VUE SECTION
+// ----------------------------------------------------------------
+const VueApp = Vue.createApp({
+    data() {
+        return {
+            // name:value pairs,
+            // name:value pairs
+            displayLogin: "block",
+            displayForgotPass: "none",
+            displaySignup: "none"
+        }
+    },
+    methods: {
+        loginPage() {
+            this.displayLogin = "block",
+            this.displayForgotPass = "none",
+            this.displaySignup = "none",
+            document.title = "Login | calendaREADY"
+        },
+        forgotPassPage() {
+            this.displayLogin = "none",
+            this.displayForgotPass = "block",
+            this.displaySignup = "none",
+            document.title = "Forgot Password | calendaREADY"
+        },
+        signupPage() {
+            this.displayLogin = "none",
+            this.displayForgotPass = "none",
+            this.displaySignup = "block",
+            document.title = "Sign Up | calendaREADY"
+        }
+    },
+    computed: {
+        // works like methods, but will only run once with {{ functionName }}
+        // result of first run is stored and referenced with {{ functionName }} without rerunning method
+    }
+})
+
+const vm = VueApp.mount('#vue-app')
+// ----------------------------------------------------------------
 // FIREBASE SECTION
 // ----------------------------------------------------------------
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-analytics.js";
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
+import {
+    getAuth,
+    onAuthStateChanged,
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -65,7 +110,7 @@ function login(event) {
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log(errorCode, errorMessage);
+            // console.log(errorCode, errorMessage);
             let loginErrorBox = document.getElementById("loginErrors");
             loginErrorBox.innerHTML = "";
             let loginError = (message) => {
@@ -76,7 +121,6 @@ function login(event) {
                   '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
                   '</div>'
                 ].join('')
-              
                 loginErrorBox.append(loginErrorWrapper)
             }
             // loginError(loginErrorMessages[errorCode]);
@@ -100,50 +144,54 @@ function forgotPass(event) {
 document.forgotPassFunction = forgotPass;
 
 // Signup
+let signupErrorMessages = {
+    "auth/email-already-in-use": "That email already has an account! Try Login Page > Forgot Password",
+    "auth/invalid-email": "Please enter a valid email!",
+    "auth/internal-error": "Wrong/Invalid email or password!",
+    "auth/weak-password": "Please enter a stronger password!"
+}
+
 function signup(event) {
     event.preventDefault();
-    // something
-    console.log("signup()")
+
+    let email = document.getElementById("signupEmail").value;
+    let password = document.getElementById("signupPassword").value;
+
+    let signupErrorBox = document.getElementById("signupErrors");
+    signupErrorBox.innerHTML = "";
+    let signupError = (message) => {
+        let signupErrorWrapper = document.createElement("div")
+        signupErrorWrapper.innerHTML = [
+            `<div class="alert alert-danger alert-dismissible" role="alert">`,
+            `   <div>${message}</div>`,
+            '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+            '</div>'
+        ].join("")
+        signupErrorBox.append(signupErrorWrapper)
+    }
+
+    if (password != document.getElementById("signupPasswordConfirm").value) {
+        signupError("The passwords don't match!")
+    } else {
+        
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            // ...
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode, errorMessage);
+
+            if (errorCode in signupErrorMessages) {
+                signupError(signupErrorMessages[errorCode])
+            } else {
+                signupError("Error: " + errorCode)
+            }
+        });
+
+    }
 }
 document.signupFunction = signup;
-
-// ----------------------------------------------------------------
-// VUE SECTION
-// ----------------------------------------------------------------
-const VueApp = Vue.createApp({
-    data() {
-        return {
-            // name:value pairs,
-            // name:value pairs
-            displayLogin: "block",
-            displayForgotPass: "none",
-            displaySignup: "none"
-        }
-    },
-    methods: {
-        loginPage() {
-            this.displayLogin = "block",
-            this.displayForgotPass = "none",
-            this.displaySignup = "none",
-            document.title = "Login | calendaREADY"
-        },
-        forgotPassPage() {
-            this.displayLogin = "none",
-            this.displayForgotPass = "block",
-            this.displaySignup = "none",
-            document.title = "Forgot Password | calendaREADY"
-        },
-        signupPage() {
-            this.displayLogin = "none",
-            this.displayForgotPass = "none",
-            this.displaySignup = "block",
-            document.title = "Sign Up | calendaREADY"
-        }
-    },
-    computed: {
-        // works like methods, but will only run once with {{ functionName }}
-        // result of first run is stored and referenced with {{ functionName }} without rerunning method
-    }
-})
-
-const vm = VueApp.mount('#vue-app')
