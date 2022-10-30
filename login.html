@@ -52,7 +52,7 @@
                         <h4 class="mb-3 fw-normal">Are you ready for a new day?</h4>
 
                         <!-- Login with Google -->
-                        <button class="w-100 py-2 btn btn-outline-dark btn-light" type="submit">
+                        <button class="w-100 py-2 btn btn-outline-dark btn-light" type="button" onclick="googleLoginFunction(event)">
                             <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Google" height="16" class="me-1">
                             Login with Google
                         </button>
@@ -304,17 +304,17 @@
                 - Console           https://console.firebase.google.com/u/0/
             
             - Ensure that logged out users are redirected back to login.html
-            - Implement Google Sign In
-            - Implement Logout
-            - Implement change password
             - Implement email verification
             - Implement password reset
+            - Implement account linking (allow users to login via Google or email)
+            - Implement Logout
+            - Implement change password
             - Re-authenticate a user implementation, just in case.
-            - Obtain user profile via Firebase Auth, update user profile
+            - Retrieve Google provider's OAuth token to access Google APIs (optional, Google Sign in documentation)
+            - Obtain user profile via Firebase Auth, update user profile (optional)
             
             - Autofill relevant sections (if any)
             - optionally link up passreset.html / verifyemail.html, autofilled and without email sending OR through Firebase)
-            - Add SMU clubs interest selection in signup
             - Update background images
 
             References:

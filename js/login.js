@@ -47,6 +47,8 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.13.0/firebase
 import {
     getAuth,
     onAuthStateChanged,
+    GoogleAuthProvider,
+    signInWithRedirect,
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword
 } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
@@ -87,12 +89,19 @@ onAuthStateChanged(auth, (user) => {
     }
 });
 
+// Login with Google
+function GoogleLogin(event) {
+    event.preventDefault();
+    let provider = new GoogleAuthProvider();
+    signInWithRedirect(auth, provider);
+}
+document.googleLoginFunction = GoogleLogin;
+
 // Login
 let loginErrorMessages = {
     "auth/internal-error": true,
     "auth/invalid-email": true,
-    "auth/user-not-found": true,
-    "auth/wrong-password": true
+    "auth/user-not-found": true
 }
 
 function login(event) {
@@ -110,7 +119,7 @@ function login(event) {
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            // console.log(errorCode, errorMessage);
+            console.log(errorCode, errorMessage);
             let loginErrorBox = document.getElementById("loginErrors");
             loginErrorBox.innerHTML = "";
             let loginError = (message) => {
@@ -126,7 +135,9 @@ function login(event) {
             // loginError(loginErrorMessages[errorCode]);
             // If the above is required, create a loginErrorMessages object that links errorCode to readable text
 
-            if (errorCode in loginErrorMessages) {
+            if (errorCode == "auth/wrong-password") {
+                loginError("Wrong/Invalid email or password! If you previously logged in with Google, use that instead!")
+            } else if (errorCode in loginErrorMessages) {
                 loginError("Wrong/Invalid email or password!")
             } else {
                 loginError("Error: " + errorCode)
