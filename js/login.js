@@ -175,6 +175,11 @@ function login(event) {
 }
 document.loginFunction = login;
 
+// actionCodeSettings for emails
+var actionCodeSettings = {
+    url: "http://localhost/is216/IS216-Project/login.html"
+}
+
 // Forgot Password
 let forgotPassErrorMessages = {
     "auth/user-not-found": "That account doesn't exist!"
@@ -188,7 +193,7 @@ function forgotPass(event) {
     forgotPassErrorBox.innerHTML = "";
     let forgotPassErrorWrapper = document.createElement('div');
 
-    sendPasswordResetEmail(auth, email)
+    sendPasswordResetEmail(auth, email, actionCodeSettings)
         .then(() => {
             // Password reset email sent!
             // ..
@@ -258,7 +263,7 @@ function signup(event) {
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
-            sendEmailVerification(auth.currentUser)
+            sendEmailVerification(auth.currentUser, actionCodeSettings)
             .then(() => {
               // Email verification sent!
               // ...
