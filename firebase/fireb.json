@@ -112,7 +112,8 @@
         }
     },
     "events": {
-            "Beach Clean Up": {
+            "event1": {
+                "name": "Beach Clean Up",
                 "club": "SMU Verts",
                 "eventId": "1",
                 "vQUVuDbqNIUbAYMoGqTzob3juA497nHOUezy3Waq3TKtel0OlrdLNKVyt1TqVy7nk7ly27Pp37zmdRrNVX1ElLDbY7BELEtVbpnwwUg5HhlTz5DBPlPo1fWdOKA": "environment",
@@ -122,7 +123,8 @@
                 "fees": "NA",
                 "location":"East Coast Park near Carpark 4"
             }, 
-            "Basketball Tryouts": {
+            "event2": {
+                "name": "Basketball Tryouts",
                 "club": "SMU Basketball",
                 "eventId": "2",
                 "type": "sport",
@@ -132,7 +134,8 @@
                 "fees": "NA",
                 "location":"SMU Administration Building Level 5"
             }, 
-            "Art Jam": {
+            "event3": {
+                "name": "Art Jam",
                 "club": "SMU Artdicted",
                 "eventId": "3",
                 "type": "art",
@@ -142,7 +145,8 @@
                 "fees": "10 SGD",
                 "location":"LKCSB Classroom 2-3, near to elevator"
             },
-            "Skating Session": {
+            "event4": {
+                "name": "Skating Session",
                 "club": "SMU-X Skating",
                 "eventId": "4",
                 "type": "sport",
@@ -152,7 +156,8 @@
                 "fees": "15 SGD",
                 "location":" Outside SCIS Level 1"
             },
-            "Aquathlon": {
+            "event5": {
+                "name": "Aquathlon",
                 "club": "SMU Swimming",
                 "eventId": "5",
                 "type": "sport",
@@ -162,7 +167,8 @@
                 "fees": "15 SGD",
                 "location":"SMU Administration Building Level 5"
             },
-            "Tennis Tryouts": {
+            "event6": {
+                "name": "Tennis Tryouts",
                 "club": "SMU Tennis",
                 "eventId": "6",
                 "type": "sport",
@@ -172,7 +178,8 @@
                 "fees": "NA",
                 "location":"SMU Administration Building Level 5"
             },
-            "Ballet Night": {
+            "event7": {
+                "name": "Ballet Night",
                 "club": "SMU Ballare",
                 "eventId": "7",
                 "type": "dance",
@@ -182,7 +189,8 @@
                 "fees": "25 SGD",
                 "location":"Esplanade Auditorium 3"
             },
-            "Career Fair": {
+            "event8": {
+                "name": "Career Fair",
                 "club": "SMU",
                 "eventId": "8",
                 "type": "career",
@@ -192,7 +200,6 @@
                 "fees": "NA",
                 "location":"YPHSL SR B1"
             }
-            
 
         }
     }
