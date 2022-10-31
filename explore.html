@@ -216,11 +216,12 @@
 
         <h2>All Events</h2>
         <div class="container pt-0">
-            <div class="row d-flex justify-content-left">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 justify-content-around">
 
                 
+                <!--dynamically retrieved events from db-->
                 <!--template for an event-->
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 " v-for="(details, event) of events" >
+                <div class=" col-9 " v-for="(details, event) of events" >
                     <!-- start of card-->
                     <div class="card-flyer" :id="`eventCard${details.eventId}`">
                         <div class="text-box">
@@ -245,7 +246,7 @@
                                 </p>
                                 <!-- sign up button-->
                                 <div>
-                                    <button type="button" class="btn signup-btn mt-3" :data-bs-target="`#infoPage${details.eventId}`"
+                                    <button type="button" class="btn details-btn mt-3" :data-bs-target="`#infoPage${details.eventId}`"
                                         data-bs-toggle="modal">Details</button>
                                 </div>
                             </div>

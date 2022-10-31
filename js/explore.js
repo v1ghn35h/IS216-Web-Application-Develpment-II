@@ -25,11 +25,6 @@ const allEvents = ref(db, 'events')
 
 //////////////////////////////////////////////////
 
-// onValue(allEvents, (snapshot) => {
-//     const data = snapshot.val()
-//     console.log(data);
-// })
-
 
 // <div id='app'></div>
 const explorePage = Vue.createApp({ 
