@@ -78,7 +78,7 @@ onValue(users, (snapshot => {
 
 	let userInfo = data.user1.user_profile_info
 	for (let category in userInfo) {
-		if (category != "profile_picture") {
+		if (category != "profile_picture" && category != "preference") {
 			document.getElementById(category).innerText = userInfo[category];
 		}
 	}
