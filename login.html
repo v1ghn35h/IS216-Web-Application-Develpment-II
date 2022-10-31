@@ -52,7 +52,7 @@
                         <h4 class="mb-3 fw-normal">Are you ready for a new day?</h4>
 
                         <!-- Login with Google -->
-                        <button class="w-100 py-2 btn btn-outline-dark btn-light" type="submit">
+                        <button class="w-100 py-2 btn btn-outline-dark btn-light" type="button" onclick="googleLoginFunction(event)">
                             <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Google" height="16" class="me-1">
                             Login with Google
                         </button>
@@ -98,6 +98,10 @@
                         <div class="form-floating mb-3">
                             <input type="email" class="form-control" id="forgotPassEmail" placeholder="name@example.com" />
                             <label for="forgotPassEmail">Email Address</label>
+                        </div>
+
+                        <!-- Forgot Password Errors component -->
+                        <div class="mb-3" id="forgotPassErrors">
                         </div>
 
                         <!-- Login Button -->
@@ -157,6 +161,24 @@
                         <!-- Login -->
                         <p class="my-2">Already have an account? <span class="fw-bold text-decoration-none text-primary" v-on:click="loginPage()">Login!</span></p>
                     </form>
+                </div>
+
+                <!-- Unverified Component -->
+                <div id="unverifiedContent" v-bind:style="{display: displayUnverified}">
+                    <!-- Unverified Header Text -->
+                    <h4>Wait a moment!</h4>
+                    <p class="fw-bold mb-1">To help you take control of your day, we first need you to verify your email.</p>
+                    <p class="mb-1">Please check your inbox for our email!</p>
+                    <p class="mb-3 fst-italic">It may be in your spam inbox.</p>
+
+                    <!-- Login Separator -->
+                    <p class="text-muted my-4 sep"><span>or</span></p>
+
+                    <!-- Return to Login -->
+                    <h6 class="my-2 fw-bold text-decoration-none text-primary" v-on:click="loginPage()" onclick="logoutFunction()">Return to Login</h6>
+
+                    <!-- Sign Up -->
+                    <p class="my-2">If you've just verified your email,<br>please refresh this page to continue!</p>
                 </div>
 
             </div>
@@ -303,20 +325,18 @@
                 - Documentation     https://firebase.google.com/docs/auth
                 - Console           https://console.firebase.google.com/u/0/
             
-            - Ensure that logged out users are redirected back to login.html
-            - Implement Google Sign In
-            - Implement Sign Up
-            - Implement Logout
-            - Implement change password
-            - Implement email verification
-            - Implement password reset
-            - Re-authenticate a user implementation, just in case.
-            - Obtain user profile via Firebase Auth, update user profile
-            
-            - Autofill relevant sections (if any)
-            - optionally link up passreset.html / verifyemail.html, autofilled and without email sending OR through Firebase)
-            - Add SMU clubs interest selection in signup
             - Update background images
+            - Implement logout and redirection in main pages (login-common.js)
+            - Figure out why enter key doesn't submit form
+            - Implement change password / password reset in profile
+            - Re-authenticate a user implementation, just in case.
+
+            - Redirect user back to website after email verification (optional)
+                https://firebase.google.com/docs/reference/js/auth.md#sendemailverification
+                https://firebase.google.com/docs/auth/web/passing-state-in-email-actions
+            - Implement account linking (optional, allow users to login via Google or email: https://firebase.google.com/docs/auth/web/account-linking)
+            - Retrieve Google provider's OAuth token to access Google APIs (optional, Google Sign in documentation)
+            - Obtain user profile via Firebase Auth, update user profile (optional)
 
             References:
             - https://getbootstrap.com/docs/5.2/examples/

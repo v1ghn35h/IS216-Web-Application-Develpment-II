@@ -16,7 +16,7 @@
     
     <!-- External CSS -->
     <link rel="stylesheet" href="css/calendar.css">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <!--navbar css-->
     <link rel="stylesheet" href="css/navbar.css">
 
@@ -50,76 +50,34 @@
   <h1 id="target"></h1>
   <script type="module" src="js/calendar.js"></script>
 
-  <div class="container text-center">
-      <div class="row">
+  <div class="container">
+      <div class="row text-center">
   
         <!-- Task List -->
         <div class="col col-lg-3">
           <p class="mt-5" style="font-size: 24px"> To-Do List </p>
 
-          <!-- Add Item -->
-          <div class="mt-3">
-            <label for="new-task"> 
-              <img src="img/icons/add.png" style="height: 20px">
-              &nbsp;
-              Add Item 
-            </label>
-            <input id="new-task" type="text">
-            &nbsp;&nbsp;&nbsp;
-            <button class="btn btn-outline-dark"> Add </button>
+          <div class="card-header pb-2">
+            <form id="form">
+              <div class="input-group">
+                <input type="text" class="form-control" id="todo" placeholder="Add new todo item">
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Add
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
-          
-          <!-- To Do -->
-          <div class="mt-3">
-            <h3> 
-              <img src="img/icons/tasklist.png" style="height: 20px">
-              &nbsp;
-              To-Do 
-            </h3>
-            <ul id="incomplete-tasks">
 
-              <!-- Pre fill list item -->
-              <li>
-                <input type="checkbox">
-                <label> BPAS Report </label>
-                
-                <input type="text">
-                <button class="btn edit"> Edit </button>
-                <button class="btn delete"> Delete </button>
-              </li>
-            </ul>
-          </div>
-          
-          <!-- Completed -->
-          <div class="mt-3">
-            <h3> 
-              <img src="img/icons/tick.png" style="height: 20px">
-              &nbsp;
-              Completed 
-            </h3>
-            <ul id="completed-tasks">
-              
-              <!-- Pre fill list item -->
-              <li>
-                <input type="checkbox" checked>
-                <label> WAD2 Quiz </label>
+        <div class="card-body">
+          <ul class="list-group mb-3" id="taskList">
 
-                <input type="text">
-                <button class="btn edit"> Edit </button>
-                <button class="btn delete"> Delete </button>
-              </li>
+            <!-- Populate tasks -->
 
-              <li>
-                <input type="checkbox" checked>
-                <label> IDP Lecture </label>
+          </ul>
+        </div>
 
-                <input type="text">
-                <button class="btn edit"> Edit </button>
-                <button class="btn delete"> Delete </button>
-              </li>
-            </ul>
-          </div>
-          </div>
+
   
           <!-- Calendar -->
           <div class="col col-lg-9">

@@ -26,173 +26,192 @@ const analytics = getAnalytics(app);
 
 /* CONNECT TO DATABASE */
 // Import functions needed to read from realtime database
-import { getDatabase, ref, onValue, child, get, set, remove } from
+import { getDatabase, ref, onValue, child, get, set, remove, push, update } from
 "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
 
 // Connect to the realtime database
 const db = getDatabase();
 
-let all_events = []
+var all_events = []
 let current_user = "user1" // change according to user logged in
 
 let new_db_size = 0
-
+let task_id = 0
 
 // ----------------------------------------
 // TO DO LIST
-// Problem: User interaction doesn't provide desired results.
-// Solution: Add interactivity so the user can manage daily tasks
 
-var taskInput = document.getElementById("new-task");
-var addButton = document.getElementsByTagName("button")[1];
-var incompleteTasksHolder = document.getElementById("incomplete-tasks");
-var completedTasksHolder = document.getElementById("completed-tasks");
+let task_list_div = document.getElementById("taskList")
 
-//New Task List Item
-var createNewTaskElement = function(taskString) {
-  //Create List Item
-  var listItem = document.createElement("li");
+// fetch data from db and populate tasks
+const dbRef = ref(getDatabase());
+get(child(dbRef, `users/${current_user}/user_tasks/`)).then((snapshot) => {
+  if (snapshot.exists()) {
+    let tasks = snapshot.val();
 
-  //input (checkbox)
-  var checkBox = document.createElement("input"); // checkbox
-  //label
-  var label = document.createElement("label");
-  //input (text)
-  var editInput = document.createElement("input"); // text
-  //button.edit
-  var editButton = document.createElement("button");
-  //button.delete
-  var deleteButton = document.createElement("button");
-  
-      //Each element needs modifying
-  
-  checkBox.type = "checkbox";
-  editInput.type = "text";
-  
-  editButton.innerText = "Edit";
-  editButton.className = "edit";
-  deleteButton.innerText = "Delete";
-  deleteButton.className = "delete";
-  
-  label.innerText = taskString;
-  
-    
-  // each element needs appending
-  listItem.appendChild(checkBox);
-  listItem.appendChild(label);
-  listItem.appendChild(editInput);
-  listItem.appendChild(editButton);
-  listItem.appendChild(deleteButton);
+    // clear previous data
+    task_list_div.innerHTML = ""
 
-  return listItem;
-}
+    for (var task in tasks) {
+      let output = ``
 
-// Add a new task
-var addTask = function() {
-  console.log("Add task...");
-  //Create a new list item with the text from #new-task:
-  var listItem = createNewTaskElement(taskInput.value);
-  //Append listItem to incompleteTasksHolder
-  incompleteTasksHolder.appendChild(listItem);
-  bindTaskEvents(listItem, taskCompleted);  
-  
-  taskInput.value = "";   
-}
+      let task_info = tasks[task]
 
-// Edit an existing task
-var editTask = function() {
-  console.log("Edit Task...");
-  
-  var listItem = this.parentNode;
-  
-  var editInput = listItem.querySelector("input[type=text]")
-  var label = listItem.querySelector("label");
-  
-  var containsClass = listItem.classList.contains("editMode");
-    //if the class of the parent is .editMode 
-  if(containsClass) {
-      //switch from .editMode 
-      //Make label text become the input's value
-    label.innerText = editInput.value;
-  } else {
-      //Switch to .editMode
-      //input value becomes the label's text
-    editInput.value = label.innerText;
+      let task_id = task_info.id
+      let task_title = task_info.title
+      let task_completion = task_info.status
+
+      if (task_completion == "done") {
+        output += `<li class="list-group-item done" id=${task_id}>`
+      }
+      else {
+        output += `<li class="list-group-item" id=${task_id}>`
+      }
+
+      output += `<i class="far fa-square done-icon"></i>
+                  <i class="far fa-check-square done-icon"></i>
+                  <span class="todo-text"> ${task_title} </span>
+                  <i class="far fa-trash-alt"></i>
+                </li>`
+
+      task_list_div.innerHTML += output
+    }
+  } 
+  else {
+    console.log("No data available");
   }
-  
-    // Toggle .editMode on the parent
-  listItem.classList.toggle("editMode");
- 
+})
+
+
+// Define all UI variable
+const todoList = document.querySelector('.list-group');
+const form = document.querySelector('#form');
+const todoInput = document.querySelector('#todo');
+const clearBtn = document.querySelector('#clearBtn');
+const search = document.querySelector('#search');
+
+// Load all event listners
+allEventListners();
+
+
+// Functions of all event listners
+function allEventListners() {
+    // Add todo event
+    form.addEventListener('submit', addTodo);
+    // Remove and complete todo event
+    todoList.addEventListener('click', removeTodo);
 }
 
 
-// Delete an existing task
-var deleteTask = function() {
-  console.log("Delete task...");
-  var listItem = this.parentNode;
-  var ul = listItem.parentNode;
-  
-  //Remove the parent list item from the ul
-  ul.removeChild(listItem);
+// Add todo item function
+function addTodo(e) {
+    if (todoInput.value !== '') {
+        // Create li element
+        const li = document.createElement('li');
+        // Add class
+        li.className = 'list-group-item';
+        // Add complete and remove icon
+        li.innerHTML = `<i class="far fa-square done-icon"></i>
+                        <i class="far fa-check-square done-icon"></i>
+                        <i class="far fa-trash-alt"></i>`;
+        // Create span element
+        const span = document.createElement('span');
+        // Add class
+        span.className = 'todo-text';
+        // Create text node and append to span
+        span.appendChild(document.createTextNode(todoInput.value));
+        // Append span to li
+        li.appendChild(span);
+        // Append li to ul (todoList)
+        todoList.appendChild(li);
+
+        // fetch data from db and populate tasks
+        const dbRef = ref(getDatabase());
+        get(child(dbRef, `users/${current_user}/user_tasks/`)).then((snapshot) => {
+          if (snapshot.exists()) {
+            let tasks = snapshot.val();
+            let task_list_size = Object.keys(tasks).length
+            let task_id = task_list_size + 1
+          }
+        })
+
+        // add to database
+        set(ref(db, 'users/' + current_user + '/user_tasks/task_' + task_id), 
+        {
+          id: task_id,
+          title: todoInput.value,
+          status: ""
+        },
+      )
+        // Clear input
+        todoInput.value = '';
+
+        // force page to reload
+        setTimeout(function(){
+          window.location.reload();
+          }, 2000);
+
+    } else {
+        alert('Please add todo');
+    }
+
+    e.preventDefault();
 }
 
-// Mark a task as complete 
-var taskCompleted = function() {
-  console.log("Task complete...");
-  //Append the task list item to the #completed-tasks
-  var listItem = this.parentNode;
-  completedTasksHolder.appendChild(listItem);
-  bindTaskEvents(listItem, taskIncomplete);
+
+// Remove and complete todo item function
+function removeTodo(e) {
+    let event = e.target.parentElement
+    let event_id = event.id
+
+    let event_title = event.getElementsByClassName("todo-text")[0].innerHTML
+
+    // Complete todo
+    if (e.target.classList.contains('done-icon')) {
+        e.target.parentElement.classList.toggle('done');
+
+        let check = event.classList.contains('done')
+        let status = ""
+        
+        // task completed
+        if (check) {
+          status = "done"
+        }
+
+        // task not completed
+        else {
+          status = ""
+        }
+
+        // update database
+        set(ref(db, 'users/' + current_user + '/user_tasks/task_' + event_id), 
+        {
+          id: event_id,
+          title: event_title,
+          status: status
+        },
+      )
+  }
+
+    // Remove todo
+    if (e.target.classList.contains('fa-trash-alt')) {
+        if (confirm('Are you sure')) {
+            e.target.parentElement.remove();
+
+            // delete from db
+            const tasksRef = ref(db, 'users/' + current_user + '/user_tasks/task_' + event_id);
+            console.log(tasksRef)
+            remove(tasksRef).then(() => {
+              // force page to reload
+              setTimeout(function(){
+                window.location.reload();
+                }, 2000);
+            });
+
+        }
+    }
 }
 
-// Mark a task as incomplete
-var taskIncomplete = function() {
-  console.log("Task Incomplete...");
-  // When checkbox is unchecked
-  // Append the task list item #incomplete-tasks
-  var listItem = this.parentNode;
-  incompleteTasksHolder.appendChild(listItem);
-  bindTaskEvents(listItem, taskCompleted);
-}
-
-var bindTaskEvents = function(taskListItem, checkBoxEventHandler) {
-  console.log("Bind list item events");
-  //select taskListItem's children
-  var checkBox = taskListItem.querySelector("input[type=checkbox]");
-  var editButton = taskListItem.querySelector("button.edit");
-  var deleteButton = taskListItem.querySelector("button.delete");
-  
-  //bind editTask to edit button
-  editButton.onclick = editTask;
-  
-  //bind deleteTask to delete button
-  deleteButton.onclick = deleteTask;
-  
-  //bind checkBoxEventHandler to checkbox
-  checkBox.onchange = checkBoxEventHandler;
-}
-
-var ajaxRequest = function() {
-  console.log("AJAX Request");
-}
-
-// Set the click handler to the addTask function
-//addButton.onclick = addTask;
-addButton.addEventListener("click", addTask);
-addButton.addEventListener("click", ajaxRequest);
-
-
-// Cycle over the incompleteTaskHolder ul list items
-for(var i = 0; i <  incompleteTasksHolder.children.length; i++) {
-    // bind events to list item's children (taskCompleted)
-  bindTaskEvents(incompleteTasksHolder.children[i], taskCompleted);
-}
-// Cycle over the completeTaskHolder ul list items
-for(var i = 0; i <  completedTasksHolder.children.length; i++) {
-    // bind events to list item's children (taskIncompleted)
-  bindTaskEvents(completedTasksHolder.children[i], taskIncomplete); 
-
-}
 
 // ----------------------------------------
 // CALENDAR
@@ -345,11 +364,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
               // fetch items from db
               const dbRef = ref(getDatabase());
-              get(child(dbRef, `users/${current_user}/upcoming_events/`)).then((snapshot) => {
+              get(child(dbRef, `users/${current_user}/user_events/`)).then((snapshot) => {
                 if (snapshot.exists()) {
                   let db_values = snapshot.val();
                   let db_size = Object.keys(db_values).length
-                  let new_db_size = db_size
+                  let new_db_size = db_size + 1
                 } else {
                   console.log("No data available");
                 }
@@ -358,7 +377,7 @@ document.addEventListener('DOMContentLoaded', function() {
               });
               
               // add event to array
-              set(ref(db, 'users/' + current_user + '/upcoming_events/event_' + new_db_size), 
+              set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
                 {
                   title: title,
                   start: start,
@@ -468,40 +487,44 @@ document.addEventListener('DOMContentLoaded', function() {
 
           // fetch items from db
           const dbRef = ref(getDatabase());
-          get(child(dbRef, `users/${current_user}/upcoming_events/`)).then((snapshot) => {
+          get(child(dbRef, `users/${current_user}/user_events/`)).then((snapshot) => {
             if (snapshot.exists()) {
-              let db_values = snapshot.val();
-              let db_size = Object.keys(db_values).length
-              let new_db_size = db_size
-            } else {
+              var db_values = snapshot.val();
+              var db_size = Object.keys(db_values).length
+              var new_db_size = db_size + 1
+
+              // add event to array
+              set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
+                {
+                  title: title,
+                  start: start,
+                  end: end,
+                  category: event_class,
+                  id: new_db_size
+                },
+              )
+
+              // display added successfully
+              add_success_modal.style.display = "block";
+
+              // force page to reload
+              setTimeout(function(){
+                window.location.reload();
+              }, 2000);
+          
+              // reset modal 
+              modal.style.display = "none";
+              document.getElementById("addEvent").reset();
+            } 
+            
+
+            else {
               console.log("No data available");
             }
           }).catch((error) => {
             console.error(error);
           });
           
-          // add event to array
-          set(ref(db, 'users/' + current_user + '/upcoming_events/event_' + new_db_size), 
-            {
-              title: title,
-              start: start,
-              end: end,
-              category: event_class,
-              id: new_db_size
-            },
-          )
-
-          // display added successfully
-          add_success_modal.style.display = "block";
-
-          // force page to reload
-          setTimeout(function(){
-            window.location.reload();
-          }, 2000);
-      
-          // reset modal 
-          modal.style.display = "none";
-          document.getElementById("addEvent").reset();
         }
     )},
 
@@ -522,19 +545,22 @@ document.addEventListener('DOMContentLoaded', function() {
         let all_users = data
         let user = data[current_user]
 
-        let upcoming_events = user.upcoming_events
+        let upcoming_events = user.user_events
 
         for (let event in upcoming_events) {
           let new_event_obj = upcoming_events[event]
 
           // set event color by category
           let new_event_category = new_event_obj.category
-          let find_object = colors.find(o => o.name === new_event_category); // find object with the name == new_event_category
-          let new_event_color = find_object.hex
 
+          if (new_event_category != "") {
+            let find_object = colors.find(o => o.name === new_event_category); // find object with the name == new_event_category
+            let new_event_color = find_object.hex
 
-          // add color to event object
-          new_event_obj["color"] = new_event_color
+            // add color to event object
+            new_event_obj["color"] = new_event_color
+          }
+          
           all_events.push(new_event_obj)
         }
 
@@ -571,7 +597,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let event_category = info.event._def.extendedProps.category
 
         // if event_category is selected, set icon based on category
-        if (event_category != undefined) {
+        if (event_category != "") {
           // set color based on category
           let obj = colors.find(o => o.name === event_category); // find object with the name == new_event_category
           let event_colour = obj.hex
@@ -579,7 +605,6 @@ document.addEventListener('DOMContentLoaded', function() {
           dot.style.background = event_colour
 
           // set icon based on category
-          console.log(event_category)
           let event_icon = event_media[event_category][1]
           let icon = document.getElementById("eventIcon")
           icon.innerHTML = `<img src="img/${event_icon}" style='height: 50px;'>`
@@ -630,13 +655,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // --- DELETE EVENT ---
         document.getElementById('deleteEventButton').onclick = 
         function() {
-          console.log("button was clicked");
 
           // Fetch event
           let event_to_delete = calendar.getEventById(Number(event_id))
 
-          // Delete event
-          const tasksRef = ref(db, 'users/user1/upcoming_events/event_' + event_id);
+          // Delete event'
+          const tasksRef = ref(db, 'users/' + user + 'user_events/event_' + event_id);
 
           remove(tasksRef).then(() => {
             // display deleted successfully
