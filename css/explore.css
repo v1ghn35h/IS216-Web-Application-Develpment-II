@@ -33,6 +33,7 @@ button.btn:hover, button.btn:active, button.btn:visited {
 }
 #cards_landscape_wrap-2 .card-flyer {
     border-radius: 5px; 
+    height: 90%;
         
 }
 #cards_landscape_wrap-2 .card-flyer .image-box{
