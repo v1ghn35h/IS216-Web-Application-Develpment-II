@@ -1,10 +1,12 @@
+<!-- For actually resetting the password, obtained from clicking the link sent via email. -->
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="author" content="2022 Term 1: IS216 G7 - Team 7" />
-        <title>Login | calendaREADY</title>
+        <title>Reset Password | calendaREADY</title>
         <link rel="icon" href="img/logo/logo-greenbg.png">
 
         <!-- Bootstrap CSS -->
@@ -32,18 +34,9 @@
                     height="128px"
                 />
 
-                <!-- Login Header Text -->
-                <h3>Welcome Back!</h3>
-                <h4 class="mb-3 fw-normal">Are you ready for a new day?</h4>
-
-                <!-- Login with Google -->
-                <button class="w-100 py-2 btn btn-outline-dark btn-light" type="submit">
-                    <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Google" height="16" class="me-1">
-                    Login with Google
-                </button>
-
-                <!-- Login Separator -->
-                <p class="text-muted my-4 sep"><span>or</span></p>
+                <!-- Reset Password Header Text -->
+                <h4>Reset Your Password</h4>
+                <p class="mb-3">Enter and confirm your new password, along with your email and verification code.</p>
 
                 <!-- Email Input Box -->
                 <div class="form-floating mb-1">
@@ -51,24 +44,34 @@
                     <label for="loginEmail">Email Address</label>
                 </div>
 
-                <!-- Password Input Box -->
-                <div class="form-floating mb-1">
-                    <input type="password" class="form-control" id="loginPassword" placeholder="password" required />
-                    <label for="loginPassword">Password</label>
-                    <div id="forgotPassword" class="form-text fst-italic text-start"><a href="forgotpass.html" class="text-decoration-none">Forgot your password?</a></div>
+                <!-- Verification Code Input Box -->
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="verifyCode" placeholder="verificationcode" required />
+                    <label for="verifyCode">Verification Code</label>
                 </div>
 
-                <!-- Remember Me Checkbox -->
-                <div class="form-check mb-3">
-                    <label>
-                        <input class="form-check-input" type="checkbox" value="remember-me" /> Remember me!
-                    </label>
+                <!-- Password Input Box -->
+                <div class="form-floating mb-1">
+                    <input type="password" class="form-control" id="newPassword" placeholder="password" required />
+                    <label for="newPassword">New Password</label>
+                </div>
+
+                <!-- Confirm Password Input Box -->
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="newPasswordConfirm" placeholder="passwordconfirm" required />
+                    <label for="newPasswordConfirm">Confirm New Password</label>
                 </div>
 
                 <!-- Login Button -->
                 <button class="w-100 btn btn-lg button-login" type="submit">
-                    Login
+                    Reset Password
                 </button>
+
+                <!-- Login Separator -->
+                <p class="text-muted my-4 sep"><span>or</span></p>
+
+                <!-- Return to Login -->
+                <h6 class="my-2"><a href="login.html" class="fw-bold text-decoration-none">Return to Login Page</a></h6>
 
                 <!-- Sign Up -->
                 <p class="my-2">Don't have an account? <a href="signup.html" class="fw-bold text-decoration-none">Sign Up!</a></p>
@@ -204,32 +207,6 @@
                 </div>
             </div>
         </div>
-
-        <!--
-            To-Do:
-            - Backend!!!
-            - Explore Firebase Authentication (https://www.youtube.com/watch?v=hF82hb3YegE&list=PLcjTSeabJXFk9ozYWokjUq93WFunoVT9w&index=3)
-            - Explore Sign In With Google
-                - https://developers.google.com/identity/gsi/web/guides/overview
-                - https://firebase.google.com/docs/auth/web/google-signin
-            
-            - Autofill relevant sections (if any)
-            - optionally link up passreset.html / verifyemail.html, autofilled and without email sending)
-            - Add SMU clubs interest selection in signup
-            - Update background images
-
-            References:
-            - https://getbootstrap.com/docs/5.2/examples/
-            - https://getbootstrap.com/docs/5.2/examples/modals/
-            - https://trailhead.salesforce.com/
-
-            - https://discord.com/login
-            - https://www.instagram.com/accounts/login/
-
-            - https://discord.com/register
-            - https://www.instagram.com/accounts/password/reset/
-            - https://www.instagram.com/accounts/emailsignup/
-        -->
 
         <!-- Bootstrap JS -->
         <script

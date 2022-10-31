@@ -7,11 +7,7 @@
     <title>Profile | calendaREADY</title>
     <link rel="icon" href="img/logo/logo-greenbg.png">
     <link rel="stylesheet" href="css/profile.css">
-    <!--navbar css-->
-    <link rel="stylesheet" href="css/navbar.css">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://unpkg.com/vue@next"></script>
+    <script src="js/profile.js"></script>
 
 </head>
 <body>
@@ -29,7 +25,7 @@
             <div class="collapse navbar-collapse" id="myMenu">
                 <div class="navbar-nav ms-auto">
                     <a class="nav-item nav-link text-white" href="home.html">Home</a>
-                    <a class="nav-item nav-link text-white" href="explore.html">Explore</a>
+                    <a class="nav-item nav-link text-white" href="explore.html">Event</a>
                     <a class="nav-item nav-link text-white" href="calendar.html">Calendar</a>
                     <a class="nav-item nav-link text-white active" href="profile.html">Profile</a>
 
@@ -47,17 +43,16 @@
 
             <!-- IMAGE -->
             <div class="col-md-3 col-12">
-                <div class="avatar-upload">
-                    <!-- edit button -->
-                    <div class="avatar-edit"> 
-                        <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
-                        <label for="imageUpload"></label>
-                    </div>
-                    <!-- picture -->
-                    <div class="avatar-preview">
-                        <div id="imagePreview" style="background-image: url('');">
-                        </div>
-                    </div>
+                <div id="profile-img">
+                    <form action="upload.php" method="post" enctype="multipart/form-data">
+                        <label for="fileToUpload">
+                            <div class="profile-pic" style="background-image: url('img/profile pic.png')">
+                                    <span class="glyphicon glyphicon-camera"></span>
+                                    <span>Change Image</span>
+                            </div>
+                        </label>
+                        <input type="File" name="fileToUpload" id="fileToUpload">
+                    </form>
                 </div>
             </div>
 
@@ -68,95 +63,138 @@
                     <tbody>
                         <tr>
                             <td class="category"> Name</td>
+                            <td class="details" id="name">Natasha</td>
+                            <td class="edit-button"><a href="#" class="edit round">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                </svg>
+                            </a></td>
                         </tr>
                         <tr>
                             <td class="category">Username</td>
+                            <td class="details" id="username">natasha.2021</td>
+                            <td class="edit-button"><a href="#" class="edit round">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                </svg>
+                            </a></td>
                         </tr>
                         <tr>
                             <td class="category">Gender</td>
+                            <td class="details" id="gender">Female</td>
+                            <td class="edit-button"><a href="#" class="edit round">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                </svg>
+                            </a></td>
                         </tr>
                         <tr>
                             <td class="category">Birthday</td>
+                            <td class="details" id="birthday">7/7/1997</td>
+                            <td class="edit-button"><a href="#" class="edit round">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                </svg>
+                            </a></td>
                         </tr>
                         <tr>
                             <td class="category">Email</td>
+                            <td class="details" id="email">natasha.2021@scis.smu.edu.sg</td>
+                            <td class="edit-button"><a href="#" class="edit round">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                </svg>
+                            </a></td>
                         </tr>
                         <tr>
-                            <td class="category">Matric No.</td>
+                            <td class="category">Phone number</td>
+                            <td class="details" id="phone">+65 9123 4567</td>
+                            <td class="edit-button"><a href="#" class="edit round">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                </svg>
+                            </a></td>
                         </tr>
-                        <tr>
-                            <td class="category">Phone No.</td>
-                        </tr>
-
                     </tbody>
                 </table>
-
-                <div class="details">
-                    <div class="container">
-                        <ul id="details">
-                            <li>
-                                <label id="name"></label><input type="text">
-                                <button class="edit"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg></button>
-                            </li>
-                            <li>
-                                <label id="username"></label><input type="text" v-model="username">
-                                <button class="edit"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg></button>
-                            </li>
-                            <li>
-                                <label id="gender"></label><input type="text" v-model="gender">
-                                <button class="edit"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg></button>
-                            </li>
-                            <li>
-                                <label id="birthday"></label><input type="text" v-model="birthday">
-                                <button class="edit"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg></button>
-                            </li>
-                            <li>
-                                <label id="email"></label><input type="text" v-model="email">
-                                <button class="edit"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg></button>
-                            </li>
-                            <li>
-                                <label id="matric_no"></label><input type="text" v-model="matric_no">
-                                <button class="edit"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg></button>
-                            </li>
-                            <li>
-                                <label id="phone_no"></label><input type="text" v-model="phone_no">
-                                <button class="edit"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg></button>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div style="display: flex;">
-            <button style="margin-left: auto; margin-right: auto;" type="button" class="btn btn-primary" id="save">Save Changes</button>
+            </div>    
+    
+    
         </div>
     </div>
-
 
     <!-- CLUBS INTERESTED -->
     <div class="container">
         <div id="clubs">
             <h2>Clubs For You</h2>
 
-            <div class="row justify-content-md-center" id="interested-club">
-                
-                <!-- populated by firebase -->
+            <div class="row justify-content-md-center">
+
+                <div class="card border-0" style="width: 15rem;">
+                    <div class="image-center" >
+                        <img style="border-radius: 50%; height: 8rem; width: auto;" src="https://scontent-xsp1-2.xx.fbcdn.net/v/t1.18169-9/12439268_901451069904014_4473980561867047737_n.png?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=V8Uf2ot62QwAX-qEdWG&_nc_oc=AQld4npQyNLwvqnUH_9bWrFzHY1MxBX8SjXClYgnYwdUDYsJ7na6gUEVX1UhbZQQ_Q8&_nc_ht=scontent-xsp1-2.xx&oh=00_AT9lGLXlh_rzjolkgQUUbHym1277ketUJwKJJspkPEJfmQ&oe=637D85D0" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="https://vivace.smu.edu.sg/explore/acf/dance/smu-funk-movement" target="_blank" class="stretched-link">
+                                SMU Funk Movement
+                            </a>
+                        </h5>
+                        <p class="text-muted">ACF</p>
+                    </div>
+                </div>
+
+                <div class="card border-0" style="width: 15rem;">
+                    <div class="image-center">
+                        <img style="border-radius: 50%; height: 8rem; width: auto;" src="https://vivace.smu.edu.sg/sites/vivace.smu.edu.sg/files/styles/profilephoto2/public/vivace/profilephotos/1.%20SMU%20TT%20Logo%20%281%29.jpg?itok=pHOcCubg" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="https://vivace.smu.edu.sg/explore/ssu/racket-sports/smu-table-tennis" target="_blank" class="stretched-link">
+                                SMU Table Tennis
+                            </a>
+                        </h5>
+                        <p class="text-muted">SSU</p>
+                    </div>
+                </div>
+
+                <div class="card border-0" style="width: 15rem;">
+                    <div class="image-center">
+                        <img style="border-radius: 50%; height: 8rem; width: auto;" src="https://vivace.smu.edu.sg/sites/vivace.smu.edu.sg/files/styles/profilephoto2/public/vivace/profilephotos/vivacelogo%20%28300x300%29.jpg?itok=ux9JQRVi" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="https://vivace.smu.edu.sg/explore/smux/smux-kayaking-team" target="_blank" class="stretched-link">
+                                SMUX Kayaking
+                            </a>
+                        </h5>
+                        <p class="text-muted">SMUX</p>
+                    </div>
+                </div>
+
 
                 <!-- ADD BUTTON -->
+                <div class="card border-0" style="width: 15rem;">
+                    <div class="image-center">
+                        <img style="border-radius: 50%; width: 8rem; " src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Circled_plus.svg/800px-Circled_plus.svg.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <!-- modal -->
+                        <h5 class="card-title">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#add-club" class="stretched-link">
+                                Add a Club
+                            </a>
+                        </h5>
+                        <p class="text-muted">Pick a club you are interested in</p>
+                    </div>
+                </div>
+
             </div>
 
 
@@ -166,9 +204,9 @@
     <!-- PAST EVENTS -->
     <div class="container">
         
-        <h2>Past Events</h2>
-        
         <div id="events">
+
+            <h2>Past Events</h2>
 
                 <div class="card mx-1" style="width: 18rem;">
                 <img src = "https://images.squarespace-cdn.com/content/v1/5c39a8f55ffd2092c1c46d7e/1629738296149-42USDKGHV1WSC5M4U4UR/how+to+organise+a+beach+clean-up.jpg" height = "125" class="card-img-top" alt="...">
@@ -281,40 +319,74 @@
 
     <!-- MODAL (CLUB) -->
     <div>
-        <div class="modal fade" id="add-club" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+        <div class="modal fade" id="add-club" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" width="100%">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title">Add a Club</h5>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Add a Club</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <!-- CLUBS AVAILABLE -->
-            <form class="club" method="get" action="#">
-                <!-- https://codepen.io/eamalindu/pen/yLjQORL -->
-                <div id="chooseClub" class="row justify-content-md-center">
 
-                    <input id="lk" type="checkbox" name="lk" value="lk"/>
-                    <label for="lk"><img src="https://cdn-icons-png.flaticon.com/512/206/206725.png"> Sri Lanka </label>
-                    <input id="usa" type="checkbox" name="usa" />
-                    <label for="usa"><img src="https://cdn-icons-png.flaticon.com/512/206/206626.png"> USA</label>
-                    <input id="aus" type="checkbox" name="aus" />
-                    <label for="aus"><img src="https://cdn-icons-png.flaticon.com/512/206/206618.png">Australia</label>
-                    <input id="sg" type="checkbox" name="sg" />
-                    <label for="sg"><img src="https://cdn-icons-png.flaticon.com/512/206/206618.png">Singapore</label>
-                    <input id="ms" type="checkbox" name="ms" />
-                    <label for="ms"><img src="https://cdn-icons-png.flaticon.com/512/206/206618.png">Malaysia</label>
-                </div>
-                <div class="row justify-content-md-end">
-                    <input type="reset" value="Reset">
+            <div>
+                <div id="search-bar">
+                    <form action="" class="row justify-content-center">
+                        <div class="col-8">
+                            <!-- search input box-->
+                            <!--Search button-->
+                            <div class="input-group ">
+                            <input class="form-control " list="datalistOptions" type="text" placeholder="Search" >
+                            <!-- auto completion for now- can be further improved on - check past samples-->
+                            <datalist id="datalistOptions">
+                                <option value="SMU Sports Union (SSU)">
+                                <option value="SMU Arts and Cultural Fraternity (ACF)">
+                                <option value="SMUXploration Crew (SMUX)">
+                                <option value="Special Interest and Community Service Sodality (SICS)">
+                                <option value="WhiteHats">
+                                <option value="Ellipsis">
+                                <option value=".Hack">
+                                <option value="BIA">
+                              </datalist>
+            
+                                <button type="button" class="btn btn-outline-info " data-bs-toggle="modal" data-bs-target="#exampleModal">Search</button>
+                            </div>
+            
+                        </div> <!-- end of div col-8-->
+                    </form> <!-- end of form-->
+                </div> <!-- end of div search bar-->
 
-                    <input type="submit" value="Add" id="add">
-                </div>
-            </form>
+
+                <!-- CLUBS AVAILABLE -->
+                <form class="country" method="get" action="#">
+                    <!-- https://codepen.io/eamalindu/pen/yLjQORL -->
+                    <div class="row justify-content-md-center">
+
+                        <input id="lk" type="checkbox" name="lk" value="lk"/>
+                        <label for="lk"><img src="https://cdn-icons-png.flaticon.com/512/206/206725.png"> Sri Lanka </label>
+                        <input id="usa" type="checkbox" name="usa" />
+                        <label for="usa"><img src="https://cdn-icons-png.flaticon.com/512/206/206626.png"> USA</label>
+                        <input id="aus" type="checkbox" name="aus" />
+                        <label for="aus"><img src="https://cdn-icons-png.flaticon.com/512/206/206618.png">Australia</label>
+                        <input id="sg" type="checkbox" name="sg" />
+                        <label for="sg"><img src="https://cdn-icons-png.flaticon.com/512/206/206618.png">Singapore</label>
+                        <input id="ms" type="checkbox" name="ms" />
+                        <label for="ms"><img src="https://cdn-icons-png.flaticon.com/512/206/206618.png">Malaysia</label>
+                    </div>
+                    <div class="row justify-content-md-end">
+                        <input type="reset" value="Reset">
+
+                        <input type="submit" value="Add">
+                    </div>
+                </form>
+
+
+            </div>
+
+        </div>
+
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
         </div>
         </div>
         </div>
@@ -322,11 +394,11 @@
 
     <!-- MODAL (BEACH)-->
     <div>
-        <div class="modal fade" id="beach" tabindex="-1" >
-        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+        <div class="modal fade" id="beach" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" width="100%">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title">Beach Clean Up</h5>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Beach Clean Up</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -350,37 +422,18 @@
     
                 making Take Flight and Spike 2022 possible and supporting our endeavours!🙌 🥰 <br> <br>
             </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-        </div>
-        </div>
-        </div>
-    </div>
 
-    <!-- MODAL (SUCCESS)-->
-    <div>
-        <div class="modal fade" id="successModal" tabindex="-1" >
-        <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title">Success!</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-            <p>Your changes has been saved.</p>
+
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
         </div>
         </div>
-        </div>
     </div>
     
     
-    <script type="module" src="js/profile.js"></script>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
