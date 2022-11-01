@@ -148,7 +148,6 @@ function login(event) {
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log(errorCode, errorMessage);
             let loginErrorBox = document.getElementById("loginErrors");
             loginErrorBox.innerHTML = "";
             let loginError = (message) => {
@@ -267,13 +266,21 @@ function signup(event) {
             .then(() => {
               // Email verification sent!
               // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                
+                if (errorCode in signupErrorMessages) {
+                    signupError(signupErrorMessages[errorCode])
+                } else {
+                    signupError("Error: " + errorCode)
+                }
             });
-            // ...
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log(errorCode, errorMessage);
 
             if (errorCode in signupErrorMessages) {
                 signupError(signupErrorMessages[errorCode])
@@ -285,3 +292,32 @@ function signup(event) {
     }
 }
 document.signupFunction = signup;
+
+// Resend Email Verification
+function sendVerificationEmailFunction(event) {
+    event.preventDefault();
+    let resendVerifyErrorBox = document.getElementById("resendVerifyErrors");
+    resendVerifyErrorBox.innerHTML = "";
+    
+    sendEmailVerification(auth.currentUser, actionCodeSettings)
+        .then(() => {
+            // Email verification sent!
+            // ...
+            document.getElementById("resendVerifyButton").disabled = true;
+            document.getElementById("resendVerifyButton").innerText = "Verification Link Sent!"
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            let resendVerifyErrorWrapper = document.createElement("div");
+            resendVerifyErrorWrapper.innerHTML = [
+                `<div class="alert alert-danger alert-dismissible" role="alert">`,
+                `   <div>Error: ${errorCode}</div>`,
+                '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                '</div>'
+            ].join("");
+            resendVerifyErrorBox.append(resendVerifyErrorWrapper);
+        });
+        // ...
+}
+document.sendVerificationEmailFunction = sendVerificationEmailFunction;

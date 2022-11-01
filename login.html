@@ -174,10 +174,19 @@
                     <!-- Login Separator -->
                     <p class="text-muted my-4 sep"><span>or</span></p>
 
+                    <!-- Resend Verify Errors component -->
+                    <div class="mb-3" id="resendVerifyErrors">
+                    </div>
+
+                    <!-- Resend Verification Email Button -->
+                    <button class="w-100 btn btn-lg button-login" type="button" onclick="sendVerificationEmailFunction(event)" id="resendVerifyButton">
+                        Resend Verification Link
+                    </button>
+
                     <!-- Return to Login -->
                     <h6 class="my-2 fw-bold text-decoration-none text-primary" v-on:click="loginPage()" onclick="logoutFunction()">Return to Login</h6>
 
-                    <!-- Sign Up -->
+                    <!-- Refresh Page Message -->
                     <p class="my-2">If you've just verified your email,<br>please refresh this page to continue!</p>
                 </div>
 
