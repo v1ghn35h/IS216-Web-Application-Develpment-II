@@ -1,8 +1,9 @@
 /*----  Explore Page CSS   ----*/
-.btn {
+.btn, button {
     background-color: white !important;
     color: #104547 !important;
     border-color: #104547 !important;
+    border-width: 1px;
     
 }
 
@@ -11,6 +12,15 @@ button.btn:hover, button.btn:active, button.btn:visited {
     color:white !important;
     border-color: #104547 !important;
     
+}
+
+.search-container {
+    width: 60%;
+    background: #FFFFFF;
+    display: flex; 
+    /* flex is to contain element within this element */
+    justify-content: center;
+    /* justify center to tell it to put the inner content in the position */
 }
 
 
