@@ -182,7 +182,6 @@ function UserForYouEvents () {
             let fees_of_event= upcoming_events[event].fees
             let location_of_event= upcoming_events[event].location
             let event_id= upcoming_events[event].eventId
-            console.log(user_preference)
             if (user_preference.includes(type_of_event)){
 				tempHTML += `<div class="card mx-1" style="width: 18rem;">
                 <!-- PLACE IMAGE ON TOP OF CARD -->
@@ -237,6 +236,7 @@ function UserForYouEvents () {
                     </div>
                     </div>
                 </div>
+                <!-- Sign Up Page -->
                 <div class="modal fade" id="event${event_id}SignUpPage" aria-hidden="true" aria-labelledby="event${event_id}SignUpPageLabel" tabindex="-1">
                     <div class="modal-dialog modal-dialog-scrollable modal-lg">
                     <div class="modal-content">
@@ -255,13 +255,16 @@ function UserForYouEvents () {
                             <br>
                             Payment: ${fees_of_event}                
                             </div>
-                            <button class="btn btn-warning center" id="add">Confirm</button>
+                            <button class="btn btn-warning center" data-bs-target="#addSuccessModal" data-bs-toggle= "modal">Confirm</button>
+                        </div>
                         </div>
                         <div class="modal-footer">
                         <button class="btn btn-dark" data-bs-target="#event${event_id}" data-bs-toggle="modal">Go back</button>
                         </div>
                     </div>
-                    </div>
+                                    <!-- Modal -->
+
+                </div>
                 </div>
                 <a class="btn btn-dark" data-bs-toggle="modal" href="#event${event_id}" role="button">More info</a>
             
