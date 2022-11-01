@@ -16,65 +16,175 @@
         />
         <!-- External CSS -->
         <link href="css/login.css" rel="stylesheet" />
+
+        <!-- Bootstrap JS -->
+        <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"
+        ></script>
+        <!-- Vue JS -->
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <!-- External JS -->
+        <script type="module" src="js/login.js"></script>
     </head>
     <body class="text-center">
 
         <!-- Login Box -->
         <main class="form-login w-100 m-auto">
 
-            <form action="">
-                <!-- Logo -->
-                <img
-                    class="mb-1"
-                    src="img/logo/logo-green.png"
-                    alt="calendaREADY Logo"
-                    width="128px"
-                    height="128px"
-                />
+            <!-- Logo -->
+            <img
+                class="mb-1"
+                src="img/logo/logo-green.png"
+                alt="calendaREADY Logo"
+                width="128px"
+                height="128px"
+            />
 
-                <!-- Login Header Text -->
-                <h3>Welcome Back!</h3>
-                <h4 class="mb-3 fw-normal">Are you ready for a new day?</h4>
+            <div id="vue-app">
 
-                <!-- Login with Google -->
-                <button class="w-100 py-2 btn btn-outline-dark btn-light" type="submit">
-                    <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Google" height="16" class="me-1">
-                    Login with Google
-                </button>
+                <!-- Login Component -->
+                <div id="loginContent" v-bind:style="{display: displayLogin}">
+                    <form onsubmit="loginFunction(event)">
+                        <!-- Login Header Text -->
+                        <h3>Welcome Back!</h3>
+                        <h4 class="mb-3 fw-normal">Are you ready for a new day?</h4>
 
-                <!-- Login Separator -->
-                <p class="text-muted my-4 sep"><span>or</span></p>
+                        <!-- Login with Google -->
+                        <button class="w-100 py-2 btn btn-outline-dark btn-light" type="button" onclick="googleLoginFunction(event)">
+                            <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Google" height="16" class="me-1">
+                            Login with Google
+                        </button>
 
-                <!-- Email Input Box -->
-                <div class="form-floating mb-1">
-                    <input type="email" class="form-control" id="loginEmail" placeholder="name@example.com" required />
-                    <label for="loginEmail">Email Address</label>
+                        <!-- Login Separator -->
+                        <p class="text-muted my-4 sep"><span>or</span></p>
+
+                        <!-- Email Input Box -->
+                        <div class="form-floating mb-1">
+                            <input type="email" class="form-control" id="loginEmail" placeholder="name@example.com" />
+                            <label for="loginEmail">Email Address</label>
+                        </div>
+
+                        <!-- Password Input Box -->
+                        <div class="form-floating mb-1">
+                            <input type="password" class="form-control" id="loginPassword" placeholder="password" />
+                            <label for="loginPassword">Password</label>
+                            <div id="forgotPassword" class="form-text fst-italic text-start text-decoration-none text-primary" v-on:click="forgotPassPage()">Forgot your password? Click me!</div>
+                        </div>
+
+                        <!-- Login Errors component -->
+                        <div class="mb-3" id="loginErrors">
+                        </div>
+
+                        <!-- Login Button -->
+                        <button class="w-100 btn btn-lg button-login" type="button" onclick="loginFunction(event)">
+                            Login
+                        </button>
+
+                        <!-- Sign Up -->
+                        <p class="my-2">Don't have an account? <span class="fw-bold text-decoration-none text-primary" v-on:click="signupPage()">Sign Up!</span></p>
+                    </form>
                 </div>
 
-                <!-- Password Input Box -->
-                <div class="form-floating mb-1">
-                    <input type="password" class="form-control" id="loginPassword" placeholder="password" required />
-                    <label for="loginPassword">Password</label>
-                    <div id="forgotPassword" class="form-text fst-italic text-start"><a href="forgotpass.html" class="text-decoration-none">Forgot your password?</a></div>
+                <!-- Forgot Password Component -->
+                <div id="forgotPassContent" v-bind:style="{display: displayForgotPass}">
+                    <form onsubmit="forgotPassFunction(event)">
+                        <!-- Forgot Password Header Text -->
+                        <h4>Forgot your Password?</h4>
+                        <p class="mb-3">Enter your email address, and we'll send you a link to get back into your account.</p>
+
+                        <!-- Email Input Box -->
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="forgotPassEmail" placeholder="name@example.com" />
+                            <label for="forgotPassEmail">Email Address</label>
+                        </div>
+
+                        <!-- Forgot Password Errors component -->
+                        <div class="mb-3" id="forgotPassErrors">
+                        </div>
+
+                        <!-- Login Button -->
+                        <button class="w-100 btn btn-lg button-login" type="button" onclick="forgotPassFunction(event)">
+                            Send Password Reset Link
+                        </button>
+
+                        <!-- Login Separator -->
+                        <p class="text-muted my-4 sep"><span>or</span></p>
+
+                        <!-- Return to Login -->
+                        <h6 class="my-2 fw-bold text-decoration-none text-primary" v-on:click="loginPage()">Return to Login</h6>
+
+                        <!-- Sign Up -->
+                        <p class="my-2">Don't have an account? <span class="fw-bold text-decoration-none text-primary" v-on:click="signupPage()">Sign Up!</span></p>
+                    </form>
                 </div>
 
-                <!-- Remember Me Checkbox -->
-                <div class="form-check mb-3">
-                    <label>
-                        <input class="form-check-input" type="checkbox" value="remember-me" /> Remember me!
-                    </label>
+                <!-- Signup Component -->
+                <div id="signupContent" v-bind:style="{display: displaySignup}">
+                    <form onsubmit="signupFunction(event)">
+                        <!-- Signup Header Text -->
+                        <h3>Let's Get Started!</h3>
+                        <h4 class="mb-3 fw-normal">A new day awaits you.<br>Create your account:</h4>
+
+                        <!-- Email Input Box -->
+                        <div class="form-floating mb-1">
+                            <input type="email" class="form-control" id="signupEmail" placeholder="name@example.com" />
+                            <label for="signupEmail">Email Address</label>
+                            <div id="signupEmailVerify" class="form-text fst-italic text-start">We'll send you a link to verify your email.</div>
+                        </div>
+
+                        <!-- Password Input Box -->
+                        <div class="form-floating mb-1">
+                            <input type="password" class="form-control" id="signupPassword" placeholder="password" />
+                            <label for="signupPassword">Password</label>
+                        </div>
+
+                        <!-- Confirm Password Input Box -->
+                        <div class="form-floating mb-2">
+                            <input type="password" class="form-control" id="signupPasswordConfirm" placeholder="passwordconfirm" />
+                            <label for="signupPasswordConfirm">Confirm Password</label>
+                        </div>
+
+                        <p class="text-muted fst-italic mb-3">Tip: You can follow clubs in the Profile page!</p>
+
+                        <!-- Signup Errors component -->
+                        <div class="mb-3" id="signupErrors">
+                        </div>
+
+                        <!-- Signup Button -->
+                        <button class="w-100 btn btn-lg button-login" type="button" onclick="signupFunction(event)">
+                            Sign Up
+                        </button>
+                        <p class="text-muted mb-0 fw-light">By signing up, you agree to our Terms of Use.</p>
+
+                        <!-- Login -->
+                        <p class="my-2">Already have an account? <span class="fw-bold text-decoration-none text-primary" v-on:click="loginPage()">Login!</span></p>
+                    </form>
                 </div>
 
-                <!-- Login Button -->
-                <button class="w-100 btn btn-lg button-login" type="submit">
-                    Login
-                </button>
+                <!-- Unverified Component -->
+                <div id="unverifiedContent" v-bind:style="{display: displayUnverified}">
+                    <!-- Unverified Header Text -->
+                    <h4>Wait a moment!</h4>
+                    <p class="fw-bold mb-1">To help you take control of your day, we first need you to verify your email.</p>
+                    <p class="mb-1">Please check your inbox for our email!</p>
+                    <p class="mb-3 fst-italic">It may be in your spam inbox.</p>
 
-                <!-- Sign Up -->
-                <p class="my-2">Don't have an account? <a href="signup.html" class="fw-bold text-decoration-none">Sign Up!</a></p>
+                    <!-- Login Separator -->
+                    <p class="text-muted my-4 sep"><span>or</span></p>
 
-                <!-- "Footer" -->
-                <p class="text-muted fst-italic mb-0 fw-light">Built with ♡ by Team 7 (IS216 G7 / 2022 T1)</p>
+                    <!-- Return to Login -->
+                    <h6 class="my-2 fw-bold text-decoration-none text-primary" v-on:click="loginPage()" onclick="logoutFunction()">Return to Login</h6>
+
+                    <!-- Sign Up -->
+                    <p class="my-2">If you've just verified your email,<br>please refresh this page to continue!</p>
+                </div>
+
+            </div>
+
+            <!-- "Footer" -->
+            <p class="text-muted fst-italic mb-0 fw-light">Built with ♡ by Team 7 (IS216 G7 / 2022 T1)</p>
             </form>
 
         </main>
@@ -207,16 +317,23 @@
 
         <!--
             To-Do:
-            - Backend!!!
-            - Explore Firebase Authentication (https://www.youtube.com/watch?v=hF82hb3YegE&list=PLcjTSeabJXFk9ozYWokjUq93WFunoVT9w&index=3)
-            - Explore Sign In With Google
-                - https://developers.google.com/identity/gsi/web/guides/overview
-                - https://firebase.google.com/docs/auth/web/google-signin
+            - Explore Firebase Authentication
+                - Video             https://www.youtube.com/watch?v=hF82hb3YegE&list=PLcjTSeabJXFk9ozYWokjUq93WFunoVT9w&index=3
+                - Manage Users      https://firebase.google.com/docs/auth/web/manage-users
+                - Password Auth     https://firebase.google.com/docs/auth/web/password-auth
+                - Google Sign In    https://firebase.google.com/docs/auth/web/google-signin
+                - Documentation     https://firebase.google.com/docs/auth
+                - Console           https://console.firebase.google.com/u/0/
             
-            - Autofill relevant sections (if any)
-            - optionally link up passreset.html / verifyemail.html, autofilled and without email sending)
-            - Add SMU clubs interest selection in signup
             - Update background images
+            - Implement logout and redirection in main pages (login-common.js)
+            - Figure out why enter key doesn't submit form
+            - Implement change password / password reset in profile
+            - Re-authenticate a user implementation, just in case.
+            
+            - Implement account linking (optional, allow users to login via Google or email: https://firebase.google.com/docs/auth/web/account-linking)
+            - Retrieve Google provider's OAuth token to access Google APIs (optional, Google Sign in documentation)
+            - Obtain user profile via Firebase Auth, update user profile (optional)
 
             References:
             - https://getbootstrap.com/docs/5.2/examples/
@@ -230,12 +347,5 @@
             - https://www.instagram.com/accounts/password/reset/
             - https://www.instagram.com/accounts/emailsignup/
         -->
-
-        <!-- Bootstrap JS -->
-        <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-        crossorigin="anonymous"
-        ></script>
     </body>
 </html>

@@ -1,10 +1,5 @@
-/* nav bar */
-.navbar-nav {
-    font-size: 20px;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-/* titles */
+/* -------------------------------------------------- */
+/* TITLES */
 h2 {
     text-align: center;
     padding: 20px;
@@ -15,48 +10,83 @@ h2 {
     padding-bottom: 60px;
 }
 
-/* image */
-.profile-pic {
-    border-radius: 50%;
-    height: 150px;
-    width: 150px;
-    background-size: cover;
-    background-position: center;
-    background-blend-mode: multiply;
-    vertical-align: middle;
-    text-align: center;
-    color: transparent;
-    transition: all .3s ease;
-    text-decoration: none;
-    cursor: pointer;
-}
 
-.profile-pic:hover {
-    background-color: rgba(0,0,0,.5);
-    z-index: 10000;
-    color: #fff;
-    transition: all .3s ease;
-    text-decoration: none;
+/* -------------------------------------------------- */
+/* IMAGE */
+.avatar-upload {
+    position: relative;
+    max-width: 205px;
+    margin: 50px auto;
 }
-
-.profile-pic span {
+    
+.avatar-upload .avatar-edit {
+    position: absolute;
+    right: 12px;
+    z-index: 1;
+    top: 10px;
+}
+    
+.avatar-upload .avatar-edit input {
+    display: none;
+}
+    
+.avatar-upload .avatar-edit input + label {
     display: inline-block;
-    padding-top: 2.5em;
-    padding-bottom: 2.5em;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0;
+    border-radius: 100%;
+    background: #ffffff;
+    border: 1px solid #d9e3e3;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    font-weight: normal;
+    transition: all 0.2s ease-in-out;
+}
+    
+.avatar-upload .avatar-edit input + label:hover {
+    background: #f1f1f1;
+    border-color: #d6d6d6;
+}
+    
+.avatar-upload .avatar-edit input + label:after {
+    content: "\f040";
+    font-family: 'FontAwesome';
+    color: #757575;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin: auto;
+}
+    
+.avatar-upload .avatar-preview {
+    width: 192px;
+    height: 192px;
+    position: relative;
+    border-radius: 100%;
+    border: 6px solid #F8F8F8;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+    
+.avatar-upload .avatar-preview > div {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-#profile-img {
+
+/* -------------------------------------------------- */
+/* PERSONAL DETAILS */
+#info {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;
 }
 
-form input[type="file"] {
-          display: none;
-          cursor: pointer;
-}
-
-/* personal details */
 .category {
     width: 30%;
     font-weight: bold;
@@ -65,15 +95,109 @@ form input[type="file"] {
 
 .details {
     font-size: 22px;
+    position: absolute;
+    top: 12px;
+    left: 25%;
+    z-index: 10;
+    width: 70%;
 }
 
-.edit-button {
-    width: 5%;
+
+/* -------------------------------------------------- */
+/* EDIT BUTTON */
+
+/* Basic Style */
+.details .form-control {
+    background-color: transparent;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
 }
 
+.details ul {
+    margin: 0;
+    padding: 0;
+}
 
+.details li * {
+    float: left;
+}
 
-/* buttons */
+.details input, button {
+    outline: none;
+}
+
+.details button {
+    background: none;
+    border: 0px;
+    color: #888;
+    font-size: 15px;
+    margin: 10px 0 0;
+    cursor: pointer;
+    float: right;
+}
+
+.details button:hover {
+    color: #333;
+}
+
+/* Heading */
+.details input[type="text"]:focus {
+    color: #333;
+}
+
+.details input[type="text"] {
+    border: 1px solid #333;
+    float: left;
+    margin: 0;
+    padding: 0;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    height: 40px;
+    width: 200px;
+}
+
+/* Task list */
+.details li {
+    overflow: hidden;
+    padding: 10px 0;
+}
+
+.details li > label {
+    font-size: 22px;
+    text-align: left;
+    width: 70%;
+    margin-bottom: 27px;
+}
+
+.details li >  input[type="text"] {
+    width: 70%;
+
+}
+
+/* Edit Task */
+.details ul li input[type=text] {
+    display:none;
+}
+
+.details ul li.editMode input[type=text] {
+    display:block;
+    font-size: 22px;
+}
+
+.details ul li.editMode label {
+    display:none;
+}
+
+.details li.editMode  {
+    
+    padding-bottom: 30px;
+}
+
+/* -------------------------------------------------- */
+/* BUTTONS */
 a {
     text-decoration: none;
     display: inline-block;
@@ -99,7 +223,9 @@ td {
     vertical-align: middle;
 }
 
-/* event cards */
+
+/* -------------------------------------------------- */
+/* EVENT CARDS */
 #events {
     overflow-x: scroll;
     overflow-y: hidden;
@@ -117,7 +243,9 @@ td {
     margin-top: 0px;
 }
 
-/* modal button */
+
+/* -------------------------------------------------- */
+/* MODAL BUTTON */
 .button-green {
     background-color: #104547;
     color: white;
@@ -128,7 +256,9 @@ td {
     color: white;
 }
 
-/* clubs */
+
+/* -------------------------------------------------- */
+/* CLUBS */
 .image-center {
     display: flex;
     justify-content: center;
@@ -145,18 +275,14 @@ td {
     color: black;
 }
 
-/* checkbox */
-/* * {
-    padding: 0;
-    margin: 0;
-    font-family: Tahoma, sans-serif;
-} */
 
-.country {
+/* -------------------------------------------------- */
+/* checkbox */
+.club {
     padding: 20px;
 }
 
-.country label {
+.club label {
     /* display: flex; */
     border: solid 2px #3F6A6B;
     border-radius: 15px;
@@ -173,26 +299,26 @@ td {
     transition: all 0.5s ease-in-out;
 
 }
-.country label img {
+.club label img {
     width: 20px;
     margin-right: 5px;
 }
 
-.country input[type=checkbox] {
+.club input[type=checkbox] {
     display: none;
 }
 
-.country input:checked+label {
+.club input:checked+label {
     transition: all 0.5s ease-in-out;
     border: solid 2px #3F6A6B;
     color: white;
     background-color: #3F6A6B;
   
 }
-.country label:hover {
+.club label:hover {
     cursor: pointer;
 }
-.country input[type="reset"], .country input[type="submit"]{
+.club input[type="reset"], .club input[type="submit"]{
      border-radius: 15px;
     width: 100px;
     height: 40px;
@@ -201,7 +327,7 @@ td {
   float:left;
 
 }
-.country input[type="reset"]:hover, .country input[type="submit"]:hover{
+.club input[type="reset"]:hover, .club input[type="submit"]:hover{
   cursor:pointer;
   background-color:black;
   color:white;
