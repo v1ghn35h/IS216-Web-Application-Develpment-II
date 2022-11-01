@@ -1,169 +1,229 @@
+// ----------------------------------------
+// CALENDAR FIREBASE
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-analytics.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyC_sRHAqy76KR30qWRWTT1HjahFEN0IN4Q",
+  authDomain: "calendaready-g7t7.firebaseapp.com",
+  databaseURL: "https://calendaready-g7t7-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "calendaready-g7t7",
+  storageBucket: "calendaready-g7t7.appspot.com",
+  messagingSenderId: "544037155570",
+  appId: "1:544037155570:web:c7e3ca7a1c55beaea8966b",
+  measurementId: "G-03K9PHBX7D"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+/* CONNECT TO DATABASE */
+// Import functions needed to read from realtime database
+import { getDatabase, ref, onValue, child, get, set, remove, push, update } from
+"https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
+
+// Connect to the realtime database
+const db = getDatabase();
+
+var all_events = []
+let current_user = "user1" // change according to user logged in
+
+let new_db_size = 0
+let task_id = 0
+
+// ----------------------------------------
 // TO DO LIST
-// Problem: User interaction doesn't provide desired results.
-// Solution: Add interactivity so the user can manage daily tasks
 
-var taskInput = document.getElementById("new-task");
-var addButton = document.getElementsByTagName("button")[1];
-var incompleteTasksHolder = document.getElementById("incomplete-tasks");
-var completedTasksHolder = document.getElementById("completed-tasks");
+let task_list_div = document.getElementById("taskList")
 
-//New Task List Item
-var createNewTaskElement = function(taskString) {
-  //Create List Item
-  var listItem = document.createElement("li");
+// fetch data from db and populate tasks
+const dbRef = ref(getDatabase());
+get(child(dbRef, `users/${current_user}/user_tasks/`)).then((snapshot) => {
+  if (snapshot.exists()) {
+    let tasks = snapshot.val();
 
-  //input (checkbox)
-  var checkBox = document.createElement("input"); // checkbox
-  //label
-  var label = document.createElement("label");
-  //input (text)
-  var editInput = document.createElement("input"); // text
-  //button.edit
-  var editButton = document.createElement("button");
-  //button.delete
-  var deleteButton = document.createElement("button");
-  
-      //Each element needs modifying
-  
-  checkBox.type = "checkbox";
-  editInput.type = "text";
-  
-  editButton.innerText = "Edit";
-  editButton.className = "edit";
-  deleteButton.innerText = "Delete";
-  deleteButton.className = "delete";
-  
-  label.innerText = taskString;
-  
-    
-      // each element needs appending
-  listItem.appendChild(checkBox);
-  listItem.appendChild(label);
-  listItem.appendChild(editInput);
-  listItem.appendChild(editButton);
-  listItem.appendChild(deleteButton);
+    // clear previous data
+    task_list_div.innerHTML = ""
 
-  return listItem;
-}
+    for (var task in tasks) {
+      let output = ``
 
-// Add a new task
-var addTask = function() {
-  console.log("Add task...");
-  //Create a new list item with the text from #new-task:
-  var listItem = createNewTaskElement(taskInput.value);
-  //Append listItem to incompleteTasksHolder
-  incompleteTasksHolder.appendChild(listItem);
-  bindTaskEvents(listItem, taskCompleted);  
-  
-  taskInput.value = "";   
-}
+      let task_info = tasks[task]
 
-// Edit an existing task
-var editTask = function() {
-  console.log("Edit Task...");
-  
-  var listItem = this.parentNode;
-  
-  var editInput = listItem.querySelector("input[type=text]")
-  var label = listItem.querySelector("label");
-  
-  var containsClass = listItem.classList.contains("editMode");
-    //if the class of the parent is .editMode 
-  if(containsClass) {
-      //switch from .editMode 
-      //Make label text become the input's value
-    label.innerText = editInput.value;
-  } else {
-      //Switch to .editMode
-      //input value becomes the label's text
-    editInput.value = label.innerText;
+      let task_id = task_info.id
+      let task_title = task_info.title
+      let task_completion = task_info.status
+
+      if (task_completion == "done") {
+        output += `<li class="list-group-item done" id=${task_id}>`
+      }
+      else {
+        output += `<li class="list-group-item" id=${task_id}>`
+      }
+
+      output += `<i class="far fa-square done-icon"></i>
+                  <i class="far fa-check-square done-icon"></i>
+                  <span class="todo-text"> ${task_title} </span>
+                  <i class="far fa-trash-alt"></i>
+                </li>`
+
+      task_list_div.innerHTML += output
+    }
+  } 
+  else {
+    console.log("No data available");
   }
-  
-    // Toggle .editMode on the parent
-  listItem.classList.toggle("editMode");
- 
+})
+
+
+// Define all UI variable
+const todoList = document.querySelector('.list-group');
+const form = document.querySelector('#form');
+const todoInput = document.querySelector('#todo');
+const clearBtn = document.querySelector('#clearBtn');
+const search = document.querySelector('#search');
+
+// Load all event listners
+allEventListners();
+
+
+// Functions of all event listners
+function allEventListners() {
+    // Add todo event
+    form.addEventListener('submit', addTodo);
+    // Remove and complete todo event
+    todoList.addEventListener('click', removeTodo);
 }
 
 
-// Delete an existing task
-var deleteTask = function() {
-  console.log("Delete task...");
-  var listItem = this.parentNode;
-  var ul = listItem.parentNode;
-  
-  //Remove the parent list item from the ul
-  ul.removeChild(listItem);
+// Add todo item function
+function addTodo(e) {
+    if (todoInput.value !== '') {
+        // Create li element
+        const li = document.createElement('li');
+        // Add class
+        li.className = 'list-group-item';
+        // Add complete and remove icon
+        li.innerHTML = `<i class="far fa-square done-icon"></i>
+                        <i class="far fa-check-square done-icon"></i>
+                        <i class="far fa-trash-alt"></i>`;
+        // Create span element
+        const span = document.createElement('span');
+        // Add class
+        span.className = 'todo-text';
+        // Create text node and append to span
+        span.appendChild(document.createTextNode(todoInput.value));
+        // Append span to li
+        li.appendChild(span);
+        // Append li to ul (todoList)
+        todoList.appendChild(li);
+
+        // fetch data from db and populate tasks
+        const dbRef = ref(getDatabase());
+        get(child(dbRef, `users/${current_user}/user_tasks/`)).then((snapshot) => {
+          if (snapshot.exists()) {
+            let tasks = snapshot.val();
+            let task_list_size = Object.keys(tasks).length
+            let task_id = task_list_size + 1
+          }
+        })
+
+        // add to database
+        set(ref(db, 'users/' + current_user + '/user_tasks/task_' + task_id), 
+        {
+          id: task_id,
+          title: todoInput.value,
+          status: ""
+        },
+      )
+        // Clear input
+        todoInput.value = '';
+
+        // force page to reload
+        setTimeout(function(){
+          window.location.reload();
+          }, 2000);
+
+    } else {
+        alert('Please add todo');
+    }
+
+    e.preventDefault();
 }
 
-// Mark a task as complete 
-var taskCompleted = function() {
-  console.log("Task complete...");
-  //Append the task list item to the #completed-tasks
-  var listItem = this.parentNode;
-  completedTasksHolder.appendChild(listItem);
-  bindTaskEvents(listItem, taskIncomplete);
+
+// Remove and complete todo item function
+function removeTodo(e) {
+    let event = e.target.parentElement
+    let event_id = event.id
+
+    let event_title = event.getElementsByClassName("todo-text")[0].innerHTML
+
+    // Complete todo
+    if (e.target.classList.contains('done-icon')) {
+        e.target.parentElement.classList.toggle('done');
+
+        let check = event.classList.contains('done')
+        let status = ""
+        
+        // task completed
+        if (check) {
+          status = "done"
+        }
+
+        // task not completed
+        else {
+          status = ""
+        }
+
+        // update database
+        set(ref(db, 'users/' + current_user + '/user_tasks/task_' + event_id), 
+        {
+          id: event_id,
+          title: event_title,
+          status: status
+        },
+      )
+  }
+
+    // Remove todo
+    if (e.target.classList.contains('fa-trash-alt')) {
+        if (confirm('Are you sure')) {
+            e.target.parentElement.remove();
+
+            // delete from db
+            const tasksRef = ref(db, 'users/' + current_user + '/user_tasks/task_' + event_id);
+            console.log(tasksRef)
+            remove(tasksRef).then(() => {
+              // force page to reload
+              setTimeout(function(){
+                window.location.reload();
+                }, 2000);
+            });
+
+        }
+    }
 }
 
-// Mark a task as incomplete
-var taskIncomplete = function() {
-  console.log("Task Incomplete...");
-  // When checkbox is unchecked
-  // Append the task list item #incomplete-tasks
-  var listItem = this.parentNode;
-  incompleteTasksHolder.appendChild(listItem);
-  bindTaskEvents(listItem, taskCompleted);
-}
-
-var bindTaskEvents = function(taskListItem, checkBoxEventHandler) {
-  console.log("Bind list item events");
-  //select taskListItem's children
-  var checkBox = taskListItem.querySelector("input[type=checkbox]");
-  var editButton = taskListItem.querySelector("button.edit");
-  var deleteButton = taskListItem.querySelector("button.delete");
-  
-  //bind editTask to edit button
-  editButton.onclick = editTask;
-  
-  //bind deleteTask to delete button
-  deleteButton.onclick = deleteTask;
-  
-  //bind checkBoxEventHandler to checkbox
-  checkBox.onchange = checkBoxEventHandler;
-}
-
-var ajaxRequest = function() {
-  console.log("AJAX Request");
-}
-
-// Set the click handler to the addTask function
-//addButton.onclick = addTask;
-addButton.addEventListener("click", addTask);
-addButton.addEventListener("click", ajaxRequest);
-
-
-// Cycle over the incompleteTaskHolder ul list items
-for(var i = 0; i <  incompleteTasksHolder.children.length; i++) {
-    // bind events to list item's children (taskCompleted)
-  bindTaskEvents(incompleteTasksHolder.children[i], taskCompleted);
-}
-// Cycle over the completeTaskHolder ul list items
-for(var i = 0; i <  completedTasksHolder.children.length; i++) {
-    // bind events to list item's children (taskIncompleted)
-  bindTaskEvents(completedTasksHolder.children[i], taskIncomplete); 
-
-}
 
 // ----------------------------------------
 // CALENDAR
 // event icons & pictures
 // {'category': [color, icon, image], ...}
 let event_media = {'Adventure': ['#ffb700', 'icons/adventure.png'], 
-                    'Arts': ['#ffc2d1', 'icons/artsculture.png', ''],
+                    'Arts & Culture': ['#ffc2d1', 'icons/artsculture.png', ''],
                     'Community': ['#ffd81a', 'icons/community.png'],
-                    'Global': ['#ecbcfd', 'icons/globalculture.png'],
-                    'School': ['#adc178', 'icons/schoolsociety.png'],
+                    'Global Culture': ['#ecbcfd', 'icons/globalculture.png'],
+                    'School Society': ['#adc178', 'icons/schoolsociety.png'],
                     'Sports': ['#01497c', 'icons/sports.png'],
-                    'Student': ['#8ecae6', 'icons/studentbodies.png']
+                    'Student Bodies': ['#8ecae6', 'icons/studentbodies.png']
                   }
 
 /* colour picker */
@@ -200,10 +260,9 @@ var colors = [
 
 let event_class = ""
 let event_color = ""
-let normal_add = false
 
 // Vue Instance
-var app = Vue.createApp({
+var apps = Vue.createApp({
     // Element
     el: "#category",
 
@@ -219,7 +278,18 @@ var app = Vue.createApp({
 
     // Methods
     methods: {
-      setColor: function(color, colorName) {
+
+      selector: function() {
+        if(!this.selectedColor) {
+          return 'Select a category';
+        }
+        else {
+          return '<span style="background: ' + this.selectedColor + '"></span>' + this.selectedColorName;
+        }
+      },
+
+      setColor: 
+        function(color, colorName) {
         this.selectedColor = color;
         this.selectedColorName = colorName;
         this.active = false;
@@ -228,25 +298,14 @@ var app = Vue.createApp({
         event_class = colorName
         event_color = color
       },
-      toggleDropdown: function() {
-        this.active = !this.active;
-      },
 
-      selector: function() {
-        let output = ''
-        // Nothing selected
-        if(!this.selectedColor) {
-          output = '<span class="text-muted"> choose one </span>';
+        toggleDropdown: function() {
+          this.active = !this.active;
         }
-        else {
-          output = '<span style="background: ' + this.selectedColor + '"></span> ' + this.selectedColorName;
-        }
-        return output
-      }
     }
 })
 
-app.mount("#category")
+apps.mount("#category")
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -259,10 +318,11 @@ document.addEventListener('DOMContentLoaded', function() {
         text: '+',
         click: 
           function() {
-            let normal_add = true
 
             // get the modal
             var modal = document.getElementById("myModal");
+            var add_success_modal = document.getElementById("addSuccessModal");
+
             // get the <span> element that closes the modal
             var span = document.getElementsByClassName("close")[0];
           
@@ -279,6 +339,10 @@ document.addEventListener('DOMContentLoaded', function() {
           
             // when button is clicked
             document.getElementById('addEventButton').addEventListener("click", function() {
+
+              // fetch title
+              let title = document.getElementById('title').value
+              console.log(title)
           
               // fetch start
               let start = document.getElementById('startDate').value
@@ -297,18 +361,39 @@ document.addEventListener('DOMContentLoaded', function() {
               if (end_time != "") { // add end time if it's stated
                 end += `T${end_time}:00`
               }
+
+              // fetch items from db
+              const dbRef = ref(getDatabase());
+              get(child(dbRef, `users/${current_user}/user_events/`)).then((snapshot) => {
+                if (snapshot.exists()) {
+                  let db_values = snapshot.val();
+                  let db_size = Object.keys(db_values).length
+                  let new_db_size = db_size + 1
+                } else {
+                  console.log("No data available");
+                }
+              }).catch((error) => {
+                console.error(error);
+              });
               
               // add event to array
-              calendar.addEvent(
+              set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
                 {
-                  title: document.getElementById('title').value,
+                  title: title,
                   start: start,
                   end: end,
-                  className: event_class,
-                  backgroundColor: event_color,
-                  borderColor: event_color,
+                  category: event_class,
+                  id: new_db_size
                 },
               )
+
+              // display added successfully
+              add_success_modal.style.display = "block";
+
+              // force page to reload
+              setTimeout(function(){
+                window.location.reload();
+              }, 2000);
           
               // reset modal 
               modal.style.display = "none";
@@ -328,18 +413,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     displayEventTime: true,
 
+    firstDay: 1, // set first day of week to monday
+
     // Click on date (to add event)
     dateClick: 
       function (info) {
-        normal_add = false
-        
+
         // get the modal
         var modal = document.getElementById("myModal");
+        var add_success_modal = document.getElementById("addSuccessModal");
         // get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
 
         // when the user clicks on the button, open the modal
         modal.style.display = "block";
+        add_success_modal.style.display = "none";
 
         // when the user clicks on <span> (x), close the modal
         span.onclick = function() {
@@ -359,164 +447,172 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('addEventButton').addEventListener("click", function() {
 
           // fetch start
-          let start = document.getElementById('startDate').value
-          let start_time = document.getElementById('startTime').value
+          var start = document.getElementById('startDate').value
+          var start_time = document.getElementById('startTime').value
           if (start_time != "") { // add start time if it's stated
             start += `T${start_time}:00`
           }
 
           // fetch end
-          let end = ""
-          let end_date = document.getElementById('endDate').value
+          var end = ""
+          var end_date = document.getElementById('endDate').value
           if (end_date != "") { // add end date if it is stated
             end += end_date
           }
-          let end_time = document.getElementById('endTime').value
+          var end_time = document.getElementById('endTime').value
           if (end_time != "") { // add end time if it's stated
             end += `T${end_time}:00`
           }
           
-          // add event to array
-          calendar.addEvent(
-            {
-              title: document.getElementById('title').value,
-              start: start,
-              end: end,
-              className: event_class,
-              backgroundColor: event_color,
-              borderColor: event_color,
-            },
-          )
+          // fetch title
+          var title = document.getElementById('title').value
+      
+          // fetch start
+          var start = document.getElementById('startDate').value
+          var start_time = document.getElementById('startTime').value
+          if (start_time != "") { // add start time if it's stated
+            start += `T${start_time}:00`
+          }
+      
+          // fetch end
+          var end = ""
+          var end_date = document.getElementById('endDate').value
+          if (end_date != "") { // add end date if it is stated
+            end += end_date
+          }
+          var end_time = document.getElementById('endTime').value
+          if (end_time != "") { // add end time if it's stated
+            end += `T${end_time}:00`
+          }
 
-          // reset modal 
-          modal.style.display = "none";
-          document.getElementById("addEvent").reset();
-        })
-        
-      },
+          // fetch items from db
+          const dbRef = ref(getDatabase());
+          get(child(dbRef, `users/${current_user}/user_events/`)).then((snapshot) => {
+            if (snapshot.exists()) {
+              var db_values = snapshot.val();
+              var db_size = Object.keys(db_values).length
+              var new_db_size = db_size + 1
 
+              // add event to array
+              set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
+                {
+                  title: title,
+                  start: start,
+                  end: end,
+                  category: event_class,
+                  id: new_db_size
+                },
+              )
+
+              // display added successfully
+              add_success_modal.style.display = "block";
+
+              // force page to reload
+              setTimeout(function(){
+                window.location.reload();
+              }, 2000);
+          
+              // reset modal 
+              modal.style.display = "none";
+              document.getElementById("addEvent").reset();
+            } 
+            
+
+            else {
+              console.log("No data available");
+            }
+          }).catch((error) => {
+            console.error(error);
+          });
+          
+        }
+    )},
 
     // API Key
-    googleCalendarApiKey: 'AIzaSyBLxGXn-ZzMfSKIobD-6C4chf4qI8XXRn8',
+    googleCalendarApiKey: 'AIzaSyC4IyTr17PyenYfQSiFD3mI3xCGIV0LsOk',
+    // old: AIzaSyBLxGXn-ZzMfSKIobD-6C4chf4qI8XXRn8
 
-    // Events from database (google calendar)
-    eventSources: [
-      {
-        googleCalendarId:'d55701d01ba1038768a0a98fba868aab7e3ce8954f4a78a63d4970026c34d4a2@group.calendar.google.com',
-        className: 'Adventure',
-        color: '#ffb700' // orange
-      },
-      {
-        googleCalendarId:'7a9df4f985d4443d3711619daf830984c0382e2b7dc9f2a3af052d96347fe077@group.calendar.google.com',
-        className: 'Arts & Culture',
-        color: '#ffc2d1' // pink
-      },
-      {
-        googleCalendarId:'bfbe99ec974a40336137e144b240bc6c0638f50120390e989db68dbaf6febc83@group.calendar.google.com',
-        className: 'Community',
-        color: '#ffd81a' // yellow
-      },
-      {
-        googleCalendarId:'34e6e342a1a4f0fac2dc4c3b018d8fc49fc4408fe7c339767f56732c7759407c@group.calendar.google.com',
-        className: 'Global Culture',
-        color: '#ecbcfd' // purple
-      },
-      {
-        googleCalendarId:'835cd39d1fefa4b47d0967c3049bd4e68676f5f08143e14dbd42ec97f0e9237e@group.calendar.google.com',
-        className: 'School Society',
-        color: '#adc178' // green
-      },
-      {
-        googleCalendarId:'f10659566b954502d50d0e59720982c28b6a17ffe79492e393cf6fb4566be0c2@group.calendar.google.com',
-        className: 'Sports',
-        color: '#01497c' // dark blue
-      },
-      {
-        googleCalendarId:'432fd38ca06006129addbc65d3ec1bc80260681f26bffed41e5e69d5c822ad57@group.calendar.google.com',
-        className: 'Student Bodies',
-        color: '#8ecae6' // light blue
-      }
-    ],
+    events: 
+      function(info, successCallback, failureCallback) {
 
-    // To populate new events
-    events: [
-      // test event
-      {
-        title: 'test adventure',
-        start: '2022-10-16',
-        className: 'Adventure',
-        color: '#ffb700' // orange
-      },
-      {
-        title: 'test arts',
-        start: '2022-10-17',
-        className: 'Arts & Culture',
-        color: '#ffc2d1' // pink
-      },
-      {
-        title: 'test community',
-        start: '2022-10-18',
-        className: 'Community',
-        color: '#ffd81a' // yellow
-      },
-      {
-        title: 'test global culture',
-        start: '2022-10-19',
-        className: 'Global Culture',
-        color: '#ecbcfd' // purple
-      },
-            {
-        title: 'test school society',
-        start: '2022-10-20',
-        className: 'School Society',
-        color: '#adc178' // green
-      },
-      {
-        title: 'test sports',
-        start: '2022-10-21',
-        className: 'Sports',
-        color: '#01497c' // dark blue
-      },
-      {
-        title: 'test student bodies',
-        start: '2022-10-22',
-        className: 'Student Bodies',
-        color: '#8ecae6' // light blue
-      }
-    ],
+      // Get a reference to the data 'title'
+      const users = ref(db, 'users') 
+
+      // Update user's calendar
+      onValue(users, (snapshot => {
+        const data = snapshot.val(); // get the new value
+
+        let all_users = data
+        let user = data[current_user]
+
+        let upcoming_events = user.user_events
+
+        for (let event in upcoming_events) {
+          let new_event_obj = upcoming_events[event]
+
+          // set event color by category
+          let new_event_category = new_event_obj.category
+
+          if (new_event_category != "") {
+            let find_object = colors.find(o => o.name === new_event_category); // find object with the name == new_event_category
+            let new_event_color = find_object.hex
+
+            // add color to event object
+            new_event_obj["color"] = new_event_color
+          }
+          
+          all_events.push(new_event_obj)
+        }
+
+        successCallback(all_events)
+
+      }));
+
+    },
 
     // When the user clicks on an event
     eventClick: 
       function(info) {
+
+        let event_info = info.event._def
+
         // get the modal
         var modal = document.getElementById("myOtherModal");
+        var delete_success_modal = document.getElementById("deleteSuccessModal");
+
         // get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[1];
 
         // when the user clicks on the button, open the modal
         modal.style.display = "block";
+        delete_success_modal.style.display = "none";
 
         // when the user clicks on <span> (x), close the modal
         span.onclick = function() {
           modal.style.display = "none";
         }
 
-        // output event details
-        let event_category = info.event._def.ui.classNames[0]
+        // --- DISPLAY EVENT DETAILS ---
+        let event_id = event_info.publicId
+        let event_category = info.event._def.extendedProps.category
 
-        // set color based on category
-        let event_colour = event_media[event_category][0]
-        let dot = document.getElementById("eventColor")
-        dot.style.background = event_colour
+        // if event_category is selected, set icon based on category
+        if (event_category != "") {
+          // set color based on category
+          let obj = colors.find(o => o.name === event_category); // find object with the name == new_event_category
+          let event_colour = obj.hex
+          let dot = document.getElementById("eventColor")
+          dot.style.background = event_colour
 
-        // set icon based on category
-        let event_icon = event_media[event_category][1]
-        let icon = document.getElementById("eventIcon")
-        icon.innerHTML = `<img src=${event_icon} style='height: 50px;'>`
+          // set icon based on category
+          let event_icon = event_media[event_category][1]
+          let icon = document.getElementById("eventIcon")
+          icon.innerHTML = `<img src="img/${event_icon}" style='height: 50px;'>`
+        }
 
         // set event title
         let eventTitle = document.getElementById("eventTitle")
-        eventTitle.innerHTML = info.event.title
+        eventTitle.innerHTML = info.event._def.title
 
         // set event start details
         let eventStart = document.getElementById("eventStart")
@@ -547,12 +643,37 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         eventEnd.innerHTML = end_output
 
-
         // set event category
         let eventCategory = document.getElementById("eventCategory")
-        eventCategory.innerHTML = info.event._def.ui.classNames[0]
+        if (event_category != undefined) {
+          eventCategory.innerHTML = event_category
+        }
+        else {
+          eventCategory = "Not specified"
+        }
 
-      }
+        // --- DELETE EVENT ---
+        document.getElementById('deleteEventButton').onclick = 
+        function() {
+
+          // Fetch event
+          let event_to_delete = calendar.getEventById(Number(event_id))
+
+          // Delete event'
+          const tasksRef = ref(db, 'users/' + user + 'user_events/event_' + event_id);
+
+          remove(tasksRef).then(() => {
+            // display deleted successfully
+            delete_success_modal.style.display = "block";
+
+            // force page to reload
+            setTimeout(function(){
+              window.location.reload();
+              }, 2000);
+          });
+
+      };
+    }
 
   });
 

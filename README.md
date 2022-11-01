@@ -1,6 +1,7 @@
-# IS216-Project [G7T7] = calendaREADY
+# SMU IS216-Project [G7T7] = calendaREADY
 
 ### Sections:
+
 - 1. Login = Ryan
 - 2. Home = Kanika
 - 3. Events = Vighnesh, Jun Lin

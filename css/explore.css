@@ -33,6 +33,7 @@ button.btn:hover, button.btn:active, button.btn:visited {
 }
 #cards_landscape_wrap-2 .card-flyer {
     border-radius: 5px; 
+    height: 90%;
         
 }
 #cards_landscape_wrap-2 .card-flyer .image-box{
@@ -161,14 +162,5 @@ button.btn:hover, button.btn:active, button.btn:visited {
     color: white;
   }
 
-  .modal-content,.container-popup {
-    /* align-self: left; */
-    text-align: left;
-  }
 
-  .popup-image {
-    text-align: center;
-    padding-left: 12px;
-    padding-right: 12px;
-    
-  }
+
