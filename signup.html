@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="author" content="2022 Term 1: IS216 G7 - Team 7" />
-        <title>Login | calendaREADY</title>
+        <title>Sign Up | calendaREADY</title>
         <link rel="icon" href="img/logo/logo-greenbg.png">
 
         <!-- Bootstrap CSS -->
@@ -20,7 +20,7 @@
     <body class="text-center">
 
         <!-- Login Box -->
-        <main class="form-login w-100 m-auto">
+        <main class="form-login w-100 m-auto" style="max-width:700px;">
 
             <form action="">
                 <!-- Logo -->
@@ -33,45 +33,45 @@
                 />
 
                 <!-- Login Header Text -->
-                <h3>Welcome Back!</h3>
-                <h4 class="mb-3 fw-normal">Are you ready for a new day?</h4>
+                <h3>Let's Get Started!</h3>
+                <h4 class="mb-3 fw-normal">A new day awaits you. Create your account:</h4>
 
-                <!-- Login with Google -->
-                <button class="w-100 py-2 btn btn-outline-dark btn-light" type="submit">
-                    <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Google" height="16" class="me-1">
-                    Login with Google
-                </button>
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- Email Input Box -->
+                        <div class="form-floating mb-1">
+                            <input type="email" class="form-control" id="loginEmail" placeholder="name@example.com" required />
+                            <label for="loginEmail">Email Address</label>
+                            <div id="loginEmailVerify" class="form-text fst-italic text-start">We'll send you a link to verify your email.</div>
+                        </div>
 
-                <!-- Login Separator -->
-                <p class="text-muted my-4 sep"><span>or</span></p>
+                        <!-- Password Input Box -->
+                        <div class="form-floating mb-1">
+                            <input type="password" class="form-control" id="loginPassword" placeholder="password" required />
+                            <label for="loginPassword">Password</label>
+                        </div>
 
-                <!-- Email Input Box -->
-                <div class="form-floating mb-1">
-                    <input type="email" class="form-control" id="loginEmail" placeholder="name@example.com" required />
-                    <label for="loginEmail">Email Address</label>
+                        <!-- Confirm Password Input Box -->
+                        <div class="form-floating mb-2">
+                            <input type="password" class="form-control" id="loginPasswordConfirm" placeholder="passwordconfirm" required />
+                            <label for="loginPasswordConfirm">Confirm Password</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        Clubs Interest Selection Section, Pending.
+                    </div>
                 </div>
 
-                <!-- Password Input Box -->
-                <div class="form-floating mb-1">
-                    <input type="password" class="form-control" id="loginPassword" placeholder="password" required />
-                    <label for="loginPassword">Password</label>
-                    <div id="forgotPassword" class="form-text fst-italic text-start"><a href="forgotpass.html" class="text-decoration-none">Forgot your password?</a></div>
-                </div>
-
-                <!-- Remember Me Checkbox -->
-                <div class="form-check mb-3">
-                    <label>
-                        <input class="form-check-input" type="checkbox" value="remember-me" /> Remember me!
-                    </label>
-                </div>
+                <p class="text-muted fst-italic mb-3">Your profile information will be retrieved from SMU based on your verified email!</p>
 
                 <!-- Login Button -->
                 <button class="w-100 btn btn-lg button-login" type="submit">
-                    Login
+                    Sign Up
                 </button>
+                <p class="text-muted mb-0 fw-light">By signing up, you agree to our Terms of Use.</p>
 
                 <!-- Sign Up -->
-                <p class="my-2">Don't have an account? <a href="signup.html" class="fw-bold text-decoration-none">Sign Up!</a></p>
+                <p class="my-2">Already have an account? <a href="login.html" class="fw-bold text-decoration-none">Login!</a></p>
 
                 <!-- "Footer" -->
                 <p class="text-muted fst-italic mb-0 fw-light">Built with ♡ by Team 7 (IS216 G7 / 2022 T1)</p>
@@ -204,32 +204,6 @@
                 </div>
             </div>
         </div>
-
-        <!--
-            To-Do:
-            - Backend!!!
-            - Explore Firebase Authentication (https://www.youtube.com/watch?v=hF82hb3YegE&list=PLcjTSeabJXFk9ozYWokjUq93WFunoVT9w&index=3)
-            - Explore Sign In With Google
-                - https://developers.google.com/identity/gsi/web/guides/overview
-                - https://firebase.google.com/docs/auth/web/google-signin
-            
-            - Autofill relevant sections (if any)
-            - optionally link up passreset.html / verifyemail.html, autofilled and without email sending)
-            - Add SMU clubs interest selection in signup
-            - Update background images
-
-            References:
-            - https://getbootstrap.com/docs/5.2/examples/
-            - https://getbootstrap.com/docs/5.2/examples/modals/
-            - https://trailhead.salesforce.com/
-
-            - https://discord.com/login
-            - https://www.instagram.com/accounts/login/
-
-            - https://discord.com/register
-            - https://www.instagram.com/accounts/password/reset/
-            - https://www.instagram.com/accounts/emailsignup/
-        -->
 
         <!-- Bootstrap JS -->
         <script

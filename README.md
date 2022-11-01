@@ -1,4 +1,4 @@
-# SMU IS216-Project [G7T7] = calendaREADY
+# IS216-Project [G7T7] = calendaREADY
 
 ### Sections:
 - 1. Login = Ryan

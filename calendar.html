@@ -10,15 +10,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css' rel='stylesheet'>
 
-    <title> Calendar | calendaREADY </title>
-    <link rel="icon" href="img/logo/logo-greenbg.png">
+    <title> Calendar </title>
+    <link rel="icon" href="logo/logo-white.png">
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css'>
     
     <!-- External CSS -->
     <link rel="stylesheet" href="css/calendar.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-    <!--navbar css-->
-    <link rel="stylesheet" href="css/navbar.css">
 
     <!-- Vue JavaScript -->
     <script src="https://unpkg.com/vue@next"></script>
@@ -46,46 +43,85 @@
       </div>
   </nav>
 
-  <!-- LINK TO FIREBASE TO FETCH DATA -->
-  <h1 id="target"></h1>
-  <script type="module" src="js/calendar.js"></script>
-
-  <div class="container">
-      <div class="row text-center">
+  <div class="container text-center">
+      <div class="row">
   
         <!-- Task List -->
-        <div class="col-12 col-lg-3">
+        <div class="col-3">
           <p class="mt-5" style="font-size: 24px"> To-Do List </p>
 
-          <div class="card-header pb-2">
-            <form id="form">
-              <div class="input-group">
-                <input type="text" class="form-control" id="todo" placeholder="Add new todo item">
-                <div class="input-group-append">
-                  <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Add
-                  </button>
-                </div>
-              </div>
-            </form>
+          <!-- Add Item -->
+          <div class="mt-3">
+            <label for="new-task"> 
+              <img src="img/icons/add.png" style="height: 20px">
+              &nbsp;
+              Add Item 
+            </label>
+            <input id="new-task" type="text">
+            &nbsp;&nbsp;&nbsp;
+            <button class="btn btn-outline-dark"> Add </button>
           </div>
+          
+          <!-- To Do -->
+          <div class="mt-3">
+            <h3> 
+              <img src="img/icons/tasklist.png" style="height: 20px">
+              &nbsp;
+              To-Do 
+            </h3>
+            <ul id="incomplete-tasks">
 
-        <div class="card-body">
-          <ul class="list-group mb-3" id="taskList">
+              <!-- Pre fill list item -->
+              <li>
+                <input type="checkbox">
+                <label> BPAS Report </label>
+                
+                <input type="text">
+                <button class="btn edit"> Edit </button>
+                <button class="btn delete"> Delete </button>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- Completed -->
+          <div class="mt-3">
+            <h3> 
+              <img src="img/icons/tick.png" style="height: 20px">
+              &nbsp;
+              Completed 
+            </h3>
+            <ul id="completed-tasks">
+              
+              <!-- Pre fill list item -->
+              <li>
+                <input type="checkbox" checked>
+                <label> WAD2 Quiz </label>
 
-            <!-- Populate tasks -->
+                <input type="text">
+                <button class="btn edit"> Edit </button>
+                <button class="btn delete"> Delete </button>
+              </li>
 
-          </ul>
-        </div>
-      </div>
+              <li>
+                <input type="checkbox" checked>
+                <label> IDP Lecture </label>
 
-
+                <input type="text">
+                <button class="btn edit"> Edit </button>
+                <button class="btn delete"> Delete </button>
+              </li>
+            </ul>
+          </div>
+          </div>
   
           <!-- Calendar -->
-          <div class="col-12 col-lg-9">
+          <div class="col-9">
             <div id='calendar'>
 
             </div>
           </div>
+  
+      </div>
   </div>
 
 
@@ -99,7 +135,7 @@
   
         <!-- event header -->
         <div class="p-3">
-          <h4 class="display-6 text-center"> Create a New Event </h4>
+          <h3 class="display-6 text-center"> Create a New Event </h3>
         </div>
   
         <!-- event name -->
@@ -138,20 +174,30 @@
             <input type="time" class="form-control" id="endTime">
           </div>
         </div>
-
+  
+        <!-- location -->
+        <div class="mb-3 row">
+          <label for="location" class="col-2 col-form-label"> Location </label>
+          <div class="col-10">
+            <input type="text" class="form-control" id="location">
+          </div>
+        </div>
+  
         <!-- category -->
-        <div id="category" class="mb-3 row">
-          <label for="wrapper-dropdown" class="col-2 col-form-label"> Category </label>
-          <div class="col-4 wrapper-dropdown">
-            <span v-on:click="toggleDropdown()" v-html="selector()"></span>
-            <ul class="dropdown" v-show="active">
-              <li v-for="color in colors" v-on:click="setColor(color.hex, color.name)">
-                <span v-bind:style="{background: color.hex}"> &nbsp; </span> 
-                {{color.name}}
-              </li>
-            </ul>
+        <div class="mb-3 row">
+          <label for="category" class="col-2 col-form-label"> Category </label>
+          <div id="category" class="col-10">
+            <div class="wrapper-dropdown">
+              <span v-on:click="toggleDropdown()" v-html="selector()"></span>
+              <ul class="dropdown" v-show="active">
+                <li v-for="color in colors" v-on:click="setColor(color.hex, color.name)">
+                  <span v-bind:style="{background: color.hex}"> </span>
+                  {{color.name}}
+                </li>
+              </ul>
+            </div>
           </div>
-          </div>
+        </div>
   
         <!-- add event button -->
         <div class="mb-3 row">
@@ -163,13 +209,6 @@
       </div>
     </div>
   </form>
-
-  <!-- successful add modal -->
-  <div id="addSuccessModal" class="modal">
-    <div class="modal-content">
-      Event Added Successfully!
-    </div>
-  </div>
 
   <!-- display event modal -->
   <div id="myOtherModal" class="modal">
@@ -201,22 +240,12 @@
           <span id="eventCategory"></span>
         </div>
 
-        <!-- delete event -->
-        <button id="deleteEventButton" type="button" class="btn btn-outline-danger"> Delete Event </button>
-
     </div>
-
-    <!-- successful delete modal -->
-    <div id="deleteSuccessModal" class="modal">
-      <div class="modal-content">
-        Event Deleted Successfully!
-      </div>
-    </div>
-
   </div>
 
   <!-- js -->
   <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
+  <script src="js/calendar.js"></script>
 
 </body>
 </html>
