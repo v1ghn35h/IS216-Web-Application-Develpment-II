@@ -176,7 +176,7 @@ document.loginFunction = login;
 
 // actionCodeSettings for emails
 var actionCodeSettings = {
-    url: "http://localhost/is216/IS216-Project/login.html"
+    url: window.location.href
 }
 
 // Forgot Password
@@ -190,22 +190,18 @@ function forgotPass(event) {
     let email = document.getElementById("forgotPassEmail").value;
     let forgotPassErrorBox = document.getElementById("forgotPassErrors");
     forgotPassErrorBox.innerHTML = "";
-    let forgotPassErrorWrapper = document.createElement('div');
 
     sendPasswordResetEmail(auth, email, actionCodeSettings)
         .then(() => {
             // Password reset email sent!
             // ..
-            forgotPassErrorWrapper.innerHTML = [
-                `<div class="alert alert-info alert-dismissible" role="alert">`,
-                `   <div>Password Reset Email sent!</div>`,
-                '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
-                '</div>'
-            ].join('')
+            document.getElementById("forgotPassButton").disabled = true;
+            document.getElementById("forgotPassButton").innerText = "Password Reset Link Sent!";
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
+            let forgotPassErrorWrapper = document.createElement('div');
             if (errorCode in forgotPassErrorMessages) {
                 forgotPassErrorWrapper.innerHTML = [
                     `<div class="alert alert-danger alert-dismissible" role="alert">`,
@@ -221,9 +217,9 @@ function forgotPass(event) {
                     '</div>'
                 ].join('')
             }
+            forgotPassErrorBox.append(forgotPassErrorWrapper);
             // ..
         });
-    forgotPassErrorBox.append(forgotPassErrorWrapper)
 }
 document.forgotPassFunction = forgotPass;
 
