@@ -51,10 +51,12 @@
         </div>
     </nav>
 
-    <!--Search bar-->
+    <!-- JL SEARCH BAR -START -->
+    <div class="search-container-fluid justify-content-center">
+        <!--Search bar-->
     <div id="search-bar">
-        <form action="" class="row justify-content-center">
-            <div class="col-4">
+        <form action="" class="row justify-content-center mw-80">
+            <div class="col mw-70 p-10" style = " max-width: 500px; padding: 35px;">
                 <!-- search input box-->
                 <!--Search button-->
                 <div class="input-group ">
@@ -72,10 +74,11 @@
                     <button type="button" class="filter-btn fil-button-green " data-bs-toggle="modal"
                         data-bs-target="#exampleModal">Search</button>
 
-                </div>
+            </div>
+            <div class="col_buttons">
                 <!--  Sort button -->
                 <button type="button" class="sort-btn fil-sort mt-2" data-bs-toggle="modal"
-                    data-bs-target="#sort-modal">
+                    data-bs-target="#sort-modal"  style = " margin-right: 10px;">
                     Sort By
                 </button>
 
@@ -204,12 +207,18 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
 
 
             </div> <!-- end of div col-4-->
         </form> <!-- end of form-->
     </div> <!-- end of div search bar-->
+    </div>
+    
+
+    <!-- JL SEARCH BAR -END -->
+
 
     <!-- Topic Cards -->
     <div id="cards_landscape_wrap-2" class="mt-0">
