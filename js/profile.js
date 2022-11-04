@@ -226,12 +226,12 @@ $(document).ready(function() {
                       let clubDetails = unionClubs[club];
   
                       tempHTML += `
-                      <div class="card border-0" style="width: 15rem; height: 260px;">
+                      <div class="card border-0 club-card" style="width: 12rem; height: 260px;">
                           <div class="image-center" >
-                              <img style="border-radius: 50%; height: 8rem; width: auto;" src="${clubDetails["photo"]}" class="card-img-top" alt="...">
+                              <img style="border-radius: 20px; height: 8rem; width: auto;" src="${clubDetails["photo"]}" class="card-img-top" alt="...">
                           </div>
                           <div class="card-body">
-                              <h5 class="card-title">
+                              <h5 class="card-title small-title">
                                   <a href="${clubDetails["website"]}" target="_blank" class="stretched-link">
                                       ${club}
                                   </a>
@@ -246,7 +246,7 @@ $(document).ready(function() {
       }
       // ADD BUTTON
       tempHTML += `
-      <div class="card border-0" style="width: 15rem; height: 260px">
+      <div class="card border-0" style="width: 12rem; height: 260px">
           <div class="image-center">
               <img style="border-radius: 50%; width: 8rem; " src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Circled_plus.svg/800px-Circled_plus.svg.png" class="card-img-top" alt="...">
           </div>
