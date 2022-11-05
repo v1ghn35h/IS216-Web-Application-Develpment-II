@@ -6,7 +6,7 @@
                 "username": "natasha.2021",
                 "gender": "Female",
                 "birthday": "7/7/1997",
-                "school": "School of Computer Science and Information Systems",
+                "school": "SCIS",
                 "email": "natasha.2021@scis.smu.edu.sg",
                 "matric_no": "01441234",
                 "phone_no": "91234567",
@@ -59,7 +59,7 @@
                         "SMU Ballare": {
                             "union": "ACF",
                             "ccaId": "smuballare",
-                            "photo": "https://scontent-xsp1-3.xx.fbcdn.net/v/t39.30808-6/298926510_481155870678554_985354392778186089_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Ps9NWEVhQzIAX9a-HnL&_nc_ht=scontent-xsp1-3.xx&oh=00_AfCoAW7kK8Bo7zqEn-4E1yAwos5WSyXBKUqAKPOWJa9c-Q&oe=63618457",
+                            "photo": "https://scontent-xsp1-3.xx.fbcdn.net/v/t39.30808-6/298926510_481155870678554_985354392778186089_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=v1HQsobz1i8AX8q4ueF&_nc_ht=scontent-xsp1-3.xx&oh=00_AfDZxEUnV6D5tHke5XqQykMI7cGp9I4uGjGezqUY-2m3jg&oe=636B6797",
                             "website": "https://vivace.smu.edu.sg/explore/acf/dance/smu-ballare"
                         }
                     },
@@ -87,7 +87,7 @@
             "SMU Ballare": {
                 "union": "ACF",
                 "ccaId": "smuballare",
-                "photo": "https://scontent-xsp1-3.xx.fbcdn.net/v/t39.30808-6/298926510_481155870678554_985354392778186089_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Ps9NWEVhQzIAX9a-HnL&_nc_ht=scontent-xsp1-3.xx&oh=00_AfCoAW7kK8Bo7zqEn-4E1yAwos5WSyXBKUqAKPOWJa9c-Q&oe=63618457",
+                "photo": "https://scontent-xsp1-3.xx.fbcdn.net/v/t39.30808-6/298926510_481155870678554_985354392778186089_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=v1HQsobz1i8AX8q4ueF&_nc_ht=scontent-xsp1-3.xx&oh=00_AfDZxEUnV6D5tHke5XqQykMI7cGp9I4uGjGezqUY-2m3jg&oe=636B6797",
                 "website": "https://vivace.smu.edu.sg/explore/acf/dance/smu-ballare"
             }, 
             "SMU Caderas Latinas": {

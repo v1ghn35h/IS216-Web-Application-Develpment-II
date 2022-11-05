@@ -253,7 +253,7 @@ onValue(users, (snapshot => {
         <div class="card-body">
             <!-- modal -->
             <h5 class="card-title">
-                <a href="#" data-bs-toggle="modal" data-bs-target="#add-club" class="stretched-link">
+                <a id="add-button-link" href="#" data-bs-toggle="modal" data-bs-target="#add-club" class="stretched-link">
                     Add a Club
                 </a>
             </h5>
@@ -370,3 +370,14 @@ function updateInterestedClubs() {
 
 }
 document.getElementById('add').addEventListener("click", updateInterestedClubs)
+
+function checkUninterested() {
+    let chooseClubElement = document.getElementById('chooseClub');
+    console.log();
+    alert("")
+    let chooseClubText = chooseClubElement.innerText.trim()
+    if (chooseClubText == "") {
+        alert("no")
+    }
+}
+document.getElementById('add-button-link').addEventListener("click", checkUninterested);
