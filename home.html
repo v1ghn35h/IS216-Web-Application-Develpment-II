@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <title>Home | calendaREADY</title>
     <link rel="icon" href="img/logo/logo-greenbg.png">
     <!-- External CSS -->
@@ -33,7 +33,6 @@
                 <a class="nav-link text-white" href="explore.html">Event</a>
                 <a class="nav-link text-white" href="calendar.html">Calendar</a>
                 <a class="nav-link text-white" href="profile.html">Profile</a>
-
             </div>
         </div>
        
@@ -44,12 +43,12 @@
     
     <h1 id="target"></h1>
     <div class = "container ">
-        <h3 class = "display-2 text-dark text-center m-5 text-bold"><span class = "auto-type"></span></h3>
+        <h3 class = "display-2 text-center m-5 text-bold" style = "font-family: Georgia, 'Times New Roman', Times, serif; color: #104547"><span class = "auto-type"></span></h3>
     </div>
 
     <div class = "container">
     <div class = "row">
-        <div class = "col-12 col-lg-6">
+        <div class = "col-12 col-lg-6 my-4">
             <div class = "container h-100 w-100 d-inline-block">
                 <div id = "intro" class = "h-100 w-100 d-inline-block">
                     <!-- {{ check_weather() }} -->
@@ -64,51 +63,12 @@
                 </div>
             </div>
         </div>
-        <div class = "col-12 col-lg-6 ">
+        <div class = "col-12 col-lg-6 my-4">
             <div class = "container h-100 w-100 d-inline-block">
                 <div id = "carousel_events" class = "h-100 w-100 d-inline-block">
                     <p class = "display-6">Your upcoming events</p>
                     <hr style = "color: whitesmoke">
-                    <div class="mx-auto box"><!-- put the carousel in a box and center it -->
-                        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-                          <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                          </div>
-                          <div class="carousel-inner">
-                            <div class="carousel-item active">
-                              <img src="https://images.squarespace-cdn.com/content/v1/5c39a8f55ffd2092c1c46d7e/1629738296149-42USDKGHV1WSC5M4U4UR/how+to+organise+a+beach+clean-up.jpg" class="d-block" alt="..." height="300" width="600">
-                              <div class="carousel-caption d-none d-md-block">
-                                <h5>Beach Clean Up</h5>
-                                <p>25 October 2022</p>
-                              </div>
-                            </div>
-                            <div class="carousel-item">
-                              <img src="https://www.ntu.edu.sg/images/default-source/cao/mass-recruitment/41d0833af-4623-42de-8aa6-6a4884c783a4.png?sfvrsn=c91a3e5d_5" class="d-block" alt="..." height="300" width="600">
-                              <div class="carousel-caption d-none d-md-block">
-                                <h5>Career Fair</h5>
-                                <p>26 October 2022</p>
-                              </div>
-                            </div>
-                            <div class="carousel-item">
-                              <img src="https://trafeka.com/uploads/media/TREKKING_AND_HIKING_4_1366x610.jpg" class="d-block" alt="..." height="300" width="600">
-                              <div class="carousel-caption d-none d-md-block">
-                                <h5>Macritchie Hiking</h5>
-                                <p>27 October 2022</p>
-                              </div>
-                            </div>
-                          </div>
-                          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                          </button>
-                          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                          </button>
-                        </div>
-                    </div>
+                    <div id = "carousel_user_events"></div>
                 </div>
             </div>
         </div>
@@ -116,7 +76,7 @@
     </div>
 
     <div class = "mt-5">
-        <h3 class = "display-5">Upcoming School Events</h3>
+        <h3 class = "display-5 my-4">Upcoming School Events</h3>
         <hr style = "color: #104547">
     </div>
 
@@ -124,7 +84,7 @@
     <div id = "upcoming">
     </div>
 
-    <h3 class = "display-5 mt-4">For You</h3>
+    <h3 class = "display-5 my-4">For You</h3>
     <hr style = "color: #104547">
 
     <div id = "for_you">
