@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <title>Document</title>
+</head>
+<body>
+    <!-- Event Information Page -->
+    <div class="card mx-1" style="width: 18rem;">
+        <!-- PLACE IMAGE ON TOP OF CARD -->
+        <img src = ${photo_of_event} height = "125" class="card-img-top" alt="...">
+        <!-- HEADER [can be added to h* elements]-->
+        <div class="card-body">
+            <!-- TITLE -->
+            <h5 class="card-title" id = "name">${name_of_event}</h5>  
+            <!-- SUBTITLE -->
+            <h6 class="card-subtitle mb-2 text-muted">${club_of_event}</h6>
+            <!-- BODY -->
+            <p class="card-text text-wrap">
+                Date: ${date_of_event}
+                <br>
+                Time: ${time_of_event}
+                <br>
+                Fees: ${fees_of_event}
+                <br>
+                Location: ${location_of_event}
+            </p>
+        <!-- BUTTON -->
+        <div class="modal fade" id="event" tabindex="-1" aria-labelledby="eventLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="event">${name_of_event}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                    <img src = "https://static.thehoneycombers.com/wp-content/uploads/sites/2/2017/10/zouk-party-venue-singapore.jpg" width= "300px" height = "250px" alt="..." class="center">
+                    </div>
+                    <p class = "display-6 lead text-center mt-3">Event Information</p>
+                    <hr>
+                    <div class="container text-break p-3 mt-3 fs-6">
+                        CCA: ${club_of_event}
+                        <br>
+                        Date: ${date_of_event}
+                        <br>
+                        Time: ${time_of_event}
+                        <br>
+                        Fees: ${fees_of_event}
+                        <br>
+                        Location: ${location_of_event}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-dark" data-bs-target="#eventSignUpPage" data-bs-toggle="modal">Sign up now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sign Up Page -->
+    <div class="modal fade" id="eventSignUpPage" aria-hidden="true" aria-labelledby="eventSignUpPageLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="eventSignUpPageLabel">Sign Up Page</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                    <div class="modal-body">
+                        <p class = "display-6 lead text-center mt-3">${name_of_event}</p>
+                        <div class="container text-break p-3 mt-3 fs-6">
+                            Name: ${user_name}
+                            <br>
+                            Email: ${user_email}
+                            <br>
+                            Matriculation: ${user_matric}
+                            <br>
+                            Payment: ${fees_of_event}                
+                        </div>
+                        <button class="btn btn-warning center" data-bs-target="#addSuccessModal" data-bs-toggle= "modal">Confirm</button>
+                    </div>
+                    <div class="modal-footer">
+                    <button class="btn btn-dark" data-bs-target="#event" data-bs-toggle="modal">Go back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Confirmation Page-->
+    <div class="modal fade" id="addSuccessModal" aria-hidden="true" aria-labelledby="addSuccessModalLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="addSuccessModal">Confirmation</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class = "display-6 lead text-center mt-3">Event successfully added to calendar!</p>  
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="btn btn-dark" data-bs-toggle="modal" href="#event" role="button">More info</a>
+    </div>
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</html>

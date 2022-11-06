@@ -67,8 +67,9 @@ onValue(events, (snapshot => {
 
 function UpcomingSchoolEvents () {
     let tempHTML = ""
+    let counter = 1
     for (let event in upcoming_events) {
-		if (Object.hasOwnProperty.call(upcoming_events, event)) {
+		if (Object.hasOwnProperty.call(upcoming_events, event) && counter <=10) {
             let name_of_event = upcoming_events[event].name
             let club_of_event = upcoming_events[event].club
             let type_of_event= upcoming_events[event].type
@@ -80,87 +81,104 @@ function UpcomingSchoolEvents () {
             let event_id= upcoming_events[event].eventId
 				tempHTML += `<div class="card mx-1" style="width: 18rem;">
                 <!-- PLACE IMAGE ON TOP OF CARD -->
-            <img src = ${photo_of_event} height = "125" class="card-img-top" alt="...">
-            <!-- HEADER [can be added to h* elements]-->
-            <div class="card-body">
-                <!-- TITLE -->
-                <h5 class="card-title" id = "name">${name_of_event}</h5>  
-                <!-- SUBTITLE -->
-                <h6 class="card-subtitle mb-2 text-muted">${club_of_event}</h6>
-                <!-- BODY -->
-                <p class="card-text text-wrap">
-                    Date: ${date_of_event}
-                    <br>
-                    Time: ${time_of_event}
-                    <br>
-                    Fees: ${fees_of_event}
-                    <br>
-                    Location: ${location_of_event}
-                </p>
+                <img src = ${photo_of_event} height = "125" class="card-img-top" alt="...">
+                <!-- HEADER [can be added to h* elements]-->
+                <div class="card-body">
+                    <!-- TITLE -->
+                    <h5 class="card-title text-wrap" id = "name">${name_of_event}</h5>  
+                    <!-- SUBTITLE -->
+                    <h6 class="card-subtitle mb-2 text-muted text-wrap">${club_of_event}</h6>
+                    <!-- BODY -->
+                    <p class="card-text text-wrap">
+                        Date: ${date_of_event}
+                        <br>
+                        Time: ${time_of_event}
+                        <br>
+                        Fees: ${fees_of_event}
+                        <br>
+                        Location: ${location_of_event}
+                    </p>
                 <!-- BUTTON -->
-                <!-- Modal -->
                 <div class="modal fade" id="event${event_id}" tabindex="-1" aria-labelledby="event${event_id}Label" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                <div class="modal-dialog modal-dialog-scrollable modal-lg">
                     <div class="modal-content">
-                        <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="InfoPageLabel">${name_of_event}</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="modal-header text-wrap">
+                            <h1 class="modal-title fs-5" id="event${event_id}">${name_of_event}</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body text-wrap">
                             <div class="container">
-                            <img src = ${photo_of_event} width= "300px" height = "250px" alt="..." class="center">
+                            <img src = "${photo_of_event}" width= "300px" height = "250px" alt="..." class="center">
                             </div>
                             <p class = "display-6 lead text-center mt-3">Event Information</p>
                             <hr>
                             <div class="container text-break p-3 mt-3 fs-6">
-                            CCA: ${club_of_event}
-                            <br>
-                            Date: ${date_of_event}
-                            <br>
-                            Time: ${time_of_event}
-                            <br>
-                            Fees: ${fees_of_event}
-                            <br>
-                            Location: ${location_of_event}
+                                CCA: ${club_of_event}
+                                <br>
+                                Date: ${date_of_event}
+                                <br>
+                                Time: ${time_of_event}
+                                <br>
+                                Fees: ${fees_of_event}
+                                <br>
+                                Location: ${location_of_event}
                             </div>
                         </div>
-                        <div class="modal-footer">
-                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-dark" data-bs-target="#event${event_id}SignUpPage" data-bs-toggle="modal">Sign up now</button>
+                        <div class="modal-footer text-wrap">
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-dark" data-bs-target="#event${event_id}SignUpPage" data-bs-toggle="modal">Sign up now</button>
                         </div>
                     </div>
+                </div>
+            </div>
+            <!-- Sign Up Page -->
+            <div class="modal fade" id="event${event_id}SignUpPage" aria-hidden="true" aria-labelledby="event${event_id}SignUpPageLabel" tabindex="-1">
+                <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                    <div class="modal-content text-wrap">
+                        <div class="modal-header text-wrap">
+                            <h1 class="modal-title fs-5" id="event${event_id}SignUpPage">Sign Up Page</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                            <div class="modal-body text-wrap">
+                                <p class = "display-6 lead text-center mt-3">${name_of_event}</p>
+                                <div class="container text-break p-3 mt-3 fs-6">
+                                    Name: ${user_name}
+                                    <br>
+                                    Email: ${user_email}
+                                    <br>
+                                    Matriculation: ${user_matric}
+                                    <br>
+                                    Payment: ${fees_of_event}                
+                                </div>
+                                <button class="btn btn-warning center" data-bs-target="#addSuccessModal" data-bs-toggle= "modal">Confirm</button>
+                            </div>
+                            <div class="modal-footer text-wrap">
+                            <button class="btn btn-dark" data-bs-target="#event${event_id}" data-bs-toggle="modal">Go back</button>
+                        </div>
                     </div>
                 </div>
-                <div class="modal fade" id="event${event_id}SignUpPage" aria-hidden="true" aria-labelledby="event${event_id}SignUpPageLabel" tabindex="-1">
-                    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            </div>
+            <!--Confirmation Page-->
+            <div class="modal fade" id="addSuccessModal" aria-hidden="true" aria-labelledby="addSuccessModalLabel" tabindex="-1">
+                <div class="modal-dialog modal-dialog-scrollable modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="event${event_id}SignUpPageLabel">Sign Up Page</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <h1 class="modal-title fs-5" id="addSuccessModal">Confirmation</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <p class = "display-6 lead text-center mt-3">${name_of_event}</p>
-                            <div class="container text-break p-3 mt-3 fs-6">
-                            Name: ${user_name}
-                            <br>
-                            Email: ${user_email}
-                            <br>
-                            Matriculation: ${user_matric}
-                            <br>
-                            Payment: ${fees_of_event}                
-                            </div>
-                            <button class="btn btn-warning center" id="add">Confirm</button>
+                            <p class = "display-6 lead text-center mt-3 text-wrap">Event successfully added to calendar!</p>  
                         </div>
                         <div class="modal-footer">
-                        <button class="btn btn-dark" data-bs-target="#event${event_id}" data-bs-toggle="modal">Go back</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
-                    </div>
                 </div>
-                <a class="btn btn-dark" data-bs-toggle="modal" href="#event${event_id}" role="button">More info</a>
-            
+            </div>
+            <a class="btn btn-dark" data-bs-toggle="modal" href="#event${event_id}" role="button">More info</a>
             </div>
             </div>`
+        counter += 1
     }}
     document.getElementById('upcoming').innerHTML = tempHTML
 }
@@ -178,141 +196,150 @@ function UserForYouEvents () {
             let location_of_event= upcoming_events[event].location
             let event_id= upcoming_events[event].eventId
             if (user_preference.includes(type_of_event)){
-				tempHTML += `<div class="card mx-1" style="width: 18rem;">
+				tempHTML += ` 
+                <div class="card mx-1" style="width: 18rem;">
                 <!-- PLACE IMAGE ON TOP OF CARD -->
-            <img src = ${photo_of_event} height = "125" class="card-img-top" alt="...">
-            <!-- HEADER [can be added to h* elements]-->
-            <div class="card-body">
-                <!-- TITLE -->
-                <h5 class="card-title" id = "name">${name_of_event}</h5>  
-                <!-- SUBTITLE -->
-                <h6 class="card-subtitle mb-2 text-muted">${club_of_event}</h6>
-                <!-- BODY -->
-                <p class="card-text text-wrap">
-                    Date: ${date_of_event}
-                    <br>
-                    Time: ${time_of_event}
-                    <br>
-                    Fees: ${fees_of_event}
-                    <br>
-                    Location: ${location_of_event}
-                </p>
+                <img src = ${photo_of_event} height = "125" class="card-img-top" alt="...">
+                <!-- HEADER [can be added to h* elements]-->
+                <div class="card-body">
+                    <!-- TITLE -->
+                    <h5 class="card-title text-wrap" id = "name">${name_of_event}</h5>  
+                    <!-- SUBTITLE -->
+                    <h6 class="card-subtitle mb-2 text-muted text-wrap">${club_of_event}</h6>
+                    <!-- BODY -->
+                    <p class="card-text text-wrap">
+                        Date: ${date_of_event}
+                        <br>
+                        Time: ${time_of_event}
+                        <br>
+                        Fees: ${fees_of_event}
+                        <br>
+                        Location: ${location_of_event}
+                    </p>
                 <!-- BUTTON -->
-                <!-- Modal -->
                 <div class="modal fade" id="event${event_id}" tabindex="-1" aria-labelledby="event${event_id}Label" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                <div class="modal-dialog modal-dialog-scrollable modal-lg">
                     <div class="modal-content">
-                        <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="InfoPageLabel">${name_of_event}</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="modal-header text-wrap">
+                            <h1 class="modal-title fs-5" id="event${event_id}">${name_of_event}</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body text-wrap">
                             <div class="container">
-                            <img src = ${photo_of_event} width= "300px" height = "250px" alt="..." class="center">
+                            <img src = "${photo_of_event}" width= "300px" height = "250px" alt="..." class="center">
                             </div>
                             <p class = "display-6 lead text-center mt-3">Event Information</p>
                             <hr>
                             <div class="container text-break p-3 mt-3 fs-6">
-                            CCA: ${club_of_event}
-                            <br>
-                            Date: ${date_of_event}
-                            <br>
-                            Time: ${time_of_event}
-                            <br>
-                            Fees: ${fees_of_event}
-                            <br>
-                            Location: ${location_of_event}
+                                CCA: ${club_of_event}
+                                <br>
+                                Date: ${date_of_event}
+                                <br>
+                                Time: ${time_of_event}
+                                <br>
+                                Fees: ${fees_of_event}
+                                <br>
+                                Location: ${location_of_event}
                             </div>
                         </div>
-                        <div class="modal-footer">
-                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-dark" data-bs-target="#event${event_id}SignUpPage" data-bs-toggle="modal">Sign up now</button>
+                        <div class="modal-footer text-wrap">
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-dark" data-bs-target="#event${event_id}SignUpPage" data-bs-toggle="modal">Sign up now</button>
                         </div>
                     </div>
+                </div>
+            </div>
+            <!-- Sign Up Page -->
+            <div class="modal fade" id="event${event_id}SignUpPage" aria-hidden="true" aria-labelledby="event${event_id}SignUpPageLabel" tabindex="-1">
+                <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                    <div class="modal-content text-wrap">
+                        <div class="modal-header text-wrap">
+                            <h1 class="modal-title fs-5" id="event${event_id}SignUpPage">Sign Up Page</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                            <div class="modal-body text-wrap">
+                                <p class = "display-6 lead text-center mt-3">${name_of_event}</p>
+                                <div class="container text-break p-3 mt-3 fs-6">
+                                    Name: ${user_name}
+                                    <br>
+                                    Email: ${user_email}
+                                    <br>
+                                    Matriculation: ${user_matric}
+                                    <br>
+                                    Payment: ${fees_of_event}                
+                                </div>
+                                <button class="btn btn-warning center" data-bs-target="#addSuccessModal" data-bs-toggle= "modal">Confirm</button>
+                            </div>
+                            <div class="modal-footer text-wrap">
+                            <button class="btn btn-dark" data-bs-target="#event${event_id}" data-bs-toggle="modal">Go back</button>
+                        </div>
                     </div>
                 </div>
-                <!-- Sign Up Page -->
-                <div class="modal fade" id="event${event_id}SignUpPage" aria-hidden="true" aria-labelledby="event${event_id}SignUpPageLabel" tabindex="-1">
-                    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            </div>
+            <!--Confirmation Page-->
+            <div class="modal fade" id="addSuccessModal" aria-hidden="true" aria-labelledby="addSuccessModalLabel" tabindex="-1">
+                <div class="modal-dialog modal-dialog-scrollable modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="event${event_id}SignUpPageLabel">Sign Up Page</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <h1 class="modal-title fs-5" id="addSuccessModal">Confirmation</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <p class = "display-6 lead text-center mt-3">${name_of_event}</p>
-                            <div class="container text-break p-3 mt-3 fs-6">
-                            Name: ${user_name}
-                            <br>
-                            Email: ${user_email}
-                            <br>
-                            Matriculation: ${user_matric}
-                            <br>
-                            Payment: ${fees_of_event}                
-                            </div>
-                            <button class="btn btn-warning center" data-bs-target="#addSuccessModal" data-bs-toggle= "modal">Confirm</button>
-                        </div>
+                            <p class = "display-6 lead text-center mt-3 text-wrap">Event successfully added to calendar!</p>  
                         </div>
                         <div class="modal-footer">
-                        <button class="btn btn-dark" data-bs-target="#event${event_id}" data-bs-toggle="modal">Go back</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
-                <!-- Modal -->
-
                 </div>
-                </div>
-                <a class="btn btn-dark" data-bs-toggle="modal" href="#event${event_id}" role="button">More info</a>
-            
+            </div>
+            <a class="btn btn-dark" data-bs-toggle="modal" href="#event${event_id}" role="button">More info</a>
             </div>
             </div>`
-            }
+        }
     }}
     document.getElementById('for_you').innerHTML = tempHTML
 }
 
 // //ADD EVENT TO FIREBASE
-// function AddEvent() {
-//     id_event = document.getElementById("name")
-// 	let toAdd = ""
-// 	let toAddLength = toAdd.length
-// 	for (let i = 0; i < toAddLength; i ++) {
-// 		// console.log(toAdd[i].id);
-// 		for (let union in clubsObj) {
-// 			if (Object.hasOwnProperty.call(clubsObj, union)) {
-// 				let unionClubs = clubsObj[union]
-// 				// console.log(unionClubs);
-// 				for (let cca in unionClubs) {
-// 					if (Object.hasOwnProperty.call(unionClubs, cca)) {
-// 						let ccaDetails = unionClubs[cca]
-// 						let ccaId = ccaDetails["ccaId"]
-// 						if (ccaId == toAdd[i].id) {
-							
-// 							interested_clubs[union][cca] = ccaDetails
-// 							interestedArr.push(cca)
-							
-// 						}
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}
-// 	console.log(interested_clubs);
+// const dbRef = ref(getDatabase());
+//     get(child(dbRef, `users/${current_user}/user_events/`)).then((snapshot) => {
+//         if (snapshot.exists()) {
+//             var db_values = snapshot.val();
+//             var db_size = Object.keys(db_values).length
+//             var new_db_size = db_size + 1
 
+//         // add event to array
+//         set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
+//         {
+//             title: title,
+//             start: start,
+//             end: end,
+//             category: event_class,
+//             id: new_db_size
+//         },
+//         )
 
-// 	const db = getDatabase();
-// 	set(ref(db, 'users/' + "user1" + '/user_events'), {
-// 		interested_clubs
+//         // display added successfully
+//         add_success_modal.style.display = "block";
 
-// 	})
+//         // force page to reload
+//         setTimeout(function(){
+//         window.location.reload();
+//         }, 2000);
+    
+//         // reset modal 
+//         modal.style.display = "none";
+//         document.getElementById("addEvent").reset();
+//     } 
+    
 
-// 	console.log("change success");
-
-	
-// 	$('#add-club').modal('hide');
-// 	$('#successModal').modal('show');
-// 	populateUninterested()
-
-// }
+//     else {
+//         console.log("No data available");
+//     }
+//     }).catch((error) => {
+//     console.error(error);
+//     });
 
 
 // POPULATE USER UPCOMING EVENTS
@@ -325,6 +352,7 @@ onValue(users, (snapshot => {
 
 function UserUpcomingSchoolEvents () {
     let tempHTML = `
+    <br>
     <div class="mx-auto box">
     <div id="UpcomingEvents" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
