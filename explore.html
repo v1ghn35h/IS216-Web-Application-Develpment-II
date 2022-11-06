@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
+    <!-- Events
+    8. Push down the detail button for event car (bottom 0) 
+    9. Pagination of events (especially when we have a lot)
+    10. Modal position (centre of align up)
+    11. Change to Events on navbar
+    12. Event modal name to be edited -->
+    
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -233,7 +241,7 @@
                 <div class=" col-9 " v-for="(details, event) of events" >
                     <!-- start of card-->
                     <div class="card-flyer" :id="`eventCard${details.eventId}`">
-                        <div class="text-box">
+                        <div class="text-box" style ="height: 412px">
                             <div class="image-box">
                                 <img :src="details.photo" />
                             </div>
@@ -253,12 +261,13 @@
                                     <br>
                                     Location: {{ details.location }}
                                 </p>
-                                <!-- sign up button-->
-                                <div>
-                                    <button type="button" class="btn details-btn mt-3" :data-bs-target="`#infoPage${details.eventId}`"
-                                        data-bs-toggle="modal">Details</button>
-                                </div>
+                                
                             </div>
+                        </div>
+                        <!-- sign up button-->
+                        <div style="display:flex; align-content: flex-start; margin: 15px;">
+                            <button type="button" class="btn details-btn mt-3 " :data-bs-target="`#infoPage${details.eventId}`"
+                                data-bs-toggle="modal">Details</button>
                         </div>
                     </div>
                     <!-- end of card-->
