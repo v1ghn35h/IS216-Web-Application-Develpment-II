@@ -2,9 +2,7 @@
 <html lang="en">
 
     <!-- Events
-    8. Push down the detail button for event card(bottom 0) (doness)
     9. Pagination of events (especially when we have a lot) 
-    10. Modal position (centre of align up)
     11. Change to Events on navbar
     12. Event modal name to be edited -->
     
@@ -287,8 +285,9 @@
                                         <img :src="details.photo"
                                             style="width:300px; height:250px" alt="..." class="center "/>
                                     </div>
-                                    <p class="display-6 lead text-center ">Event Information</p>
-                                    <div class="container text-break p-3 mt-3 fs-6">
+                                    <p class="display-6 lead text-center mt-3">Event Information</p>
+                                    <hr>
+                                    <div class="container  text-break p-3 mt-3 fs-6" style="display: inline-block; text-align: left;">
                                         {{ details.club }}
                                         CCA: {{ details.club }}
                                         <br>
