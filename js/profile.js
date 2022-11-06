@@ -73,10 +73,11 @@ const clubs = ref(db, 'clubs')
   
 //////////////////////////////////////////////////
 // FIREBASE POPULATE DETAILS
+let userInfo = {}
 onValue(users, (snapshot => {
     const data = snapshot.val(); 
 
-    let userInfo = data.user1.user_profile_info
+    userInfo = data.user1.user_profile_info
     for (let category in userInfo) {
         if (category != "profile_picture" && category != "preference") {
             document.getElementById(category).innerText = userInfo[category];
@@ -190,11 +191,13 @@ function updateUserInfo() {
         username: document.getElementById('username').innerText,
         gender: document.getElementById('gender').innerText,
         birthday: document.getElementById('birthday').innerText,
+        school: document.getElementById('school').innerText,
         email: document.getElementById('email').innerText,
         matric_no: document.getElementById('matric_no').innerText,
         phone_no: document.getElementById('phone_no').innerText, 
-        profile_picture: document.getElementById('imagePreview').style.backgroundImage
+        profile_picture: document.getElementById('imagePreview').style.backgroundImage,
 
+        preference: userInfo.preference
     })
 
     console.log("change success");
