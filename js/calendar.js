@@ -53,6 +53,8 @@ get(child(dbRef, `users/${current_user}/user_tasks/`)).then((snapshot) => {
     task_list_div.innerHTML = ""
 
     for (var task in tasks) {
+
+      console.log(task)
       let output = ``
 
       let task_info = tasks[task]
@@ -400,13 +402,36 @@ document.addEventListener('DOMContentLoaded', function() {
               document.getElementById("addEvent").reset();
             }
           )}
-      }
+      },
+
+      // disable month view when month button clicked
+      dayGridMonth: {
+        text: 'Month',
+        click: function() {
+          alert('clicked the custom button!');
+        }
+      },
+
+      listYear: {
+        text: 'Year',
+        click: function() {
+          alert('clicked the custom button!');
+        }
+      },
     },
 
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
       right: 'addEvent dayGridMonth,listYear',
+    },
+
+    buttonText: {
+        today:    'Today',
+        month:    'Month',
+        week:     'Week',
+        day:      'Day',
+        list:     'List'
     },
 
     themeSystem: 'bootstrap5',
@@ -571,8 +596,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
           }
-
-          console.log(all_events)
           
           all_events.push(new_event_obj)
         }

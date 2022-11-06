@@ -47,7 +47,7 @@
                     "category": "Sports",
                     "photo_url": "https://www.incimages.com/uploaded_files/image/1920x1080/getty_1035462384_395932.jpg"
                 },
-                "event3": {
+                "event_3": {
                     "id":"4",
                     "title": "Swim Meet",
                     "start": "2022-10-11",
@@ -55,7 +55,7 @@
                     "category": "Nature",
                     "photo_url": "https://images.everydayhealth.com/images/swimming-overview-guide-1440x810.jpg?sfvrsn=d3b9ee_1"
                 },
-                "event4": {
+                "event_4": {
                     "id":"4",
                     "title": "Macritchie Hike",
                     "start": "2022-10-11",
