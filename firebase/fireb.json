@@ -117,7 +117,6 @@
                 "name": "Beach Clean Up",
                 "club": "SMU Verts",
                 "eventId": "1",
-                "vQUVuDbqNIUbAYMoGqTzob3juA497nHOUezy3Waq3TKtel0OlrdLNKVyt1TqVy7nk7ly27Pp37zmdRrNVX1ElLDbY7BELEtVbpnwwUg5HhlTz5DBPlPo1fWdOKA": "environment",
                 "type": "environment",
                 "photo": "https://images.squarespace-cdn.com/content/v1/5c39a8f55ffd2092c1c46d7e/1629738296149-42USDKGHV1WSC5M4U4UR/how+to+organise+a+beach+clean-up.jpg",
                 "date": "7 November 2022",
@@ -201,7 +200,50 @@
                 "time": "1400-1900",
                 "fees": "NA",
                 "location":"YPHSL SR B1"
+            },
+            "event9": {
+                "name": "Latin Ballroom Workshops",
+                "club": "SMU Ardiente",
+                "eventId": "9",
+                "type": "dance",
+                "photo": "https://cdn2.hubspot.net/hubfs/408306/Types%20of%20latin%20dances%202.jpg",
+                "date": "15 November 2022",
+                "time": "1400-1900",
+                "fees": "NA",
+                "location":"CIS B1 Event Space"
+            },
+            "event10": {
+                "name": "Annual Production",
+                "club": "SMU Ivory Keys",
+                "eventId": "10",
+                "type": "art",
+                "photo": "https://au.yamaha.com/en/files/header_cfx_02_7800dfe0f5d660a9f276d6e14d50accc.jpg?impolicy=resize&imwid=2000&imhei=709",
+                "date": "17 November 2022",
+                "time": "1400-1900",
+                "fees": "10 SGD",
+                "location":"SMU Arts and Cultural Centre"
+            },
+            "event11": {
+                "name": "Sailing Workshop",
+                "club": "SMU Sailing",
+                "eventId": "11",
+                "type": "sport",
+                "photo": "https://www.rssailing.com/wp-content/uploads/2017/01/RS-Tera-Feature.jpg",
+                "date": "17 November 2022",
+                "time": "1400-1900",
+                "fees": "10 SGD",
+                "location":"SMU Arts and Cultural Centre"
+            },
+            "event12": {
+                "name": "Aye Aye Captain",
+                "club": "SMU Netball",
+                "eventId": "12",
+                "type": "sport",
+                "photo": "https://netball.sport/wp-content/uploads/2016/11/452602974.jpg",
+                "date": "17 November 2022",
+                "time": "1545-1915",
+                "fees": "84 SGD",
+                "location":"SMU Admin Building MPSH"
             }
-
         }
     }

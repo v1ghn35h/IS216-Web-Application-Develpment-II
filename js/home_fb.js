@@ -71,7 +71,7 @@ function UpcomingSchoolEvents () {
         console.log("upcoming_events[event]")
         console.log(upcoming_events)
 		if (Object.hasOwnProperty.call(upcoming_events, event)) {
-            let name_of_event = event
+            let name_of_event = upcoming_events[event].name
             let club_of_event = upcoming_events[event].club
             let type_of_event= upcoming_events[event].type
             let photo_of_event= upcoming_events[event].photo
@@ -173,7 +173,7 @@ function UserForYouEvents () {
         console.log("upcoming_events[event]")
         console.log(upcoming_events)
 		if (Object.hasOwnProperty.call(upcoming_events, event)) {
-            let name_of_event = event
+            let name_of_event = upcoming_events[event].name
             let club_of_event = upcoming_events[event].club
             let type_of_event= upcoming_events[event].type
             let photo_of_event= upcoming_events[event].photo
@@ -262,7 +262,7 @@ function UserForYouEvents () {
                         <button class="btn btn-dark" data-bs-target="#event${event_id}" data-bs-toggle="modal">Go back</button>
                         </div>
                     </div>
-                                    <!-- Modal -->
+                <!-- Modal -->
 
                 </div>
                 </div>
