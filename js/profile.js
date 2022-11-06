@@ -307,7 +307,6 @@ function populateUninterested() {
     }
 
     document.getElementById('chooseClub').innerHTML = tempHTML
-    console.log("in");
 }
 
 
@@ -383,4 +382,4 @@ function checkUninterested() {
         alert("no")
     }
 }
-document.getElementById('add-button-link').addEventListener("click", checkUninterested);
+// document.getElementById('add-button-link').addEventListener("click", checkUninterested);
