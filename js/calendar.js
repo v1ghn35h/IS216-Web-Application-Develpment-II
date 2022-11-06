@@ -542,6 +542,9 @@ document.addEventListener('DOMContentLoaded', function() {
       onValue(users, (snapshot => {
         const data = snapshot.val(); // get the new value
 
+        // empty all past data fetched
+        all_events = []
+
         let all_users = data
         let user = data[current_user]
 
@@ -554,12 +557,22 @@ document.addEventListener('DOMContentLoaded', function() {
           let new_event_category = new_event_obj.category
 
           if (new_event_category != "") {
-            let find_object = colors.find(o => o.name === new_event_category); // find object with the name == new_event_category
-            let new_event_color = find_object.hex
 
-            // add color to event object
-            new_event_obj["color"] = new_event_color
+            try {
+              let find_object = colors.find(o => o.name === new_event_category); // find object with the name == new_event_category
+              let new_event_color = find_object.hex
+  
+              // add color to event object
+              new_event_obj["color"] = new_event_color
+            }
+
+            catch(error) {
+              console.log(error)
+            }
+            
           }
+
+          console.log(all_events)
           
           all_events.push(new_event_obj)
         }
@@ -598,16 +611,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // if event_category is selected, set icon based on category
         if (event_category != "") {
-          // set color based on category
-          let obj = colors.find(o => o.name === event_category); // find object with the name == new_event_category
-          let event_colour = obj.hex
-          let dot = document.getElementById("eventColor")
-          dot.style.background = event_colour
 
-          // set icon based on category
-          let event_icon = event_media[event_category][1]
-          let icon = document.getElementById("eventIcon")
-          icon.innerHTML = `<img src="img/${event_icon}" style='height: 50px;'>`
+          // if category is valid, set color based on category
+          try {
+            let obj = colors.find(o => o.name === event_category); // find object with the name == new_event_category
+          
+            let event_colour = obj.hex
+            let dot = document.getElementById("eventColor")
+            dot.style.background = event_colour
+
+            // set icon based on category
+            let event_icon = event_media[event_category][1]
+            let icon = document.getElementById("eventIcon")
+            icon.innerHTML = `<img src="img/${event_icon}" style='height: 50px;'>`
+          }
+
+          catch (error) {
+            console.log(error)
+          }
         }
 
         // set event title

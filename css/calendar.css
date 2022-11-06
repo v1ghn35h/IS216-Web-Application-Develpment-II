@@ -208,3 +208,12 @@ html, body {
 #deleteEventButton {
   width: 120px;
 }
+
+
+/* shift modal to the front */
+* {
+  z-index: 0
+}
+#myModal, #addSuccessModal, #myOtherModal #deleteSuccessModal {
+  z-index: 1;
+}
