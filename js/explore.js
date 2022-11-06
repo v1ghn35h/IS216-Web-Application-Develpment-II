@@ -33,6 +33,13 @@ const explorePage = Vue.createApp({
             hello: "testing",
             events: '',
             userInfo: '',
+            // added properties for GET_FILTER_CRITERIAS
+            org_club: '',
+            event_type: '',
+            start_date: '',
+            end_date: '',
+            min_price: '',
+            max_price: ''
         };
     }, // data
     computed: { 
@@ -43,6 +50,7 @@ const explorePage = Vue.createApp({
     // created() { 
     // },
     beforeMount() { 
+        console.log("====Function-GETALLEVENTS===")
         onValue(allEvents, (snapshot) => {
             const data = snapshot.val()
             console.log("-------In mounted------");
@@ -59,7 +67,28 @@ const explorePage = Vue.createApp({
         })
     },
     methods: {
-        methodName() {
+        // JL: To get all the inputs from the filter
+        get_filter_criterias() {
+            console.log("====Function-GETAggggLLEVENTS===")
+            let org_club = document.getElementById('#org_club').value;
+            console.log(org_club)
+            event_type = document.querySelector('#event_type').value;
+            start_date = document.querySelector('#start_date').value;
+            end_date = document.querySelector('#end_date').value;
+            min_price = document.querySelector('#min_price').value;
+            max_price = document.querySelector('#max_price').value;
+            console.log("====FunctionEND-GETALLEVENTS===")
+
+        },
+        // JL: coz my filter doesnt work so
+        // i decieded to get filter by org-club first at least
+        onFilter_org_club() {
+            // FIREBASE POPULATE UPCOMING EVENTS
+            console.log("====Function-GETALLEVENTS===")
+            let filtered_events = {}
+            console.log(allEvents)
+            console.log("====FunctionEND-GETALLEVENTS===")
+            
             
         },
 
@@ -72,6 +101,7 @@ const explorePage = Vue.createApp({
         },
 
         onFilter() {
+            
             var club = document.getElementById("org_club").value;
             var type = document.getElementById("event_type").value;
             var s_date = document.getElementById("start_date").value;

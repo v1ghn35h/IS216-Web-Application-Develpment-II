@@ -88,7 +88,7 @@
 
                 <!--Filter Button trigger modal -->
                 <button type="button" class="sort-btn fil-sort mt-2" data-bs-toggle="modal"
-                    data-bs-target="#filter-modal">
+                    data-bs-target="#filter-modal" >
                     Filter By
                 </button>
 
@@ -173,8 +173,8 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn" style="background-color: #104547; color: white;">Save
-                                    changes</button>
+                                <button type="button" @click="get_filter_criterias()" class="btn" style="background-color: #104547; color: white;">Save
+                                    changes </button>
                             </div>
                         </div>
                     </div>
