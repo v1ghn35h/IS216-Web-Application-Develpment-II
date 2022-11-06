@@ -69,14 +69,14 @@ const explorePage = Vue.createApp({
     methods: {
         // JL: To get all the inputs from the filter
         get_filter_criterias() {
-            console.log("====Function-GETAggggLLEVENTS===")
-            let org_club = document.getElementById('#org_club').value;
+            console.log("====Function-GETALLEVENTS===")
+            this.org_club = document.getElementById('org_club').value;
             console.log(org_club)
-            event_type = document.querySelector('#event_type').value;
-            start_date = document.querySelector('#start_date').value;
-            end_date = document.querySelector('#end_date').value;
-            min_price = document.querySelector('#min_price').value;
-            max_price = document.querySelector('#max_price').value;
+            this.event_type = document.getElementById('event_type').value;
+            this.start_date = document.getElementById('start_date').value;
+            this.end_date = document.getElementById('end_date').value;
+            this.min_price = document.getElementById('min_price').value;
+            this.max_price = document.getElementById('max_price').value;
             console.log("====FunctionEND-GETALLEVENTS===")
 
         },
