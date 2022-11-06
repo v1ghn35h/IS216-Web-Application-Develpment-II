@@ -71,7 +71,7 @@ const explorePage = Vue.createApp({
         get_filter_criterias() {
             console.log("====Function-GETALLEVENTS===")
             this.org_club = document.getElementById('org_club').value;
-            console.log(org_club)
+            console.log(this.org_club)
             this.event_type = document.getElementById('event_type').value;
             this.start_date = document.getElementById('start_date').value;
             this.end_date = document.getElementById('end_date').value;
