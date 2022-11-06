@@ -3,13 +3,31 @@
 h2 {
     text-align: center;
     padding: 20px;
-    padding-top: 40px;
+    padding-top: 50px;
 }
 
 #clubs h2, #events h2 {
     padding-bottom: 60px;
 }
 
+#events h2 {
+    padding-top: 200px;
+}
+
+
+/* -------------------------------------------------- */
+/* BUTTON */
+.btn {
+    background-color: white !important;
+    color: #104547 !important;
+    border-color: #104547 !important;
+}
+
+.btn:active {
+    background-color: #104547 !important;
+    color: white !important;
+    border-color: #104547 !important;
+}
 
 /* -------------------------------------------------- */
 /* IMAGE */
@@ -107,6 +125,10 @@ h2 {
 /* EDIT BUTTON */
 
 /* Basic Style */
+.details #save {
+    margin-top: 10px;
+}
+
 .details .form-control {
     background-color: transparent;
     border-top: 0;
@@ -124,11 +146,11 @@ h2 {
     float: left;
 }
 
-.details input, button {
+.details input, .edit {
     outline: none;
 }
 
-.details button {
+.details .edit {
     background: none;
     border: 0px;
     color: #888;
@@ -138,7 +160,7 @@ h2 {
     float: right;
 }
 
-.details button:hover {
+.details .edit:hover {
     color: #333;
 }
 
@@ -213,10 +235,6 @@ font-size: 20px;
 color: grey;
 }
 
-.round {
-border-radius: 50%;
-}
-
 td {
     height: 80px;
     vertical-align: middle;
@@ -244,19 +262,6 @@ svg {
     margin-left: 5px;
     margin-right: 5px;
     margin-top: 0px;
-}
-
-
-/* -------------------------------------------------- */
-/* MODAL BUTTON */
-.button-green {
-    background-color: #104547;
-    color: white;
-}
-
-.button-green:hover, .button-green:visited, .button-green:active {
-    background-color: #3F6A6B;
-    color: white;
 }
 
 
