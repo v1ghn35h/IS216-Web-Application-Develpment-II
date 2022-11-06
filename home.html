@@ -26,7 +26,6 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myMenu" aria-controls="myMenu" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <!-- Another Div, id="myMenu" -->
         <div class="collapse navbar-collapse" id="myMenu">
             <div class="navbar-nav ms-auto">
                 <a class="nav-link text-white active" aria-current="page" href="home.html">Home</a>
@@ -51,10 +50,7 @@
         <div class = "col-12 col-lg-6 my-4">
             <div class = "container h-100 w-100 d-inline-block">
                 <div id = "intro" class = "h-100 w-100 d-inline-block">
-                    <!-- {{ check_weather() }} -->
                     <p id = "temperature" class = "display-6" style = "color: white;"></p>
-                    <!-- <span v-html ="weather_image()">
-                    <span v-html ="temp_image()"> -->
                     <hr>
                     <input class="btn btn-light " type="button" value="Are you bored?" onclick="call_bored_api()">
                     <input class="btn btn-light" type="button" value="Read a quote" onclick="call_quote_api()">
@@ -75,20 +71,16 @@
     </div>
     </div>
 
-    <div class = "mt-5">
-        <h3 class = "display-5 my-4">Upcoming School Events</h3>
-        <hr style = "color: #104547">
-    </div>
+    <h3 class = "display-5 my-4">Upcoming School Events</h3>
+    <hr style = "color: #104547">
 
-    
-    <div id = "upcoming">
-    </div>
+    <div id = "upcoming"></div>
 
     <h3 class = "display-5 my-4">For You</h3>
     <hr style = "color: #104547">
 
-    <div id = "for_you">
-    </div>
+    <div id = "for_you"></div>
+
 </div>
 </body>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

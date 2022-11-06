@@ -358,7 +358,7 @@ function UserUpcomingSchoolEvents () {
                     tempHTML += `
                     <div class="carousel-item active">
                     <img src="${photo_of_event}" class="d-block w-100" alt="..." height="300" width="600">
-                    <div class="carousel-caption d-none d-md-block" style = "background-color: white; color: black; font-family: font-family: Georgia, 'Times New Roman', Times, serif">
+                    <div class="carousel-caption d-block" style = "background-color: white; color: black; font-family: font-family: Georgia, 'Times New Roman', Times, serif">
                         <h5>${name_of_event}</h5>
                         <p>${date_of_event}</p>
                     </div>
@@ -369,7 +369,7 @@ function UserUpcomingSchoolEvents () {
                     tempHTML += `
                     <div class="carousel-item">
                     <img src="${photo_of_event}" class="d-block w-100" alt="..." height="300" width="600">
-                    <div class="carousel-caption d-none d-md-block" style = "background-color: white; color: black; font-family: Georgia, 'Times New Roman', Times, serif">
+                    <div class="carousel-caption d-block" style = "background-color: white; color: black; font-family: Georgia, 'Times New Roman', Times, serif">
                         <h5>${name_of_event}</h5>
                         <p>${date_of_event}</p>
                     </div>
