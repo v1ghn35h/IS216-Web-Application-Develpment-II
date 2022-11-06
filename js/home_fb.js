@@ -393,6 +393,5 @@ function UserUpcomingSchoolEvents () {
     </div>
     </div>
     `
-    console.log(tempHTML)
     document.getElementById('carousel_user_events').innerHTML = tempHTML
 }

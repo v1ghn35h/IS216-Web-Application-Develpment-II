@@ -181,7 +181,9 @@ var actionCodeSettings = {
 
 // Forgot Password
 let forgotPassErrorMessages = {
-    "auth/user-not-found": "That account doesn't exist!"
+    "auth/user-not-found": "That account doesn't exist!",
+    "auth/missing-email": "Please enter an email!",
+    "auth/invalid-email": "Please enter a valid email!"
 }
 
 function forgotPass(event) {
