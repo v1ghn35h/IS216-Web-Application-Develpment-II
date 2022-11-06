@@ -69,25 +69,47 @@ const explorePage = Vue.createApp({
     methods: {
         // JL: To get all the inputs from the filter
         get_filter_criterias() {
-            console.log("====Function-GETALLEVENTS===")
+            console.log("====Function-get_filter_criterias()S===")
             this.org_club = document.getElementById('org_club').value;
             console.log(this.org_club)
             this.event_type = document.getElementById('event_type').value;
+            console.log(this.event_type)
             this.start_date = document.getElementById('start_date').value;
+            console.log(this.start_date)
             this.end_date = document.getElementById('end_date').value;
+            console.log(this.end_date)
             this.min_price = document.getElementById('min_price').value;
+            console.log(this.min_price)
             this.max_price = document.getElementById('max_price').value;
-            console.log("====FunctionEND-GETALLEVENTS===")
+            console.log(this.max_price)
+            console.log("====FunctionEND-get_filter_criterias()===")
+
+            // onFilter_org_club(this.org_club)
+            console.log("====Function-onFilter_org_club===")
+            let filtered_events = {}
+            console.log("ffff")
+            console.log(this.events)
+            let allevents = this.events;
+            for (let event1 in allevents) {
+                console.log(event1)
+                let event_club = JSON.stringify(event1.club)
+                console.log(event_club)
+            }
+            
+
+            console.log("====FunctionEND-onFilter_org_club===")
 
         },
         // JL: coz my filter doesnt work so
         // i decieded to get filter by org-club first at least
-        onFilter_org_club() {
+        onFilter_org_club(org_club_input) {
             // FIREBASE POPULATE UPCOMING EVENTS
-            console.log("====Function-GETALLEVENTS===")
+            console.log("====Function-onFilter_org_club===")
             let filtered_events = {}
             console.log(allEvents)
-            console.log("====FunctionEND-GETALLEVENTS===")
+
+
+            console.log("====FunctionEND-onFilter_org_club===")
             
             
         },
