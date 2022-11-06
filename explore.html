@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+    <!-- Events Task to dos
+    9. Pagination of events (especially when we have a lot) (i added more events but dk why not showing up even)-->
+    
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,7 +46,7 @@
             <div class="collapse navbar-collapse" id="myMenu">
                 <div class="navbar-nav ms-auto">
                     <a class="nav-item nav-link text-white active" href="home.html">Home</a>
-                    <a class="nav-item nav-link text-white" href="explore.html">Event</a>
+                    <a class="nav-item nav-link text-white" href="explore.html">Events</a>
                     <a class="nav-item nav-link text-white" href="calendar.html">Calendar</a>
                     <a class="nav-item nav-link text-white" href="profile.html">Profile</a>
 
@@ -51,7 +55,7 @@
         </div>
     </nav>
 
-    <!-- JL SEARCH BAR -START -->
+    <!-- SEARCH BAR -START -->
     <div class="search-container-fluid justify-content-center">
         <!--Search bar-->
     <div id="search-bar">
@@ -105,7 +109,7 @@
                                         Organising Club:
 
                                         <select class="form-select multiple form-select-sm"
-                                            aria-label=".form-select-sm example">
+                                            aria-label=".form-select-sm example" id= "org_club">
                                             <option selected>Open this select menu</option>
                                             <option value="SMU-X">SMU-X</option>
                                             <option value="WhiteHats">WhiteHats</option>
@@ -123,7 +127,7 @@
                                         <!-- Event Type -->
                                         <label for="event-type">Event Type: </label>
                                         <br>
-                                        <select class="form-select" multiple aria-label=".form-select-sm example">
+                                        <select class="form-select" multiple aria-label=".form-select-sm example" id= "event_type">
 
                                             <option value="Sports">Sports</option>
                                             <option value="Arts">Arts</option>
@@ -141,13 +145,13 @@
                                     <!--start date-->
                                     <div class="col-5">
                                         <label for="start-date">Start Date: </label>
-                                        <input class="form-control" id="start-date" type="date" placeholder="Search">
+                                        <input class="form-control" id="start_date" type="date" placeholder="Search">
                                     </div>
 
                                     <!-- end date-->
                                     <div class="col-5">
                                         <label for="end-date">End Date: </label>
-                                        <input class="form-control" id="end-date" type="date" placeholder="Search">
+                                        <input class="form-control" id="end_date" type="date" placeholder="Search">
 
                                     </div>
                                 </div>
@@ -157,12 +161,12 @@
                                     <div class="col-5">
                                         <!--min price-->
                                         <label for="min-price">Min Price: </label>
-                                        <input class="form-control" id="min-price" type="number">
+                                        <input class="form-control" id="min_price" type="number">
                                     </div>
                                     <div class="col-5">
                                         <!--max price-->
                                         <label for="max-price">Max Price: </label>
-                                        <input class="form-control" id="max-price" type="number">
+                                        <input class="form-control" id="max_price" type="number">
                                     </div>
                                 </div>
 
@@ -189,7 +193,7 @@
                             <div class="modal-body">
 
                                 <select class="form-select multiple form-select-sm"
-                                    aria-label=".form-select-sm example">
+                                    aria-label=".form-select-sm example" id= "sortby">
                                     <option selected>Open this select menu</option>
                                     <option value="event">Event</option>
                                     <option value="date">Date</option>
@@ -215,10 +219,7 @@
         </form> <!-- end of form-->
     </div> <!-- end of div search bar-->
     </div>
-    
-
-    <!-- JL SEARCH BAR -END -->
-
+    <!-- SEARCH BAR -END -->
 
     <!-- Topic Cards -->
     <div id="cards_landscape_wrap-2" class="mt-0">
@@ -233,7 +234,7 @@
                 <div class=" col-9 " v-for="(details, event) of events" >
                     <!-- start of card-->
                     <div class="card-flyer" :id="`eventCard${details.eventId}`">
-                        <div class="text-box">
+                        <div class="text-box" style ="height: 412px">
                             <div class="image-box">
                                 <img :src="details.photo" />
                             </div>
@@ -253,12 +254,13 @@
                                     <br>
                                     Location: {{ details.location }}
                                 </p>
-                                <!-- sign up button-->
-                                <div>
-                                    <button type="button" class="btn details-btn mt-3" :data-bs-target="`#infoPage${details.eventId}`"
-                                        data-bs-toggle="modal">Details</button>
-                                </div>
+                                
                             </div>
+                        </div>
+                        <!-- sign up button-->
+                        <div style="display:flex; align-content: flex-start; margin: 15px;">
+                            <button type="button" class="btn details-btn mt-3 " :data-bs-target="`#infoPage${details.eventId}`"
+                                data-bs-toggle="modal">More info</button>
                         </div>
                     </div>
                     <!-- end of card-->
@@ -281,8 +283,9 @@
                                         <img :src="details.photo"
                                             style="width:300px; height:250px" alt="..." class="center "/>
                                     </div>
-                                    <p class="display-6 lead text-center ">Event Information</p>
-                                    <div class="container text-break p-3 mt-3 fs-6">
+                                    <p class="display-6 lead text-center mt-3">Event Information</p>
+                                    <hr>
+                                    <div class="container  text-break p-3 mt-3 fs-6" style="display: inline-block; text-align: left;">
                                         {{ details.club }}
                                         CCA: {{ details.club }}
                                         <br>

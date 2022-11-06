@@ -263,6 +263,138 @@
                 "time": "1545-1915",
                 "fees": "84 SGD",
                 "location":"SMU Admin Building MPSH"
-            }
+            },
+
+            "event13": {
+                "name": "Beach Clean Up",
+                "club": "SMU Verts",
+                "eventId": "13",
+                "type": "environment",
+                "photo": "https://images.squarespace-cdn.com/content/v1/5c39a8f55ffd2092c1c46d7e/1629738296149-42USDKGHV1WSC5M4U4UR/how+to+organise+a+beach+clean-up.jpg",
+                "date": "7 November 2022",
+                "time": "1130-1300",
+                "fees": "NA",
+                "location":"East Coast Park near Carpark 4"
+            }, 
+            "event14": {
+                "name": "Basketball Tryouts",
+                "club": "SMU Basketball",
+                "eventId": "14",
+                "type": "sports",
+                "photo": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHCBUVFRgVERISERIREREREQ8RDxERDxERGBQZGRgUGBgcJC4lHB4rHxgYJjgmLC8xNTU1GiQ7QDs0Py40NTQBDAwMEA8QGhISGjQhJCQ0NDQ0NDQ0NDQ0MTQxNDQ0NDQxMTQxNDY0NDQ0NDQ0NDE0NDQ0MTQ0NDQxMTQ2NDQ0NP/AABEIAJ8BPgMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAACAwEEBQYAB//EADwQAAICAQMCAwcBBwIEBwAAAAECAAMRBBIhBTETQVEGIjJhcYGRQhQjUmKhwdFysQcVM4KEkqKys/Dx/8QAGQEBAQEBAQEAAAAAAAAAAAAAAQACAwQF/8QAKBEBAQACAgIBAgYDAQAAAAAAAAECEQMhEjFBBGETMlFxkaFCUoEi/9oADAMBAAIRAxEAPwD5YNU3rC/ajKsiOxo57MwSYuTIrdT9pqdC6gKbnckD90yKSC3vHGOB+PvMRGlrRVb7UBUsvi1lwAfh3gHOO3EtjT6s/T01FqXWIGrGmpALtyzgHKlRxxkZ/ERXeiauxVrRCoTDBRnaUTt6S6+qwCQBitNyoOBtGJztj77XuztZwF2r8KqAAMfPiYsnwd5X3XbeOuMlgM+ZIEU3VlXhBu+Z4GZxt+p8yxJz8RJJl+i8EA/n5RxjNjZfXFyN/kcqewBhK85vqPWak/WGI8lOQPv2mafa9Avds+SIAD93P9hNxad4+qVANzBc9h+o/QdzMzqHtMlQ95lr9N/Ln6IOfyRPnmt9prnyEIqU99md7D+Zz7x/Mxntz6sT598yWnY9T9tGfIrVm/ntPu/ZF4/OZzOv6jZYf3js3oucKPoo4lVanPf3RLen6cW5wT8yMCFyjUxUAC3YS7o+nMx7Z+flNXT6BR35+Q7S89oRGY4CoAWwPhBIUE/cgfec7lv01MVKvoqAc5J9Z7/kat8Of6Sjq+vseKxgfxsOfxLx1d9lGnSkk3au26slOCcFFVBjt8WSfQ+kxlMvh14/w92576+J8rl/sxWVCtbbp3CnaH04ZGb67gflkZx6TnuodEvpBZl3VqQDdWS1YJOBuOAVz8wJp9U64y2LTRZvo01a6cOwDre4LNZbk84Z2bGD2AnS9EzdWmR4Z1HjVnBY1itFy5YH9JBOR6LOVy5ML33P7eqY/T8uP/neN/mPmmYSOQcjuIVijJ2/Dk7f9OeIG2ejcrw61Vv9tGPh5+vEpkyds9tlJJ6VtvtEgycSGEg8sIQVEICRFtgNCzAZoxIVo0LEoeZarsGJWiF7ZGI/cJ4Yhs6IJnsxpr3MAPOaqdCcpuBU/kQucntTG1i5npdbSYOD3j6dAT2GZecXjWaaG9IJrPpNDE9tmtjTNxIxNPYPQQHRfMCW1pRBmv0IvuJQgDdXuz3K78kCUko3nCL984GPWXV20oVFmHIyGHOTz/TtHY0+hvZy4wT+4s7c4OAefxMOy0KvfE5ZPaW9S37xm3KyFWCEEHvk4z+JmajXO/xMT8vL8S0HQ67q6LwDvPovb7mZuo6w7DCkgemePxMlVJ+ctU6Nm+X+8fS0U9rN3JMKutj2H38ppU9Px5Z+ZjEUD40s/wC1QR/Q5h5NTFSr0mTySx/hUZmnpumnzwg/Ly5oUVnStWSt3ZVVbGCNljhcg885H5mp0/TBwp55bUmx24rrp06rvc+Z95to+ePWYyydMePffplp05ey7t38QwzfgjE1+ndEtZhutIrALPuRCwQdzxLdyJdStlCMipZYLE3e8hYJjGO6fM9i2PmQvrNenPLk3We977Z2IBhc+WWb/wBInmy5st6kezDg4bjLln3+mvTm+pabVszCqp1rydre6GK+WSTD6N0TUEalbQq+JorMFr6m95HR1zhiR8J5+cPR3m2zw0QqFUvbc9riuqpeWsc+QH9TxNO3VItjnTovhWdIuvRjuywCMjFlPYlladMcuT/VnLj+mn+dv/HLr7PsPjuoX6M7kfhcf1nZdF6SlejD5ttbxNTXVZUgrNa3LWljKxJAbCFQf5zxxOP6ZqLb7UqQVoXblypIRACzOxJ7KoJ+07i/UJqdLUVfwNNQ51C28riii/w3LY+J2Rlfb3LEATUnLfdkZyy+mx/JLf3Z3SunaZHJ8BAK63tIew33uEHCqB7oySBlR58TV6jrs6PVDeqvQCtzVIiKj2ABdOpHJ94Krc5znn3TMP2XUvqbNSgZLNa+vr0VSlQ241vYzEnjC+4o/mb+WU/aIV0aenS0tvLk6rU3BifHcjbW/wDo+MqP4SrHlpTj13busZ8/lNY4yT7OWxJxIzDAm3DRc9CaBmITBaeLRbPJDUxmZXDR1cqolhEPLZWVbpYqgzHohMrCbfStKXGcZlll4zYxm1DwWnvDadPT0sk4IxOt6P7JIwy65OPOcbzSN+L5XSW3qAMknges+jdJ6W7IAwIz8szN670RdPqK3AwpcA+nIM+ndKZPDB47CY5c/KSxrCWbcafYsPySc+vIg1+yprJwx59Z2tnUkX0mbquspnynDyyOnCr7JI6q1eoO1wGViqupB7HIImVq+gWISN6tjz2Oo/vN3U3+ESaLFTLF305G6nJ7kY5Qn5cd+Jk6v2qfsEQHzKWl+fkds+lY4SsW2h1IVnrySB8fr549JRts/h5wfiPw/YRvUNW1r737njuTx6cyocfWR0IalgOGbnOQOBjj0/8AvEQzk941aiew+8s0aIdyQP8AUcY/vLYs/RTSontL1HT+MtwPUnA/MsKFX4Ru+ZHH2EXc6/rOfkeT9hC0zE9QidhuP4X/ACZc0hLA+7woLHAwqqoyWPyA85gvcB8C4+Z/xND2esJa4ElidBrAMn0pLHH2Blo7kdHoenl2UFtqMlNu4Y/6bs4zz2ISt3+izO9uahp7K6ayyn9mqe47jlrWzuHyAx2+c6zQIpr0qINz6tNDS2QPdrFA8X7itbB/4icP7cavxdbe2chH8IHy/dgI2PqwY/eEnZt6OtrL6vRuDk316FyR6oRWx+xrb8Te6rqNmjpVSVbWFrmGBu8E2PbtPoC9ifXwvlM32a05uoVk51Old9LSgHvE6ogUt9Fdr2P2he0uuRtQy1kGnTImlpI7eHSNmR9W3H7iNm1jWv7L6wKjbuVrtRrF/iqcFHH/ALPvia/tBQEC15z4afkszNn7gicP7N3M2oWofDqlfTHjON4Oxv8AtYK30UztepuputezJq07LTtzjxrUUL4YPoSpJ9B8yJ5c8NO+OTh/aS411pp090WImq1GO9ruSaw38qpsIHqxMu1ALoVs/UOmaqn57W6kAP8A5HmD17UtZa7ucs7FmI4HyAHkAMAD0An0HonRAyHxwiUUdM0yhbyUqst3DVuzH+BXdQ5Gc5x3npx/LHny/NXL9N6WUpZSRVZqKhZqr3zs0XTyRjdjnfYcYUckbR+ozYpsF/T3o0tbJW11lVCMxay5zfogttnlvLO3YAKGwO2TzftJ13xiaqmY0iw2vYwxZq78YNzj9IAyETsi8d8z6P0TQJotJWdU61gUb7ichqldzZZjH62zXUoHOUJGcYjRGVSlGlrfU3A2V16Y6LQJym9TlXcH+K1vFbI7Jk/qWfPtZrHtd7LDud2LMQMDPkAPIAYAHkAJo+1/tK2ttDBPCoryunoAA2rwNzY43EBe3AAAHbJwN0rFKlmkq8WTIzLR2Y7xZeQZ5RLSteJgGNIgYiEqI+uJzGVtClYJlS2WGaVnMIaACdR7MalchTOZEbprSjBgcYhnPLHTUmn0bWahUw3GMzq+h9ZQoOR2nyXVdS3JgmXOjdV2rjPlPJeK62fLtt/8QeqBygXycHj5RvT+vMtQGfKcf1zUbyDnPMWurOzHynSce8ZGfLVrrX6uXPxf1lc6vPnOUo1DDnMI685l+F+hmRVupZviYn5eQ+ggKCew+8spp1X4sn6AmPSxf04H+/8AWenbCvXoieWOPrxHLplXsu4/gQbdcq+e4/y8/wBZTs6g57e6PlyfzLsdRfa7b3AT5+5/nMrWa5fIFj6ngf1lIHPJ5Pqe8jEtLZ73k+QH0Az+YkyQZ7MSEmdB7DaUWaxFY4QpctmPi8N62RgPnh5gkQ6LnRg1bsjjOHRmRhxg4I5kn2b9natBqDtF2nXVVaXLIlCm5glfPltVQB9cT5WOgalnKGl9+NzM+AhUn495O0gnPIJzzPo2qV7dImjeysaq6irxkuBZkQMN1gA4Lbhwc989vLH1+to0dNdGp04uXxPEq0vjbsIlhHi2uD+o7iEAxgHPyxLWrIuezgTp2hdtRaqNqrrNOmooBvWpzVtRyRjJRlc4B8/Wctp/Y7WOVFPg31O2F1FOoqevaDgsQDuUDzyuROm6W/8AzB3asjUacsht0WspAGnIVlrOmNbIuce7tGODk57jRCaTRM40FNSazITbqtRbUMYyyo7jDc491WGefeOI7GmV7I6TSJqwlJNz0o7XdQ1P7uis4Cfua/M7mGGY+uPKXLOr22u9V1dZ02lYJZdrV2Og4Uu1owRY+MgL3yMcDMGvq2vUmzq2pr0+lZsHSPTTcdRjHuVoAxK9veJ/zLOs6omo09Z0a+GXXb0+xmR/A1SLhtM6sCK3ZF9xiTnJwRM5TZl0p6jpFWnau6qpE0jqLH6prQr3odzYrrofhXGFwdhJyDFavqFuq6jqNFWGNTVauhFU5LP4LBbbGPcZOAOFXdwM5JX7P9JuuV06vawr1al9PXfaX15tTkW0o2So271ORzwMTaX2npS7RV6WhRVrTWzXeI63FlsNebAuN7DYOWyPlxNegxfZT2Azalup1FLpVcN1VO60WWIc+HvwFzuByBu+Foz/AIudX3GrTY22KF1GoUMCEZlISskfEwGWJP8AEJs63qNnTtAr6laq9Y1lo0WnpRFr025Nu8Lz8K5POT+8I858fdixLMSzMSzMxLMzE5LEnuSfOMACYsmeYzyiaZTukCSwkoJJ7EYiSQJYqIgVdli2ly0SnYeYwBhpAEITNaNJiWhZgOZQV4GEInMOtuY6PkloygnPBg2QtM3MPgfJupz5xIaWNaeJVDSx7hOL8SsWhM8XGQWr1mu/hH3P+JVsuZviYn5eX4kFYOIjYZ6eM9IGK0IGJjU7SO0bp4NBMJVktiJm77G6JbdQu4blqVrSpGQxGNqn5biD9piETp/Zc1pptTbc7qjmuhvCVWtAbuVDED9R8+MfSZvoz326rreruDvboK9M7atFdtTbqNOzqANqpWjsOBtBBwRk8Q+k33tUv/M3q04W3w0e4VZtBUqVZDnPODlcdvSZtOn0+mpV9RZZfpnatqKbdOPEof4uWBOD8uARkEckQNFpTrQy2GvX1hyRqK3bS6rSh/i91xtKDvtOexxmZdF3re+yvwlbUdOqqYCs1U79JqAW90s1BJQ5xgEle3nKy9Rv0CEdRvfWPbnw+m2Wm6p0yV8a1nBwpwcL39R3wq3Wp0pKzpK/2h7xu/b3bdTYFJ3JWFJA57jv2yTxizRoKurVhka1HpLjc7I37PvO8q7EDxagc7SCGUHBB4Jp/Q3/ACfqdKnUkdks8etgz6dmwup6dqGAJotUfFSxUKGGSOPqZ9nVo6dd+xtZ4+s1IUMwCnSaW/aTVlT8RBIye+Mdszb6Q9NFn7N06l2XTuE1VuCHsscY2LnG4gAsWPAA4zmePT1XVXXO1OirrO+y5Sr3vVgKhssbctSsAuEXDMOcgy2mQ/RrbdfTrbS9Ga9Pc1RzZc1ye7ZSieSDHvNwqhvnx1A0VWmsRaqq600q2W266xQVprcs7U0k/qx7zP5A4HxcVqrhqL810tbTfpqWu1rs6q1XvbaKkx8JK7mB8yc54nHf8QPaNHD6aixrf3gNuoBAqCJnGnrC/EoOCWPciU3bpXUjl/anrzay82Hcta5SitjkpXnOT6se5Pr9BMYmTiA5mtMbCRDRIsNHI8VKh1goYbtACyWXYy0lHgkRZMQstZEk5MUTJUyUOxBMkGQYNRBgkQws8RJEmeEJlgxZ0MmTUcGDieBgTr7MiIWQZKyk0PdQZEJhBiDysgrGSCJIhhIxHMsArJFxiGLMNZJEakVmSHkjiJ3nsRUV0zmytLfFd202mZlDah0QhgFPlwPLuAfrwG+fQjXWKNJqNazIum0yiqpWVWdlYlQiD3ixATJJCjv6iZyax9rvRel+Jv1o1OpShvEOp09umBNiqD+7wpKsOCBhc4B7TF6zrSa0s6Xd4dFQDWaWv3Lqnzk2MO7KTj5fXkwuo9Q1eoerU6N3dV8MLVVk/s15XDrYvmCQffIwQfKOb2j0lGrFlenrNzuBqrkZvBp3YWzwFx3+Ik+fl3MG27ounLZpS+vQUVuDbqNIUbAYMoGqTzob3juA497nHOUezy3Waq3TKtel0OlrdLNKVyt1TqVy7nk7ly27Pp37zmdRrNVX1ElLDbY7BELEtVbpnwwUg5HhlTz5DBPlPo1fWdOKA+nRGrdBWldtiUVuFcois9nfhSATnhPMmF6U7XraFvRaqHsTSuiM+srNaO6KiqELsd28qF5C9h8QEyOp5emjT6PRPrK6rrK6zqLW/ZkatEw9uOLAN5C544bGeIvTnUa9NRWuqpqLeGKzpGvtSlldWO+44DMQMYB4HOJU9oPaE9MoTS6e9tVqH3u99/vla28+/mcgDPYfkhpftx7UvpkTR0uRqhTWuovRfDRFPvnwx5F8j6Lx3Jx8rJjdRczuz2MXd2LM57sx7mJm5NOeV2IQHWMWeYRSriOVYDDmPQSUhDRiT1qwUaQG8URDYyQJL2HbF9o4mLaKr26EsXDUyWzRIIkZkbo6W04iWEcILiBryxbQ1gtBV7HEERnlFRFNAizDVpGJLaxPESAYUgAiQRDIg4kinWQsaRBIkijJAhGdB0r2eLDfeWrXAKooHisOOeew/rC2T21jhcrqRzstarWWWtvtcu+ANzHnAHAne6XWUU+7pqKkIABtKLZb9mbPMcesMSxKKSwCnd7x4zzz58zleWT4enH6TKz2+dVal68mt3r3DDFHZNw9Dg8iV59BbR6SxW8XTncx4spbw2Q+Z7YP0InM9Z6G2nIOfEpf/p3AYB/lYfpb/ebxyxy9OXJw5Ye50aOv406oa83102aevUbgNtDsCQRjJYDco54DmZtvUrWqWhnzVW25VwOD72MnGTje2B5bjEPEjvNSOdtdV7M+0y6Sm1PB8VrW3DLba2G3btfz29zgd84MwtbrHusay1tzucsew+QA8gBwBEqYJeUitHAZYQaETEFKYeYtzJWOltDDmNQwGEhTM0wVpgIslp5JD5SywlWSJ4tGIDrFYljMBkiAqsBowRbQL26ezICzxkoINJzF5hLIjxAIjlWA4ggiBiEDPMZK6BCEGGoiIYjZjhEoMR4MggiQRCk4kiiIJEcVgkSLS9nun+I+8gbK/XkM/cDHmB3/ABN7qGoYcZyRliRkYA7yj007alUHAI3uR3JbkD8YguQWJBI/SBnI45JOft+Jwyu693HhccZJ8nq4/UOPI4BX8/5lipEPOAfsJSru9e44MYMfpO0+o7fcTnXoxmvXbTSlfT8cS3pUXlXHiUuNtlbH4lPfa3dW8ww7GZVWpIID8ejDsZdS2G7K6eOOc04rrWj8G1q8kqrZRmABZDyrHHnjv88zPE6j2zTd4dnnhqz64HvL/u05isT1Y5eUlfI5cPDO4moILpHqkhlmmCUWeePVYm0QWioxICxiytMgjBxDAkmRIYyUMhhGVJIX2nME8wrVi0aSF2kgyGMgSOkMYJjCIEdjxEggNDWCwgbCzDrghY1VxFk4QLBxIDwXeCJAhMslO8OwcRREaogARiiFMAzSVeBiSBESLKNGAxIXiQtkIbDWaRBYzytIN/TP7i4/hGftx/aIV+Puf9zE6J8qV8xnHOOP/wBjKxkEeYJ8snv5D7zhljq19DDk3jL9kl8EH7H+0ejxFiYAHywc/wB4tH8j5f1Eze464Zav7tJLPuD5HtHV2bfmp/I+UzkeXaBn7+UzenX7z2q+09nuIvmWZvsAB/ec9TL3WNTvbj4UGxfng8t9z/aUqu89WE8cZHyufOZZ2xdQcQHEJe0SWm3ExYLrCQxdhmY1SighqsWrGOURogGEE5jJJWSLRJdrr4lZYw2cSSLVlV0wY/dBYSRGYQMLE9jEl2mKJjd0Ja8yOykaERGGnEgiC2ViMxIAhiQLZIpxLOYFi8RVJQw2aLnsyUeEaGicyd0lK8DCQQBLFS8QqifKKxLDRVfeRlQskLzDcTyyRtTkHIOCJcqsBORwfNT6+soZgO2IZYyxrDO41t2LnnGM/wC/zg2aXAyGGfT1mXX1Bh55HowzLCdSc/w/+WcvwsvivROfH12u01+vHrk9onW9QwCtZ78M/wAvRf8AMq2XM/xMSPTsPxEss3jxau6xn9RlZ449EOJ5DzDZYATmdXmWS3ErGzmGx4lYySz4kW9mYqSq5ghoeY/dF1piMcQaiFaMiKzGlpKPOcRW/M87Sa1kbBKILGMYTyLIaChgWwyOZDpmRsJEtUcRSJzLWziVokeZ8xVkICBZKCgEFmk4kFJNbiUkuYBbEFmkOhBIphGB4ppCvSJ6MCxD/9k=",
+                "date": "10 November 2022",
+                "time": "1130-1700",
+                "fees": "NA",
+                "location":"SMU Administration Building Level 5"
+            }, 
+            "event15": {
+                "name": "Art Jam",
+                "club": "SMU Artdicted",
+                "eventId": "15",
+                "type": "art",
+                "photo": "https://mymodernmet.com/wp/wp-content/uploads/2018/05/painting-ideas-thumbnail-jpg.jpg",
+                "date": "13 November 2022",
+                "time": "1700-1900",
+                "fees": "10 SGD",
+                "location":"LKCSB Classroom 2-3, near to elevator"
+            },
+            "event16": {
+                "name": "Skating Session",
+                "club": "SMU-X Skating",
+                "eventId": "16",
+                "type": "sport",
+                "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
+                "date": "15 November 2022",
+                "time": "1700-1900",
+                "fees": "15 SGD",
+                "location":" Outside SCIS Level 1"
+            },
+            "event17": {
+                "name": "Aquathlon",
+                "club": "SMU Swimming",
+                "eventId": "17",
+                "type": "sport",
+                "photo": "https://images.everydayhealth.com/images/swimming-overview-guide-1440x810.jpg?sfvrsn=d3b9ee_1",
+                "date": "18 November 2022",
+                "time": "1700-1900",
+                "fees": "15 SGD",
+                "location":"SMU Administration Building Level 5"
+            },
+            "event18": {
+                "name": "Tennis Tryouts",
+                "club": "SMU Tennis",
+                "eventId": "18",
+                "type": "sport",
+                "photo": "https://photoresources.wtatennis.com/photo-resources/2019/08/15/dbb59626-9254-4426-915e-57397b6d6635/tennis-origins-e1444901660593.jpg?width=1200&height=630",
+                "date": "19 November 2022",
+                "time": "1700-1900",
+                "fees": "NA",
+                "location":"SMU Administration Building Level 5"
+            },
+            "event19": {
+                "name": "Ballet Night",
+                "club": "SMU Ballare",
+                "eventId": "19",
+                "type": "dance",
+                "photo": "https://static.nationalgeographic.co.uk/files/styles/image_3200/public/mm9901_220313_01614.jpg?w=1900&h=1520",
+                "date": "11 November 2022",
+                "time": "1900-2100",
+                "fees": "25 SGD",
+                "location":"Esplanade Auditorium 3"
+            },
+            "event20": {
+                "name": "Career Fair",
+                "club": "SMU",
+                "eventId": "20",
+                "type": "career",
+                "photo": "https://www.ntu.edu.sg/images/default-source/cao/mass-recruitment/41d0833af-4623-42de-8aa6-6a4884c783a4.png?sfvrsn=c91a3e5d_5",
+                "date": "12 November 2022",
+                "time": "1400-1900",
+                "fees": "NA",
+                "location":"YPHSL SR B1"
+            },
+            "event21": {
+                "name": "Latin Ballroom Workshops",
+                "club": "SMU Ardiente",
+                "eventId": "21",
+                "type": "dance",
+                "photo": "https://cdn2.hubspot.net/hubfs/408306/Types%20of%20latin%20dances%202.jpg",
+                "date": "15 November 2022",
+                "time": "1400-1900",
+                "fees": "NA",
+                "location":"CIS B1 Event Space"
+            },
+            "event22": {
+                "name": "Annual Production",
+                "club": "SMU Ivory Keys",
+                "eventId": "22",
+                "type": "art",
+                "photo": "https://au.yamaha.com/en/files/header_cfx_02_7800dfe0f5d660a9f276d6e14d50accc.jpg?impolicy=resize&imwid=2000&imhei=709",
+                "date": "17 November 2022",
+                "time": "1400-1900",
+                "fees": "10 SGD",
+                "location":"SMU Arts and Cultural Centre"
+            },
+            "event23": {
+                "name": "Sailing Workshop",
+                "club": "SMU Sailing",
+                "eventId": "23",
+                "type": "sport",
+                "photo": "https://www.rssailing.com/wp-content/uploads/2017/01/RS-Tera-Feature.jpg",
+                "date": "17 November 2022",
+                "time": "1400-1900",
+                "fees": "10 SGD",
+                "location":"SMU Arts and Cultural Centre"
+            },
+            "event24": {
+                "name": "Aye Aye Captain",
+                "club": "SMU Netball",
+                "eventId": "24",
+                "type": "sport",
+                "photo": "https://netball.sport/wp-content/uploads/2016/11/452602974.jpg",
+                "date": "17 November 2022",
+                "time": "1545-1915",
+                "fees": "84 SGD",
+                "location":"SMU Admin Building MPSH"
         }
-    }
+    }}

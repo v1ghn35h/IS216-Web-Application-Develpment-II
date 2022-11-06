@@ -61,6 +61,38 @@ const explorePage = Vue.createApp({
     methods: {
         methodName() {
             
+        },
+
+        onSort() {
+
+            var condition = document.getElementById("sortby").value;
+            allEvents.orderByChild("condition").once("value", function(snapshot){
+                console.log(snapshot.val());
+            })
+        },
+
+        onFilter() {
+            var club = document.getElementById("org_club").value;
+            var type = document.getElementById("event_type").value;
+            var s_date = document.getElementById("start_date").value;
+            var e_date = document.getElementById("end_date").value;
+            var min_price = document.getElementById("min_price").value;
+            var max_price = document.getElementById("max_price").value;
+
+            const que = query(allEvents,orderByChild("club"), equalTo("club"));
+
+            filtered_events = []
+
+            get(que)
+            .then((snapshot)=> {
+                snapshot.forEach(childsnapshot => {
+                    filtered_events.push(childsnapshot.val());
+                    
+                });
+            
+            console.log(filtered_events)    
+            return filtered_events;
+            })
         }
     } // methods
 });
