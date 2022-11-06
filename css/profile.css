@@ -2,16 +2,19 @@
 /* TITLES */
 h2 {
     text-align: center;
-    padding: 20px;
+}
+#info h2 {
     padding-top: 50px;
+    padding-bottom: 20px;
+}
+#clubs h2 {
+    padding-top: 80px;
+    padding-bottom: 30px;
 }
 
-#clubs h2, #events h2 {
-    padding-bottom: 60px;
-}
-
-#events h2 {
-    padding-top: 200px;
+#events_h2 {
+    padding-top: 40px;
+    padding-bottom: 30px;
 }
 
 
