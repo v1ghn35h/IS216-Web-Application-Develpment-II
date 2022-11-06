@@ -241,7 +241,7 @@
                             <div class="text-container">
                                 <!-- <h6>Title 01</h6>
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p> -->
-                                <h5 class="card-title"> {{ event }} </h5>
+                                <h5 class="card-title"> {{ details.name }} </h5>
                                 <!-- SUBTITLE -->
                                 <h6 class="card-subtitle mb-2 "> {{ details.club }} </h6>
                                 <!-- BODY -->
@@ -274,14 +274,14 @@
                         <div class="modal-dialog modal-dialog-scrollable modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="InfoPageLabel"> {{ event }} </h1>
+                                    <h1 class="modal-title fs-5" id="InfoPageLabel"> {{ details.name }} </h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <div class="container pb-2">
                                         <img :src="details.photo"
-                                            style="width:300px; height:250px" alt="..." class="center "/>
+                                            style="width:500px; height:350px" alt="..." class="center "/>
                                     </div>
                                     <p class="display-6 lead text-center mt-3">Event Information</p>
                                     <hr>
