@@ -383,3 +383,80 @@ function checkUninterested() {
     }
 }
 // document.getElementById('add-button-link').addEventListener("click", checkUninterested);
+
+let user_events = {}
+onValue(users, (snapshot => {
+    const data = snapshot.val(); // get the new value
+
+    user_events = data.user1.user_events
+    UserForYouEvents()
+}));
+
+function UserForYouEvents () {
+    let tempHTML = ""
+    console.log(user_events);
+    for (let event in user_events) {
+        console.log(event);
+		if (Object.hasOwnProperty.call(user_events, event)) {
+            let name_of_event = user_events[event].name
+            let club_of_event = user_events[event].club
+            let type_of_event= user_events[event].type
+            let photo_of_event= user_events[event].photo
+            let date_of_event= user_events[event].date
+            let time_of_event= user_events[event].time
+            let fees_of_event= user_events[event].fees
+            let location_of_event= user_events[event].location
+            let event_id= user_events[event].eventId
+            if (true){
+				tempHTML += ` 
+                <div class="card mx-1" style="width: 18rem;">
+                <!-- PLACE IMAGE ON TOP OF CARD -->
+                <img src = ${photo_of_event} height = "125" class="card-img-top" alt="...">
+                <!-- HEADER [can be added to h* elements]-->
+                <div class="card-body">
+                    <!-- TITLE -->
+                    <h5 class="card-title text-wrap" id = "name">${name_of_event}</h5>  
+                    <!-- SUBTITLE -->
+                    <h6 class="card-subtitle mb-2 text-muted text-wrap">${club_of_event}</h6>
+                    <!-- BODY -->
+                    <p class="card-text text-wrap">
+                        Date: ${date_of_event}
+                        <br>
+                        Time: ${time_of_event}
+                        <br>
+                        Fees: ${fees_of_event}
+                        <br>
+                        Location: ${location_of_event}
+                    </p>
+                <!-- BUTTON -->
+                <div class="modal fade" id="event${event_id}" tabindex="-1" aria-labelledby="event${event_id}Label" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header text-wrap">
+                            <h1 class="modal-title fs-5" id="event${event_id}">${name_of_event}</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-wrap">
+                            <div class="container">
+                            <img src = "${photo_of_event}" width= "300px" height = "250px" alt="..." class="center">
+                            </div>
+                            
+                            <div class="container text-break p-3 mt-3 fs-6">
+                                test
+                            </div>
+                        </div>
+                        <div class="modal-footer text-wrap">
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-dark" data-bs-target="#event${event_id}SignUpPage" data-bs-toggle="modal">Sign up now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <a class="btn btn-dark" data-bs-toggle="modal" href="#event${event_id}" role="button">More info</a>
+            </div>
+            </div>`
+        }
+    }}
+    document.getElementById('events').innerHTML = tempHTML
+}
