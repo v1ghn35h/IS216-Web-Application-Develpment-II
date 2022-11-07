@@ -413,7 +413,7 @@ document.addEventListener('DOMContentLoaded', function() {
       },
 
       listYear: {
-        text: 'Year',
+        text: 'List',
         click: function() {
           alert('clicked the custom button!');
         }
