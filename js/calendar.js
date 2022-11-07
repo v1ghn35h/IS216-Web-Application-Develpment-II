@@ -35,8 +35,9 @@ const db = getDatabase();
 var all_events = []
 let current_user = "user1" // change according to user logged in
 
-let new_db_size = 0
-let task_id = 0
+var all_tasks = []
+var new_db_size = 0
+var new_id = 0
 
 // ----------------------------------------
 // TO DO LIST
@@ -48,13 +49,15 @@ const dbRef = ref(getDatabase());
 get(child(dbRef, `users/${current_user}/user_tasks/`)).then((snapshot) => {
   if (snapshot.exists()) {
     let tasks = snapshot.val();
+    all_tasks = tasks
+    new_id = Object.keys(all_tasks).length
 
     // clear previous data
     task_list_div.innerHTML = ""
 
-    for (var task in tasks) {
+    console.log(all_tasks)
 
-      console.log(task)
+    for (var task in tasks) {
       let output = ``
 
       let task_info = tasks[task]
@@ -104,9 +107,42 @@ function allEventListners() {
     todoList.addEventListener('click', removeTodo);
 }
 
+// TO-DO ADD TO DB
+function to_do_addDB(id, title, status) {
+  set(ref(db, 'users/' + current_user + '/user_tasks/task_' + id), 
+    {
+      id: id,
+      title: title,
+      status: status
+    }
+  )
+
+  // add to task obj
+  all_tasks[`task_${id}`] = {"title": title, "status": status}
+}
+
+// TO-DO FETCH FROM DB
+function to_do_fetchDB() {
+  let num_ele = 0
+  const dbRef = ref(getDatabase());
+  get(child(dbRef, `users/${current_user}/user_tasks/`)).then((snapshot) => {
+    if (snapshot.exists()) {
+      let tasks = snapshot.val();
+      
+      // update all_tasks arr
+      all_tasks = tasks
+    }
+  })
+}
+
+
 
 // Add todo item function
 function addTodo(e) {
+
+    // fetch from database
+    to_do_fetchDB()
+
     if (todoInput.value !== '') {
         // Create li element
         const li = document.createElement('li');
@@ -127,31 +163,19 @@ function addTodo(e) {
         // Append li to ul (todoList)
         todoList.appendChild(li);
 
-        // fetch data from db and populate tasks
-        const dbRef = ref(getDatabase());
-        get(child(dbRef, `users/${current_user}/user_tasks/`)).then((snapshot) => {
-          if (snapshot.exists()) {
-            let tasks = snapshot.val();
-            let task_list_size = Object.keys(tasks).length
-            let task_id = task_list_size + 1
-          }
-        })
-
         // add to database
-        set(ref(db, 'users/' + current_user + '/user_tasks/task_' + task_id), 
-        {
-          id: task_id,
-          title: todoInput.value,
-          status: ""
-        },
-      )
+        new_id += 1
+        let task_id = new_id
+        let task_title = todoInput.value
+        let task_status = ""
+
+        to_do_addDB(task_id, task_title, task_status) 
+        
         // Clear input
         todoInput.value = '';
 
-        // force page to reload
-        setTimeout(function(){
-          window.location.reload();
-          }, 2000);
+        // refetch from database (to update contents)
+        to_do_fetchDB()
 
     } else {
         alert('Please add todo');
@@ -163,6 +187,10 @@ function addTodo(e) {
 
 // Remove and complete todo item function
 function removeTodo(e) {
+
+    // fetch from database
+    to_do_fetchDB()
+
     let event = e.target.parentElement
     let event_id = event.id
 
@@ -185,14 +213,12 @@ function removeTodo(e) {
           status = ""
         }
 
-        // update database
-        set(ref(db, 'users/' + current_user + '/user_tasks/task_' + event_id), 
-        {
-          id: event_id,
-          title: event_title,
-          status: status
-        },
-      )
+    // re add data to DB
+    to_do_addDB(event_id, event_title, status)
+
+    // refetch from database (to update contents)
+    to_do_fetchDB()
+
   }
 
     // Remove todo
@@ -200,15 +226,17 @@ function removeTodo(e) {
         if (confirm('Are you sure')) {
             e.target.parentElement.remove();
 
+            // fetch from db
+            to_do_fetchDB()
+
             // delete from db
             const tasksRef = ref(db, 'users/' + current_user + '/user_tasks/task_' + event_id);
             console.log(tasksRef)
             remove(tasksRef).then(() => {
-              // force page to reload
-              setTimeout(function(){
-                window.location.reload();
-                }, 2000);
             });
+
+            // refetch from database (to update contents)
+            to_do_fetchDB()
 
         }
     }
@@ -393,9 +421,9 @@ document.addEventListener('DOMContentLoaded', function() {
               add_success_modal.style.display = "block";
 
               // force page to reload
-              setTimeout(function(){
-                window.location.reload();
-              }, 2000);
+              // setTimeout(function(){
+              //   window.location.reload();
+              // }, 2000);
           
               // reset modal 
               modal.style.display = "none";
@@ -533,9 +561,9 @@ document.addEventListener('DOMContentLoaded', function() {
               add_success_modal.style.display = "block";
 
               // force page to reload
-              setTimeout(function(){
-                window.location.reload();
-              }, 2000);
+              // setTimeout(function(){
+              //   window.location.reload();
+              // }, 2000);
           
               // reset modal 
               modal.style.display = "none";
@@ -711,9 +739,9 @@ document.addEventListener('DOMContentLoaded', function() {
             delete_success_modal.style.display = "block";
 
             // force page to reload
-            setTimeout(function(){
-              window.location.reload();
-              }, 2000);
+            // setTimeout(function(){
+            //   window.location.reload();
+            //   }, 2000);
           });
 
       };
