@@ -96,7 +96,6 @@ const explorePage = Vue.createApp({
                 console.log(event_club)
             }
             
-
             console.log("====FunctionEND-onFilter_org_club===")
 
         },
