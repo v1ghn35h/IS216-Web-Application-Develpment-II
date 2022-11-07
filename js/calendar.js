@@ -55,8 +55,6 @@ get(child(dbRef, `users/${current_user}/user_tasks/`)).then((snapshot) => {
     // clear previous data
     task_list_div.innerHTML = ""
 
-    console.log(all_tasks)
-
     for (var task in tasks) {
       let output = ``
 
@@ -285,6 +283,14 @@ var colors = [
   {
     name: 'Student Bodies',
     hex: '#8ecae6',
+  },
+  {
+    name: 'Academics',
+    hex: '#ff8fab'
+  },
+  {
+    name: 'Miscellaneous',
+    hex: '#ced4da'
   }
 ];
 
@@ -613,6 +619,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             try {
               let find_object = colors.find(o => o.name === new_event_category); // find object with the name == new_event_category
+              console.log(find_object)
               let new_event_color = find_object.hex
   
               // add color to event object
