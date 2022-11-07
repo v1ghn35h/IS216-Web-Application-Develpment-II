@@ -23,26 +23,30 @@
     <!-- Vue JavaScript -->
     <script src="https://unpkg.com/vue@next"></script>
 
+    <script type="module" src="js/login-common.js"></script>
+
 </head>
 
 <body>
-  <!-- navbar -->
-  <nav class="navbar navbar-expand-md navbar-dark" style = "background-color: #104547">
-      <div class="container">
-          <img src="img/logo/logo-white.png" style="width:100px; height:100px">
+  <!-- NAVIGATION BAR (consistent across all pages)  -->
+  <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #104547">
+    <div class="container">
+      <img src="img/logo/logo-white.png" style="width:64px; height:64px">
 
-          <button class="navbar-toggler" data-toggle="collapse" data-target="#myMenu">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="myMenu">
-              <div class="navbar-nav ms-auto">
-                  <a class="nav-item nav-link text-white active" href="home.html">Home</a>
-                  <a class="nav-item nav-link text-white" href="explore.html">Events</a>
-                  <a class="nav-item nav-link text-white" href="calendar.html">Calendar</a>
-                  <a class="nav-item nav-link text-white" href="profile.html">Profile</a>
-              </div>
-          </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myMenu" aria-controls="myMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+          
+      <div class="collapse navbar-collapse" id="myMenu">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-item nav-link text-white" href="home.html">Home</a>
+          <a class="nav-item nav-link text-white" href="explore.html">Events</a>
+          <a class="nav-item nav-link text-white active" aria-current="page" href="calendar.html">Calendar</a>
+          <a class="nav-item nav-link text-white" href="profile.html">Profile</a>
+          <a class="nav-item nav-link text-white" href="login.html" onclick="logoutFunction()">Logout</a>
+        </div>
+      </div>
+      
       </div>
   </nav>
 

@@ -1,14 +1,8 @@
 # SMU IS216-Project [G7T7] = calendaREADY
 
-### Sections:
+### Project Overview:
 
-- 1. Login = Ryan
-- 2. Home = Kanika
-- 3. Events = Vighnesh, Jun Lin
-- 4. Calendar = Shannie
-- 5. Profile = Li Ying
-
-Undergraduates find it hard to keep track of the many events happening in university as their inboxes are constantly flooded with event invitation emails. In fact, it has been calculated that students receive an average of 120 emails per week. With email and information overload, it is challenging for students to effectively explore extracurricular activities and they might even miss out on important updates from faculty members. As a result, the effectiveness of email as the main mode of communication between students and other stakeholders (faculty members and student bodies) is diminished.
+SMU undergraduates find it hard to keep track of the many events happening in university. While the main method that students use for event tracking is their school email, their inboxes are constantly overloaded with a weekly average of 120 event invitation emails. Additionally, while there are other information transmitting platforms such as eLearn, Telegram and Oasis, the lack of a centralized platform makes it challenging for students to effectively explore extracurricular activities and keep up with important updates from faculty members. As a result, the effectiveness of transmitting information effectively by these platforms to students and other stakeholders (faculty members and student bodies) is diminished, leaving students unable to keep proper track of university events.
 
 The reason why we chose our target group is due to the prevalence of this issue among our fellow undergraduates. This is backed up by interviews we conducted with students from different faculties, student body marketing representatives, and professors. Given that undergraduates are still learning about time management skills, while also attempting to explore their horizons through university events and activities, it is important that they should be able to plan out their university lives in a more effective and convenient manner while living their most exciting university life.
 
