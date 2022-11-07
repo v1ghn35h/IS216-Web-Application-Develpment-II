@@ -34,34 +34,42 @@
                 "event_1": {
                     "id": "1",
                     "title": "Test Firebase",
-                    "start": "2022-10-15",
-                    "end": "2022-10-15",
+                    "start": "2022-11-15",
+                    "end": "2022-11-15",
                     "category": "Adventure",
                     "photo_url": "https://static.thehoneycombers.com/wp-content/uploads/sites/2/2017/10/zouk-party-venue-singapore.jpg"
                 },
                 "event_2": {
                     "id": "2",
                     "title": "Test Again",
-                    "start": "2022-10-11",
-                    "end": "2022-10-13",
+                    "start": "2022-11-11",
+                    "end": "2022-11-13",
                     "category": "Sports",
                     "photo_url": "https://www.incimages.com/uploaded_files/image/1920x1080/getty_1035462384_395932.jpg"
                 },
                 "event_3": {
                     "id":"4",
                     "title": "Swim Meet",
-                    "start": "2022-10-11",
-                    "end": "2022-10-13",
+                    "start": "2022-11-11",
+                    "end": "2022-11-13",
                     "category": "Nature",
                     "photo_url": "https://images.everydayhealth.com/images/swimming-overview-guide-1440x810.jpg?sfvrsn=d3b9ee_1"
                 },
                 "event_4": {
                     "id":"4",
                     "title": "Macritchie Hike",
-                    "start": "2022-10-11",
-                    "end": "2022-10-13",
+                    "start": "2022-11-11",
+                    "end": "2022-11-13",
                     "category": "Nature",
                     "photo_url": "https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/topic_centers/2019-8/couple-hiking-mountain-climbing-1296x728-header.jpg?w=1155&h=1528"
+                },
+                "event_5": {
+                    "id":"4",
+                    "title": "WAD2 Lab Test",
+                    "start": "2022-11-11",
+                    "end": "2022-11-13",
+                    "category": "Academic",
+                    "photo_url": "https://cdn.mos.cms.futurecdn.net/9QTpESGBXa32D29J77VR3d-1200-80.jpg"
                 }
 
             },
