@@ -95,6 +95,15 @@
     color: #FFFFFF;
 }
 
+.details-btn {
+    border-color: #104547;
+    color: 104547;
+}
+
+.details-btn:hover {
+    background-color: #104547;
+    color: white;
+  }
 
 .filter-btn {
     border: 1px solid black;
@@ -106,38 +115,38 @@
 
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
-  }
+}
   
-  .fil-button-green {
-    border-color: #104547;
-    color: 104547;
-  }
-  
-  .fil-button-green:hover {
-    background-color: #104547;
-    color: white;
-  }
-/* for sort and filter button  */
-  .sort-btn {
-    border: 1px solid 104547;
-    background-color: white;
-    color: 104547;
-    padding: 4px 8px;
-    font-size: 16px;
-    cursor: pointer;
+.fil-button-green {
+border-color: #104547;
+color: 104547;
+}
 
-    border-radius: 8px;
-  }
-  
-  .fil-sort {
-    border-color: #104547;
-    color: 104547;
-  }
-  
-  .fil-sort:hover {
-    background-color: #104547;
-    color: white;
-  }
+.fil-button-green:hover {
+background-color: #104547;
+color: white;
+}
+/* for sort and filter button  */
+.sort-btn {
+border: 1px solid 104547;
+background-color: white;
+color: 104547;
+padding: 4px 8px;
+font-size: 16px;
+cursor: pointer;
+
+border-radius: 8px;
+}
+
+.fil-sort {
+border-color: #104547;
+color: 104547;
+}
+
+.fil-sort:hover {
+background-color: #104547;
+color: white;
+}
 
 
 
