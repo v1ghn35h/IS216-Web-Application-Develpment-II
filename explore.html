@@ -109,16 +109,15 @@
                                     <div class="col-10">
                                         Organising Club:
 
-                                        <select class="form-select multiple form-select-sm"
-                                            aria-label=".form-select-sm example" id= "org_club">
+                                        <select class="form-select form-select-sm" multiple
+                                            aria-label=".form-select-sm example" id= "org_club" v-model="filter_club">
                                             <option selected>Open this select menu</option>
-                                            <option value="SMU-X">SMU-X</option>
-                                            <option value="WhiteHats">WhiteHats</option>
+                                            <option value="SMU Verts">SMU Verts</option>
+                                            <option value="SMU Basketball">SMU Basketball</option>
                                             <option value="Ellipsis">Ellipsis</option>
                                             <option value=".Hack">.Hack</option>
                                             <option value="BIA">BIA</option>
                                         </select>
-
                                     </div>
 
                                 </div>
@@ -128,7 +127,7 @@
                                         <!-- Event Type -->
                                         <label for="event-type">Event Type: </label>
                                         <br>
-                                        <select class="form-select" multiple aria-label=".form-select-sm example" id= "event_type">
+                                        <select class="form-select" multiple aria-label=".form-select-sm example" id= "event_type" v-model="filter_event_type">
 
                                             <option value="Sports">Sports</option>
                                             <option value="Arts">Arts</option>
@@ -146,13 +145,13 @@
                                     <!--start date-->
                                     <div class="col-5">
                                         <label for="start-date">Start Date: </label>
-                                        <input class="form-control" id="start_date" type="date" placeholder="Search">
+                                        <input class="form-control" id="start_date" type="date" placeholder="Search" v-model="filter_start_date">
                                     </div>
 
                                     <!-- end date-->
                                     <div class="col-5">
                                         <label for="end-date">End Date: </label>
-                                        <input class="form-control" id="end_date" type="date" placeholder="Search">
+                                        <input class="form-control" id="end_date" type="date" placeholder="Search" v-model="filter_end_date">
 
                                     </div>
                                 </div>
@@ -162,19 +161,19 @@
                                     <div class="col-5">
                                         <!--min price-->
                                         <label for="min-price">Min Price: </label>
-                                        <input class="form-control" id="min_price" type="number">
+                                        <input class="form-control" id="min_price" type="number" v-model="filter_min_price">
                                     </div>
                                     <div class="col-5">
                                         <!--max price-->
                                         <label for="max-price">Max Price: </label>
-                                        <input class="form-control" id="max_price" type="number">
+                                        <input class="form-control" id="max_price" type="number" v-model='filter_max_price' >
                                     </div>
                                 </div>
 
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" @click="get_filter_criterias()" class="btn" style="background-color: #104547; color: white;">Save
+                                <button type="button" @click="filter_events()" class="btn" style="background-color: #104547; color: white;">Save
                                     changes </button>
                             </div>
                         </div>
@@ -232,7 +231,7 @@
                 
                 <!--dynamically retrieved events from db-->
                 <!--template for an event-->
-                <div class=" col-9 " v-for="(details, event) of events" >
+                <div class=" col-9 " v-for="(details, event) of display_events" >
                     <!-- start of card-->
                     <div class="card-flyer" :id="`eventCard${details.eventId}`">
                         <div class="text-box" style ="height: 412px">
@@ -280,7 +279,7 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body mt-0">
-                                    <div class="container pb-2">
+                                    <div class="container p-2">
                                         <img :src="details.photo"
                                             style="width:500px; height:350px" alt="..." class="center "/>
                                     </div>
