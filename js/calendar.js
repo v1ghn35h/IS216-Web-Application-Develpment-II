@@ -133,8 +133,6 @@ function to_do_fetchDB() {
   })
 }
 
-
-
 // Add todo item function
 function addTodo(e) {
 
@@ -163,6 +161,7 @@ function addTodo(e) {
 
         // add to database
         new_id += 1
+        console.log(new_id)
         let task_id = new_id
         let task_title = todoInput.value
         let task_status = ""
@@ -343,11 +342,32 @@ var apps = Vue.createApp({
 
 apps.mount("#category")
 
+// CALENDAR FETCH FROM DATABASE
+function calendar_fetchDB() {
+  const dbRef = ref(getDatabase());
+  get(child(dbRef, `users/${current_user}/user_events/`)).then((snapshot) => {
+    if (snapshot.exists()) {
+      var db_values = snapshot.val();
+      // var db_size = Object.keys(db_values).length
+      // var new_db_size = db_size + 1
+    }
+  }
+)}
+
 
 document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
 
   var calendar = new FullCalendar.Calendar(calendarEl, {
+    height: 700,
+
+    eventLimit: true, // for all non-TimeGrid views
+    views: {
+      timeGrid: {
+        eventLimit: 2 // adjust to 6 only for timeGridWeek/timeGridDay
+      }
+    },
+
     customButtons: {
       // Click + button to add event
       addEvent: {
@@ -399,18 +419,20 @@ document.addEventListener('DOMContentLoaded', function() {
               }
 
               // fetch items from db
-              const dbRef = ref(getDatabase());
-              get(child(dbRef, `users/${current_user}/user_events/`)).then((snapshot) => {
-                if (snapshot.exists()) {
-                  let db_values = snapshot.val();
-                  let db_size = Object.keys(db_values).length
-                  let new_db_size = db_size + 1
-                } else {
-                  console.log("No data available");
-                }
-              }).catch((error) => {
-                console.error(error);
-              });
+              // const dbRef = ref(getDatabase());
+              // get(child(dbRef, `users/${current_user}/user_events/`)).then((snapshot) => {
+              //   if (snapshot.exists()) {
+              //     let db_values = snapshot.val();
+              //     let db_size = Object.keys(db_values).length
+              //     let new_db_size = db_size + 1
+              //   } else {
+              //     console.log("No data available");
+              //   }
+              // }).catch((error) => {
+              //   console.error(error);
+              // });
+
+              calendar_fetchDB()
               
               // add event to array
               set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
@@ -427,9 +449,9 @@ document.addEventListener('DOMContentLoaded', function() {
               add_success_modal.style.display = "block";
 
               // force page to reload
-              // setTimeout(function(){
-              //   window.location.reload();
-              // }, 2000);
+              setTimeout(function(){
+                window.location.reload();
+              }, 2000);
           
               // reset modal 
               modal.style.display = "none";
@@ -567,9 +589,9 @@ document.addEventListener('DOMContentLoaded', function() {
               add_success_modal.style.display = "block";
 
               // force page to reload
-              // setTimeout(function(){
-              //   window.location.reload();
-              // }, 2000);
+              setTimeout(function(){
+                window.location.reload();
+              }, 2000);
           
               // reset modal 
               modal.style.display = "none";
@@ -591,6 +613,7 @@ document.addEventListener('DOMContentLoaded', function() {
     googleCalendarApiKey: 'AIzaSyC4IyTr17PyenYfQSiFD3mI3xCGIV0LsOk',
     // old: AIzaSyBLxGXn-ZzMfSKIobD-6C4chf4qI8XXRn8
 
+    // display events
     events: 
       function(info, successCallback, failureCallback) {
 
@@ -619,7 +642,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             try {
               let find_object = colors.find(o => o.name === new_event_category); // find object with the name == new_event_category
-              console.log(find_object)
               let new_event_color = find_object.hex
   
               // add color to event object
@@ -739,16 +761,16 @@ document.addEventListener('DOMContentLoaded', function() {
           let event_to_delete = calendar.getEventById(Number(event_id))
 
           // Delete event'
-          const tasksRef = ref(db, 'users/' + user + 'user_events/event_' + event_id);
+          const tasksRef = ref(db, 'users/' + current_user + 'user_events/event_' + event_id);
 
           remove(tasksRef).then(() => {
             // display deleted successfully
             delete_success_modal.style.display = "block";
 
             // force page to reload
-            // setTimeout(function(){
-            //   window.location.reload();
-            //   }, 2000);
+            setTimeout(function(){
+              window.location.reload();
+              }, 2000);
           });
 
       };
