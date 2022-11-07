@@ -70,6 +70,7 @@
                         <div class="form-floating mb-1">
                             <input type="password" class="form-control" id="loginPassword" placeholder="password" />
                             <label for="loginPassword">Password</label>
+                            <button class="passwordToggle" type="button" onclick="togglePassword(this)"></button>
                             <div id="forgotPassword" class="form-text fst-italic text-start text-decoration-none text-primary" v-on:click="forgotPassPage()">Forgot your password? Click me!</div>
                         </div>
 
@@ -138,12 +139,14 @@
                         <div class="form-floating mb-1">
                             <input type="password" class="form-control" id="signupPassword" placeholder="password" />
                             <label for="signupPassword">Password</label>
+                            <button class="passwordToggle" type="button" onclick="toggleSignupPassword(this)"></button>
                         </div>
 
                         <!-- Confirm Password Input Box -->
                         <div class="form-floating mb-2">
                             <input type="password" class="form-control" id="signupPasswordConfirm" placeholder="passwordconfirm" />
                             <label for="signupPasswordConfirm">Confirm Password</label>
+                            <button class="passwordToggle" type="button" onclick="toggleSignupConfirmPassword(this)"></button>
                         </div>
 
                         <p class="text-muted fst-italic mb-3">Tip: You can follow clubs in the Profile page!</p>

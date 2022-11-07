@@ -46,3 +46,21 @@ body {
     height: 100%;
     opacity: 40%;
 }
+
+.passwordToggle {
+    width: 24px;
+    height: 24px;
+    border: 0;
+    background: transparent;
+    background-image: url("https://cdn-icons-png.flaticon.com/512/2767/2767194.png");
+    opacity: 40%;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 16px;
+    translate: 0 -165%;
+}
+.passwordToggle.showing {
+    background-image: url("https://cdn-icons-png.flaticon.com/512/2767/2767146.png");
+}
