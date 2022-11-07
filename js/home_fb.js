@@ -51,11 +51,12 @@ onValue(users, (snapshot => {
         strings: [ `Welcome ${user_name}!`, `How are you doing today?`],
         typeSpeed: 100,
         backspeed: 300,
-        loop: true
+        loop: false
     })
 }));
 
 // FIREBASE POPULATE UPCOMING EVENTS
+document.addEventListener('DOMContentLoaded', function() {
 let upcoming_events = {}
 onValue(events, (snapshot => {
 	const data = snapshot.val(); // get the new value
@@ -66,7 +67,7 @@ onValue(events, (snapshot => {
 }));
 
 function UpcomingSchoolEvents () {
-    let tempHTML = ""
+    let tempHTML = ``
     let counter = 1
     for (let event in upcoming_events) {
 		if (Object.hasOwnProperty.call(upcoming_events, event) && counter <=10) {
@@ -81,22 +82,24 @@ function UpcomingSchoolEvents () {
             let event_id= upcoming_events[event].eventId
 				tempHTML += `<div class="card mx-1" style="width: 18rem;">
                 <!-- PLACE IMAGE ON TOP OF CARD -->
-                <img src = ${photo_of_event} height = "125" class="card-img-top" alt="...">
+                <img src = ${photo_of_event} height = "125" class="card-img-top" alt="..." id = "photo">
                 <!-- HEADER [can be added to h* elements]-->
                 <div class="card-body">
                     <!-- TITLE -->
                     <h5 class="card-title text-wrap" id = "name">${name_of_event}</h5>  
                     <!-- SUBTITLE -->
-                    <h6 class="card-subtitle mb-2 text-muted text-wrap">${club_of_event}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted text-wrap" id = "club">${club_of_event}</h6>
                     <!-- BODY -->
                     <p class="card-text text-wrap">
-                        Date: ${date_of_event}
+                        Type: <span id= "type">${type_of_event}</span>
                         <br>
-                        Time: ${time_of_event}
+                        Date: <span id= "date">${date_of_event}</span>
                         <br>
-                        Fees: ${fees_of_event}
+                        Time: <span id= "time">${time_of_event}</span>
                         <br>
-                        Location: ${location_of_event}
+                        Fees: <span id= "fees">Fees: ${fees_of_event}</span>
+                        <br>
+                        Location: <span id= "location">${location_of_event}</span>
                     </p>
                 <!-- BUTTON -->
                 <div class="modal fade" id="event${event_id}" tabindex="-1" aria-labelledby="event${event_id}Label" aria-hidden="true">
@@ -150,7 +153,7 @@ function UpcomingSchoolEvents () {
                                     <br>
                                     Payment: ${fees_of_event}                
                                 </div>
-                                <button class="btn btn-warning center" data-bs-target="#addSuccessModal" data-bs-toggle= "modal">Confirm</button>
+                                <button class="btn btn-warning center" data-bs-target="#addSuccessModal" data-bs-toggle= "modal" onclick ="addEvent()">Confirm</button>
                             </div>
                             <div class="modal-footer text-wrap">
                             <button class="btn btn-dark" data-bs-target="#event${event_id}" data-bs-toggle="modal">Go back</button>
@@ -208,6 +211,8 @@ function UserForYouEvents () {
                     <h6 class="card-subtitle mb-2 text-muted text-wrap">${club_of_event}</h6>
                     <!-- BODY -->
                     <p class="card-text text-wrap">
+                        Type: ${type_of_event}
+                        <br>
                         Date: ${date_of_event}
                         <br>
                         Time: ${time_of_event}
@@ -268,7 +273,11 @@ function UserForYouEvents () {
                                     <br>
                                     Payment: ${fees_of_event}                
                                 </div>
+<<<<<<< Updated upstream
                                 <button class="btn btn-warning center" data-bs-target="#addSuccessModal" data-bs-toggle= "modal" id = "save">Confirm</button>
+=======
+                                <button class="btn btn-warning center" id="addEventButton" data-bs-target="#addSuccessModal" data-bs-toggle= "modal">Confirm</button>
+>>>>>>> Stashed changes
                             </div>
                             <div class="modal-footer text-wrap">
                             <button class="btn btn-dark" data-bs-target="#event${event_id}" data-bs-toggle="modal">Go back</button>
@@ -330,16 +339,15 @@ function UserUpcomingSchoolEvents () {
     let counter = 0;
 
     for (let event in user_upcoming_events) {
-        console.log("UserUpcomingSchoolEvents")
 		if (Object.hasOwnProperty.call(user_upcoming_events, event) && (counter <= 5)) {
             // || counter != user_upcoming_events.length)
             let name_of_event = user_upcoming_events[event].title
             let photo_of_event= user_upcoming_events[event].photo_url
             let date_of_event= user_upcoming_events[event].start
-            let date_list = date_of_event.split("-")
-            let day_of_event = date_list [2]
-            let year_of_event= date_list [0]
-            let month_of_event= date_list [1]
+            // let date_list = date_of_event.split("-")
+            // let day_of_event = date_list [2]
+            // let year_of_event= date_list [0]
+            // let month_of_event= date_list [1]
             // if(current_year<=year_of_event && current_month == month_of_event && current_day <= day_of_event){
                 if (counter == "0"){
                     tempHTML += `
@@ -383,6 +391,7 @@ function UserUpcomingSchoolEvents () {
     document.getElementById('carousel_user_events').innerHTML = tempHTML
 }
 
+<<<<<<< Updated upstream
 //ADD EVENT TO FIREBASE
 function addEvent() {
 
@@ -421,3 +430,7 @@ function addEvent() {
           
         }
 document.getElementById('save').addEventListener("click", addEvent)
+=======
+// ADD USER_EVENT TO FIREBASE
+})
+>>>>>>> Stashed changes

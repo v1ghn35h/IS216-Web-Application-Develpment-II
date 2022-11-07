@@ -124,5 +124,8 @@ function addEvent(){
     console.log(event_time)
     event_type = document.getElementById("type").innerText
     console.log(event_type)
+<<<<<<< Updated upstream
     
+=======
+>>>>>>> Stashed changes
 }
