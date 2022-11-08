@@ -94,90 +94,90 @@
 
 
   <!-- add event modal -->
-  <form id="addEvent">
-    <div id="myModal" class="modal">
-      <div class="modal-content">
+    <form id="addEvent">
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+    
+          <div class="container text-center">
+              <div class="row">
+                  <!-- Column 1 -->
+                  <div class="col-11">
+                  </div>
   
-        <div class="container text-center">
-            <div class="row">
-                <!-- Column 1 -->
-                <div class="col-11">
-                </div>
-
-                <!-- Column 2 -->
-                <div class="col-1">
-                  <!-- close button (force right) -->
-                  <span class="close" style="float: right">&times;</span>
-                </div>
+                  <!-- Column 2 -->
+                  <div class="col-1">
+                    <!-- close button (force right) -->
+                    <span class="close" style="float: right">&times;</span>
+                  </div>
+              </div>
+          </div>
+    
+          <!-- event header -->
+          <div class="p-3">
+            <h4 class="display-6 text-center"> Create a New Event </h4>
+          </div>
+    
+          <!-- event name -->
+          <div class="mb-3 row">
+            <label for="title" class="col-2 col-form-label"> Title </label>
+            <div class="col-10">
+              <input type="text" class="form-control" id="title">
             </div>
-        </div>
-  
-        <!-- event header -->
-        <div class="p-3">
-          <h4 class="display-6 text-center"> Create a New Event </h4>
-        </div>
-  
-        <!-- event name -->
-        <div class="mb-3 row">
-          <label for="title" class="col-2 col-form-label"> Title </label>
-          <div class="col-10">
-            <input type="text" class="form-control" id="title">
           </div>
-        </div>
-  
-        <!-- start date & time -->
-        <div class="mb-3 row">
-          <!-- start date -->
-          <label for="eventDate" class="col-2 col-form-label"> Start Date </label>
-          <div class="col-4">
-            <!-- fetch default date that the user clicked on, but allows user to change date also -->
-            <input type="date" class="form-control" id="startDate">
+    
+          <!-- start date & time -->
+          <div class="mb-3 row">
+            <!-- start date -->
+            <label for="eventDate" class="col-2 col-form-label"> Start Date </label>
+            <div class="col-4">
+              <!-- fetch default date that the user clicked on, but allows user to change date also -->
+              <input type="date" class="form-control" id="startDate">
+            </div>
+            <!-- start time -->
+            <label for="eventDate" class="col-2 col-form-label"> Start Time </label>
+            <div class="col-4">
+              <input type="time" class="form-control" id="startTime">
+            </div>
           </div>
-          <!-- start time -->
-          <label for="eventDate" class="col-2 col-form-label"> Start Time </label>
-          <div class="col-4">
-            <input type="time" class="form-control" id="startTime">
-          </div>
-        </div>
-  
-        <!-- end date & time -->
-        <div class="mb-3 row">
-          <!-- end date -->
-          <label for="endDate" class="col-2 col-form-label"> End Date </label>
-          <div class="col-4">
-            <input type="date" class="form-control" id="endDate">
-          </div>
-          <!-- end time -->
-          <label for="endDate" class="col-2 col-form-label"> End Time </label>
-          <div class="col-4">
-            <input type="time" class="form-control" id="endTime">
-          </div>
-        </div>
-
-        <!-- category -->
-        <div id="category" class="mb-3 row">
-          <label for="wrapper-dropdown" class="col-2 col-form-label"> Category </label>
-          <div class="col-4 wrapper-dropdown">
-            <span v-on:click="toggleDropdown()" v-html="selector()"></span>
-            <ul class="dropdown" v-show="active">
-              <li v-for="color in colors" v-on:click="setColor(color.hex, color.name)">
-                <span v-bind:style="{background: color.hex}"> &nbsp; </span> 
-                {{color.name}}
-              </li>
-            </ul>
-          </div>
+    
+          <!-- end date & time -->
+          <div class="mb-3 row">
+            <!-- end date -->
+            <label for="endDate" class="col-2 col-form-label"> End Date </label>
+            <div class="col-4">
+              <input type="date" class="form-control" id="endDate">
+            </div>
+            <!-- end time -->
+            <label for="endDate" class="col-2 col-form-label"> End Time </label>
+            <div class="col-4">
+              <input type="time" class="form-control" id="endTime">
+            </div>
           </div>
   
-        <!-- add event button -->
-        <div class="mb-3 row">
-          <div class="col-4">
-            <button type="button" id="addEventButton" class="btn btn-dark"> Add Event! </button>
+          <!-- category -->
+          <div id="category" class="mb-3 row">
+            <label for="wrapper-dropdown" class="col-2 col-form-label"> Category </label>
+            <div class="col-4 wrapper-dropdown">
+              <span v-on:click="toggleDropdown()" v-html="selector()"></span>
+              <ul class="dropdown" v-show="active">
+                <li v-for="color in colors" v-on:click="setColor(color.hex, color.name)">
+                  <span v-bind:style="{background: color.hex}"> &nbsp; </span> 
+                  {{color.name}}
+                </li>
+              </ul>
+            </div>
+            </div>
+    
+          <!-- add event button -->
+          <div class="mb-3 row">
+            <div class="col-4">
+              <button type="button" id="addEventButton" class="btn btn-dark"> Add Event! </button>
+            </div>
           </div>
+    
         </div>
-  
       </div>
-    </div>
-  </form>
+    </form>
 
   <!-- successful add modal -->
   <div id="addSuccessModal" class="modal">
