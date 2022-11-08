@@ -107,25 +107,22 @@
 
                                 <div class="row mb-3 justify-content-center">
                                     <div class="col-10">
-                                        Organising Club:
-
-                                        <select class="form-select form-select-sm" multiple
-                                             id= "org_club" v-model="all_clubs">
-                                            <!-- <option selected>Open this select menu</option>
-                                            <option value="SMU Verts">SMU Verts</option>
-                                            <option value="SMU Basketball">SMU Basketball</option>
-                                            <option value="Ellipsis">Ellipsis</option>
-                                            <option value=".Hack">.Hack</option> -->
+                                        
+                                        <label for="org_club">Organising Club: </label>
+                                        <br>
+                                        <select class="form-select" id= "org_club" v-model="filter_club" multiple size="4">
                                             <option v-for="a_club of all_clubs" :value="a_club"> {{ a_club }}</option>
                                         </select>
                                     </div>
 
                                 </div>
 
+
+
                                 <div class="row mb-3 justify-content-center">
                                     <div class="col-10">
                                         <!-- Event Type -->
-                                        <label for="event-type">Event Type: </label>
+                                        <label for="event_type">Event Type: </label>
                                         <br>
                                         <select class="form-select" multiple size="4"  id= "event_type" v-model="filter_event_type">
                                             <option v-for="anEventType of event_types" :value="anEventType">{{ anEventType }}</option>
@@ -184,14 +181,17 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-
-                                <select class="form-select multiple form-select-sm"
-                                    aria-label=".form-select-sm example" id= "sortby">
-                                    <option selected>Open this select menu</option>
-                                    <option value="event">Event</option>
-                                    <option value="date">Date</option>
-                                    <option value="fee">Fee</option>
-                                </select>
+                                <div class="row mb-3 justify-content-center">
+                                    <div class="col-10">
+                                        <select class="form-select multiple form-select-sm"
+                                            aria-label=".form-select-sm example" id= "sortby">
+                                            <option selected>Open this select menu</option>
+                                            <option value="event">Event</option>
+                                            <option value="date">Date</option>
+                                            <option value="fee">Fee</option>
+                                        </select>
+                                    </div>
+                                </div>
 
 
                             </div> <!-- end of div modal body-->
@@ -219,7 +219,7 @@
 
         <h2>All Events</h2>
         <div class="container pt-0">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 justify-content-around">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 justify-content-start">
 
                 
                 <!--dynamically retrieved events from db-->
@@ -232,8 +232,7 @@
                                 <img :src="details.photo" />
                             </div>
                             <div class="text-container">
-                                <!-- <h6>Title 01</h6>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p> -->
+                     
                                 <h5 class="card-title"> {{ details.name }} </h5>
                                 <!-- SUBTITLE -->
                                 <h6 class="card-subtitle mb-2 "> {{ details.club }} </h6>
@@ -295,7 +294,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-dark" :data-bs-target="`#signUpPage${details.eventId}`"
+                                    <button type="button" class="btn sign_up_btn" :data-bs-target="`#signUpPage${details.eventId}`"
                                         data-bs-toggle="modal">Sign up now</button>
                                 </div>
                             </div>
@@ -303,7 +302,7 @@
                     </div>
                     <div class="modal fade" :id="`signUpPage${details.eventId}`" aria-hidden="true" aria-labelledby="SignUpPageLabel"
                         tabindex="-1">
-                        <div class="modal-dialog modal-dia  log-scrollable modal-lg">
+                        <div class="modal-dialog modal-dia  log-scrollable ">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="SignUpPageLabel">Sign Up Page</h1>
@@ -321,11 +320,11 @@
                                         <br>
                                         Payment: NA
                                     </div>
-                                    <button class="btn btn-warning center" @click="testing()">Confirm</button>
+                                    <button class="btn sign_up_btn center" @click="testing()">Confirm</button>
 
                                 </div>
                                 <div class="modal-footer">
-                                    <button class="btn btn-dark" :data-bs-target="`#infoPage${details.eventId}`" data-bs-toggle="modal">Go
+                                    <button class="btn btn-light    " :data-bs-target="`#infoPage${details.eventId}`" data-bs-toggle="modal">Go
                                         back</button>
                                 </div>
                             </div>
