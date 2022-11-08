@@ -96,13 +96,13 @@ onValue(users, (snapshot => {
 
     userInfo = data.user1.user_profile_info
     for (let category in userInfo) {
-        if (category != "profile_picture" && category != "preference") {
+        if (category != "profile_picture" && category != "preference" && category != "preference_info") {
             document.getElementById(category).innerText = userInfo[category];
         }
     }
     document.getElementById('imagePreview').style.backgroundImage = userInfo["profile_picture"]
 
-    preference = userInfo.preference.preference
+    preference = userInfo.preference_info.preference
 
     displayPreference()
     populateUninterested()
@@ -219,7 +219,8 @@ function updateUserInfo() {
         phone_no: document.getElementById('phone_no').innerText, 
         profile_picture: document.getElementById('imagePreview').style.backgroundImage,
 
-        preference: userInfo.preference
+        preference: userInfo.preference,
+        preference_info: userInfo.preference_info
     })
 
     console.log("change success");
@@ -239,7 +240,7 @@ function displayPreference() {
     let tempHTML = ""
     for (const category in preference) {
         tempHTML += `
-        <div class="card border-0 club-card" style="width: 12rem; height: 260px;">
+        <div class="card border-0 club-card" style="width: 12rem; height: 200px;">
             <div class="image-center" >
                 <img style="border-radius: 20px; height: 8rem; width: auto;" src="${preference[category]["photo_url"]}" class="card-img-top" alt="...">
             </div>
@@ -247,19 +248,25 @@ function displayPreference() {
                 <h5 class="card-title small-title">
                     ${category}
                 </h5>
+                
+                <h6 class="card-title small-title ">
+                    <a href="#" class="text-muted">
+                        Remove
+                    </a>
+                </h6>
             </div>
         </div>
         `;
     }
 
     tempHTML += `
-    <div class="card border-0" style="width: 12rem; height: 260px">
+    <div class="card border-0" style="width: 12rem; height: 200px">
         <div class="image-center">
             <img style="border-radius: 50%; width: 8rem; " src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Circled_plus.svg/800px-Circled_plus.svg.png" class="card-img-top" alt="...">
         </div>
         <div class="card-body">
             <!-- modal -->
-            <h5 class="card-title">
+            <h5 class="card-title small-title">
                 <a id="add-button-link" href="#" data-bs-toggle="modal" data-bs-target="#add-club" class="stretched-link">
                     Add a category
                 </a>
@@ -271,6 +278,7 @@ function displayPreference() {
     document.getElementById('preference').innerHTML = tempHTML
 
 }
+
 
 function populateUninterested() {
     let tempHTML = ""
@@ -311,7 +319,7 @@ function updatePreference() {
     }
 
     const db = getDatabase();
-    set(ref(db, 'users/' + "user1" + '/user_profile_info/preference'), {
+    set(ref(db, 'users/' + "user1" + '/user_profile_info/preference_info'), {
         preference
     })
 
@@ -323,53 +331,6 @@ function updatePreference() {
 
 }
 
-
-
-
-// function updateInterestedClubs() {
-
-//     let toAdd = document.querySelectorAll('.checked_clubs:checked')
-//     let toAddLength = toAdd.length
-//     for (let i = 0; i < toAddLength; i ++) {
-//         // console.log(toAdd[i].id);
-//         for (let union in clubsObj) {
-//             if (Object.hasOwnProperty.call(clubsObj, union)) {
-//                 let unionClubs = clubsObj[union]
-//                 // console.log(unionClubs);
-//                 for (let cca in unionClubs) {
-//                     if (Object.hasOwnProperty.call(unionClubs, cca)) {
-//                         let ccaDetails = unionClubs[cca]
-
-//                         let ccaId = ccaDetails["ccaId"]
-
-//                         if (ccaId == toAdd[i].id) {
-                            
-//                             interested_clubs[union][cca] = ccaDetails
-//                             interestedArr.push(cca)
-                            
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//     }
-//     console.log(interested_clubs);
-
-
-    // const db = getDatabase();
-    // set(ref(db, 'users/' + "user1" + '/user_clubs'), {
-    //     interested_clubs
-
-    // })
-
-    // console.log("change success");
-
-
-    // $('#add-club').modal('hide');
-    // $('#successModal').modal('show');
-//     populateUninterested()
-
-// }
 document.getElementById('add').addEventListener("click", updatePreference)
 
 function checkUninterested() {
@@ -381,14 +342,13 @@ function checkUninterested() {
         alert("no")
     }
 }
-// document.getElementById('add-button-link').addEventListener("click", checkUninterested);
 
 let user_events = {}
 onValue(users, (snapshot => {
     const data = snapshot.val(); // get the new value
 
     user_events = data.user1.user_events
-    UserForYouEvents()
+    // UserForYouEvents()
 }));
 
 function UserForYouEvents () {
