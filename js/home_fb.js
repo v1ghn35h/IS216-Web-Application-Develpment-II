@@ -143,7 +143,7 @@ function UpcomingSchoolEvents () {
                                     <br>
                                     Payment: ${fees_of_event}                
                                 </div>
-                                <button class="btn btn-warning center" data-bs-target="#addSuccessModal" data-bs-toggle= "modal" onclick ="addEvent()">Confirm</button>
+                                <button class="btn btn-warning center" data-bs-target="#addSuccessModal" data-bs-toggle= "modal">Confirm</button>
                             </div>
                             <div class="modal-footer text-wrap">
                             <button class="btn btn-dark" data-bs-target="#event${event_id}" data-bs-toggle="modal">Go back</button>
@@ -174,7 +174,6 @@ function UpcomingSchoolEvents () {
         counter += 1
     }}
     document.getElementById('upcoming').innerHTML = tempHTML
-    document.getElementById('save').addEventListener("click", function(){addEvent()})
 }
 function UserForYouEvents () {
     let tempHTML = ""
@@ -189,6 +188,7 @@ function UserForYouEvents () {
             let fees_of_event= upcoming_events[event].fees
             let location_of_event= upcoming_events[event].location
             let event_id= upcoming_events[event].eventId
+            console.log("user_preference")
             console.log(user_preference)
             console.log(type_of_event)
             if (user_preference.includes(type_of_event)){
@@ -380,39 +380,39 @@ function UserUpcomingSchoolEvents () {
     document.getElementById('carousel_user_events').innerHTML = tempHTML
 }
 
-//ADD EVENT TO FIREBASE
-function addEvent() {
+// //ADD EVENT TO FIREBASE
+// function addEvent() {
 
-    const dbRef = ref(getDatabase());
-          get(child(dbRef, `users/${current_user}/user_events/`)).then((snapshot) => {
-            if (snapshot.exists()) {
-              var db_values = snapshot.val();
-              var db_size = Object.keys(db_values).length
-              var new_db_size = db_size + 1
+//     const dbRef = ref(getDatabase());
+//           get(child(dbRef, `users/${current_user}/user_events/`)).then((snapshot) => {
+//             if (snapshot.exists()) {
+//               var db_values = snapshot.val();
+//               var db_size = Object.keys(db_values).length
+//               var new_db_size = db_size + 1
 
-              // add event to array
-              set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
-                {
-                    title: document.getElementById("name").innerText,
-                    start: document.getElementById("time").innerText,
-                    end: document.getElementById("time").innerText,
-                    category: document.getElementById("type").innerText,
-                    id: new_db_size,
-                    event_club: document.getElementById("club").innerText,
-                    event_photo: document.getElementById("photo").src,
-                    event_date: document.getElementById("date").innerText,
-                    event_location: document.getElementById("location").innerText,
-                    event_time: document.getElementById("time").innerText
-                },
-              )
+//               // add event to array
+//               set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
+//                 {
+//                     title: document.getElementById("name").innerText,
+//                     start: document.getElementById("time").innerText,
+//                     end: document.getElementById("time").innerText,
+//                     category: document.getElementById("type").innerText,
+//                     id: new_db_size,
+//                     event_club: document.getElementById("club").innerText,
+//                     event_photo: document.getElementById("photo").src,
+//                     event_date: document.getElementById("date").innerText,
+//                     event_location: document.getElementById("location").innerText,
+//                     event_time: document.getElementById("time").innerText
+//                 },
+//               )
 
-              // display added successfully
-              $('#successModal').modal('show');
-            } 
-            else {
-              console.log("No data available");
-            }
-          }).catch((error) => {
-            console.error(error);
-          });        
-}
+//               // display added successfully
+//               $('#successModal').modal('show');
+//             } 
+//             else {
+//               console.log("No data available");
+//             }
+//           }).catch((error) => {
+//             console.error(error);
+//           });        
+// }

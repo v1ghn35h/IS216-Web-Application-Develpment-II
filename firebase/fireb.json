@@ -10,7 +10,7 @@
                 "email": "natasha.2021@scis.smu.edu.sg",
                 "matric_no": "01441234",
                 "phone_no": "91234567",
-                "preference": {
+                "preference_info": {
                     "preference": {
                         "Adventure": {
                             "id": "adventure",
@@ -26,6 +26,7 @@
                         }
                     }
                 },
+                "preference": ["Adventure", "Arts & Culture", "Sports"],
                 "profile_picture": "url('https://firebasestorage.googleapis.com/v0/b/calendaready-g7t7.appspot.com/o/images%2Fnatasha1.png?alt=media&token=998da93a-be5a-4431-b762-f611b63180c1')"
             },
 
