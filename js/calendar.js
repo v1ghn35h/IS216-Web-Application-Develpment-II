@@ -159,7 +159,8 @@ function addTodo(e) {
         // Add complete and remove icon
         li.innerHTML = `<i class="far fa-square done-icon"></i>
                         <i class="far fa-check-square done-icon"></i>
-                        <i class="far fa-trash-alt"></i>`;
+                        <i class="far fa-trash-alt"></i>
+                        `;
         // Create span element
         const span = document.createElement('span');
         // Add class
@@ -250,22 +251,49 @@ function removeTodo(e) {
 
     // Remove todo
     if (e.target.classList.contains('fa-trash-alt')) {
-        if (confirm('Are you sure')) {
-            e.target.parentElement.remove();
 
-            // fetch from db
-            to_do_fetchDB()
+      let event = e.target.parentElement
+      let event_title = event.getElementsByClassName("todo-text")[0].innerHTML
 
-            // delete from db
-            const tasksRef = ref(db, 'users/' + current_user + '/user_tasks/task_' + event_id);
-            console.log(tasksRef)
-            remove(tasksRef).then(() => {
-            });
+      // prompt user to double confirm
 
-            // refetch from database (to update contents)
-            to_do_fetchDB()
+      // get the modal
+      var confirm_delete_modal = document.getElementById("confirmDeleteTaskModal");
+      let cancel_button = document.getElementById("cancelDeleteTaskButton");
+      let confirm_delete_button = document.getElementById("confirmDeleteTaskButton");
+      let modal_body = document.getElementById("confirmDeleteTaskBody")
 
-        }
+      // when the user clicks on the button, open the modal
+      confirm_delete_modal.style.display = "block";
+
+      // populate event title into modal body
+      modal_body.innerHTML = `Delete task: <b> ${event_title} </b>`
+
+      // when cancel_button user clicks on cancel, close the modal
+      cancel_button.onclick = function() {
+        confirm_delete_modal.style.display = "none";
+      }
+
+      confirm_delete_button.onclick = function() {
+        e.target.parentElement.remove();
+
+
+        // fetch from db
+        to_do_fetchDB()
+
+        // delete from db
+        const tasksRef = ref(db, 'users/' + current_user + '/user_tasks/task_' + event_id);
+        console.log(tasksRef)
+        remove(tasksRef).then(() => {
+        });
+
+        // refetch from database (to update contents)
+        to_do_fetchDB()
+
+        // autoclose modal
+        confirm_delete_modal.style.display = "none";
+      }
+
     }
 }
 
@@ -436,30 +464,30 @@ document.addEventListener('DOMContentLoaded', function() {
                 end += `T${end_time}:00`
               }
 
-              // // fetch items from db
-              // const dbRef = ref(getDatabase());
-              // get(child(dbRef, `users/${current_user}/user_events/`)).then((snapshot) => {
-              //   if (snapshot.exists()) {
-              //     let db_values = snapshot.val();
-              //     let db_size = Object.keys(db_values).length
-              //     let new_db_size = db_size + 1
-              //   } else {
-              //     console.log("No data available");
-              //   }
-              // }).catch((error) => {
-              //   console.error(error);
-              // });
+              // fetch items from db
+              const dbRef = ref(getDatabase());
+              get(child(dbRef, `users/${current_user}/user_events/`)).then((snapshot) => {
+                if (snapshot.exists()) {
+                  let db_values = snapshot.val();
+                  let db_size = Object.keys(db_values).length
+                  let new_db_size = db_size + 1
+                } else {
+                  console.log("No data available");
+                }
+              }).catch((error) => {
+                console.error(error);
+              });
               
-              // // add event to array
-              // set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
-              //   {
-              //     title: title,
-              //     start: start,
-              //     end: end,
-              //     category: event_class,
-              //     id: new_db_size
-              //   },
-              // )
+              // add event to array
+              set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
+                {
+                  title: title,
+                  start: start,
+                  end: end,
+                  category: event_class,
+                  id: new_db_size
+                },
+              )
 
               // display added successfully
               add_success_modal.style.display = "block";
