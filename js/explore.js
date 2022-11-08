@@ -69,6 +69,9 @@ const explorePage = Vue.createApp({
             this.db_events = data
             this.display_events = data
             console.log(this.db_events);
+
+
+
             console.log("-------end event mounted------");
         })
         onValue(users, (snapshot) => {
@@ -80,42 +83,47 @@ const explorePage = Vue.createApp({
             console.log("-------end user  mounted------");
         })
     },
+    computed: {
+        event_types() {
+            //get all organising clubs
+            let all_event_types = []
+
+            for (let [event, details] of Object.entries(this.db_events)) {
+                // if (!this.organising_clubs.includes[details.club]) {
+                //     this.organising_clubs.push(details.club)
+                // }
+                if (!all_event_types.includes[details.type]) {
+                    console.log(all_event_types);
+                    all_event_types.push(details.type)
+                }
+            }
+            return  [...new Set(all_event_types)]
+        },
+
+        all_clubs() {
+            //get all organising clubs
+            let organising_clubs = []
+
+            for (let [event, details] of Object.entries(this.db_events)) {
+                // if (!this.organising_clubs.includes[details.club]) {
+                //     this.organising_clubs.push(details.club)
+                // }
+                if (!organising_clubs.includes[details.club]) {
+                    console.log(organising_clubs);
+                    organising_clubs.push(details.club)
+                }
+            }
+            return  [...new Set(organising_clubs)]
+        }
+    },
+
     methods: {
-        // JL: To get all the inputs from the filter
-        // get_filter_criterias() {
-        //     console.log("====Function-get_filter_criterias()S===")
-        //     this.org_club = document.getElementById('org_club').value;
-        //     console.log(this.org_club)
-        //     this.event_type = document.getElementById('event_type').value;
-        //     console.log(this.event_type)
-        //     this.start_date = document.getElementById('start_date').value;
-        //     console.log(this.start_date)
-        //     this.end_date = document.getElementById('end_date').value;
-        //     console.log(this.end_date)
-        //     this.min_price = document.getElementById('min_price').value;
-        //     console.log(this.min_price)
-        //     this.max_price = document.getElementById('max_price').value;
-        //     console.log(this.max_price)
-        //     console.log("====FunctionEND-get_filter_criterias()===")
-
-        //     // onFilter_org_club(this.org_club)
-        //     console.log("====Function-onFilter_org_club===")
-        //     let filtered_events = {}
-        //     console.log("ffff")
-        //     console.log(this.events)
-        //     let allevents = this.events;
-        //     for (let event1 in allevents) {
-        //         console.log(event1)
-        //         let event_club = JSON.stringify(event1.club)
-        //         console.log(event_club)
-        //     }
-            
-
-        //     console.log("====FunctionEND-onFilter_org_club===")
-
-        // },
 
         // filter works, to be completed
+        testing() {
+            console.log('hello in testing');
+        },
+
         filter_events() {
             console.log("====Function-filter_events()===")
 
@@ -132,16 +140,45 @@ const explorePage = Vue.createApp({
                 // check if user selected any clubs to filter and if they did, extract those events
                 if (this.filter_club.length != 0 && this.filter_club.includes( details.club )) {
                     console.log(details);
-                    // filtered_arr.push({event: details})
+                   
                     filtered_obj[event] = details
                     console.log(filtered_obj);
                 }
+
+                // check if user selected any event type to filter and if they did, extract those events
                 if (this.filter_event_type.length != 0 && this.filter_event_type.includes( details.type )) {
                     console.log(details);
-                    // filtered_arr.push({event: details})
+                    
                     filtered_obj[event] = details
                     console.log(filtered_obj);
                 }
+                // check if user selected any price to filter and if they did, extract those events 
+                if (this.filter_min_price != null || this.filter_max_price != null) {
+       
+                    let event_price = details.fees
+                    
+                    if (event_price == "NA") {
+                        event_price = 0
+                    }
+                    else {
+                        event_price = Number(event_price.split(" ")[0])
+                    }
+                    // console.log(event_price);
+
+                    if (this.filter_min_price != null && this.filter_max_price == null && event_price >= this.filter_min_price) {
+                        filtered_obj[event] = details
+                    }
+                    else if (this.filter_max_price != null && this.filter_min_price == null && event_price <= this.filter_max_price) {
+                        filtered_obj[event] = details
+                    }
+                        
+                    else if (event_price >= this.filter_min_price && event_price <= this.filter_max_price) {
+                        // console.log("im here");
+                        filtered_obj[event] = details
+                    
+                    }
+                }
+                
             }
 
             this.display_events = filtered_obj

@@ -110,13 +110,13 @@
                                         Organising Club:
 
                                         <select class="form-select form-select-sm" multiple
-                                            aria-label=".form-select-sm example" id= "org_club" v-model="filter_club">
-                                            <option selected>Open this select menu</option>
+                                             id= "org_club" v-model="all_clubs">
+                                            <!-- <option selected>Open this select menu</option>
                                             <option value="SMU Verts">SMU Verts</option>
                                             <option value="SMU Basketball">SMU Basketball</option>
                                             <option value="Ellipsis">Ellipsis</option>
-                                            <option value=".Hack">.Hack</option>
-                                            <option value="BIA">BIA</option>
+                                            <option value=".Hack">.Hack</option> -->
+                                            <option v-for="a_club of all_clubs" :value="a_club"> {{ a_club }}</option>
                                         </select>
                                     </div>
 
@@ -127,15 +127,8 @@
                                         <!-- Event Type -->
                                         <label for="event-type">Event Type: </label>
                                         <br>
-                                        <select class="form-select" multiple aria-label=".form-select-sm example" id= "event_type" v-model="filter_event_type">
-
-                                            <option value="Sports">Sports</option>
-                                            <option value="Arts">Arts</option>
-                                            <option value="Workshop">Workshop</option>
-                                            <option value="Networking">Networking</option>
-                                            <option value="Volunteer">Volunteer</option>
-                                            <option value="Bonding">Networking</option>
-                                            <option value="Online">Volunteer</option>
+                                        <select class="form-select" multiple size="4"  id= "event_type" v-model="filter_event_type">
+                                            <option v-for="anEventType of event_types" :value="anEventType">{{ anEventType }}</option>
                                         </select>
 
                                     </div>
@@ -161,12 +154,12 @@
                                     <div class="col-5">
                                         <!--min price-->
                                         <label for="min-price">Min Price: </label>
-                                        <input class="form-control" id="min_price" type="number" v-model="filter_min_price">
+                                        <input class="form-control" id="min_price" min="0" type="number" v-model.number="filter_min_price">
                                     </div>
                                     <div class="col-5">
                                         <!--max price-->
                                         <label for="max-price">Max Price: </label>
-                                        <input class="form-control" id="max_price" type="number" v-model='filter_max_price' >
+                                        <input class="form-control" id="max_price" min="0" type="number" v-model.number='filter_max_price' >
                                     </div>
                                 </div>
 
@@ -318,7 +311,7 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <p class="display-6 lead text-center mt-3"> {{ event }} </p>
+                                    <p class="display-6 lead text-center mt-3"> {{ details.name }} </p>
                                     <div class="container text-break p-3 mt-3 fs-6">
                                         Name: {{ userInfo.name }}
                                         <br>
@@ -328,7 +321,7 @@
                                         <br>
                                         Payment: NA
                                     </div>
-                                    <button class="btn btn-warning center">Confirm</button>
+                                    <button class="btn btn-warning center" @click="testing()">Confirm</button>
 
                                 </div>
                                 <div class="modal-footer">
