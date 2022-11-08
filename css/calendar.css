@@ -73,6 +73,11 @@ html, body {
   color: #888;
 }
 
+.alert {
+  margin-bottom: 10px;
+  height: 15px;
+}
+
 
 /* -------------------------------------------- */
 

@@ -32,12 +32,12 @@ import { getDatabase, ref, onValue, child, get, set, remove, push, update } from
 // Connect to the realtime database
 const db = getDatabase();
 
-var all_events = []
-let current_user = "user1" // change according to user logged in
-
 var all_tasks = []
 var new_db_size = 0
 var new_id = 0
+
+var all_events = []
+let current_user = "user1" // change according to user logged in
 
 // ----------------------------------------
 // TO DO LIST
@@ -133,8 +133,20 @@ function to_do_fetchDB() {
   })
 }
 
+// set text alert to empty string (remove alert)
+function textAlertSetEmpty() {
+  let alert_msg_div = document.getElementById("alertText")
+  alert_msg_div.innerHTML = ``
+}
+
 // Add todo item function
 function addTodo(e) {
+
+  let alert_msg_div = document.getElementById("alertText")
+  alert_msg_div.innerHTML = ``
+
+  // display alert message
+  textAlertSetEmpty()
 
     // fetch from database
     to_do_fetchDB()
@@ -171,11 +183,29 @@ function addTodo(e) {
         // Clear input
         todoInput.value = '';
 
+        // display alert message
+        alert_msg_div.innerHTML = `<div class="alert alert-success d-flex align-items-center" role="alert">
+                                    <i class="bi bi-check-circle-fill pe-2"></i>
+                                    <div>
+                                      Successfully added!
+                                    </div>
+                                  </div>
+                                  `
+
+        setTimeout(textAlertSetEmpty, 5000);
+
         // refetch from database (to update contents)
         to_do_fetchDB()
 
     } else {
-        alert('Please add todo');
+        // prompt them to add
+        alert_msg_div.innerHTML = `<div class="alert alert-warning d-flex align-items-center" role="alert" data-mdb-delay="1000">
+                                    <i class="bi bi-exclamation-triangle-fill pe-2"></i>
+                                    Please enter a to-do item!
+                                  </div>
+                                  `
+
+        setTimeout(textAlertSetEmpty, 5000);
     }
 
     e.preventDefault();
@@ -242,6 +272,8 @@ function removeTodo(e) {
 
 // ----------------------------------------
 // CALENDAR
+
+
 // event icons & pictures
 // {'category': [color, icon, image], ...}
 let event_media = {'Adventure': ['#ffb700', 'icons/adventure.png'], 
@@ -404,30 +436,30 @@ document.addEventListener('DOMContentLoaded', function() {
                 end += `T${end_time}:00`
               }
 
-              // fetch items from db
-              const dbRef = ref(getDatabase());
-              get(child(dbRef, `users/${current_user}/user_events/`)).then((snapshot) => {
-                if (snapshot.exists()) {
-                  let db_values = snapshot.val();
-                  let db_size = Object.keys(db_values).length
-                  let new_db_size = db_size + 1
-                } else {
-                  console.log("No data available");
-                }
-              }).catch((error) => {
-                console.error(error);
-              });
+              // // fetch items from db
+              // const dbRef = ref(getDatabase());
+              // get(child(dbRef, `users/${current_user}/user_events/`)).then((snapshot) => {
+              //   if (snapshot.exists()) {
+              //     let db_values = snapshot.val();
+              //     let db_size = Object.keys(db_values).length
+              //     let new_db_size = db_size + 1
+              //   } else {
+              //     console.log("No data available");
+              //   }
+              // }).catch((error) => {
+              //   console.error(error);
+              // });
               
-              // add event to array
-              set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
-                {
-                  title: title,
-                  start: start,
-                  end: end,
-                  category: event_class,
-                  id: new_db_size
-                },
-              )
+              // // add event to array
+              // set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
+              //   {
+              //     title: title,
+              //     start: start,
+              //     end: end,
+              //     category: event_class,
+              //     id: new_db_size
+              //   },
+              // )
 
               // display added successfully
               add_success_modal.style.display = "block";
@@ -443,21 +475,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
           )}
       },
-
-      // // disable month view when month button clicked
-      // dayGridMonth: {
-      //   text: 'Month',
-      //   click: function() {
-      //     alert('clicked the custom button!');
-      //   }
-      // },
-
-      // listYear: {
-      //   text: 'List',
-      //   click: function() {
-      //     alert('clicked the custom button!');
-      //   }
-      // },
     },
 
     headerToolbar: {
@@ -555,9 +572,13 @@ document.addEventListener('DOMContentLoaded', function() {
           get(child(dbRef, `users/${current_user}/user_events/`)).then((snapshot) => {
             if (snapshot.exists()) {
               var db_values = snapshot.val();
-              var db_size = Object.keys(db_values).length
-              var new_db_size = db_size + 1
-              console.log(new_db_size)
+
+              // empty and readd items
+              all_events = []
+              all_events.push(db_values)
+
+              console.log(db_values)
+              let new_db_size = all_events.length + 1
 
               // add event to array
               set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
@@ -569,6 +590,10 @@ document.addEventListener('DOMContentLoaded', function() {
                   id: new_db_size
                 },
               )
+
+              // empty and readd items
+              all_events.push(db_values)
+              console.log(all_events)
 
               // display added successfully
               add_success_modal.style.display = "block";
@@ -602,44 +627,45 @@ document.addEventListener('DOMContentLoaded', function() {
     events: 
       function(info, successCallback, failureCallback) {
 
-      // Get a reference to the data 'title'
-      const users = ref(db, 'users') 
+        // Get a reference to the data 'title'
+        const users = ref(db, 'users') 
 
-      // Update user's calendar
-      onValue(users, (snapshot => {
-        const data = snapshot.val(); // get the new value
+        // Update user's calendar
+        onValue(users, (snapshot => {
+          const data = snapshot.val(); // get the new value
 
-        // empty all past data fetched
-        all_events = []
+          // empty all past data fetched
+          all_events = []
 
-        let all_users = data
-        let user = data[current_user]
+          let all_users = data
+          let user = data[current_user]
 
-        let upcoming_events = user.user_events
+          let upcoming_events = user.user_events
 
-        for (let event in upcoming_events) {
-          let new_event_obj = upcoming_events[event]
+          for (let event in upcoming_events) {
+            let new_event_obj = upcoming_events[event]
 
-          // set event color by category
-          let new_event_category = new_event_obj.category
+            // set event color by category
+            let new_event_category = new_event_obj.category
 
-          if (new_event_category != "") {
+            if (new_event_category != "") {
 
-            try {
-              let find_object = colors.find(o => o.name === new_event_category); // find object with the name == new_event_category
-              let new_event_color = find_object.hex
-  
-              // add color to event object
-              new_event_obj["color"] = new_event_color
-            }
+              try {
+                let find_object = colors.find(o => o.name === new_event_category); // find object with the name == new_event_category
+                let new_event_color = find_object.hex
+    
+                // add color to event object
+                new_event_obj["color"] = new_event_color
+              }
 
-            catch(error) {
-              console.log(error)
+              catch(error) {
+                // console.log(new_event_obj)
+                console.log(error)
+              }
+              
             }
             
-          }
-          
-          all_events.push(new_event_obj)
+            all_events.push(new_event_obj)
         }
 
         successCallback(all_events)
