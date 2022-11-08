@@ -24,15 +24,6 @@ const events = ref(db, 'events')
 
 //////////////////////////////////////////////////
 
-
-//things let to do for home page
-// 1. make it load faster if possible
-// 2. Add event to firebase
-// 3. carousel
-// 4. figure out how to reflect the changes we make in the database
-
-
-
 //initialise global variables
 let user_name = ""
 let user_email = ""
@@ -56,7 +47,6 @@ onValue(users, (snapshot => {
 }));
 
 // FIREBASE POPULATE UPCOMING EVENTS
-document.addEventListener('DOMContentLoaded', function() {
 let upcoming_events = {}
 onValue(events, (snapshot => {
 	const data = snapshot.val(); // get the new value
@@ -184,6 +174,7 @@ function UpcomingSchoolEvents () {
         counter += 1
     }}
     document.getElementById('upcoming').innerHTML = tempHTML
+    document.getElementById('save').addEventListener("click", function(){addEvent()})
 }
 function UserForYouEvents () {
     let tempHTML = ""
@@ -198,6 +189,8 @@ function UserForYouEvents () {
             let fees_of_event= upcoming_events[event].fees
             let location_of_event= upcoming_events[event].location
             let event_id= upcoming_events[event].eventId
+            console.log(user_preference)
+            console.log(type_of_event)
             if (user_preference.includes(type_of_event)){
 				tempHTML += ` 
                 <div class="card mx-1" style="width: 18rem;">
@@ -273,11 +266,7 @@ function UserForYouEvents () {
                                     <br>
                                     Payment: ${fees_of_event}                
                                 </div>
-<<<<<<< Updated upstream
                                 <button class="btn btn-warning center" data-bs-target="#addSuccessModal" data-bs-toggle= "modal" id = "save">Confirm</button>
-=======
-                                <button class="btn btn-warning center" id="addEventButton" data-bs-target="#addSuccessModal" data-bs-toggle= "modal">Confirm</button>
->>>>>>> Stashed changes
                             </div>
                             <div class="modal-footer text-wrap">
                             <button class="btn btn-dark" data-bs-target="#event${event_id}" data-bs-toggle="modal">Go back</button>
@@ -373,8 +362,8 @@ function UserUpcomingSchoolEvents () {
                 }
                 counter += 1
             // }
-        }
-    }
+        }}
+    
     tempHTML += `
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#UpcomingEvents" data-bs-slide="prev">
@@ -391,7 +380,6 @@ function UserUpcomingSchoolEvents () {
     document.getElementById('carousel_user_events').innerHTML = tempHTML
 }
 
-<<<<<<< Updated upstream
 //ADD EVENT TO FIREBASE
 function addEvent() {
 
@@ -426,11 +414,5 @@ function addEvent() {
             }
           }).catch((error) => {
             console.error(error);
-          });
-          
-        }
-document.getElementById('save').addEventListener("click", addEvent)
-=======
-// ADD USER_EVENT TO FIREBASE
-})
->>>>>>> Stashed changes
+          });        
+}
