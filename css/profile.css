@@ -276,13 +276,13 @@ svg {
     align-items: center;
 }
 
-#preference h5, #preference p {
+#preference h5, #preference h6, #preference p {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
 }
 
-#preference a {
+#preference #add-button-link {
     color: black;
 }
 
