@@ -557,6 +557,7 @@ document.addEventListener('DOMContentLoaded', function() {
               var db_values = snapshot.val();
               var db_size = Object.keys(db_values).length
               var new_db_size = db_size + 1
+              console.log(new_db_size)
 
               // add event to array
               set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
@@ -691,6 +692,7 @@ document.addEventListener('DOMContentLoaded', function() {
           }
 
           catch (error) {
+            console.log(event_id)
             console.log(error)
           }
         }
@@ -742,10 +744,12 @@ document.addEventListener('DOMContentLoaded', function() {
         function() {
 
           // Fetch event
-          let event_to_delete = calendar.getEventById(Number(event_id))
+          let event_to_delete = calendar.getEventById(event_id)
 
-          // Delete event'
-          const tasksRef = ref(db, 'users/' + current_user + 'user_events/event_' + event_id);
+          // Delete event
+          const tasksRef = ref(db, 'users/' + current_user + '/user_events/event_' + event_id);
+
+          console.log(tasksRef)
 
           remove(tasksRef).then(() => {
             // display deleted successfully
