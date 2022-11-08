@@ -12,17 +12,20 @@
                 "phone_no": "91234567",
                 "preference_info": {
                     "preference": {
-                        "Adventure": {
-                            "id": "adventure",
-                            "photo_url": "https://cdn-icons-png.flaticon.com/512/3819/3819743.png"
-                        }, 
-                        "Arts & Culture": {
-                            "id": "artsandculture",
-                            "photo_url": "https://cdn-icons-png.flaticon.com/512/1344/1344461.png"
-                        },
-                        "Sports": {
-                            "id": "sports",
-                            "photo_url": "https://cdn-icons-png.flaticon.com/512/857/857455.png"
+                        "preference_arr": ["Adventure", "Arts & Culture", "Sports"],
+                        "preference_obj": {
+                            "Adventure": {
+                                "id": "adventure",
+                                "photo_url": "https://cdn-icons-png.flaticon.com/512/3819/3819743.png"
+                            }, 
+                            "Arts & Culture": {
+                                "id": "artsandculture",
+                                "photo_url": "https://cdn-icons-png.flaticon.com/512/1344/1344461.png"
+                            },
+                            "Sports": {
+                                "id": "sports",
+                                "photo_url": "https://cdn-icons-png.flaticon.com/512/857/857455.png"
+                            }
                         }
                     }
                 },

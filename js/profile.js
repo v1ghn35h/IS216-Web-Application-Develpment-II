@@ -240,7 +240,7 @@ function displayPreference() {
     let tempHTML = ""
     for (const category in preference) {
         tempHTML += `
-        <div class="card border-0 club-card" style="width: 12rem; height: 200px;">
+        <div class="card border-0 club-card" style="width: 12rem; height: 220px;">
             <div class="image-center" >
                 <img style="border-radius: 20px; height: 8rem; width: auto;" src="${preference[category]["photo_url"]}" class="card-img-top" alt="...">
             </div>
