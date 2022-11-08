@@ -24,15 +24,6 @@ const events = ref(db, 'events')
 
 //////////////////////////////////////////////////
 
-
-//things let to do for home page
-// 1. make it load faster if possible
-// 2. Add event to firebase
-// 3. carousel
-// 4. figure out how to reflect the changes we make in the database
-
-
-
 //initialise global variables
 let user_name = ""
 let user_email = ""
@@ -183,6 +174,7 @@ function UpcomingSchoolEvents () {
         counter += 1
     }}
     document.getElementById('upcoming').innerHTML = tempHTML
+    document.getElementById('save').addEventListener("click", function(){addEvent()})
 }
 function UserForYouEvents () {
     let tempHTML = ""
@@ -197,6 +189,8 @@ function UserForYouEvents () {
             let fees_of_event= upcoming_events[event].fees
             let location_of_event= upcoming_events[event].location
             let event_id= upcoming_events[event].eventId
+            console.log(user_preference)
+            console.log(type_of_event)
             if (user_preference.includes(type_of_event)){
 				tempHTML += ` 
                 <div class="card mx-1" style="width: 18rem;">
@@ -384,4 +378,41 @@ function UserUpcomingSchoolEvents () {
     </div>
     `
     document.getElementById('carousel_user_events').innerHTML = tempHTML
+}
+
+//ADD EVENT TO FIREBASE
+function addEvent() {
+
+    const dbRef = ref(getDatabase());
+          get(child(dbRef, `users/${current_user}/user_events/`)).then((snapshot) => {
+            if (snapshot.exists()) {
+              var db_values = snapshot.val();
+              var db_size = Object.keys(db_values).length
+              var new_db_size = db_size + 1
+
+              // add event to array
+              set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
+                {
+                    title: document.getElementById("name").innerText,
+                    start: document.getElementById("time").innerText,
+                    end: document.getElementById("time").innerText,
+                    category: document.getElementById("type").innerText,
+                    id: new_db_size,
+                    event_club: document.getElementById("club").innerText,
+                    event_photo: document.getElementById("photo").src,
+                    event_date: document.getElementById("date").innerText,
+                    event_location: document.getElementById("location").innerText,
+                    event_time: document.getElementById("time").innerText
+                },
+              )
+
+              // display added successfully
+              $('#successModal').modal('show');
+            } 
+            else {
+              console.log("No data available");
+            }
+          }).catch((error) => {
+            console.error(error);
+          });        
 }
