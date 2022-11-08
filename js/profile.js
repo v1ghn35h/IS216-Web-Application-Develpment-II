@@ -1,27 +1,5 @@
 //////////////////////////////////////////////////
-// SELECTION OF CLUBS
-$(document).ready(function() {
-    $(".club").submit(function() {
-        let checked = $(":checkbox:checked").length
-        if (checked === 0) {
-          //   alert("Choose at least one Club");
-        } else {
-          //   alert("Selected Club(s) : " + checked);
-            $(".club").submit(function(e) {
-                return false;
-            });
-  
-        }
-  
-    });
-    $(".club").submit(function(e) {
-        return false;
-    });
-});
-  
-  
-//////////////////////////////////////////////////
-// EDIT BUTTON
+// EDIT PERSONAL INFORMATION
 var incompleteTasksHolder = document.getElementById("details"); 
 var editTask = function() {
     var listItem = this.parentNode;
@@ -68,14 +46,13 @@ measurementId: "G-03K9PHBX7D"
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 const users = ref(db, 'users') 
-const clubs = ref(db, 'clubs')
 const categories = ref(db, 'categories')
 
 
 //////////////////////////////////////////////////
 // FIREBASE GET categories
-let categories_obj = {}
-let categories_arr = []
+let categories_obj = {} // stores all categories available
+let categories_arr = [] // stores all categories available
 onValue(categories, (snapshot => {
     const data = snapshot.val(); 
 
@@ -104,8 +81,14 @@ onValue(users, (snapshot => {
 
     preference = userInfo.preference_info.preference
 
-    displayPreference()
-    populateUninterested()
+    displayCategories()
+
+    for (const category in categories_obj) {
+        const cat_id = categories_obj[category]["id"];
+
+        document.getElementById(cat_id).addEventListener("click", function () { updatePreference(cat_id); })
+    }
+
 }));
 
 
@@ -137,13 +120,13 @@ function readURL(input) {
     uploadTask.on('state_changed',
         (snapshot) => {
             const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            console.log('Upload is ' + progress + '% done');
+            // console.log('Upload is ' + progress + '% done');
             switch (snapshot.state) {
                 case 'paused':
-                    console.log('Upload is paused');
+                    // console.log('Upload is paused');
                     break;
                 case 'running':
-                    console.log('Upload is running');
+                    // console.log('Upload is running');
                     break;
             }
         }, 
@@ -159,7 +142,7 @@ function readURL(input) {
         }, 
     () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            console.log('File available at', downloadURL);
+            // console.log('File available at', downloadURL);
             });
         }
     );
@@ -171,7 +154,7 @@ function readURL(input) {
     getDownloadURL(profileRef)
         .then((url) => {
             // UPDATE JSON WITH THIS URL
-            console.log(url);
+            // console.log(url);
         })
         .catch((error) => {
             switch (error.code) {
@@ -196,17 +179,19 @@ $("#imageUpload").change(function() {
 // UDPATE USER INFO
 function updateUserInfo() {
 
+    // getting input fields
     let editCollection = document.getElementsByClassName('editMode');
-    console.log(editCollection);
+    // console.log(editCollection);
     for (let i = editCollection.length - 1; i >= 0; i --) {
         let editItem = editCollection[i]
-        console.log(editItem);
+        // console.log(editItem);
         let label = editItem.querySelector('label');
         let editInput = editItem.querySelector("input[type=text]")
         label.innerText = editInput.value
         editItem.classList.remove('editMode')
     }
 
+    // updating database
     const db = getDatabase();
     set(ref(db, 'users/' + "user1" + '/user_profile_info'), {
         name: document.getElementById('name').innerText,
@@ -219,11 +204,11 @@ function updateUserInfo() {
         phone_no: document.getElementById('phone_no').innerText, 
         profile_picture: document.getElementById('imagePreview').style.backgroundImage,
 
-        preference: userInfo.preference,
+        // preference: userInfo.preference,
         preference_info: userInfo.preference_info
     })
 
-    console.log("change success");
+    // console.log("change success");
 
     $('#successModal').modal('show');
 
@@ -231,117 +216,82 @@ function updateUserInfo() {
 document.getElementById('save').addEventListener("click", updateUserInfo)
 
 
-//////////////////////////////////////////////////
-// FIREBASE POPULATE INTERESTED CLUBS
-// setTimeout(function(){
-//     console.log("I am the third log after 5 seconds");
-// },1000);
-function displayPreference() {
+function displayCategories() {
     let tempHTML = ""
-    for (const category in preference) {
-        tempHTML += `
-        <div class="card border-0 club-card" style="width: 12rem; height: 220px;">
-            <div class="image-center" >
-                <img style="border-radius: 20px; height: 8rem; width: auto;" src="${preference[category]["photo_url"]}" class="card-img-top" alt="...">
-            </div>
-            <div class="card-body">
-                <h5 class="card-title small-title">
-                    ${category}
-                </h5>
-                
-                <h6 class="card-title small-title ">
-                    <a href="#" class="text-muted">
-                        Remove
-                    </a>
-                </h6>
-            </div>
-        </div>
-        `;
-    }
-
-    tempHTML += `
-    <div class="card border-0" style="width: 12rem; height: 200px">
-        <div class="image-center">
-            <img style="border-radius: 50%; width: 8rem; " src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Circled_plus.svg/800px-Circled_plus.svg.png" class="card-img-top" alt="...">
-        </div>
-        <div class="card-body">
-            <!-- modal -->
-            <h5 class="card-title small-title">
-                <a id="add-button-link" href="#" data-bs-toggle="modal" data-bs-target="#add-club" class="stretched-link">
-                    Add a category
-                </a>
-            </h5>
-        </div>
-    </div>
-    `
-
-    document.getElementById('preference').innerHTML = tempHTML
-
-}
-
-
-function populateUninterested() {
-    let tempHTML = ""
-    for (let cat of categories_arr) {
-        if (!preference.hasOwnProperty(cat)) {
-            // console.log(categories_obj[cat]);
-            let catId = categories_obj[cat]["id"]
+    for (const category in categories_obj) {
+        if (! preference.includes(category)) {
             tempHTML += `
-            <input id="${catId}" type="checkbox" class="checked_clubs" name="checked_clubs" value="${catId}"/>
-            <label for="${catId}"> ${cat} </label>
-            `
+            <div class="card border-0 club-card" style="width: 12rem; height: 220px;">
+                <div class="image-center" >
+                    <img style="height: 8rem; width: auto;" src="${categories_obj[category]["bw_photo_url"]}" class="card-img-top" alt="...">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title small-title">
+                        ${category}
+                    </h5>
+                    
+                    <h6 class="card-title small-title ">
+                        <a href="#add" id="${categories_obj[category]["id"]}" class="text-muted">
+                            Add
+                        </a>
+                    </h6>
+                </div>
+            </div>
+            `;
+        } else {
+            tempHTML += `
+            <div class="card border-0 club-card" style="width: 12rem; height: 220px;">
+                <div class="image-center" >
+                    <img style="height: 8rem; width: auto;" src="${categories_obj[category]["photo_url"]}" class="card-img-top" alt="...">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title small-title">
+                        ${category}
+                    </h5>
+                    
+                    <h6 class="card-title small-title ">
+                        <a href="#remove" id="${categories_obj[category]["id"]}" class="text-muted" id="test">
+                            Remove
+                        </a>
+                    </h6>
+                </div>
+            </div>
+            `;
         }
+
     }
-    document.getElementById('choosePref').innerHTML = tempHTML
-    console.log("update uninterested");
+    document.getElementById('preference').innerHTML = tempHTML
 }
+
 
 
 //////////////////////////////////////////////////
 // UPDATE PREFERENCE
-function updatePreference() {
-    let toAdd = document.querySelectorAll('.checked_clubs:checked')
-    console.log(toAdd);
-    let toAddLength = toAdd.length
+function updatePreference(cat_id) {
 
-    for (let i = 0; i < toAddLength; i ++) {
-        console.log(toAdd[i].id);
-        for (const cat in categories_obj) {
-            const cat_id = categories_obj[cat]["id"];
-            const cat_url = categories_obj[cat]["photo_url"];
-            if (cat_id == toAdd[i].id) {
-                preference[cat]= {}
-                preference[cat]["id"] = cat_id
-                preference[cat]["photo_url"] = cat_url
-            }             
+    for (const category in categories_obj) {
+
+        if (categories_obj[category]["id"] == cat_id) {
+
+            if (preference.includes(category)) {
+                // remove from arr
+                let index = preference.indexOf(category)
+                preference.splice(index, 1)
+            } else {
+                preference.push(category)
+            }
         }
-        console.log(preference);
+            
     }
 
+    // update database
     const db = getDatabase();
     set(ref(db, 'users/' + "user1" + '/user_profile_info/preference_info'), {
         preference
     })
 
-    console.log("change success");
-
-
-    $('#add-club').modal('hide');
-    $('#successModal').modal('show');
-
 }
 
-document.getElementById('add').addEventListener("click", updatePreference)
-
-function checkUninterested() {
-    let chooseClubElement = document.getElementById('chooseClub');
-    console.log();
-    alert("")
-    let chooseClubText = chooseClubElement.innerText.trim()
-    if (chooseClubText == "") {
-        alert("no")
-    }
-}
 
 let user_events = {}
 onValue(users, (snapshot => {
