@@ -342,17 +342,6 @@ var apps = Vue.createApp({
 
 apps.mount("#category")
 
-// CALENDAR FETCH FROM DATABASE
-function calendar_fetchDB() {
-  const dbRef = ref(getDatabase());
-  get(child(dbRef, `users/${current_user}/user_events/`)).then((snapshot) => {
-    if (snapshot.exists()) {
-      var db_values = snapshot.val();
-      // var db_size = Object.keys(db_values).length
-      // var new_db_size = db_size + 1
-    }
-  }
-)}
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -361,11 +350,8 @@ document.addEventListener('DOMContentLoaded', function() {
   var calendar = new FullCalendar.Calendar(calendarEl, {
     height: 700,
 
-    eventLimit: true, // for all non-TimeGrid views
     views: {
-      timeGrid: {
-        eventLimit: 2 // adjust to 6 only for timeGridWeek/timeGridDay
-      }
+      eventLimit: 2, // for all non-TimeGrid views
     },
 
     customButtons: {
@@ -419,20 +405,18 @@ document.addEventListener('DOMContentLoaded', function() {
               }
 
               // fetch items from db
-              // const dbRef = ref(getDatabase());
-              // get(child(dbRef, `users/${current_user}/user_events/`)).then((snapshot) => {
-              //   if (snapshot.exists()) {
-              //     let db_values = snapshot.val();
-              //     let db_size = Object.keys(db_values).length
-              //     let new_db_size = db_size + 1
-              //   } else {
-              //     console.log("No data available");
-              //   }
-              // }).catch((error) => {
-              //   console.error(error);
-              // });
-
-              calendar_fetchDB()
+              const dbRef = ref(getDatabase());
+              get(child(dbRef, `users/${current_user}/user_events/`)).then((snapshot) => {
+                if (snapshot.exists()) {
+                  let db_values = snapshot.val();
+                  let db_size = Object.keys(db_values).length
+                  let new_db_size = db_size + 1
+                } else {
+                  console.log("No data available");
+                }
+              }).catch((error) => {
+                console.error(error);
+              });
               
               // add event to array
               set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
@@ -460,20 +444,20 @@ document.addEventListener('DOMContentLoaded', function() {
           )}
       },
 
-      // disable month view when month button clicked
-      dayGridMonth: {
-        text: 'Month',
-        click: function() {
-          alert('clicked the custom button!');
-        }
-      },
+      // // disable month view when month button clicked
+      // dayGridMonth: {
+      //   text: 'Month',
+      //   click: function() {
+      //     alert('clicked the custom button!');
+      //   }
+      // },
 
-      listYear: {
-        text: 'List',
-        click: function() {
-          alert('clicked the custom button!');
-        }
-      },
+      // listYear: {
+      //   text: 'List',
+      //   click: function() {
+      //     alert('clicked the custom button!');
+      //   }
+      // },
     },
 
     headerToolbar: {

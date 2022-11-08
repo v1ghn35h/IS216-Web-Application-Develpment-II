@@ -26,7 +26,7 @@ function call_weather_api() {
                 img_html += " 'img/cold.jpg' height='250' width='250'>"
                 img_text.innerHTML=img_html
             }
-            else if (5 < temp < 25){
+            else if (temp > 5 && temp < 25){
                 img_html += " 'img/okay.jpg' height='250' width='250'>"
                 img_text.innerHTML=img_html
             }

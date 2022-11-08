@@ -116,7 +116,7 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <p class="display-6 lead text-center mt-3" :title = "details.name"> {{ details.name }} </p>
+                                    <p class="display-6 lead text-center mt-3" v-model="title"> {{ details.name }} </p>
                                     <div class="container text-break p-3 mt-3 fs-6">
                                         Name: {{ userInfo.name }}
                                         <br>
@@ -126,7 +126,9 @@
                                         <br>
                                         Payment: NA
                                     </div>
-                                    <button class="btn btn-warning center" id = "save" @click="addEvent()">Confirm</button>
+                                    <button class="btn btn-warning center" id = "save" 
+                                    @click="addEvent(details.name, details.club, details.photo, details.date, details.location, details.time)"
+                                    >Confirm</button>
 
                                 </div>
                                 <div class="modal-footer">
