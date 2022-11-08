@@ -47,8 +47,6 @@ onValue(events, (snapshot => {
 	const data = snapshot.val(); // get the new value
 	upcoming_events = data
 }));
-console.log(upcoming_events)
-console.log(userInfo_data)
 
 const homePage = Vue.createApp({ 
     data() { 
@@ -76,40 +74,41 @@ const homePage = Vue.createApp({
     beforeMount() { 
         onValue(events, (snapshot) => {
             const data = snapshot.val()
-            console.log(data);
             this.db_events = data
             this.display_events = data
-            console.log(this.db_events);
         })
         onValue(users, (snapshot) => {
             const data = snapshot.val()
-            console.log(data);
             this.userInfo = data.user1.user_profile_info
-            console.log(this.userInfo);
         })
     },
     methods: {
-        addEvent(title) {
+        addEvent(name, club, photo, date, location, time) {
+            console.log(name)
+            console.log(club)
+            console.log(photo)
+            console.log(date)
+            console.log(location)
+            console.log(time)
             const dbRef = ref(getDatabase());
                   get(child(dbRef, `users/` + this.current_user + `/user_events/`)).then((snapshot) => {
                     if (snapshot.exists()) {
                       var db_values = snapshot.val();
                       var db_size = Object.keys(db_values).length
                       var new_db_size = db_size + 1
-        
-                      // add event to array
+                    //   add event to array
                       set(ref(db, 'users/' + this.current_user + '/user_events/event_' + new_db_size), 
                         {
-                            title: this.title,
-                            start: "hello",
-                            end: "hello",
+                            title: name,
+                            start: time,
+                            end: time,
                             category: "hello",
                             id: "hello",
-                            event_club: "hello",
-                            event_photo: "hello",
-                            event_date: "hello",
-                            event_location: "hello",
-                            event_time: "hello",
+                            event_club: club,
+                            event_photo: photo,
+                            event_date: date,
+                            event_location: location,
+                            event_time: time,
                         },
                       )
                     //   // display added successfully
