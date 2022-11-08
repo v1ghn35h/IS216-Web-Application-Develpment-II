@@ -69,11 +69,28 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 const users = ref(db, 'users') 
 const clubs = ref(db, 'clubs')
+const categories = ref(db, 'categories')
+
+
+//////////////////////////////////////////////////
+// FIREBASE GET categories
+let categories_obj = {}
+let categories_arr = []
+onValue(categories, (snapshot => {
+    const data = snapshot.val(); 
+
+    categories_obj = data
+    for (const cat in categories_obj) {
+        categories_arr.push(cat)
+    }
+
+}));  
   
-  
+
 //////////////////////////////////////////////////
 // FIREBASE POPULATE DETAILS
 let userInfo = {}
+let preference = []
 onValue(users, (snapshot => {
     const data = snapshot.val(); 
 
@@ -84,9 +101,14 @@ onValue(users, (snapshot => {
         }
     }
     document.getElementById('imagePreview').style.backgroundImage = userInfo["profile_picture"]
+
+    preference = userInfo.preference.preference
+
+    displayPreference()
+    populateUninterested()
 }));
-  
-  
+
+
 //////////////////////////////////////////////////
 // CHANGE IMAGE
 function readURL(input) {
@@ -210,44 +232,26 @@ document.getElementById('save').addEventListener("click", updateUserInfo)
 
 //////////////////////////////////////////////////
 // FIREBASE POPULATE INTERESTED CLUBS
-let interestedArr = []
-let interested_clubs = {}
-onValue(users, (snapshot => {
-    const data = snapshot.val(); // get the new value
-
+// setTimeout(function(){
+//     console.log("I am the third log after 5 seconds");
+// },1000);
+function displayPreference() {
     let tempHTML = ""
-    let userClubs = data.user1.user_clubs.interested_clubs
-    interested_clubs = userClubs
-
-    for (let union in userClubs) {
-        if (Object.hasOwnProperty.call(userClubs, union)) {
-            let unionClubs = userClubs[union];
-
-            for (let club in unionClubs) {
-                if (Object.hasOwnProperty.call(unionClubs, club)) {
-                    interestedArr.push(club)
-                    let clubDetails = unionClubs[club];
-
-                    tempHTML += `
-                    <div class="card border-0 club-card" style="width: 12rem; height: 260px;">
-                        <div class="image-center" >
-                            <img style="border-radius: 20px; height: 8rem; width: auto;" src="${clubDetails["photo"]}" class="card-img-top" alt="...">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title small-title">
-                                <a href="${clubDetails["website"]}" target="_blank" class="stretched-link">
-                                    ${club}
-                                </a>
-                            </h5>
-                            <p class="text-muted">${union}</p>
-                        </div>
-                    </div>
-                    `;
-                }
-            }
-        }
+    for (const category in preference) {
+        tempHTML += `
+        <div class="card border-0 club-card" style="width: 12rem; height: 260px;">
+            <div class="image-center" >
+                <img style="border-radius: 20px; height: 8rem; width: auto;" src="${preference[category]["photo_url"]}" class="card-img-top" alt="...">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title small-title">
+                    ${category}
+                </h5>
+            </div>
+        </div>
+        `;
     }
-    // ADD BUTTON
+
     tempHTML += `
     <div class="card border-0" style="width: 12rem; height: 260px">
         <div class="image-center">
@@ -257,121 +261,116 @@ onValue(users, (snapshot => {
             <!-- modal -->
             <h5 class="card-title">
                 <a id="add-button-link" href="#" data-bs-toggle="modal" data-bs-target="#add-club" class="stretched-link">
-                    Add a Club
+                    Add a category
                 </a>
             </h5>
-            <p class="text-muted">Pick a club you are interested in</p>
         </div>
     </div>
     `
 
-    document.getElementById('interested-club').innerHTML = tempHTML
+    document.getElementById('preference').innerHTML = tempHTML
 
-}));
+}
 
 function populateUninterested() {
     let tempHTML = ""
-    for (let union in club_data) {
-        if (Object.hasOwnProperty.call(club_data, union)) {
-            let unionClubs = club_data[union];
-
-            if (unionClubs.length > 0) {
-                tempHTML += `
-                <h5>${union}</h5>
-                `
-            }
-
-            for (let club in unionClubs) {
-                if (Object.hasOwnProperty.call(unionClubs, club)) {
-                    let clubDetails = unionClubs[club];
-                    let ccaId = clubDetails["ccaId"]
-
-                    // console.log(interestedArr.includes(club));
-
-                    if (!interestedArr.includes(club)) {
-
-                        let heading = `<h3>${union}</h3>`
-
-                        if (!tempHTML.includes(heading)) {
-                            tempHTML += heading
-                        }
-
-                        tempHTML += `
-                        <input id="${ccaId}" type="checkbox" class="checked_clubs" name="checked_clubs" value="${ccaId}"/>
-                        <label for="${ccaId}"> ${club} </label>
-                        `
-                    }
-                }
-            }
+    for (let cat of categories_arr) {
+        if (!preference.hasOwnProperty(cat)) {
+            // console.log(categories_obj[cat]);
+            let catId = categories_obj[cat]["id"]
+            tempHTML += `
+            <input id="${catId}" type="checkbox" class="checked_clubs" name="checked_clubs" value="${catId}"/>
+            <label for="${catId}"> ${cat} </label>
+            `
         }
     }
-
-    document.getElementById('chooseClub').innerHTML = tempHTML
+    document.getElementById('choosePref').innerHTML = tempHTML
+    console.log("update uninterested");
 }
 
 
 //////////////////////////////////////////////////
-// FIREBASE POPULATE UNINTERESTED CLUBS
-let clubsObj = {}
-let club_data = {}
-onValue(clubs, (snapshot => {
-    const data = snapshot.val(); // get the new value
-
-    
-    clubsObj = data
-    club_data = data
-    
-    populateUninterested()
-}));
-
-
-//////////////////////////////////////////////////
-// UPDATE CLUB
-function updateInterestedClubs() {
-
+// UPDATE PREFERENCE
+function updatePreference() {
     let toAdd = document.querySelectorAll('.checked_clubs:checked')
+    console.log(toAdd);
     let toAddLength = toAdd.length
+
     for (let i = 0; i < toAddLength; i ++) {
-        // console.log(toAdd[i].id);
-        for (let union in clubsObj) {
-            if (Object.hasOwnProperty.call(clubsObj, union)) {
-                let unionClubs = clubsObj[union]
-                // console.log(unionClubs);
-                for (let cca in unionClubs) {
-                    if (Object.hasOwnProperty.call(unionClubs, cca)) {
-                        let ccaDetails = unionClubs[cca]
-
-                        let ccaId = ccaDetails["ccaId"]
-
-                        if (ccaId == toAdd[i].id) {
-                            
-                            interested_clubs[union][cca] = ccaDetails
-                            interestedArr.push(cca)
-                            
-                        }
-                    }
-                }
-            }
+        console.log(toAdd[i].id);
+        for (const cat in categories_obj) {
+            const cat_id = categories_obj[cat]["id"];
+            const cat_url = categories_obj[cat]["photo_url"];
+            if (cat_id == toAdd[i].id) {
+                preference[cat]= {}
+                preference[cat]["id"] = cat_id
+                preference[cat]["photo_url"] = cat_url
+            }             
         }
+        console.log(preference);
     }
-    console.log(interested_clubs);
-
 
     const db = getDatabase();
-    set(ref(db, 'users/' + "user1" + '/user_clubs'), {
-        interested_clubs
-
+    set(ref(db, 'users/' + "user1" + '/user_profile_info/preference'), {
+        preference
     })
 
     console.log("change success");
 
-    
+
     $('#add-club').modal('hide');
     $('#successModal').modal('show');
-    populateUninterested()
 
 }
-document.getElementById('add').addEventListener("click", updateInterestedClubs)
+
+
+
+
+// function updateInterestedClubs() {
+
+//     let toAdd = document.querySelectorAll('.checked_clubs:checked')
+//     let toAddLength = toAdd.length
+//     for (let i = 0; i < toAddLength; i ++) {
+//         // console.log(toAdd[i].id);
+//         for (let union in clubsObj) {
+//             if (Object.hasOwnProperty.call(clubsObj, union)) {
+//                 let unionClubs = clubsObj[union]
+//                 // console.log(unionClubs);
+//                 for (let cca in unionClubs) {
+//                     if (Object.hasOwnProperty.call(unionClubs, cca)) {
+//                         let ccaDetails = unionClubs[cca]
+
+//                         let ccaId = ccaDetails["ccaId"]
+
+//                         if (ccaId == toAdd[i].id) {
+                            
+//                             interested_clubs[union][cca] = ccaDetails
+//                             interestedArr.push(cca)
+                            
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//     console.log(interested_clubs);
+
+
+    // const db = getDatabase();
+    // set(ref(db, 'users/' + "user1" + '/user_clubs'), {
+    //     interested_clubs
+
+    // })
+
+    // console.log("change success");
+
+
+    // $('#add-club').modal('hide');
+    // $('#successModal').modal('show');
+//     populateUninterested()
+
+// }
+document.getElementById('add').addEventListener("click", updatePreference)
 
 function checkUninterested() {
     let chooseClubElement = document.getElementById('chooseClub');

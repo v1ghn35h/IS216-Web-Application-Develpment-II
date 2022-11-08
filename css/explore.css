@@ -1,18 +1,4 @@
 /*----  Explore Page CSS   ----*/
-.btn, button {
-    background-color: white !important;
-    color: #104547 !important;
-    border-color: #104547 !important;
-    border-width: 1px;
-    
-}
-
-button.btn:hover, button.btn:active, button.btn:visited {
-    background-color:  #104547  !important;
-    color:white !important;
-    border-color: #104547 !important;
-    
-}
 
 .search-container {
     width: 60%;
@@ -53,20 +39,13 @@ button.btn:hover, button.btn:active, button.btn:visited {
     border-radius: 5px;
 }
 #cards_landscape_wrap-2 .card-flyer .image-box img{
-    -webkit-transition:all .9s ease; 
-    -moz-transition:all .9s ease; 
-    -o-transition:all .9s ease;
-    -ms-transition:all .9s ease; 
+    transition: all 1s ease;
     width: 100%;
     height: 200px;
 }
 #cards_landscape_wrap-2 .card-flyer:hover .image-box img{
     opacity: 0.7;
-    -webkit-transform:scale(1.15);
-    -moz-transform:scale(1.15);
-    -ms-transform:scale(1.15);
-    -o-transform:scale(1.15);
-    transform:scale(1.15);
+    transform: scale(1.15);
 }
 #cards_landscape_wrap-2 .card-flyer .text-box{
     text-align: left;
@@ -77,20 +56,12 @@ button.btn:hover, button.btn:active, button.btn:visited {
 #cards_landscape_wrap-2 .card-flyer{
     background: #FFFFFF;
     margin-top: 50px;
-    -webkit-transition: all 0.2s ease-in;
-    -moz-transition: all 0.2s ease-in;
-    -ms-transition: all 0.2s ease-in;
-    -o-transition: all 0.2s ease-in;
     transition: all 0.2s ease-in;
     box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.40);
 }
 #cards_landscape_wrap-2 .card-flyer:hover{
     background: #fff;
     box-shadow: 0px 15px 26px rgba(0, 0, 0, 0.50);
-    -webkit-transition: all 0.2s ease-in;
-    -moz-transition: all 0.2s ease-in;
-    -ms-transition: all 0.2s ease-in;
-    -o-transition: all 0.2s ease-in;
     transition: all 0.2s ease-in;
     margin-top: 50px;
 }
@@ -107,9 +78,7 @@ button.btn:hover, button.btn:active, button.btn:visited {
     margin-bottom: 4px; 
     font-size: 10px;
     font-weight: light;
-    /* font-weight: bold; */
     text-transform: uppercase;
-    /* font-family: 'Roboto Black', sans-serif, monospace; */
     letter-spacing: 1px;
     color: #9ea7a8;
 }
@@ -117,9 +86,7 @@ button.btn:hover, button.btn:active, button.btn:visited {
     margin-top: 0px;
     margin-bottom: 4px; 
     font-size: 18px;
-    /* font-weight: bold; */
     text-transform: uppercase;
-    /* font-family: 'Roboto Black', sans-serif; */
     letter-spacing: 1px;
     color: #104547;
 }
@@ -128,6 +95,15 @@ button.btn:hover, button.btn:active, button.btn:visited {
     color: #FFFFFF;
 }
 
+.details-btn {
+    border-color: #104547;
+    color: 104547;
+}
+
+.details-btn:hover {
+    background-color: #104547;
+    color: white;
+  }
 
 .filter-btn {
     border: 1px solid black;
@@ -139,38 +115,38 @@ button.btn:hover, button.btn:active, button.btn:visited {
 
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
-  }
+}
   
-  .fil-button-green {
-    border-color: #104547;
-    color: 104547;
-  }
-  
-  .fil-button-green:hover {
-    background-color: #104547;
-    color: white;
-  }
-/* for sort and filter button  */
-  .sort-btn {
-    border: 1px solid 104547;
-    background-color: white;
-    color: 104547;
-    padding: 4px 8px;
-    font-size: 16px;
-    cursor: pointer;
+.fil-button-green {
+border-color: #104547;
+color: 104547;
+}
 
-    border-radius: 8px;
-  }
-  
-  .fil-sort {
-    border-color: #104547;
-    color: 104547;
-  }
-  
-  .fil-sort:hover {
-    background-color: #104547;
-    color: white;
-  }
+.fil-button-green:hover {
+background-color: #104547;
+color: white;
+}
+/* for sort and filter button  */
+.sort-btn {
+border: 1px solid 104547;
+background-color: white;
+color: 104547;
+padding: 4px 8px;
+font-size: 16px;
+cursor: pointer;
+
+border-radius: 8px;
+}
+
+.fil-sort {
+border-color: #104547;
+color: 104547;
+}
+
+.fil-sort:hover {
+background-color: #104547;
+color: white;
+}
 
 
 

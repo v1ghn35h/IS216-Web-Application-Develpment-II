@@ -50,6 +50,44 @@ const VueApp = Vue.createApp({
 
 const vm = VueApp.mount('#vue-app')
 // ----------------------------------------------------------------
+// TOGGLE PASSWORD VISIBILITY SECTION
+// ----------------------------------------------------------------
+const togglePassword = button => {
+    button.classList.toggle("showing")
+
+    const input = document.getElementById("loginPassword")
+
+    input.type =
+        input.type === "password"
+            ? "text"
+            : "password"
+}
+document.togglePassword = togglePassword;
+
+const toggleSignupPassword = button => {
+    button.classList.toggle("showing")
+
+    const input = document.getElementById("signupPassword")
+
+    input.type =
+        input.type === "password"
+            ? "text"
+            : "password"
+}
+document.toggleSignupPassword = toggleSignupPassword;
+
+const toggleSignupConfirmPassword = button => {
+    button.classList.toggle("showing")
+
+    const input = document.getElementById("signupPasswordConfirm")
+
+    input.type =
+        input.type === "password"
+            ? "text"
+            : "password"
+}
+document.toggleSignupConfirmPassword = toggleSignupConfirmPassword;
+// ----------------------------------------------------------------
 // FIREBASE SECTION
 // ----------------------------------------------------------------
 // Import the functions you need from the SDKs you need

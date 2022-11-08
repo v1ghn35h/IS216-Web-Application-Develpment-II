@@ -24,15 +24,6 @@ const events = ref(db, 'events')
 
 //////////////////////////////////////////////////
 
-
-//things let to do for home page
-// 1. make it load faster if possible
-// 2. Add event to firebase
-// 3. carousel
-// 4. figure out how to reflect the changes we make in the database
-
-
-
 //initialise global variables
 let user_name = ""
 let user_email = ""
@@ -51,7 +42,7 @@ onValue(users, (snapshot => {
         strings: [ `Welcome ${user_name}!`, `How are you doing today?`],
         typeSpeed: 100,
         backspeed: 300,
-        loop: true
+        loop: false
     })
 }));
 
@@ -66,7 +57,7 @@ onValue(events, (snapshot => {
 }));
 
 function UpcomingSchoolEvents () {
-    let tempHTML = ""
+    let tempHTML = ``
     let counter = 1
     for (let event in upcoming_events) {
 		if (Object.hasOwnProperty.call(upcoming_events, event) && counter <=10) {
@@ -81,22 +72,24 @@ function UpcomingSchoolEvents () {
             let event_id= upcoming_events[event].eventId
 				tempHTML += `<div class="card mx-1" style="width: 18rem;">
                 <!-- PLACE IMAGE ON TOP OF CARD -->
-                <img src = ${photo_of_event} height = "125" class="card-img-top" alt="...">
+                <img src = ${photo_of_event} height = "125" class="card-img-top" alt="..." id = "photo">
                 <!-- HEADER [can be added to h* elements]-->
                 <div class="card-body">
                     <!-- TITLE -->
                     <h5 class="card-title text-wrap" id = "name">${name_of_event}</h5>  
                     <!-- SUBTITLE -->
-                    <h6 class="card-subtitle mb-2 text-muted text-wrap">${club_of_event}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted text-wrap" id = "club">${club_of_event}</h6>
                     <!-- BODY -->
                     <p class="card-text text-wrap">
-                        Date: ${date_of_event}
+                        Type: <span id= "type">${type_of_event}</span>
                         <br>
-                        Time: ${time_of_event}
+                        Date: <span id= "date">${date_of_event}</span>
                         <br>
-                        Fees: ${fees_of_event}
+                        Time: <span id= "time">${time_of_event}</span>
                         <br>
-                        Location: ${location_of_event}
+                        Fees: <span id= "fees">Fees: ${fees_of_event}</span>
+                        <br>
+                        Location: <span id= "location">${location_of_event}</span>
                     </p>
                 <!-- BUTTON -->
                 <div class="modal fade" id="event${event_id}" tabindex="-1" aria-labelledby="event${event_id}Label" aria-hidden="true">
@@ -195,6 +188,9 @@ function UserForYouEvents () {
             let fees_of_event= upcoming_events[event].fees
             let location_of_event= upcoming_events[event].location
             let event_id= upcoming_events[event].eventId
+            console.log("user_preference")
+            console.log(user_preference)
+            console.log(type_of_event)
             if (user_preference.includes(type_of_event)){
 				tempHTML += ` 
                 <div class="card mx-1" style="width: 18rem;">
@@ -208,6 +204,8 @@ function UserForYouEvents () {
                     <h6 class="card-subtitle mb-2 text-muted text-wrap">${club_of_event}</h6>
                     <!-- BODY -->
                     <p class="card-text text-wrap">
+                        Type: ${type_of_event}
+                        <br>
                         Date: ${date_of_event}
                         <br>
                         Time: ${time_of_event}
@@ -268,7 +266,7 @@ function UserForYouEvents () {
                                     <br>
                                     Payment: ${fees_of_event}                
                                 </div>
-                                <button class="btn btn-warning center" data-bs-target="#addSuccessModal" data-bs-toggle= "modal">Confirm</button>
+                                <button class="btn btn-warning center" data-bs-target="#addSuccessModal" data-bs-toggle= "modal" id = "save">Confirm</button>
                             </div>
                             <div class="modal-footer text-wrap">
                             <button class="btn btn-dark" data-bs-target="#event${event_id}" data-bs-toggle="modal">Go back</button>
@@ -301,47 +299,6 @@ function UserForYouEvents () {
     document.getElementById('for_you').innerHTML = tempHTML
 }
 
-// //ADD EVENT TO FIREBASE
-// const dbRef = ref(getDatabase());
-//     get(child(dbRef, `users/${current_user}/user_events/`)).then((snapshot) => {
-//         if (snapshot.exists()) {
-//             var db_values = snapshot.val();
-//             var db_size = Object.keys(db_values).length
-//             var new_db_size = db_size + 1
-
-//         // add event to array
-//         set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
-//         {
-//             title: title,
-//             start: start,
-//             end: end,
-//             category: event_class,
-//             id: new_db_size
-//         },
-//         )
-
-//         // display added successfully
-//         add_success_modal.style.display = "block";
-
-//         // force page to reload
-//         setTimeout(function(){
-//         window.location.reload();
-//         }, 2000);
-    
-//         // reset modal 
-//         modal.style.display = "none";
-//         document.getElementById("addEvent").reset();
-//     } 
-    
-
-//     else {
-//         console.log("No data available");
-//     }
-//     }).catch((error) => {
-//     console.error(error);
-//     });
-
-
 // POPULATE USER UPCOMING EVENTS
 let user_upcoming_events = {}
 onValue(users, (snapshot => {
@@ -371,16 +328,15 @@ function UserUpcomingSchoolEvents () {
     let counter = 0;
 
     for (let event in user_upcoming_events) {
-        console.log("UserUpcomingSchoolEvents")
 		if (Object.hasOwnProperty.call(user_upcoming_events, event) && (counter <= 5)) {
             // || counter != user_upcoming_events.length)
             let name_of_event = user_upcoming_events[event].title
             let photo_of_event= user_upcoming_events[event].photo_url
             let date_of_event= user_upcoming_events[event].start
-            let date_list = date_of_event.split("-")
-            let day_of_event = date_list [2]
-            let year_of_event= date_list [0]
-            let month_of_event= date_list [1]
+            // let date_list = date_of_event.split("-")
+            // let day_of_event = date_list [2]
+            // let year_of_event= date_list [0]
+            // let month_of_event= date_list [1]
             // if(current_year<=year_of_event && current_month == month_of_event && current_day <= day_of_event){
                 if (counter == "0"){
                     tempHTML += `
@@ -406,8 +362,8 @@ function UserUpcomingSchoolEvents () {
                 }
                 counter += 1
             // }
-        }
-    }
+        }}
+    
     tempHTML += `
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#UpcomingEvents" data-bs-slide="prev">
@@ -423,3 +379,40 @@ function UserUpcomingSchoolEvents () {
     `
     document.getElementById('carousel_user_events').innerHTML = tempHTML
 }
+
+// //ADD EVENT TO FIREBASE
+// function addEvent() {
+
+//     const dbRef = ref(getDatabase());
+//           get(child(dbRef, `users/${current_user}/user_events/`)).then((snapshot) => {
+//             if (snapshot.exists()) {
+//               var db_values = snapshot.val();
+//               var db_size = Object.keys(db_values).length
+//               var new_db_size = db_size + 1
+
+//               // add event to array
+//               set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
+//                 {
+//                     title: document.getElementById("name").innerText,
+//                     start: document.getElementById("time").innerText,
+//                     end: document.getElementById("time").innerText,
+//                     category: document.getElementById("type").innerText,
+//                     id: new_db_size,
+//                     event_club: document.getElementById("club").innerText,
+//                     event_photo: document.getElementById("photo").src,
+//                     event_date: document.getElementById("date").innerText,
+//                     event_location: document.getElementById("location").innerText,
+//                     event_time: document.getElementById("time").innerText
+//                 },
+//               )
+
+//               // display added successfully
+//               $('#successModal').modal('show');
+//             } 
+//             else {
+//               console.log("No data available");
+//             }
+//           }).catch((error) => {
+//             console.error(error);
+//           });        
+// }
