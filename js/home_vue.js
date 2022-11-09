@@ -41,7 +41,7 @@ onValue(users, (snapshot => {
     user_name = userInfo_data.name
     user_email = userInfo_data.email
     user_matric = userInfo_data.matric_no
-    user_preference = userInfo_data.preference
+    user_preference = userInfo_data.preference_info.preference
     user_upcoming_events = data.user1.user_events
     var typed = new Typed(".auto-type", {
       strings: [ `Welcome ${user_name}!`, `How are you doing today?`],

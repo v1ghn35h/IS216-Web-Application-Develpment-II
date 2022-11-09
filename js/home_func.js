@@ -23,15 +23,15 @@ function call_weather_api() {
         img_text = document.getElementById("api");
         img_html = "<br><img src="
             if (temp < 5){
-                img_html += " 'img/cold.jpg' height='250' width='250'>"
+                img_html += " 'img/temperature/cold.png' height='250' width='250'>"
                 img_text.innerHTML=img_html
             }
             else if (temp > 5 && temp < 25){
-                img_html += " 'img/okay.jpg' height='250' width='250'>"
+                img_html += " 'img/temperature/okay.jpg' height='250' width='250'>"
                 img_text.innerHTML=img_html
             }
             else {
-                img_html += " 'img/hot.jpg' height='250' width='250'>"
+                img_html += " 'img/temperature/hot.png' height='250' width='250'>"
                 img_text.innerHTML=img_html
             }
     }

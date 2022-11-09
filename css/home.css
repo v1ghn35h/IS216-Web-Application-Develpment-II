@@ -49,7 +49,6 @@
 
 .cards_landscape_wrap-2{
     text-align: center;
-    background: #F7F7F7;
 }
 .cards_landscape_wrap-2 .container{
     padding-top: 80px; 
@@ -92,7 +91,7 @@
     box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.40);
 }
 .cards_landscape_wrap-2 .card:hover{
-    background: #fff;
+    background: #FFFFFF;
     box-shadow: 0px 15px 26px rgba(0, 0, 0, 0.50);
     transition: all 0.2s ease-in;
     margin-top: 50px;
@@ -125,4 +124,8 @@
 .cards_landscape_wrap-2 .card .text-box .signup-btn{
     background-color: #00acc1;
     color: #FFFFFF;
+}
+
+.footer{
+    background-color: #104547;
 }
