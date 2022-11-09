@@ -78,6 +78,27 @@ html, body {
   height: 15px;
 }
 
+.btn-normal {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+.btn-normal:focus {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #8c8c8c;
+}
+.btn-normal:hover {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+.btn-normal:active {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
 
 /* -------------------------------------------- */
 

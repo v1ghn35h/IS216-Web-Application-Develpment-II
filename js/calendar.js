@@ -10,7 +10,7 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.13.0/firebase
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyC_sRHAqy76KR30qWRWTT1HjahFEN0IN4Q",
+  apiKey: "AIzaSyC_sRHAqy76KR30qfWTT1HjahFEN0IN4Q",
   authDomain: "calendaready-g7t7.firebaseapp.com",
   databaseURL: "https://calendaready-g7t7-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "calendaready-g7t7",
@@ -21,8 +21,8 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+// const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
 
 /* CONNECT TO DATABASE */
 // Import functions needed to read from realtime database
@@ -364,7 +364,6 @@ var apps = Vue.createApp({
     // Data
     data() {
         return {
-          active: false,
           selectedColor: '',
           selectedColorName: '',
           colors: colors
@@ -374,29 +373,26 @@ var apps = Vue.createApp({
     // Methods
     methods: {
 
-      selector: function() {
-        if(!this.selectedColor) {
-          return 'Select a category';
-        }
-        else {
-          return '<span style="background: ' + this.selectedColor + '"></span>' + this.selectedColorName;
-        }
+      selector: 
+        function() {
+          if(!this.selectedColor) {
+            return 'Select a category';
+          }
+          else {
+            return '<span style="background: ' + this.selectedColor + '"></span>' + this.selectedColorName;
+          }
       },
 
       setColor: 
         function(color, colorName) {
-        this.selectedColor = color;
-        this.selectedColorName = colorName;
-        this.active = false;
+          this.selectedColor = color;
+          this.selectedColorName = colorName;
+          this.active = false;
 
-        // set global event class & color
-        event_class = colorName
-        event_color = color
+          // set global event class & color
+          event_class = colorName
+          event_color = color
       },
-
-        toggleDropdown: function() {
-          this.active = !this.active;
-        }
     }
 })
 
