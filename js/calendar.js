@@ -298,17 +298,69 @@ function removeTodo(e) {
 }
 
 // ---------------------------------------
-// SWITCH BETWEEN SEARCH AND TO-DO
-// function showTask() {
-//   let task_list = document.getElementById("taskList")
-//   let search = document.getElementById("search")
+// SEARCH EVENTS
+let search_query = document.getElementById("search_results")
 
-//   if (task_list.style.display === "none") {
-//     task_list.style.display = "block";
-//   } 
+// Vue Instance
+const app = Vue.createApp({
 
-// }
+    // Element
+    el: "#searchtab",
 
+    // Data
+    data() {
+        return {
+            search_query: "",
+            search_result:""
+
+        }
+    },
+
+    // Method
+    methods: {
+        searchForEvents() {
+          // clear previously populated events
+          var placeholder = document.getElementById("search_results")
+          placeholder.innerHTML = ""
+          search_query.innerHTML = ""
+
+          var search_val = this.search_query.toLowerCase()
+          
+          for (var thing of all_events){
+            var ref = thing.title.toLowerCase()
+
+            if (ref.includes(search_val) && this.search_query != "") {
+
+              let event_title = thing.title
+              let event_start = thing.start
+              let event_end = thing.end
+              let event_category = thing.category
+
+              let find_object = colors.find(o => o.name === event_category); 
+              let event_color = find_object.hex
+              
+              // add new events
+              placeholder.innerHTML += `<div class="card" style="width: 100%">
+                                          <div class="card-body" style="color: white; background-color: ${event_color}">
+                                            <h5 class="card-title"> ${event_title} </h5>
+                                            <p class="card-text">
+                                              <b> Start: </b> ${event_start}
+                                              <br>
+                                              <b> End: </b> ${event_end}
+                                            </p>
+                                          </div>
+                                        </div>
+                                          `
+
+            }
+          }
+          
+        }
+    },
+
+});
+
+app.mount("#searchtab")
 
 // ----------------------------------------
 // CALENDAR

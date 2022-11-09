@@ -105,7 +105,36 @@
 
               <!-- Search Events -->
               <div class="tab-pane fade" id="search-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-                  bye
+
+                <!-- Vue -->
+                <div id="searchtab">
+
+                  <!-- input -->
+                  <div class="input-group pt-4">
+                    <span class="input-group-text" id="search">
+                      <i class="bi bi-search"></i>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Search query" aria-label="search" aria-describedby="search" v-model="search_query" v-on:keyup="searchForEvents()">
+                  </div>
+
+                  <br>
+
+                  <!-- output -->
+                  <p> 
+                    You searched for: 
+                    {{ search_query }}
+                  </p>
+
+                  <div>
+                    Your search results are:
+
+                    <div id="search_results">
+                      <!-- populate search results here -->
+                    </div>
+                    
+                  </div>
+
+                </div>
               </div>
 
           </div>
