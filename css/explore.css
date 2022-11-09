@@ -113,13 +113,14 @@
     font-size: 16px;
     cursor: pointer;
 
-    border-top-right-radius: 12px;
-    border-bottom-right-radius: 12px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
 }
   
 .fil-button-green {
-border-color: #104547;
+border: 2px #104547 solid ;
 color: 104547;
+background-color: lightgray;
 }
 
 .fil-button-green:hover {
@@ -152,6 +153,13 @@ color: white;
     background-color: #104547;
     color: white;
     /* color: 104547; */
+}
+
+.filter_badge {
+    background-color: #1e8285;
+    /* background-color: #26a2a7; */
+    color: white;
+    
 }
 
 
