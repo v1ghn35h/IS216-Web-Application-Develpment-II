@@ -504,7 +504,7 @@ document.addEventListener('DOMContentLoaded', function() {
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: 'addEvent dayGridMonth,listYear',
+      right: 'addEvent dayGridMonth listYear',
     },
 
     buttonText: {

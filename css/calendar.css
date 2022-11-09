@@ -234,3 +234,9 @@ html, body {
 #deleteEventButton {
   width: 120px;
 }
+
+#eventTitle {
+  min-height: 60px;
+  display: inline-flex;
+  align-items: center;
+}
