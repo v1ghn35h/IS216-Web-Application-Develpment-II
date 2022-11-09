@@ -23,15 +23,15 @@ function call_weather_api() {
         img_text = document.getElementById("api");
         img_html = "<br><img src="
             if (temp < 5){
-                img_html += " 'img/cold.jpg' height='250' width='250'>"
+                img_html += " 'img/temperature/cold.png' height='250' width='250'>"
                 img_text.innerHTML=img_html
             }
             else if (temp > 5 && temp < 25){
-                img_html += " 'img/okay.jpg' height='250' width='250'>"
+                img_html += " 'img/temperature/okay.jpg' height='250' width='250'>"
                 img_text.innerHTML=img_html
             }
             else {
-                img_html += " 'img/hot.jpg' height='250' width='250'>"
+                img_html += " 'img/temperature/hot.png' height='250' width='250'>"
                 img_text.innerHTML=img_html
             }
     }
@@ -109,19 +109,3 @@ function call_quote_api() {
     })
     console.log("**** [END] call_quote_api() *****")
 }
-// function addEvent(){
-//     event_name = document.getElementById("name").innerText
-//     console.log(event_name)
-//     event_club = document.getElementById("club").innerText
-//     console.log(event_club)
-//     event_photo = document.getElementById("photo").src
-//     console.log(event_photo)
-//     event_date = document.getElementById("date").innerText
-//     console.log(event_date)
-//     event_location = document.getElementById("location").innerText
-//     console.log(event_location)
-//     event_time = document.getElementById("time").innerText
-//     console.log(event_time)
-//     event_type = document.getElementById("type").innerText
-//     console.log(event_type)
-// }
