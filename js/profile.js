@@ -1,27 +1,14 @@
 //////////////////////////////////////////////////
 // EDIT PERSONAL INFORMATION
-var incompleteTasksHolder = document.getElementById("details"); 
-var editTask = function() {
-    var listItem = this.parentNode;
-    var editInput = listItem.querySelector("input[type=text]");
-    var label = listItem.querySelector("label");
-    var containsClass = listItem.classList.contains("editMode");
-    if (containsClass) { label.innerText = editInput.value; 
-    } else { editInput.value = label.innerText; }
-    listItem.classList.toggle("editMode");
-  }
-var taskCompleted = function() {
-    var listItem = this.parentNode;
-    completedTasksHolder.appendChild(listItem);
-    bindTaskEvents(listItem, taskIncomplete);
-}
-var bindTaskEvents = function(taskListItem) {
-    var editButton = taskListItem.querySelector("button.edit");
-    editButton.onclick = editTask;
-}
-for (var i = 0; i < incompleteTasksHolder.children.length; i++) {
-    bindTaskEvents(incompleteTasksHolder.children[i], taskCompleted);
-}
+$(document).ready(function(){
+	$('.js-edit, .js-save').on('click', function(){
+  	var $form = $(this).closest('form');
+  	$form.toggleClass('is-readonly is-editing');
+    var isReadonly = $form.hasClass('is-readonly');
+    $form.find('input,textarea,select').prop('disabled', isReadonly);
+  });
+
+});
   
   
 //////////////////////////////////////////////////
@@ -68,22 +55,27 @@ onValue(categories, (snapshot => {
 // FIREBASE POPULATE DETAILS
 let userInfo = {}
 let preference = []
+let genders = ["Male", "Female", "Others"]
+let schools = ["CIS", "SOA", "LKCSOB", "SOE", "SCIS", "YPHSOL", "SOSS"]
 onValue(users, (snapshot => {
     const data = snapshot.val(); 
 
+    
+    console.log(    document.getElementById('name')    );
+    document.getElementById('save').addEventListener("click", updateUserInfo);
+    document.getElementById('name').addEventListener("change", console.log(document.getElementById("name")));
+
     userInfo = data.user1.user_profile_info
-    for (let category in userInfo) {
-        if (category != "profile_picture" && category != "preference" && category != "preference_info") {
-            document.getElementById(category).innerText = userInfo[category];
-        }
-    }
-    document.getElementById('imagePreview').style.backgroundImage = userInfo["profile_picture"]
+    
 
     preference = userInfo.preference_info.preference
 
     if (preference[0] == "") {
         preference.pop()
     }
+
+    displayDetails()
+
 
     displayCategories()
 
@@ -178,46 +170,87 @@ $("#imageUpload").change(function() {
     readURL(this);
 });
 
+function displayDetails() {
+    for (let category in userInfo) {
+        if (category != "profile_picture" && category != "preference" && category != "preference_info") {
+            // document.getElementById(category).value = userInfo[category];
+            document.getElementById(category).placeholder = userInfo[category];
+            document.getElementById(category).setAttribute("value", userInfo[category])
+        }
+    }
+
+    let gender = userInfo.gender
+    let gender_html = ""
+    for (const gender_item of genders) {
+        if (gender_item == gender) {
+            gender_html += `<option selected>${gender_item}</option>`
+        } else {
+            gender_html += `<option>${gender_item}</option>`
+        }
+    }
+    document.getElementById('gender').innerHTML = gender_html
+
+
+    let school = userInfo.school
+    let school_html = ""
+    for (const school_item of schools) {
+        if (school_item == school) {
+            school_html += `<option selected>${school_item}</option>`
+        } else {
+            school_html += `<option>${school_item}</option>`
+        }
+    }
+    document.getElementById('school').innerHTML = school_html
+
+    document.getElementById('imagePreview').style.backgroundImage = userInfo["profile_picture"]
+
+
+}
+
+
 
 //////////////////////////////////////////////////
 // UDPATE USER INFO
 function updateUserInfo() {
 
     // getting input fields
-    let editCollection = document.getElementsByClassName('editMode');
-    // console.log(editCollection);
-    for (let i = editCollection.length - 1; i >= 0; i --) {
-        let editItem = editCollection[i]
-        // console.log(editItem);
-        let label = editItem.querySelector('label');
-        let editInput = editItem.querySelector("input[type=text]")
-        label.innerText = editInput.value
-        editItem.classList.remove('editMode')
-    }
+    // let editCollection = document.getElementsByClassName('editMode');
+    // // console.log(editCollection);
+    // for (let i = editCollection.length - 1; i >= 0; i --) {
+    //     let editItem = editCollection[i]
+    //     // console.log(editItem);
+    //     let label = editItem.querySelector('label');
+    //     let editInput = editItem.querySelector("input[type=text]")
+    //     label.innerText = editInput.value
+    //     editItem.classList.remove('editMode')
+    // }
 
     // updating database
-    const db = getDatabase();
-    set(ref(db, 'users/' + "user1" + '/user_profile_info'), {
-        name: document.getElementById('name').innerText,
-        username: document.getElementById('username').innerText,
-        gender: document.getElementById('gender').innerText,
-        birthday: document.getElementById('birthday').innerText,
-        school: document.getElementById('school').innerText,
-        email: document.getElementById('email').innerText,
-        matric_no: document.getElementById('matric_no').innerText,
-        phone_no: document.getElementById('phone_no').innerText, 
-        profile_picture: document.getElementById('imagePreview').style.backgroundImage,
+    setTimeout(function() {
+        // function code goes here
+        console.log(document.getElementById('name'));
+    }, 2000);
+    // const db = getDatabase();
+    // set(ref(db, 'users/' + "user1" + '/user_profile_info'), {
+    //     name: document.getElementById('name').innerText,
+    //     username: document.getElementById('username').innerText,
+    //     gender: document.getElementById('gender').innerText,
+    //     birthday: document.getElementById('birthday').innerText,
+    //     school: document.getElementById('school').innerText,
+    //     email: document.getElementById('email').innerText,
+    //     matric_no: document.getElementById('matric_no').innerText,
+    //     phone_no: document.getElementById('phone_no').innerText, 
+    //     profile_picture: document.getElementById('imagePreview').style.backgroundImage,
 
-        // preference: userInfo.preference,
-        preference_info: userInfo.preference_info
-    })
+    //     // preference: userInfo.preference,
+    //     preference_info: userInfo.preference_info
+    // })
 
     // console.log("change success");
 
     $('#successModal').modal('show');
 
 }
-document.getElementById('save').addEventListener("click", updateUserInfo)
 
 
 function displayCategories() {
@@ -234,11 +267,11 @@ function displayCategories() {
                         ${category}
                     </h5>
                     
-                    <h6 class="card-title small-title ">
-                        <a href="#add" id="${categories_obj[category]["id"]}" class="text-muted">
+                    <p class="card-title small-title add">
+                        <a href="#add" id="${categories_obj[category]["id"]}" class="text-primary">
                             Add
                         </a>
-                    </h6>
+                    </p>
                 </div>
             </div>
             `;
@@ -253,11 +286,11 @@ function displayCategories() {
                         ${category}
                     </h5>
                     
-                    <h6 class="card-title small-title ">
-                        <a href="#remove" id="${categories_obj[category]["id"]}" class="text-muted" id="test">
+                    <p class="card-title small-title remove">
+                        <a href="#remove" id="${categories_obj[category]["id"]}" class="text-muted " id="test">
                             Remove
                         </a>
-                    </h6>
+                    </p>
                 </div>
             </div>
             `;
