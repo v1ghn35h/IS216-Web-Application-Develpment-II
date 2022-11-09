@@ -81,6 +81,10 @@ onValue(users, (snapshot => {
 
     preference = userInfo.preference_info.preference
 
+    if (preference[0] == "") {
+        preference.pop()
+    }
+
     displayCategories()
 
     for (const category in categories_obj) {
@@ -282,6 +286,10 @@ function updatePreference(cat_id) {
             }
         }
             
+    }
+
+    if (preference.length == 0) {
+        preference.push("")
     }
 
     // update database
