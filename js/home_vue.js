@@ -48,7 +48,7 @@ onValue(users, (snapshot => {
       typeSpeed: 100,
       backspeed: 300,
       loop: false
-  })
+    })
   UserUpcomingSchoolEvents()
 }));
 
@@ -69,7 +69,6 @@ function UserForYouEvents () {
             for_you[name] = info;
       }
   }}
-  console.log(for_you)
 }
 
 
@@ -98,7 +97,7 @@ const homePage = Vue.createApp({
     },
     methods: {
         // ADD ID AND CHANGE DATE
-        addEvent(name, club, photo, date, location, time) {
+        addEvent(name, club, photo, date, location, time, type) {
             const dbRef = ref(getDatabase());
                   get(child(dbRef, `users/` + this.current_user + `/user_events/`)).then((snapshot) => {
                     if (snapshot.exists()) {
@@ -111,10 +110,10 @@ const homePage = Vue.createApp({
                             title: name,
                             start: time,
                             end: time,
-                            category: "hello",
+                            category: type,
                             id: "hello",
                             event_club: club,
-                            event_photo: photo,
+                            photo_url: photo,
                             event_date: date,
                             event_location: location,
                             event_time: time,
