@@ -62,93 +62,67 @@
 
             <!-- TABLE OF INFO -->
             <div id="info" class="col-md-8 col-12">
-                <table class="table ">
+                <form class="is-readonly">
+                    <table class="table">
+                        <!-- cannot change: name username matric number email gender -->
+                        <tr>
+                            <div class="form-group">
+                            <td class="detail_name"><label for="name">Name</label></td>
+                            <td class="detail_value"><input type="text" class="form-control is-disabled" id="name" placeholder="" value="" disabled></td>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="form-group">
+                            <td class="detail_name"><label for="username">Username</label></td>
+                            <td class="detail_value"><input type="text" class="form-control is-disabled" id="username" placeholder="" value="" disabled></td>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="form-group">
+                            <td class="detail_name"><label for="gender">Gender</label></td>
+                            <!-- <td class="detail_value"><input type="text" class="form-control is-disabled" id="gender" placeholder="" value="" disabled></td> -->
+                            <td class="detail_value"><select class="form-control is-disabled" id="gender" disabled></select></td>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="form-group">
+                            <td class="detail_name"><label for="birthday">Birthday</label></td>
+                            <td class="detail_value"><input type="date" class="form-control is-disabled" id="birthday" placeholder="" value="" disabled></td>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="form-group">
+                            <td class="detail_name"><label for="school">School</label></td>
+                            <td class="detail_value"><select class="form-control is-disabled" id="school" disabled></select></td>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="form-group">
+                            <td class="detail_name"><label for="email">Email</label></td>
+                            <td class="detail_value"><input type="text" class="form-control is-disabled" id="email" placeholder="" value="" disabled></td>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="form-group">
+                            <td class="detail_name"><label for="matric_no">Matric No.</label></td>
+                            <td class="detail_value"><input type="number" class="form-control is-disabled" id="matric_no" placeholder="" value="" disabled></td>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="form-group">
+                            <td class="detail_name"><label for="phone_no">Phone No.</label></td>
+                            <td class="detail_value"><input type="number" class="form-control is-disabled" id="phone_no" placeholder="" value="" disabled></td>
+                            </div>
+                        </tr>
 
-                    <tbody>
-                        <tr>
-                            <td class="category"> Name</td>
-                        </tr>
-                        <tr>
-                            <td class="category">Username</td>
-                        </tr>
-                        <tr>
-                            <td class="category">Gender</td>
-                        </tr>
-                        <tr>
-                            <td class="category">Birthday</td>
-                        </tr>
-                        <tr>
-                            <td class="category">School</td>
-                        </tr>
-                        <tr>
-                            <td class="category">Email</td>
-                        </tr>
-                        <tr>
-                            <td class="category">Matric No.</td>
-                        </tr>
-                        <tr>
-                            <td class="category">Phone No.</td>
-                        </tr>
 
-                    </tbody>
-                </table>
+                    </table>
 
-                <div class="details">
-                    <div>
-                        <ul id="details">
-                            <li>
-                                <label id="name"></label><input type="text">
-                                <button class="edit"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg></button>
-                            </li>
-                            <li>
-                                <label id="username"></label><input type="text" v-model="username">
-                                <button class="edit"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg></button>
-                            </li>
-                            <li>
-                                <label id="gender"></label><input type="text" v-model="gender">
-                                <button class="edit"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg></button>
-                            </li>
-                            <li>
-                                <label id="birthday"></label><input type="text" v-model="birthday">
-                                <button class="edit"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg></button>
-                            </li>
-                            <li>
-                                <label id="school"></label><input type="text" v-model="email">
-                                <button class="edit"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg></button>
-                            </li>
-                            <li>
-                                <label id="email"></label><input type="text" v-model="email">
-                                <button class="edit"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg></button>
-                            </li>
-                            <li>
-                                <label id="matric_no"></label><input type="text" v-model="matric_no">
-                                <button class="edit"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg></button>
-                            </li>
-                            <li>
-                                <label id="phone_no"></label><input type="text" v-model="phone_no">
-                                <button class="edit"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg></button>
-                            </li>
-                            
-                        </ul>
-                        <button style="float: right;" type="button" class="btn" id="save">Save Changes</button>
-                    </div>
-                </div>
+
+                    
+                    <button type="button" class="btn btn-default btn-edit js-edit">Edit</button>
+                    <button type="button" class="btn btn-default btn-save js-save" id="save">Save</button>
+                </form>
             </div>
         </div>
     </div>
