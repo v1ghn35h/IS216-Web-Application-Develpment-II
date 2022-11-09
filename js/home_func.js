@@ -109,19 +109,3 @@ function call_quote_api() {
     })
     console.log("**** [END] call_quote_api() *****")
 }
-// function addEvent(){
-//     event_name = document.getElementById("name").innerText
-//     console.log(event_name)
-//     event_club = document.getElementById("club").innerText
-//     console.log(event_club)
-//     event_photo = document.getElementById("photo").src
-//     console.log(event_photo)
-//     event_date = document.getElementById("date").innerText
-//     console.log(event_date)
-//     event_location = document.getElementById("location").innerText
-//     console.log(event_location)
-//     event_time = document.getElementById("time").innerText
-//     console.log(event_time)
-//     event_type = document.getElementById("type").innerText
-//     console.log(event_type)
-// }

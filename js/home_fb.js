@@ -70,7 +70,7 @@ function UpcomingSchoolEvents () {
             let fees_of_event= upcoming_events[event].fees
             let location_of_event= upcoming_events[event].location
             let event_id= upcoming_events[event].eventId
-				tempHTML += `<div class="card mx-1" style="width: 18rem;">
+				tempHTML += `<div class="card mx-1">
                 <!-- PLACE IMAGE ON TOP OF CARD -->
                 <img src = ${photo_of_event} height = "125" class="card-img-top" alt="..." id = "photo">
                 <!-- HEADER [can be added to h* elements]-->
