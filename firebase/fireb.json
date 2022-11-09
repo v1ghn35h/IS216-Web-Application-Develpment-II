@@ -11,23 +11,7 @@
                 "matric_no": "01441234",
                 "phone_no": "91234567",
                 "preference_info": {
-                    "preference": {
-                        "preference_arr": ["Adventure", "Arts & Culture", "Sports"],
-                        "preference_obj": {
-                            "Adventure": {
-                                "id": "adventure",
-                                "photo_url": "https://cdn-icons-png.flaticon.com/512/3819/3819743.png"
-                            }, 
-                            "Arts & Culture": {
-                                "id": "artsandculture",
-                                "photo_url": "https://cdn-icons-png.flaticon.com/512/1344/1344461.png"
-                            },
-                            "Sports": {
-                                "id": "sports",
-                                "photo_url": "https://cdn-icons-png.flaticon.com/512/857/857455.png"
-                            }
-                        }
-                    }
+                    "preference": ["Adventure", "Arts & Culture", "Sports"]
                 },
                 "preference": ["Adventure", "Arts & Culture", "Sports"],
                 "profile_picture": "url('https://firebasestorage.googleapis.com/v0/b/calendaready-g7t7.appspot.com/o/images%2Fnatasha1.png?alt=media&token=998da93a-be5a-4431-b762-f611b63180c1')"
@@ -98,31 +82,38 @@
     "categories": {
         "Adventure": {
             "id": "adventure",
-            "photo_url": "https://cdn-icons-png.flaticon.com/512/3819/3819743.png"
+            "photo_url": "https://cdn-icons-png.flaticon.com/512/3819/3819743.png",
+            "bw_photo_url": "https://cdn-icons-png.flaticon.com/512/3819/3819655.png"
         }, 
         "Arts & Culture": {
             "id": "artsandculture",
-            "photo_url": "https://cdn-icons-png.flaticon.com/512/1344/1344461.png"
+            "photo_url": "https://cdn-icons-png.flaticon.com/512/1344/1344461.png",
+            "bw_photo_url": "https://cdn-icons-png.flaticon.com/512/761/761277.png"
         }, 
         "Community": {
             "id": "community",
-            "photo_url": "https://cdn-icons-png.flaticon.com/512/921/921356.png"
+            "photo_url": "https://cdn-icons-png.flaticon.com/512/921/921356.png",
+            "bw_photo_url": "https://cdn-icons-png.flaticon.com/512/921/921305.png"
         }, 
         "Global Culture": {
             "id": "globalculture",
-            "photo_url": "https://cdn-icons-png.flaticon.com/512/3192/3192951.png"
+            "photo_url": "https://cdn-icons-png.flaticon.com/512/3192/3192951.png",
+            "bw_photo_url": "https://cdn-icons-png.flaticon.com/512/3302/3302536.png"
         }, 
         "School Society": {
             "id": "schoolsociety",
-            "photo_url": "https://cdn-icons-png.flaticon.com/512/2995/2995620.png"
+            "photo_url": "https://cdn-icons-png.flaticon.com/512/2995/2995620.png",
+            "bw_photo_url": "https://cdn-icons-png.flaticon.com/512/2995/2995357.png"
         }, 
         "Sports": {
             "id": "sports",
-            "photo_url": "https://cdn-icons-png.flaticon.com/512/857/857455.png"
+            "photo_url": "https://cdn-icons-png.flaticon.com/512/857/857455.png",
+            "bw_photo_url": "https://cdn-icons-png.flaticon.com/512/857/857492.png"
         }, 
         "Student Bodies": {
             "id": "studentbodies",
-            "photo_url": "https://cdn-icons-png.flaticon.com/512/3597/3597742.png"
+            "photo_url": "https://cdn-icons-png.flaticon.com/512/3597/3597742.png",
+            "bw_photo_url": "https://cdn-icons-png.flaticon.com/512/3597/3597749.png"
         }
     },
 

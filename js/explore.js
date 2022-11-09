@@ -41,8 +41,9 @@ const explorePage = Vue.createApp({
             filter_start_date: null,
             filter_end_date: null,
             filter_min_price: null,
-            filter_max_price: null
+            filter_max_price: null,
 
+            selected_badge: '',
 
             // added properties for GET_FILTER_CRITERIAS
             // org_club: '',
@@ -122,6 +123,28 @@ const explorePage = Vue.createApp({
         // filter works, to be completed
         testing() {
             console.log('hello in testing');
+        },
+
+        add_selected_club_badge(){
+            // shift to filter_events after finishing
+            this.selected_badge = ''
+            for (let club of this.filter_club) {
+                this.selected_badge += `
+                <span class="badge filter_badge">
+                    ${club}     
+                </span>
+                `
+                // <button type="button" class="btn-close" aria-label="Close" v-on:click='remove_filter_badge()'>
+                // </button>
+            }
+        },  
+
+        remove_filter_badge(value) {
+            console.log(value);
+            let index = this.filter_club.indexOf(value)
+
+            this.filter_club.splice(index, 1)
+            this.filter_events()
         },
 
         filter_events() {
