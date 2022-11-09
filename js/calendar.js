@@ -297,6 +297,18 @@ function removeTodo(e) {
     }
 }
 
+// ---------------------------------------
+// SWITCH BETWEEN SEARCH AND TO-DO
+// function showTask() {
+//   let task_list = document.getElementById("taskList")
+//   let search = document.getElementById("search")
+
+//   if (task_list.style.display === "none") {
+//     task_list.style.display = "block";
+//   } 
+
+// }
+
 
 // ----------------------------------------
 // CALENDAR
@@ -498,8 +510,8 @@ document.addEventListener('DOMContentLoaded', function() {
               document.getElementById("addEvent").reset();
             }
           )}
+        }
       },
-    },
 
     headerToolbar: {
       left: 'prev,next today',

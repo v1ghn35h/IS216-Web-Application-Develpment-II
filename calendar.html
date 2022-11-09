@@ -54,48 +54,74 @@
   <h1 id="target"></h1>
   <script type="module" src="js/calendar.js"></script>
 
+
   <div class="container">
       <div class="row text-start">
-  
-        <!-- Task List -->
-        <div class="col-12 col-lg-3">
-          <p class="mt-5 text-center" style="font-size: 24px"> To-Do List </p>
-
-          <div class="card-header pb-2">
-            <form id="form">
-              <div class="input-group">
-                <input type="text" class="form-control" id="todo" placeholder="Add new todo item">
-                <div class="input-group-append">
-                  <button type="submit" class="btn btn-primary" style="z-index: 0">
-                    <i class="fas fa-plus"></i> 
-                    Add
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-
-          <!-- add warning here if needed (if input field is empty) -->
-          <div id="alertText">
-          </div>
 
 
-        <div class="card-body">
-          <ul class="list-group mb-3" id="taskList">
-
-            <!-- Populate tasks -->
-
+        <!-- START OF COL -->
+        <div class="col-12 col-lg-3 pt-4">
+          <!-- Display Nav items -->
+          <ul class="nav nav-tabs pt-4" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="task-tab" data-bs-toggle="tab" data-bs-target="#task-tab-pane" type="button" role="tab" aria-controls="task-tab-pane" aria-selected="true"> Task List </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="search-tab" data-bs-toggle="tab" data-bs-target="#search-tab-pane" type="button" role="tab" aria-controls="cost-tab-pane" aria-selected="false"> Search Events </button>
+            </li>
           </ul>
-        </div>
-      </div>
-  
-          <!-- Calendar -->
-          <div class="col-12 col-lg-9">
-            <div id='calendar'>
 
-            </div>
+          <!-- Nav item content -->
+          <div class="tab-content" id="myTabContent">
+
+              <!-- Task List -->
+              <div class="tab-pane fade show active" id="task-tab-pane" role="tabpanel" aria-labelledby="task-tab" tabindex="0"> 
+              
+                <!-- task list -->
+                <p class="mt-5 text-center" style="font-size: 24px"> To-Do List </p>
+                <div class="card-header pb-2">
+                  <form id="form">
+                    <div class="input-group">
+                      <input type="text" class="form-control" id="todo" placeholder="Add new todo item">
+                      <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary" style="z-index: 0">
+                          <i class="fas fa-plus"></i> 
+                          Add
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <!-- add warning here if needed (if input field is empty) -->
+                <div id="alertText">
+                </div>
+                <div class="card-body">
+                  <ul class="list-group mb-3" id="taskList">
+                    <!-- Populate tasks -->
+                  </ul>
+                </div>
+                <!-- End of task list-->
+              </div>
+
+              <!-- Search Events -->
+              <div class="tab-pane fade" id="search-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                  bye
+              </div>
+
           </div>
-  </div>
+
+        </div> <!-- END OF COL -->
+
+
+  
+        <!-- Calendar -->
+        <div class="col-12 col-lg-9">
+          <div id='calendar'>
+          </div>
+        </div>
+
+    </div> <!-- end of row -->
+  </div> <!-- end of container -->
 
 
   <!-- confirm delete modal -->
@@ -232,7 +258,6 @@
   <!-- display event modal -->
   <div id="myOtherModal" class="modal">
     <div class="modal-content">
-      
       <div class="container text-center">
         <span class="close" style="float: right">&times;</span>
       </div>
