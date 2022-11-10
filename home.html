@@ -63,7 +63,7 @@
         <div class = "col-12 col-lg-6 my-4">
             <div class = "container h-100 w-100 d-inline-block">
                 <div id = "carousel_events" class = "h-100 w-100 d-inline-block">
-                    <p class = "display-6">Your upcoming events</p>
+                    <p class = "display-6">Your Upcoming Events</p>
                     <hr style = "color: whitesmoke">
                     <div id = "carousel_user_events"></div>
                 </div>
@@ -117,7 +117,7 @@
                 <div class="modal-dialog modal-dialog-scrollable modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="InfoPageLabel"> {{ details.name }} </h1>
+                            <h1 class="modal-title fs-5" id="InfoPageLabel"> {{ details.club }} </h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
@@ -126,10 +126,9 @@
                                 <img :src="details.photo"
                                     style="width:500px; height:350px" alt="..." class="center "/>
                             </div>
-                            <p class="display-6 lead text-center mt-3">Event Information</p>
+                            <p class="display-6 lead text-center mt-3">{{ details.name }}</p>
                             <hr>
                             <div class="container  text-break p-3 mt-3 fs-6" style="display: inline-block; text-align: left;">
-                                {{ details.club }}
                                 CCA: {{ details.club }}
                                 <br>
                                 Date: {{ details.date }}
@@ -146,7 +145,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-dark" :data-bs-target="`#signUpPage${details.eventId}`"
-                                data-bs-toggle="modal">Sign up now</button>
+                                data-bs-toggle="modal" class="btn-signup">Sign up now</button>
                         </div>
                     </div>
                 </div>
@@ -249,7 +248,7 @@
                     <div class="modal-dialog modal-dialog-scrollable modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="InfoPageLabel"> {{ details.name }} </h1>
+                                <h1 class="modal-title fs-5" id="InfoPageLabel"> {{ details.club }} </h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
@@ -258,10 +257,9 @@
                                     <img :src="details.photo"
                                         style="width:500px; height:350px" alt="..." class="center "/>
                                 </div>
-                                <p class="display-6 lead text-center mt-3">Event Information</p>
+                                <p class="display-6 lead text-center mt-3">{{ details.name }}</p>
                                 <hr>
                                 <div class="container  text-break p-3 mt-3 fs-6" style="display: inline-block; text-align: left;">
-                                    {{ details.club }}
                                     CCA: {{ details.club }}
                                     <br>
                                     Date: {{ details.date }}
