@@ -301,6 +301,14 @@ function removeTodo(e) {
 // ---------------------------------------
 // POMODORO TIMER
 
+let background_images = {"forest": "img/pomodoro-bg/forest.png",
+                          "ocean": "img/pomodoro-bg/ocean.png",
+                          "rainy": "img/pomodoro-bg/rainy.png",
+                          "peace": "img/pomodoro-bg/peace.png",
+                          "cafe": "img/pomodoro-bg/cafe.png",
+                          "none": "img/pomodoro-bg/none.png"
+                        } 
+
 $(() => {
 
   let $audio = $("audio"), // from https://tide.moreless.io/en/
@@ -455,17 +463,25 @@ $(() => {
   function audioSelect(e){
     $theme.removeClass("selected");
     $(e.target).addClass("selected");
+
     switch(e.target.id){
       case "forest": $audio.attr("src", "https://joeweaver.me/codepenassets/freecodecamp/challenges/build-a-pomodoro-clock/forest.mp3"); break;
       case "ocean": $audio.attr("src", "https://joeweaver.me/codepenassets/freecodecamp/challenges/build-a-pomodoro-clock/ocean.mp3"); break;
       case "rainy": $audio.attr("src", "https://joeweaver.me/codepenassets/freecodecamp/challenges/build-a-pomodoro-clock/rain.mp3"); break;
       case "peace": $audio.attr("src", "https://joeweaver.me/codepenassets/freecodecamp/challenges/build-a-pomodoro-clock/peace.mp3"); break;
       case "cafe": $audio.attr("src", "https://joeweaver.me/codepenassets/freecodecamp/challenges/build-a-pomodoro-clock/cafe.mp3"); break;
-    }
+      case "none": $audio.attr("src", ""); break;
+      }
+
+    // change background image
+    let selected_element_id = e.target.id
+    let new_background_image = background_images[selected_element_id]
+    
+    let background_image = document.getElementById("clock")
+    background_image.style.backgroundImage = `url("${new_background_image}")`;
   }
 
 });
-
 
 
 // ---------------------------------------
