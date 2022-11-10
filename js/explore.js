@@ -84,7 +84,7 @@ const explorePage = Vue.createApp({
             this.sorted_events_by_type = sort_type
         })
     }, // beforeMount
-    
+
     computed: {
 
         //get all organising clubs
@@ -211,7 +211,7 @@ const explorePage = Vue.createApp({
         sort_events() {
             console.log("====Function-sort_events()===")
             
-            this.display_events = this.sorted_events
+            this.display_events = this.sorted_events_by_type
 
 
             console.log("====FunctionEND-sort_events()===")
