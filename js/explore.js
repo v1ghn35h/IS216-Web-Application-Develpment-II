@@ -44,7 +44,7 @@ const explorePage = Vue.createApp({
             //filter inputs
             filter_club: [],
             filter_event_type: [],
-            filter_start_date: null,
+            filter_start_date: new Date().toISOString().slice(0,10),
             filter_end_date: null,
             filter_min_price: null,
             filter_max_price: null,
@@ -239,7 +239,27 @@ const explorePage = Vue.createApp({
             }
 
             new_filtered_obj = {}
-            
+
+            // check if user selected any date to filter and if they did, extract those events
+            if (this.filter_end_date != null) {
+                console.log(this.filter_end_date);
+                let use_db_events = Object.keys(old_filtered_obj).length == 0 ? all_events : old_filtered_obj
+
+                let filter_end_date_obj = new Date(this.filter_end_date)
+                let filter_start_date_obj = new Date(this.filter_start_date)
+                console.log(filter_end_date_obj);
+                console.log(filter_start_date_obj);
+                for (let [event, details] of Object.entries(use_db_events)) {
+                    let event_date = details.date
+                    let event_date_obj = new Date(event_date)
+
+                    if ( event_date_obj >= filter_start_date_obj && event_date_obj <= filter_end_date_obj) {
+                        new_filtered_obj[event] = details
+                    }
+                }
+                old_filtered_obj = Object.assign({}, new_filtered_obj)
+            }
+        
 
             this.display_events = old_filtered_obj
 
