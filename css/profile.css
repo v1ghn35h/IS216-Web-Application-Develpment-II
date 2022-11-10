@@ -342,4 +342,10 @@ form.is-readonly .btn-save {
   }
 
   /* .caret{ color: red; } */
+
+.btn-edit, .btn-save {
+    float: right;
+    margin-top: 10px;
+    width: 70px;
+}
   
