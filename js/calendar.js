@@ -528,38 +528,52 @@ document.addEventListener('DOMContentLoaded', function() {
               const dbRef = ref(getDatabase());
               get(child(dbRef, `users/${current_user}/user_events/`)).then((snapshot) => {
                 if (snapshot.exists()) {
-                  let db_values = snapshot.val();
-                  let db_size = Object.keys(db_values).length
-                  let new_db_size = db_size + 1
-                } else {
+                  var db_values = snapshot.val();
+
+                  // empty and readd items
+                  all_events = Object.entries(db_values)
+                  console.log(all_events)
+                  new_db_size = all_events.length + 1
+
+                  // add event to array
+                  set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
+                    {
+                      title: title,
+                      start: start,
+                      end: end,
+                      category: event_class,
+                      id: new_db_size
+                    },
+                  )
+
+                  // empty and readd items
+                  all_events.push(db_values)
+                  console.log(all_events)
+
+                  // display added successfully
+                  add_success_modal.style.display = "block";
+
+                  // force page to reload
+                  setTimeout(function(){
+                    window.location.reload();
+                  }, 2000);
+              
+                  // reset modal 
+                  modal.style.display = "none";
+                  document.getElementById("addEvent").reset();
+                } 
+                
+
+                else {
                   console.log("No data available");
                 }
               }).catch((error) => {
                 console.error(error);
               });
-              
-              // add event to array
-              set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
-                {
-                  title: title,
-                  start: start,
-                  end: end,
-                  category: event_class,
-                  id: new_db_size
-                },
-              )
 
-              // display added successfully
-              add_success_modal.style.display = "block";
 
-              // force page to reload
-              setTimeout(function(){
-                window.location.reload();
-              }, 2000);
-          
-              // reset modal 
-              modal.style.display = "none";
-              document.getElementById("addEvent").reset();
+
+
             }
           )}
         }
@@ -662,11 +676,8 @@ document.addEventListener('DOMContentLoaded', function() {
               var db_values = snapshot.val();
 
               // empty and readd items
-              all_events = []
-              all_events.push(db_values)
-
-              console.log(db_values)
-              let new_db_size = all_events.length + 1
+              all_events = Object.entries(db_values)
+              new_db_size = all_events.length + 1
 
               // add event to array
               set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
