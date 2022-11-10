@@ -1,6 +1,6 @@
 // FIREBASE IMPORT
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
-import { getDatabase, ref, onValue , set } from
+import { getDatabase, ref, onValue , set, query, orderByChild, get, child } from
 "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
 import { getStorage, ref as sref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-storage.js";
 
@@ -22,6 +22,8 @@ const users = ref(db, 'users')
 // const clubs = ref(db, 'clubs')
 const allEvents = ref(db, 'events')
 
+// let que = 
+
 
 //////////////////////////////////////////////////
 
@@ -30,10 +32,15 @@ const allEvents = ref(db, 'events')
 const explorePage = Vue.createApp({ 
     data() { 
         return { 
-            hello: "testing",
+      
             display_events: '',
             db_events: '', // this stores all events extracted from db
             userInfo: '',
+            sorted_events_by_type: null,
+            sorted_events_by_fees: null,
+
+            //sort inputs
+            sort_by: '',
 
             //filter inputs
             filter_club: [],
@@ -45,22 +52,9 @@ const explorePage = Vue.createApp({
 
             selected_badge: '',
 
-            // added properties for GET_FILTER_CRITERIAS
-            // org_club: '',
-            // event_type: '',
-            // start_date: '',
-            // end_date: '',
-            // min_price: '',
-            // max_price: ''
         };
     }, // data
-    computed: { 
-        derivedProperty() {
-            
-        } } ,
-    // }, // computed
-    // created() { 
-    // },
+ 
     beforeMount() { 
         console.log("====Function-GETALLEVENTS===")
         onValue(allEvents, (snapshot) => {
@@ -69,12 +63,12 @@ const explorePage = Vue.createApp({
             console.log(data);
             this.db_events = data
             this.display_events = data
-            console.log(this.db_events);
-
-
+            // console.log(this.display_events);
 
             console.log("-------end event mounted------");
         })
+
+
         onValue(users, (snapshot) => {
             const data = snapshot.val()
             console.log("-------In user mounted------");
@@ -83,10 +77,32 @@ const explorePage = Vue.createApp({
             console.log(this.userInfo);
             console.log("-------end user  mounted------");
         })
-    },
+
+        // events sorted by type
+        get(query(allEvents, orderByChild("type"))).then((snapshot) => {
+            let sort_type = []
+        
+            snapshot.forEach(childSnapshot => {
+                sort_type.push(childSnapshot.val())
+            })
+            this.sorted_events_by_type = sort_type
+        })
+        // events sorted by fees
+        get(query(allEvents, orderByChild("fees"))).then((snapshot) => {
+            let sort_fees = []
+        
+            snapshot.forEach(childSnapshot => {
+                sort_fees.push(childSnapshot.val())
+            })
+            this.sorted_events_by_fees = sort_fees
+        })
+
+    }, // beforeMount
+
     computed: {
+
+        //get all event type clubs
         event_types() {
-            //get all organising clubs
             let all_event_types = []
 
             for (let [event, details] of Object.entries(this.db_events)) {
@@ -94,15 +110,15 @@ const explorePage = Vue.createApp({
                 //     this.organising_clubs.push(details.club)
                 // }
                 if (!all_event_types.includes[details.type]) {
-                    console.log(all_event_types);
+                    // console.log(all_event_types);
                     all_event_types.push(details.type)
                 }
             }
             return  [...new Set(all_event_types)]
         },
 
+        //get all organising clubs
         all_clubs() {
-            //get all organising clubs
             let organising_clubs = []
 
             for (let [event, details] of Object.entries(this.db_events)) {
@@ -110,20 +126,18 @@ const explorePage = Vue.createApp({
                 //     this.organising_clubs.push(details.club)
                 // }
                 if (!organising_clubs.includes[details.club]) {
-                    console.log(organising_clubs);
+                    // console.log(organising_clubs);
                     organising_clubs.push(details.club)
                 }
             }
             return  [...new Set(organising_clubs)]
-        }
+        },
+
     },
 
     methods: {
 
         // filter works, to be completed
-        testing() {
-            console.log('hello in testing');
-        },
 
         add_selected_club_badge(){
             // shift to filter_events after finishing
@@ -153,113 +167,91 @@ const explorePage = Vue.createApp({
             console.log(this.db_events);
             let all_events= this.db_events
 
-            let filtered_obj = {}
+            let old_filtered_obj = {}
+            let new_filtered_obj = {}
 
             //loop thru all event from db_events
-            for (let [event, details] of Object.entries(all_events)) {
-                // console.log(details);
-                // console.log(event);
+    
+            // console.log(details);
+            // console.log(event);
 
-                // check if user selected any clubs to filter and if they did, extract those events
-                if (this.filter_club.length != 0 && this.filter_club.includes( details.club )) {
-                    console.log(details);
-                   
-                    filtered_obj[event] = details
-                    console.log(filtered_obj);
+            // check if user selected any clubs to filter and if they did, extract those events
+            if (this.filter_club.length > 0) {
+                for (let [event, details] of Object.entries(all_events)) {
+                    if (this.filter_club.includes(details.club)) {
+                        old_filtered_obj[event] = details
+                    }
                 }
+            }
+            
+            // console.log(old_filtered_obj);
+            if (this.filter_event_type.length > 0) {
 
-                // check if user selected any event type to filter and if they did, extract those events
-                if (this.filter_event_type.length != 0 && this.filter_event_type.includes( details.type )) {
-                    console.log(details);
-                    
-                    filtered_obj[event] = details
-                    console.log(filtered_obj);
+                for (let [event, details] of Object.entries(old_filtered_obj)) {
+                    // check if user selected any event type to filter and if they did, extract those events
+                    if (this.filter_event_type.includes( details.type )) {
+                        // console.log(details);
+                        
+                        new_filtered_obj[event] = details
+                        // console.log(new_filtered_obj);
+                    }
                 }
-                // check if user selected any price to filter and if they did, extract those events 
-                if (this.filter_min_price != null || this.filter_max_price != null) {
+                old_filtered_obj = Object.assign({}, new_filtered_obj)
+            }
+            
+            // Object.assign({}, obj);
+            // console.log(new_filtered_obj);
+            new_filtered_obj = {}
+
+            console.log(old_filtered_obj);
+            
+            // check if user selected any price to filter and if they did, extract those events
+
+            if (this.filter_min_price != null || this.filter_max_price != null) {
+                for (let [event, details] of Object.entries(old_filtered_obj)) {
        
                     let event_price = details.fees
                     
-                    if (event_price == "NA") {
-                        event_price = 0
-                    }
-                    else {
-                        event_price = Number(event_price.split(" ")[0])
-                    }
-                    // console.log(event_price);
 
                     if (this.filter_min_price != null && this.filter_max_price == null && event_price >= this.filter_min_price) {
-                        filtered_obj[event] = details
+                        new_filtered_obj[event] = details
                     }
                     else if (this.filter_max_price != null && this.filter_min_price == null && event_price <= this.filter_max_price) {
-                        filtered_obj[event] = details
+                        new_filtered_obj[event] = details
                     }
-                        
+                    
                     else if (event_price >= this.filter_min_price && event_price <= this.filter_max_price) {
                         // console.log("im here");
-                        filtered_obj[event] = details
-                    
+                        new_filtered_obj[event] = details
+                        
                     }
                 }
-                
+                old_filtered_obj = Object.assign({}, new_filtered_obj)
             }
 
-            this.display_events = filtered_obj
+            new_filtered_obj = {}
+            
+
+            this.display_events = old_filtered_obj
             console.log("====FunctionEND-filter_events()===")
-        },
-
-
-
-
-
-
-        // JL: coz my filter doesnt work so
-        // i decieded to get filter by org-club first at least
-        onFilter_org_club(org_club_input) {
-            // FIREBASE POPULATE UPCOMING EVENTS
-            console.log("====Function-onFilter_org_club===")
-            let filtered_events = {}
-            console.log(allEvents)
-
-
-            console.log("====FunctionEND-onFilter_org_club===")
-            
             
         },
 
-        onSort() {
-
-            var condition = document.getElementById("sortby").value;
-            allEvents.orderByChild("condition").once("value", function(snapshot){
-                console.log(snapshot.val());
-            })
-        },
-
-        // onFilter() {
+        sort_events() {
+            console.log("====Function-sort_events()===")
             
-        //     var club = document.getElementById("org_club").value;
-        //     var type = document.getElementById("event_type").value;
-        //     var s_date = document.getElementById("start_date").value;
-        //     var e_date = document.getElementById("end_date").value;
-        //     var min_price = document.getElementById("min_price").value;
-        //     var max_price = document.getElementById("max_price").value;
+            if (this.sort_by == "event") {
+                this.display_events = this.sorted_events_by_type
+            }
+            else if (this.sort_by == "fees") {
+                this.display_events = this.sorted_events_by_fees
+            }
 
-        //     const que = query(allEvents,orderByChild("club"), equalTo("club"));
+            console.log("====FunctionEND-sort_events()===")
+        }
 
-        //     filtered_events = []
-
-        //     get(que)
-        //     .then((snapshot)=> {
-        //         snapshot.forEach(childsnapshot => {
-        //             filtered_events.push(childsnapshot.val());
-                    
-        //         });
-            
-        //     console.log(filtered_events)    
-        //     return filtered_events;
-        //     })
-        // }
-    } // methods
+  
+    } 
 });
 
 const vm = explorePage.mount('#explorePage'); 

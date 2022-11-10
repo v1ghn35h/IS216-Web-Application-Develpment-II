@@ -17,6 +17,7 @@
     <!-- External CSS -->
     <link rel="stylesheet" href="css/calendar.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+
     <!--navbar css-->
     <link rel="stylesheet" href="css/navbar.css">
 
@@ -24,6 +25,9 @@
     <script src="https://unpkg.com/vue@next"></script>
 
     <script type="module" src="js/login-common.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> -->
 
 </head>
 
@@ -77,35 +81,137 @@
               <!-- Task List -->
               <div class="tab-pane fade show active" id="task-tab-pane" role="tabpanel" aria-labelledby="task-tab" tabindex="0"> 
               
-                <!-- task list -->
-                <p class="mt-5 text-center" style="font-size: 24px"> To-Do List </p>
-                <div class="card-header pb-2">
-                  <form id="form">
-                    <div class="input-group">
-                      <input type="text" class="form-control" id="todo" placeholder="Add new todo item">
-                      <div class="input-group-append">
-                        <button type="submit" class="btn btn-primary" style="z-index: 0">
-                          <i class="fas fa-plus"></i> 
-                          Add
-                        </button>
+                <!-- pomodoro timer-->
+                
+                <div>
+                  <p class="mt-5 text-center" style="font-size: 24px"> Pomodoro Timer </p>
+
+                  <div id="audio-selector" class="row">
+                    <div class="col">
+                      <div id="forest" class="theme"><!--🌲 --> 🌲 Forest</div>
+                    </div>
+
+                    <div class="col">
+                      <div id="ocean" class="theme"><!--🌊 --> 🌊 Ocean</div>
+                    </div>
+
+                    <div class="col">
+                      <div id="rainy" class="selected theme"><!--🌧 --> 🌧 Rainy</div>
+                    </div>
+
+                    <div class="col">
+                      <div id="peace" class="theme"><!--🧘 --> 🧘 Peace</div>
+                    </div>
+
+                    <div class="col">
+                      <div id="cafe" class="theme"><!--☕ --> ☕ Caf&eacute;</div>
+                    </div>
+                  </div>
+
+                  <div id="pomodoro">
+                    <div id="clock">
+                      <div id="timer">
+                        <div id="title">Ready?</div>
+                        <div id="countdown">
+                          <span id="minutes">30</span>
+                          <span id="seconds">00</span>
+                        </div>
+                        <div id="controls" class="reset">
+                          <div id="start"><i class="fas fa-play"></i> Start</div>
+                          <div id="pause"><i class="fas fa-pause"></i> Pause</div>
+                          <div id="reset"><i class="fas fa-sync-alt"></i> Reset</div>
+                        </div>
                       </div>
                     </div>
+
+                    <div id="options">
+                      <div id="session">
+                        <i id="incrSession" class="fas fa-angle-double-up"></i>
+                        <span class="option-title">Session</span>
+                        <input id="sessionInput" type="number" value="30" max="60" min="5">
+                        <i id="decrSession" class="fas fa-angle-double-down"></i>
+                      </div>
+                      <div id="break">
+                        <i id="incrBreak" class="fas fa-angle-double-up"></i>
+                        <span class="option-title">Break</span>
+                        <input id="breakInput" type="number" value="5" max="10" min="1">
+                        <i id="decrBreak" class="fas fa-angle-double-down"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <audio loop autoplay="false" src="https://joeweaver.me/codepenassets/freecodecamp/challenges/build-a-pomodoro-clock/rain.mp3">            
+                </div>
+
+                <!-- task list -->
+                <div>
+                  <p class="mt-5 text-center" style="font-size: 24px"> To-Do List </p>
+                  <div class="card-header pb-2">
+                    <form id="form">
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="todo" placeholder="Add new todo item">
+                        <div class="input-group-append">
+                          <button type="submit" class="btn btn-primary" style="z-index: 0">
+                            <i class="fas fa-plus"></i> 
+                            Add
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <!-- add warning here if needed (if input field is empty) -->
+                  <div id="alertText">
+                  </div>
+                  <div class="card-body">
+                    <ul class="list-group mb-3" id="taskList">
+                      <!-- Populate tasks -->
+                    </ul>
+                  </div>
+                  <!-- End of task list-->
+
                   </form>
                 </div>
+                
                 <!-- add warning here if needed (if input field is empty) -->
                 <div id="alertText">
+
                 </div>
-                <div class="card-body">
-                  <ul class="list-group mb-3" id="taskList">
-                    <!-- Populate tasks -->
-                  </ul>
-                </div>
-                <!-- End of task list-->
               </div>
 
               <!-- Search Events -->
               <div class="tab-pane fade" id="search-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-                  bye
+
+                <!-- search events -->
+                <p class="mt-5 text-center" style="font-size: 24px"> Search Events </p>
+
+                <!-- Vue -->
+                <div id="searchtab">
+
+                  <!-- input -->
+                  <div class="input-group">
+                    <span class="input-group-text" id="search">
+                      <i class="bi bi-search"></i>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Search query" aria-label="search" aria-describedby="search" v-model="search_query" v-on:keyup="searchForEvents()">
+                  </div>
+
+                  <br>
+
+                  <!-- output -->
+                  <p> 
+                    You searched for: 
+                    {{ search_query }}
+                  </p>
+
+                  <div>
+                    Your search results are:
+
+                    <div id="search_results">
+                      <!-- populate search results here -->
+                    </div>
+                    
+                  </div>
+
+                </div>
               </div>
 
           </div>

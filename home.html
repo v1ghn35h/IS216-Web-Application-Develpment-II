@@ -63,7 +63,7 @@
         <div class = "col-12 col-lg-6 my-4">
             <div class = "container h-100 w-100 d-inline-block">
                 <div id = "carousel_events" class = "h-100 w-100 d-inline-block">
-                    <p class = "display-6">Your upcoming events</p>
+                    <p class = "display-6">Your Upcoming Events</p>
                     <hr style = "color: whitesmoke">
                     <div id = "carousel_user_events"></div>
                 </div>
@@ -76,115 +76,131 @@
     <hr style = "color: #104547">
     <div class="cards_landscape_wrap-2" id = "upcoming">
                 <!--template for an event-->
-                <div class="card my-5 mx-3" v-for="details in display_events" >
-                    <!-- start of card-->
-                    <div :id="`eventCard${details.eventId}`">
-                        <div class="text-box" style ="height: 370px">
-                            <div class="image-box">
-                                <img :src="details.photo" />
+        <div class="card my-5 mx-3" v-for="details in display_events" >
+            <!-- start of card-->
+            <div :id="`eventCard${details.eventId}`">
+                <div class="text-box" style ="height: 370px">
+                    <div class="image-box">
+                        <img :src="details.photo" />
+                    </div>
+                    <div class="text-container">
+                        <h5 class="card-title"> {{ details.name }} </h5>
+                        <!-- SUBTITLE -->
+                        <h6 class="card-subtitle mb-2 "> {{ details.club }} </h6>
+                        <!-- BODY -->
+                        <p class="card-text text-wrap">
+                            Date: {{ details.date }}
+                            <br>
+                            Time: {{ details.time }}
+                            <br>
+                            Fees: {{ details.fees }}
+                            <br>
+                            Location: {{ details.location }}
+                        </p>
+                        
+                    </div>
+                </div>
+                <!-- sign up button-->
+                <div style="display:flex; align-content: flex-start; margin: 15px;">
+                    <button type="button" class="btn details-btn mt-3 " :data-bs-target="`#infoPage${details.eventId}`"
+                        data-bs-toggle="modal">More info</button>
+                </div>
+            </div>
+            <!-- end of card-->
+
+            <!-- MORE INFO & THE SIGNUp -->
+            <!-- BUTTON -->
+
+            <!-- Modal -->
+            <div class="modal fade" :id="`infoPage${details.eventId}`" tabindex="-1" aria-labelledby="InfoPageLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="InfoPageLabel"> {{ details.club }} </h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body mt-0">
+                            <div class="container p-2">
+                                <img :src="details.photo"
+                                    style="width:500px; height:350px" alt="..." class="center "/>
                             </div>
-                            <div class="text-container">
-                                <h5 class="card-title"> {{ details.name }} </h5>
-                                <!-- SUBTITLE -->
-                                <h6 class="card-subtitle mb-2 "> {{ details.club }} </h6>
-                                <!-- BODY -->
-                                <p class="card-text text-wrap">
-                                    Date: {{ details.date }}
-                                    <br>
-                                    Time: {{ details.time }}
-                                    <br>
-                                    Fees: {{ details.fees }}
-                                    <br>
-                                    Location: {{ details.location }}
-                                </p>
-                                
+                            <p class="display-6 lead text-center mt-3">{{ details.name }}</p>
+                            <hr>
+                            <div class="container  text-break p-3 mt-3 fs-6" style="display: inline-block; text-align: left;">
+                                CCA: {{ details.club }}
+                                <br>
+                                Date: {{ details.date }}
+                                <br>
+                                Time: {{ details.time }}
+                                <br>
+                                Fees: {{ details.fees }}
+                                <br>
+                                Location: {{ details.location }}
+                                <br>
+                                Additional notes: Wear comfortable clothes and bring one large black trash bag
                             </div>
                         </div>
-                        <!-- sign up button-->
-                        <div style="display:flex; align-content: flex-start; margin: 15px;">
-                            <button type="button" class="btn details-btn mt-3 " :data-bs-target="`#infoPage${details.eventId}`"
-                                data-bs-toggle="modal">More info</button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-dark" :data-bs-target="`#signUpPage${details.eventId}`"
+                                data-bs-toggle="modal" class="btn-signup">Sign up now</button>
                         </div>
                     </div>
-                    <!-- end of card-->
-
-                    <!-- MORE INFO & THE SIGNUp -->
-                    <!-- BUTTON -->
-
-                    <!-- Modal -->
-                    <div class="modal fade" :id="`infoPage${details.eventId}`" tabindex="-1" aria-labelledby="InfoPageLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-scrollable modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="InfoPageLabel"> {{ details.name }} </h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body mt-0">
-                                    <div class="container p-2">
-                                        <img :src="details.photo"
-                                            style="width:500px; height:350px" alt="..." class="center "/>
-                                    </div>
-                                    <p class="display-6 lead text-center mt-3">Event Information</p>
-                                    <hr>
-                                    <div class="container  text-break p-3 mt-3 fs-6" style="display: inline-block; text-align: left;">
-                                        {{ details.club }}
-                                        CCA: {{ details.club }}
-                                        <br>
-                                        Date: {{ details.date }}
-                                        <br>
-                                        Time: {{ details.time }}
-                                        <br>
-                                        Fees: {{ details.fees }}
-                                        <br>
-                                        Location: {{ details.location }}
-                                        <br>
-                                        Additional notes: Wear comfortable clothes and bring one large black trash bag
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-dark" :data-bs-target="`#signUpPage${details.eventId}`"
-                                        data-bs-toggle="modal">Sign up now</button>
-                                </div>
+                </div>
+            </div>
+            <div class="modal fade" :id="`signUpPage${details.eventId}`" aria-hidden="true" aria-labelledby="SignUpPageLabel"
+                tabindex="-1">
+                <div class="modal-dialog modal-dia  log-scrollable modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="SignUpPageLabel">Sign Up Page</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="display-6 lead text-center mt-3" v-model="title"> {{ details.name }} </p>
+                            <div class="container text-break p-3 mt-3 fs-6">
+                                Name: {{ userInfo.name }}
+                                <br>
+                                Matriculation number: {{ userInfo.matric_no }}
+                                <br>
+                                School: {{ userInfo.school }}
+                                <br>
+                                Payment: NA
                             </div>
+                            <button class="btn btn-warning center"
+                            @click="addEvent(details.name, details.club, details.photo, details.date, details.location, details.time, details.type)"
+                            :data-bs-target="`#addSuccessModal`" data-bs-toggle="modal">Confirm</button>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-dark" data-bs-target="`#infoPage${details.eventId}`" data-bs-toggle="modal">Go
+                                back</button>
                         </div>
                     </div>
-                    <div class="modal fade" :id="`signUpPage${details.eventId}`" aria-hidden="true" aria-labelledby="SignUpPageLabel"
-                        tabindex="-1">
-                        <div class="modal-dialog modal-dia  log-scrollable modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="SignUpPageLabel">Sign Up Page</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <p class="display-6 lead text-center mt-3" v-model="title"> {{ details.name }} </p>
-                                    <div class="container text-break p-3 mt-3 fs-6">
-                                        Name: {{ userInfo.name }}
-                                        <br>
-                                        Matriculation number: {{ userInfo.matric_no }}
-                                        <br>
-                                        School: {{ userInfo.school }}
-                                        <br>
-                                        Payment: NA
-                                    </div>
-                                    <button class="btn btn-warning center" id = "save" 
-                                    @click="addEvent(details.name, details.club, details.photo, details.date, details.location, details.time)"
-                                    >Confirm</button>
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-dark" :data-bs-target="`#infoPage${details.eventId}`" data-bs-toggle="modal">Go
-                                        back</button>
-                                </div>
-                            </div>
+                </div>
+            </div>
+            <!--Confirmation Page-->
+            <div class="modal fade" :id="`addSuccessModal`" aria-hidden="true" aria-labelledby="addSuccessModalLabel" tabindex="-1">
+                <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="addSuccessModal">Confirmation</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p class = "display-6 lead text-center mt-3 text-wrap">Event successfully added to calendar!</p>  
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
-                    <!-- END OF SIGN UP & MORE INFO -->
-                </div> <!-- end of event div-->
+                </div>
+            </div>
+            <!-- END OF SIGN UP & MORE INFO -->
+        </div> <!-- end of event div-->
     </div>
 
     <h3 class = "display-5 my-4">For You</h3>
@@ -232,7 +248,7 @@
                     <div class="modal-dialog modal-dialog-scrollable modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="InfoPageLabel"> {{ details.name }} </h1>
+                                <h1 class="modal-title fs-5" id="InfoPageLabel"> {{ details.club }} </h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
@@ -241,10 +257,9 @@
                                     <img :src="details.photo"
                                         style="width:500px; height:350px" alt="..." class="center "/>
                                 </div>
-                                <p class="display-6 lead text-center mt-3">Event Information</p>
+                                <p class="display-6 lead text-center mt-3">{{ details.name }}</p>
                                 <hr>
                                 <div class="container  text-break p-3 mt-3 fs-6" style="display: inline-block; text-align: left;">
-                                    {{ details.club }}
                                     CCA: {{ details.club }}
                                     <br>
                                     Date: {{ details.date }}
