@@ -17,24 +17,23 @@ html, body {
   width: 100%;
 }
 #pomodoro #clock {
-  /* background: url(https://joeweaver.me/codepenassets/freecodecamp/challenges/build-a-pomodoro-clock/bg.png) no-repeat center center; */
+  background: url("../img/dump/pomodoro-timer-background.png") no-repeat center center;
   background-size: contain;
   display: flex;
   justify-content: center;
-  /* margin-bottom: -6.25vw; */
-  padding: 20vw 0;
+  padding: 30px;
 }
 @media all and (min-width: 512px) {
   #pomodoro #clock {
     margin-bottom: -32px;
-    padding: 204px 0;
+    padding: 50px 0;
   }
 }
 @media all and (max-width: 184px) {
   #pomodoro #clock {
     margin-bottom: -20px;
     margin-bottom: -11.5px;
-    padding: 73px 0;
+    padding: 75px 0;
   }
 }
 #pomodoro #clock #timer {
@@ -178,6 +177,7 @@ html, body {
   justify-content: center;
   margin-bottom: 28px;
   text-align: center;
+  padding: 30px;
 }
 #pomodoro #options .option-title {
   color: #104547;
@@ -213,6 +213,7 @@ html, body {
 }
 #pomodoro #options input[type=number]::-webkit-inner-spin-button, #pomodoro #options input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
+  margin: 0;
 }
 @media all and (min-width: 512px) {
   #pomodoro #options input[type=number] {
@@ -236,7 +237,7 @@ audio {
 }
 
 #audio-selector {
-  width: 100%
+  width: 100%;
 }
 #audio-selector .theme {
   /* background: #45afb2; */
@@ -244,8 +245,8 @@ audio {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#47ff637f", endColorstr="#00ff6292", GradientType=0);
   flex: 1 1 25%;
   font: 600 calc(9px + 1vw) "Open Sans", sans-serif;
-  margin: 0 2px 0 0;
-  padding: 2vw 1vw 5vw;
+  /* margin: 0 2px 0 0; */
+  padding: 1vw;
   text-align: center;
   transition: all 0.43s;
   white-space: nowrap;
@@ -273,6 +274,7 @@ audio {
     padding: 7px;
   }
 }
+
 
 /* -------------------------------------------- */
 
