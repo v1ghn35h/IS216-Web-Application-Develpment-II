@@ -60,10 +60,7 @@ let schools = ["CIS", "SOA", "LKCSOB", "SOE", "SCIS", "YPHSOL", "SOSS"]
 onValue(users, (snapshot => {
     const data = snapshot.val(); 
 
-    
-    console.log(    document.getElementById('name')    );
     document.getElementById('save').addEventListener("click", updateUserInfo);
-    document.getElementById('name').addEventListener("change", console.log(document.getElementById("name")));
 
     userInfo = data.user1.user_profile_info
     
@@ -75,7 +72,6 @@ onValue(users, (snapshot => {
     }
 
     displayDetails()
-
 
     displayCategories()
 
@@ -173,9 +169,10 @@ $("#imageUpload").change(function() {
 function displayDetails() {
     for (let category in userInfo) {
         if (category != "profile_picture" && category != "preference" && category != "preference_info") {
-            // document.getElementById(category).value = userInfo[category];
+
             document.getElementById(category).placeholder = userInfo[category];
-            document.getElementById(category).setAttribute("value", userInfo[category])
+            document.getElementById(category).value = userInfo[category]
+
         }
     }
 
@@ -213,40 +210,23 @@ function displayDetails() {
 // UDPATE USER INFO
 function updateUserInfo() {
 
-    // getting input fields
-    // let editCollection = document.getElementsByClassName('editMode');
-    // // console.log(editCollection);
-    // for (let i = editCollection.length - 1; i >= 0; i --) {
-    //     let editItem = editCollection[i]
-    //     // console.log(editItem);
-    //     let label = editItem.querySelector('label');
-    //     let editInput = editItem.querySelector("input[type=text]")
-    //     label.innerText = editInput.value
-    //     editItem.classList.remove('editMode')
-    // }
+    const db = getDatabase();
+    set(ref(db, 'users/' + "user1" + '/user_profile_info'), {
+        name: document.getElementById('name').value,
+        username: document.getElementById('username').value,
+        gender: document.getElementById('gender').value,
+        birthday: document.getElementById('birthday').value,
+        school: document.getElementById('school').value,
+        email: document.getElementById('email').value,
+        matric_no: document.getElementById('matric_no').value,
+        phone_no: document.getElementById('phone_no').value, 
+        profile_picture: document.getElementById('imagePreview').style.backgroundImage,
 
-    // updating database
-    setTimeout(function() {
-        // function code goes here
-        console.log(document.getElementById('name'));
-    }, 2000);
-    // const db = getDatabase();
-    // set(ref(db, 'users/' + "user1" + '/user_profile_info'), {
-    //     name: document.getElementById('name').innerText,
-    //     username: document.getElementById('username').innerText,
-    //     gender: document.getElementById('gender').innerText,
-    //     birthday: document.getElementById('birthday').innerText,
-    //     school: document.getElementById('school').innerText,
-    //     email: document.getElementById('email').innerText,
-    //     matric_no: document.getElementById('matric_no').innerText,
-    //     phone_no: document.getElementById('phone_no').innerText, 
-    //     profile_picture: document.getElementById('imagePreview').style.backgroundImage,
+        // preference: userInfo.preference,
+        preference_info: userInfo.preference_info
+    })
 
-    //     // preference: userInfo.preference,
-    //     preference_info: userInfo.preference_info
-    // })
-
-    // console.log("change success");
+    console.log("change success");
 
     $('#successModal').modal('show');
 

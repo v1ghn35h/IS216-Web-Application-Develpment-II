@@ -32,11 +32,15 @@ const allEvents = ref(db, 'events')
 const explorePage = Vue.createApp({ 
     data() { 
         return { 
-            hello: "testing",
+      
             display_events: '',
             db_events: '', // this stores all events extracted from db
             userInfo: '',
             sorted_events_by_type: null,
+            sorted_events_by_fees: null,
+
+            //sort inputs
+            sort_by: '',
 
             //filter inputs
             filter_club: [],
@@ -83,11 +87,21 @@ const explorePage = Vue.createApp({
             })
             this.sorted_events_by_type = sort_type
         })
+        // events sorted by fees
+        get(query(allEvents, orderByChild("fees"))).then((snapshot) => {
+            let sort_fees = []
+        
+            snapshot.forEach(childSnapshot => {
+                sort_fees.push(childSnapshot.val())
+            })
+            this.sorted_events_by_fees = sort_fees
+        })
+
     }, // beforeMount
-    
+
     computed: {
 
-        //get all organising clubs
+        //get all event type clubs
         event_types() {
             let all_event_types = []
 
@@ -153,66 +167,85 @@ const explorePage = Vue.createApp({
             console.log(this.db_events);
             let all_events= this.db_events
 
-            let filtered_obj = {}
+            let old_filtered_obj = {}
+            let new_filtered_obj = {}
 
             //loop thru all event from db_events
-            for (let [event, details] of Object.entries(all_events)) {
-                // console.log(details);
-                // console.log(event);
+    
+            // console.log(details);
+            // console.log(event);
 
-                // check if user selected any clubs to filter and if they did, extract those events
-                if (this.filter_club.length != 0 && this.filter_club.includes( details.club )) {
-                    console.log(details);
-                   
-                    filtered_obj[event] = details
-                    console.log(filtered_obj);
+            // check if user selected any clubs to filter and if they did, extract those events
+            if (this.filter_club.length > 0) {
+                for (let [event, details] of Object.entries(all_events)) {
+                    if (this.filter_club.includes(details.club)) {
+                        old_filtered_obj[event] = details
+                    }
                 }
+            }
+            
+            // console.log(old_filtered_obj);
+            if (this.filter_event_type.length > 0) {
 
-                // check if user selected any event type to filter and if they did, extract those events
-                if (this.filter_event_type.length != 0 && this.filter_event_type.includes( details.type )) {
-                    console.log(details);
-                    
-                    filtered_obj[event] = details
-                    console.log(filtered_obj);
+                for (let [event, details] of Object.entries(old_filtered_obj)) {
+                    // check if user selected any event type to filter and if they did, extract those events
+                    if (this.filter_event_type.includes( details.type )) {
+                        // console.log(details);
+                        
+                        new_filtered_obj[event] = details
+                        // console.log(new_filtered_obj);
+                    }
                 }
-                // check if user selected any price to filter and if they did, extract those events 
-                if (this.filter_min_price != null || this.filter_max_price != null) {
+                old_filtered_obj = Object.assign({}, new_filtered_obj)
+            }
+            
+            // Object.assign({}, obj);
+            // console.log(new_filtered_obj);
+            new_filtered_obj = {}
+
+            console.log(old_filtered_obj);
+            
+            // check if user selected any price to filter and if they did, extract those events
+
+            if (this.filter_min_price != null || this.filter_max_price != null) {
+                for (let [event, details] of Object.entries(old_filtered_obj)) {
        
                     let event_price = details.fees
                     
-                    if (event_price == "NA") {
-                        event_price = 0
-                    }
-                    else {
-                        event_price = Number(event_price.split(" ")[0])
-                    }
-                    // console.log(event_price);
 
                     if (this.filter_min_price != null && this.filter_max_price == null && event_price >= this.filter_min_price) {
-                        filtered_obj[event] = details
+                        new_filtered_obj[event] = details
                     }
                     else if (this.filter_max_price != null && this.filter_min_price == null && event_price <= this.filter_max_price) {
-                        filtered_obj[event] = details
+                        new_filtered_obj[event] = details
                     }
-                        
+                    
                     else if (event_price >= this.filter_min_price && event_price <= this.filter_max_price) {
                         // console.log("im here");
-                        filtered_obj[event] = details
-                    
+                        new_filtered_obj[event] = details
+                        
                     }
                 }
-                
+                old_filtered_obj = Object.assign({}, new_filtered_obj)
             }
 
-            this.display_events = filtered_obj
+            new_filtered_obj = {}
+            
+
+            this.display_events = old_filtered_obj
             console.log("====FunctionEND-filter_events()===")
+            
         },
 
         sort_events() {
             console.log("====Function-sort_events()===")
             
-            this.display_events = this.sorted_events
-
+            if (this.sort_by == "event") {
+                this.display_events = this.sorted_events_by_type
+            }
+            else if (this.sort_by == "fees") {
+                this.display_events = this.sorted_events_by_fees
+            }
 
             console.log("====FunctionEND-sort_events()===")
         }
