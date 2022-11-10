@@ -32,11 +32,15 @@ const allEvents = ref(db, 'events')
 const explorePage = Vue.createApp({ 
     data() { 
         return { 
-            hello: "testing",
+      
             display_events: '',
             db_events: '', // this stores all events extracted from db
             userInfo: '',
             sorted_events_by_type: null,
+            sorted_events_by_fees: null,
+
+            //sort inputs
+            sort_by: '',
 
             //filter inputs
             filter_club: [],
@@ -83,11 +87,20 @@ const explorePage = Vue.createApp({
             })
             this.sorted_events_by_type = sort_type
         })
+        // events sorted by fees
+        get(query(allEvents, orderByChild("fees"))).then((snapshot) => {
+            let sort_fees = []
+        
+            snapshot.forEach(childSnapshot => {
+                sort_fees.push(childSnapshot.val())
+            })
+            this.sorted_events_by_fees = sort_fees
+        })
     }, // beforeMount
 
     computed: {
 
-        //get all organising clubs
+        //get all event type clubs
         event_types() {
             let all_event_types = []
 
@@ -180,13 +193,6 @@ const explorePage = Vue.createApp({
        
                     let event_price = details.fees
                     
-                    if (event_price == "NA") {
-                        event_price = 0
-                    }
-                    else {
-                        event_price = Number(event_price.split(" ")[0])
-                    }
-                    // console.log(event_price);
 
                     if (this.filter_min_price != null && this.filter_max_price == null && event_price >= this.filter_min_price) {
                         filtered_obj[event] = details
@@ -211,8 +217,12 @@ const explorePage = Vue.createApp({
         sort_events() {
             console.log("====Function-sort_events()===")
             
-            this.display_events = this.sorted_events_by_type
-
+            if (this.sort_by == "event") {
+                this.display_events = this.sorted_events_by_type
+            }
+            else if (this.sort_by == "fees") {
+                this.display_events = this.sorted_events_by_fees
+            }
 
             console.log("====FunctionEND-sort_events()===")
         }

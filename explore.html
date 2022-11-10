@@ -183,11 +183,11 @@
                                 <div class="row mb-3 justify-content-center">
                                     <div class="col-10">
                                         <select class="form-select multiple form-select-sm"
-                                            aria-label=".form-select-sm example" id= "sortby">
-                                            <option selected>Open this select menu</option>
+                                            aria-label=".form-select-sm example" id= "sortby" v-model="sort_by">
+                                            <option disabled value="">Sort By</option>
                                             <option value="event">Event</option>
                                             <option value="date">Date</option>
-                                            <option value="fee">Fee</option>
+                                            <option value="fees">Fee</option>
                                         </select>
                                     </div>
                                 </div>
@@ -241,7 +241,9 @@
                                     <br>
                                     Time: {{ details.time }}
                                     <br>
-                                    Fees: {{ details.fees }}
+                                    <span v-if='details.fees == 0'> Fees: Free </span> 
+                                    <span v-else> Fees: {{ details.fees }} SGD </span> 
+                                    
                                     <br>
                                     Location: {{ details.location }}
                                 </p>
@@ -284,7 +286,8 @@
                                         <br>
                                         Time: {{ details.time }}
                                         <br>
-                                        Fees: {{ details.fees }}
+                                        <span v-if='details.fees == 0'> Fees: Free </span> 
+                                        <span v-else> Fees: {{ details.fees }} SGD </span> 
                                         <br>
                                         Location: {{ details.location }}
                                         <br>
