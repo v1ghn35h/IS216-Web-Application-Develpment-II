@@ -56,6 +56,8 @@
         </div>
     </nav>
 
+    <!-- {{ sort_events }} -->
+
     <!-- SEARCH BAR -START -->
     <div class="search-container-fluid justify-content-center">
         <!--Search bar-->
@@ -195,7 +197,7 @@
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn" style="background-color: #104547; color: white;">Save
+                                <button type="button" class="btn" @click="sort_events()" style="background-color: #104547; color: white;">Save
                                     changes</button>
                             </div>
                         </div>
