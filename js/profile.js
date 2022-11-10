@@ -319,25 +319,29 @@ onValue(users, (snapshot => {
     const data = snapshot.val(); // get the new value
 
     user_events = data.user1.user_events
-    // UserForYouEvents()
+    console.log(user_events);
+    UserForYouEvents()
 }));
 
 function UserForYouEvents () {
     let tempHTML = ""
-    console.log(user_events);
+    let counter = 0
     for (let event in user_events) {
-        console.log(event);
 		if (Object.hasOwnProperty.call(user_events, event)) {
-            let name_of_event = user_events[event].name
-            let club_of_event = user_events[event].club
-            let type_of_event= user_events[event].type
-            let photo_of_event= user_events[event].photo
-            let date_of_event= user_events[event].date
-            let time_of_event= user_events[event].time
-            let fees_of_event= user_events[event].fees
-            let location_of_event= user_events[event].location
-            let event_id= user_events[event].eventId
-            if (true){
+            console.log(event);
+            let name_of_event = user_events[event].title
+            let club_of_event = user_events[event].event_club
+            let photo_of_event= user_events[event].photo_url
+            let date_of_event= user_events[event].event_date
+            let time_of_event= user_events[event].event_time
+            let location_of_event= user_events[event].event_location
+            let event_id= user_events[event].id
+            let event_date= user_events[event].start.slice(0,10)
+            let current_date = new Date().toJSON().slice(0, 10);
+            console.log(current_date, event_date);
+            console.log(current_date > event_date);
+            if (current_date > event_date){
+                counter += 1
 				tempHTML += ` 
                 <div class="card mx-1" style="width: 18rem;">
                 <!-- PLACE IMAGE ON TOP OF CARD -->
@@ -354,8 +358,6 @@ function UserForYouEvents () {
                         <br>
                         Time: ${time_of_event}
                         <br>
-                        Fees: ${fees_of_event}
-                        <br>
                         Location: ${location_of_event}
                     </p>
                 <!-- BUTTON -->
@@ -370,9 +372,17 @@ function UserForYouEvents () {
                             <div class="container">
                             <img src = "${photo_of_event}" width= "300px" height = "250px" alt="..." class="center">
                             </div>
-                            
+                            <p class = "display-6 lead text-center mt-3">Event Information</p>
+                            <hr>
                             <div class="container text-break p-3 mt-3 fs-6">
-                                test
+                                CCA: ${club_of_event}
+                                <br>
+                                Date: ${date_of_event}
+                                <br>
+                                Time: ${time_of_event}
+                                <br>
+                                <br>
+                                Location: ${location_of_event}
                             </div>
                         </div>
                         <div class="modal-footer text-wrap">
@@ -389,4 +399,8 @@ function UserForYouEvents () {
         }
     }}
     document.getElementById('events').innerHTML = tempHTML
+
+    if (counter == 0) {
+        document.getElementById('events_h2').innerText = "";
+    }
 }
