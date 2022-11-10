@@ -1,6 +1,6 @@
 // FIREBASE IMPORT
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
-import { getDatabase, ref, onValue , set } from
+import { getDatabase, ref, onValue , set, query, orderByChild, get, child } from
 "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
 import { getStorage, ref as sref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-storage.js";
 
@@ -22,6 +22,8 @@ const users = ref(db, 'users')
 // const clubs = ref(db, 'clubs')
 const allEvents = ref(db, 'events')
 
+// let que = 
+
 
 //////////////////////////////////////////////////
 
@@ -34,6 +36,7 @@ const explorePage = Vue.createApp({
             display_events: '',
             db_events: '', // this stores all events extracted from db
             userInfo: '',
+            sorted_events_by_type: null,
 
             //filter inputs
             filter_club: [],
@@ -45,22 +48,9 @@ const explorePage = Vue.createApp({
 
             selected_badge: '',
 
-            // added properties for GET_FILTER_CRITERIAS
-            // org_club: '',
-            // event_type: '',
-            // start_date: '',
-            // end_date: '',
-            // min_price: '',
-            // max_price: ''
         };
     }, // data
-    computed: { 
-        derivedProperty() {
-            
-        } } ,
-    // }, // computed
-    // created() { 
-    // },
+ 
     beforeMount() { 
         console.log("====Function-GETALLEVENTS===")
         onValue(allEvents, (snapshot) => {
@@ -69,12 +59,12 @@ const explorePage = Vue.createApp({
             console.log(data);
             this.db_events = data
             this.display_events = data
-            console.log(this.db_events);
-
-
+            // console.log(this.display_events);
 
             console.log("-------end event mounted------");
         })
+
+
         onValue(users, (snapshot) => {
             const data = snapshot.val()
             console.log("-------In user mounted------");
@@ -83,10 +73,22 @@ const explorePage = Vue.createApp({
             console.log(this.userInfo);
             console.log("-------end user  mounted------");
         })
-    },
+
+        // events sorted by type
+        get(query(allEvents, orderByChild("type"))).then((snapshot) => {
+            let sort_type = []
+        
+            snapshot.forEach(childSnapshot => {
+                sort_type.push(childSnapshot.val())
+            })
+            this.sorted_events_by_type = sort_type
+        })
+    }, // beforeMount
+    
     computed: {
+
+        //get all organising clubs
         event_types() {
-            //get all organising clubs
             let all_event_types = []
 
             for (let [event, details] of Object.entries(this.db_events)) {
@@ -94,15 +96,15 @@ const explorePage = Vue.createApp({
                 //     this.organising_clubs.push(details.club)
                 // }
                 if (!all_event_types.includes[details.type]) {
-                    console.log(all_event_types);
+                    // console.log(all_event_types);
                     all_event_types.push(details.type)
                 }
             }
             return  [...new Set(all_event_types)]
         },
 
+        //get all organising clubs
         all_clubs() {
-            //get all organising clubs
             let organising_clubs = []
 
             for (let [event, details] of Object.entries(this.db_events)) {
@@ -110,20 +112,18 @@ const explorePage = Vue.createApp({
                 //     this.organising_clubs.push(details.club)
                 // }
                 if (!organising_clubs.includes[details.club]) {
-                    console.log(organising_clubs);
+                    // console.log(organising_clubs);
                     organising_clubs.push(details.club)
                 }
             }
             return  [...new Set(organising_clubs)]
-        }
+        },
+
     },
 
     methods: {
 
         // filter works, to be completed
-        testing() {
-            console.log('hello in testing');
-        },
 
         add_selected_club_badge(){
             // shift to filter_events after finishing
@@ -208,58 +208,17 @@ const explorePage = Vue.createApp({
             console.log("====FunctionEND-filter_events()===")
         },
 
-
-
-
-
-
-        // JL: coz my filter doesnt work so
-        // i decieded to get filter by org-club first at least
-        onFilter_org_club(org_club_input) {
-            // FIREBASE POPULATE UPCOMING EVENTS
-            console.log("====Function-onFilter_org_club===")
-            let filtered_events = {}
-            console.log(allEvents)
-
-
-            console.log("====FunctionEND-onFilter_org_club===")
+        sort_events() {
+            console.log("====Function-sort_events()===")
             
-            
-        },
+            this.display_events = this.sorted_events
 
-        onSort() {
 
-            var condition = document.getElementById("sortby").value;
-            allEvents.orderByChild("condition").once("value", function(snapshot){
-                console.log(snapshot.val());
-            })
-        },
+            console.log("====FunctionEND-sort_events()===")
+        }
 
-        // onFilter() {
-            
-        //     var club = document.getElementById("org_club").value;
-        //     var type = document.getElementById("event_type").value;
-        //     var s_date = document.getElementById("start_date").value;
-        //     var e_date = document.getElementById("end_date").value;
-        //     var min_price = document.getElementById("min_price").value;
-        //     var max_price = document.getElementById("max_price").value;
-
-        //     const que = query(allEvents,orderByChild("club"), equalTo("club"));
-
-        //     filtered_events = []
-
-        //     get(que)
-        //     .then((snapshot)=> {
-        //         snapshot.forEach(childsnapshot => {
-        //             filtered_events.push(childsnapshot.val());
-                    
-        //         });
-            
-        //     console.log(filtered_events)    
-        //     return filtered_events;
-        //     })
-        // }
-    } // methods
+  
+    } 
 });
 
 const vm = explorePage.mount('#explorePage'); 
