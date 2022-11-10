@@ -114,111 +114,6 @@ h2 {
     font-size: 20px;
 }
 
-.details {
-    font-size: 22px;
-    position: absolute;
-    top: 12px;
-    left: 25%;
-    z-index: 10;
-    width: 70%;
-}
-
-
-/* -------------------------------------------------- */
-/* EDIT BUTTON */
-
-/* Basic Style */
-.details #save {
-    margin-top: 10px;
-}
-
-.details .form-control {
-    background-color: transparent;
-    border-top: 0;
-    border-right: 0;
-    border-left: 0;
-    border-radius: 0;
-}
-
-.details ul {
-    margin: 0;
-    padding: 0;
-}
-
-.details li * {
-    float: left;
-}
-
-.details input, .edit {
-    outline: none;
-}
-
-.details .edit {
-    background: none;
-    border: 0px;
-    color: #888;
-    font-size: 15px;
-    margin: 10px 0 0;
-    cursor: pointer;
-    float: right;
-}
-
-.details .edit:hover {
-    color: #333;
-}
-
-/* Heading */
-.details input[type="text"]:focus {
-    color: #333;
-}
-
-.details input[type="text"] {
-    border: 1px solid #333;
-    float: left;
-    margin: 0;
-    padding: 0;
-    border-top: 0px;
-    border-left: 0px;
-    border-right: 0px;
-    height: 40px;
-    width: 200px;
-}
-
-/* Task list */
-.details li {
-    overflow: hidden;
-    padding: 10px 0;
-}
-
-.details li > label {
-    font-size: 22px;
-    text-align: left;
-    width: 70%;
-    margin-bottom: 27px;
-}
-
-.details li >  input[type="text"] {
-    width: 70%;
-
-}
-
-/* Edit Task */
-.details ul li input[type=text] {
-    display:none;
-}
-
-.details ul li.editMode input[type=text] {
-    display:block;
-    font-size: 22px;
-}
-
-.details ul li.editMode label {
-    display:none;
-}
-
-.details li.editMode  {
-    padding-bottom: 30px;
-}
 
 /* -------------------------------------------------- */
 /* BUTTONS */
@@ -241,11 +136,6 @@ color: grey;
 td {
     height: 80px;
     vertical-align: middle;
-}
-
-svg {
-    width: 25px;
-    height: 25px;
 }
 
 /* -------------------------------------------------- */
@@ -296,50 +186,39 @@ svg {
 
 
 @media screen and (max-width: 600px) {
-    .details li > label {
-        font-size: 18px;
-    } 
-    .details ul li.editMode input[type=text] {
-        font-size: 15px;
-    }
-    .category {
-        font-size: 15px;
-    }
-    td {
-        height: 60px;
-        vertical-align: middle;
-    }
-    .details li {
-        padding: 3px 0;
-    }
-    .details li.editMode  {
-        padding-bottom: 17px;
-    }
-    .details {
-        left: 26%;
-    }
-    svg {
-        width: 20px;
-        height: 20px;
-    }
-    .small-title {
+    .detail_name {
         font-size: 16px;
     }
+    
+    .detail_value input, .detail_value select {
+        font-size: 16px;
+    }
+
+    td {
+        height: 60px;
+    }
+    
 }
 
+/* -------------------------------------------------- */
+/* EDIT FIELDS */
 form.is-readonly .btn-save {
     display: none;
-  }
-  form.is-readonly input[disabled], form.is-readonly textarea[disabled], form.is-readonly select[disabled] {
+}
+form.is-readonly input[disabled], form.is-readonly textarea[disabled], form.is-readonly select[disabled] {
     cursor: text;
     background-color: #fff;
     border-color: transparent;
     outline-color: transparent;
     box-shadow: none;
-  }
-  form.is-editing .btn-edit {
+}
+form.is-editing .btn-edit {
     display: none;
-  }
+}
 
-  /* .caret{ color: red; } */
+.btn-edit, .btn-save {
+    float: right;
+    margin-top: 10px;
+    width: 70px;
+}
   

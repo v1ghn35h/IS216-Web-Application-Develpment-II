@@ -60,10 +60,7 @@ let schools = ["CIS", "SOA", "LKCSOB", "SOE", "SCIS", "YPHSOL", "SOSS"]
 onValue(users, (snapshot => {
     const data = snapshot.val(); 
 
-    
-    console.log(    document.getElementById('name')    );
     document.getElementById('save').addEventListener("click", updateUserInfo);
-    document.getElementById('name').addEventListener("change", console.log(document.getElementById("name")));
 
     userInfo = data.user1.user_profile_info
     
@@ -75,7 +72,6 @@ onValue(users, (snapshot => {
     }
 
     displayDetails()
-
 
     displayCategories()
 
@@ -173,9 +169,10 @@ $("#imageUpload").change(function() {
 function displayDetails() {
     for (let category in userInfo) {
         if (category != "profile_picture" && category != "preference" && category != "preference_info") {
-            // document.getElementById(category).value = userInfo[category];
+
             document.getElementById(category).placeholder = userInfo[category];
-            document.getElementById(category).setAttribute("value", userInfo[category])
+            document.getElementById(category).value = userInfo[category]
+
         }
     }
 
@@ -213,40 +210,23 @@ function displayDetails() {
 // UDPATE USER INFO
 function updateUserInfo() {
 
-    // getting input fields
-    // let editCollection = document.getElementsByClassName('editMode');
-    // // console.log(editCollection);
-    // for (let i = editCollection.length - 1; i >= 0; i --) {
-    //     let editItem = editCollection[i]
-    //     // console.log(editItem);
-    //     let label = editItem.querySelector('label');
-    //     let editInput = editItem.querySelector("input[type=text]")
-    //     label.innerText = editInput.value
-    //     editItem.classList.remove('editMode')
-    // }
+    const db = getDatabase();
+    set(ref(db, 'users/' + "user1" + '/user_profile_info'), {
+        name: document.getElementById('name').value,
+        username: document.getElementById('username').value,
+        gender: document.getElementById('gender').value,
+        birthday: document.getElementById('birthday').value,
+        school: document.getElementById('school').value,
+        email: document.getElementById('email').value,
+        matric_no: document.getElementById('matric_no').value,
+        phone_no: document.getElementById('phone_no').value, 
+        profile_picture: document.getElementById('imagePreview').style.backgroundImage,
 
-    // updating database
-    setTimeout(function() {
-        // function code goes here
-        console.log(document.getElementById('name'));
-    }, 2000);
-    // const db = getDatabase();
-    // set(ref(db, 'users/' + "user1" + '/user_profile_info'), {
-    //     name: document.getElementById('name').innerText,
-    //     username: document.getElementById('username').innerText,
-    //     gender: document.getElementById('gender').innerText,
-    //     birthday: document.getElementById('birthday').innerText,
-    //     school: document.getElementById('school').innerText,
-    //     email: document.getElementById('email').innerText,
-    //     matric_no: document.getElementById('matric_no').innerText,
-    //     phone_no: document.getElementById('phone_no').innerText, 
-    //     profile_picture: document.getElementById('imagePreview').style.backgroundImage,
+        // preference: userInfo.preference,
+        preference_info: userInfo.preference_info
+    })
 
-    //     // preference: userInfo.preference,
-    //     preference_info: userInfo.preference_info
-    // })
-
-    // console.log("change success");
+    console.log("change success");
 
     $('#successModal').modal('show');
 
@@ -339,25 +319,29 @@ onValue(users, (snapshot => {
     const data = snapshot.val(); // get the new value
 
     user_events = data.user1.user_events
-    // UserForYouEvents()
+    console.log(user_events);
+    UserForYouEvents()
 }));
 
 function UserForYouEvents () {
     let tempHTML = ""
-    console.log(user_events);
+    let counter = 0
     for (let event in user_events) {
-        console.log(event);
 		if (Object.hasOwnProperty.call(user_events, event)) {
-            let name_of_event = user_events[event].name
-            let club_of_event = user_events[event].club
-            let type_of_event= user_events[event].type
-            let photo_of_event= user_events[event].photo
-            let date_of_event= user_events[event].date
-            let time_of_event= user_events[event].time
-            let fees_of_event= user_events[event].fees
-            let location_of_event= user_events[event].location
-            let event_id= user_events[event].eventId
-            if (true){
+            console.log(event);
+            let name_of_event = user_events[event].title
+            let club_of_event = user_events[event].event_club
+            let photo_of_event= user_events[event].photo_url
+            let date_of_event= user_events[event].event_date
+            let time_of_event= user_events[event].event_time
+            let location_of_event= user_events[event].event_location
+            let event_id= user_events[event].id
+            let event_date= user_events[event].start.slice(0,10)
+            let current_date = new Date().toJSON().slice(0, 10);
+            console.log(current_date, event_date);
+            console.log(current_date > event_date);
+            if (current_date > event_date){
+                counter += 1
 				tempHTML += ` 
                 <div class="card mx-1" style="width: 18rem;">
                 <!-- PLACE IMAGE ON TOP OF CARD -->
@@ -374,8 +358,6 @@ function UserForYouEvents () {
                         <br>
                         Time: ${time_of_event}
                         <br>
-                        Fees: ${fees_of_event}
-                        <br>
                         Location: ${location_of_event}
                     </p>
                 <!-- BUTTON -->
@@ -390,9 +372,17 @@ function UserForYouEvents () {
                             <div class="container">
                             <img src = "${photo_of_event}" width= "300px" height = "250px" alt="..." class="center">
                             </div>
-                            
+                            <p class = "display-6 lead text-center mt-3">Event Information</p>
+                            <hr>
                             <div class="container text-break p-3 mt-3 fs-6">
-                                test
+                                CCA: ${club_of_event}
+                                <br>
+                                Date: ${date_of_event}
+                                <br>
+                                Time: ${time_of_event}
+                                <br>
+                                <br>
+                                Location: ${location_of_event}
                             </div>
                         </div>
                         <div class="modal-footer text-wrap">
@@ -409,4 +399,8 @@ function UserForYouEvents () {
         }
     }}
     document.getElementById('events').innerHTML = tempHTML
+
+    if (counter == 0) {
+        document.getElementById('events_h2').innerText = "";
+    }
 }

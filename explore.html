@@ -67,14 +67,11 @@
                 <!-- search input box-->
                 <!--Search button-->
                 <div class="input-group ">
-                    <input class="form-control"  type="text" placeholder="Search" >
+                    <input class="form-control"  type="text" placeholder="Search" v-model="search_input_value" >
 
                     <!-- auto completion for now- can be further improved on - check past samples-->
                     
-                    
-                    <!-- <button type="button" class="btn btn-outline-info " data-bs-toggle="modal" data-bs-target="#exampleModal">Search</button> -->
-                    <button type="button" class="filter-btn fil-button-green " data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">Search</button>
+                    <button type="button" class="filter-btn fil-button-green" @click="search_input()">Search</button>
                     
                 </div>
                 <div v-html="selected_badge"></div>
@@ -110,7 +107,7 @@
                                         <label for="org_club">Organising Club: </label>
                                         <br>
                                         <select class="form-select" id= "org_club" v-model="filter_club" multiple size="4">
-                                            <option v-for="a_club of all_clubs" :value="a_club" @click="add_selected_club_badge()"> {{ a_club }} </option>
+                                            <option v-for="a_club of all_clubs" :value="a_club"> {{ a_club }} </option>
                                         </select>
                                     </div>
 
@@ -134,13 +131,13 @@
                                     <!--start date-->
                                     <div class="col-5">
                                         <label for="start-date">Start Date: </label>
-                                        <input class="form-control" id="start_date" type="date" placeholder="Search" v-model="filter_start_date">
+                                        <input class="form-control" id="start_date" type="date" v-model="filter_start_date">
                                     </div>
 
                                     <!-- end date-->
                                     <div class="col-5">
                                         <label for="end-date">End Date: </label>
-                                        <input class="form-control" id="end_date" type="date" placeholder="Search" v-model="filter_end_date">
+                                        <input class="form-control" id="end_date" type="date" v-model="filter_end_date">
 
                                     </div>
                                 </div>
@@ -197,7 +194,7 @@
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn" @click="sort_events()" style="background-color: #104547; color: white;">Save
+                                <button type="button" class="btn" @click="sort_events()"data-bs-dismiss="modal" style="background-color: #104547; color: white;">Save
                                     changes</button>
                             </div>
                         </div>
@@ -213,7 +210,7 @@
     </div>
     <!-- SEARCH BAR -END -->
 
-    <!-- Topic Cards -->
+    <!-- Event Cards -->
     <div id="" class="mt-0 cards_landscape_wrap-2">
 
         <h2>All Events</h2>
@@ -237,7 +234,7 @@
                                 <h6 class="card-subtitle mb-2 "> {{ details.club }} </h6>
                                 <!-- BODY -->
                                 <p class="card-text text-wrap">
-                                    Date: {{ details.date }}
+                                    Date: {{ format_date(details.date) }}
                                     <br>
                                     Time: {{ details.time }}
                                     <br>
@@ -336,6 +333,7 @@
 
                 </div> <!-- end of event div-->
 
+                
 
             </div>
         </div>
