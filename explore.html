@@ -110,7 +110,7 @@
                                         <label for="org_club">Organising Club: </label>
                                         <br>
                                         <select class="form-select" id= "org_club" v-model="filter_club" multiple size="4">
-                                            <option v-for="a_club of all_clubs" :value="a_club" @click="add_selected_club_badge()"> {{ a_club }} </option>
+                                            <option v-for="a_club of all_clubs" :value="a_club"> {{ a_club }} </option>
                                         </select>
                                     </div>
 
@@ -197,7 +197,7 @@
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn" @click="sort_events()" style="background-color: #104547; color: white;">Save
+                                <button type="button" class="btn" @click="sort_events()"data-bs-dismiss="modal" style="background-color: #104547; color: white;">Save
                                     changes</button>
                             </div>
                         </div>
@@ -213,7 +213,7 @@
     </div>
     <!-- SEARCH BAR -END -->
 
-    <!-- Topic Cards -->
+    <!-- Event Cards -->
     <div id="" class="mt-0 cards_landscape_wrap-2">
 
         <h2>All Events</h2>
@@ -237,7 +237,7 @@
                                 <h6 class="card-subtitle mb-2 "> {{ details.club }} </h6>
                                 <!-- BODY -->
                                 <p class="card-text text-wrap">
-                                    Date: {{ details.date }}
+                                    Date: {{ format_date(details.date) }}
                                     <br>
                                     Time: {{ details.time }}
                                     <br>
@@ -336,6 +336,7 @@
 
                 </div> <!-- end of event div-->
 
+                
 
             </div>
         </div>
