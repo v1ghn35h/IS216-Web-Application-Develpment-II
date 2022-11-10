@@ -38,6 +38,9 @@ const explorePage = Vue.createApp({
             sorted_events_by_fees: null,
             sorted_events_by_date: null,
 
+            // search bar
+            search_input_value: '',
+
             //sort inputs
             sort_by: '',
 
@@ -165,6 +168,25 @@ const explorePage = Vue.createApp({
 
             this.filter_club.splice(index, 1)
             this.filter_events()
+        },
+
+        search_input() {
+            let searched_events = {}
+
+            for (let [event, details] of Object.entries(this.db_events)) {
+                if (details.name.toLowerCase().includes(this.search_input_value.toLowerCase())) {
+                    searched_events[event] = details
+                }
+
+                if (details.club.toLowerCase().includes(this.search_input_value.toLowerCase())) {
+                    searched_events[event] = details
+                }
+
+                if (details.type.toLowerCase().includes(this.search_input_value.toLowerCase())) {
+                    searched_events[event] = details
+                }
+            }
+            this.display_events = searched_events
         },
 
         filter_events() {
