@@ -33,8 +33,9 @@ let for_you = {}
 let user_upcoming_events = {}
 
 // FIREBASE POPULATE DETAILS [USER INFO]
-onValue(users, (snapshot => {
-	const data = snapshot.val(); 
+
+get(query(users, orderByChild("user_events"))).then((snapshot) => {
+  const data = snapshot.val(); 
 	userInfo_data = data.user1.user_profile_info
     user_name = userInfo_data.name
     user_preference = userInfo_data.preference_info.preference
@@ -45,8 +46,9 @@ onValue(users, (snapshot => {
       backspeed: 300,
       loop: false
     })
-  UserUpcomingSchoolEvents()
-}));
+    UserUpcomingSchoolEvents()
+  })
+
 
 // FIREBASE POPULATE UPCOMING EVENTS
 onValue(events, (snapshot => {
@@ -136,6 +138,17 @@ const homePage = Vue.createApp({
               console.error(error);
             });        
         },
+
+        format_date(date) {
+          const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+          let date_obj = new Date(date)
+          let day = date_obj.getDate()
+          let month = months[date_obj.getMonth()]
+          let year = date_obj.getFullYear()
+          let date_formatted = day + " " + month + " " + year
+          return date_formatted
+      },
 
         formatting_start_date(date, time){
           let split_time = time.split("-");
