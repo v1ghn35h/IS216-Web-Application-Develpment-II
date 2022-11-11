@@ -26,31 +26,29 @@ const events = ref(db, 'events')
 
 //initialise global variables
 let user_name = ""
+let user_email = ""
+let user_matric = ""
 let user_preference = []
-let userInfo_data = {}
-let upcoming_events = {}
 let for_you = {}
+let userInfo = {}
 let user_upcoming_events = {}
 
 // FIREBASE POPULATE DETAILS [USER INFO]
-
-get(query(users, orderByChild("user_events"))).then((snapshot) => {
-  const data = snapshot.val(); 
-	userInfo_data = data.user1.user_profile_info
-    user_name = userInfo_data.name
-    user_preference = userInfo_data.preference_info.preference
+onValue(users, (snapshot => {
+	  const data = snapshot.val(); 
+	  userInfo = data.user1.user_profile_info
+    user_name = userInfo.name
+    user_email = userInfo.email
+    user_matric = userInfo.matric_no
+    user_preference = userInfo.preference_info.preference
     user_upcoming_events = data.user1.user_events
-    var typed = new Typed(".auto-type", {
-      strings: [ `Welcome ${user_name}!`, `How are you doing today?`],
-      typeSpeed: 100,
-      backspeed: 300,
-      loop: false
-    })
+    let text = "Hello " + user_name + "!"
+    document.getElementById("greeting").innerHTML = text
     UserUpcomingSchoolEvents()
-  })
-
+}));
 
 // FIREBASE POPULATE UPCOMING EVENTS
+let upcoming_events = {}
 onValue(events, (snapshot => {
 	const data = snapshot.val(); // get the new value
 	upcoming_events = data
@@ -102,9 +100,11 @@ const homePage = Vue.createApp({
         onValue(users, (snapshot) => {
             const data = snapshot.val()
             this.userInfo = data.user1.user_profile_info
-            this.preferences = this.userInfo.preferences
+            this.user_preference = this.userInfo.preference_info.preference
         })
+        console.log(for_you)
         this.for_you_events = for_you
+        console.log(this.for_you_events)
     },
     methods: {
         // ADD ID AND CHANGE DATE
@@ -273,6 +273,5 @@ function UserUpcomingSchoolEvents () {
   </div>
   </div>
   `
-  console.log(tempHTML)
   document.getElementById('carousel_user_events').innerHTML = tempHTML
 }
