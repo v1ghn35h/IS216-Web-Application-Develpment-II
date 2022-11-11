@@ -375,8 +375,14 @@ audio {
 
 /* SEARCH */
 
-.nav-link {
-  color: #104547
+.my-nav-link {
+  color: #104547;
+}
+
+.my-nav-link:hover {
+  color: white;
+  background-color:  #104547;
+  opacity: 70%;
 }
 
 

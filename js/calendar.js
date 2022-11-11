@@ -39,6 +39,7 @@ var new_id = 0
 var all_events = []
 let current_user = "user1" // change according to user logged in
 
+
 // ----------------------------------------
 // TO DO LIST
 
@@ -297,7 +298,6 @@ function removeTodo(e) {
     }
 }
 
-
 // ---------------------------------------
 // POMODORO TIMER
 
@@ -476,7 +476,6 @@ $(() => {
     // change background image
     let selected_element_id = e.target.id
     let new_background_image = background_images[selected_element_id]
-    
     let background_image = document.getElementById("clock")
     background_image.style.backgroundImage = `url("${new_background_image}")`;
   }
