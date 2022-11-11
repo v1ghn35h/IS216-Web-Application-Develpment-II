@@ -79,25 +79,24 @@
         <div class="card my-5 mx-3" v-for="details in display_events" >
             <!-- start of card-->
             <div :id="`eventCard${details.eventId}`">
-                <div class="text-box" style ="height: 370px">
+                <div class="text-box" style ="height: 300px">
                     <div class="image-box">
                         <img :src="details.photo" />
                     </div>
                     <div class="text-container">
                         <h5 class="card-title"> {{ details.name }} </h5>
                         <!-- SUBTITLE -->
-                        <h6 class="card-subtitle mb-2 "> {{ details.club }} </h6>
+                        <h6 class="card-subtitle mb-2 "> {{ details.type }} </h6>
                         <!-- BODY -->
                         <p class="card-text text-wrap">
                             Date: {{ details.date }}
                             <br>
                             Time: {{ details.time }}
                             <br>
-                            Fees: {{ details.fees }}
+                            Club: {{ details.club }}
                             <br>
-                            Location: {{ details.location }}
+                            Fees: {{ details.fees }} SGD
                         </p>
-                        
                     </div>
                 </div>
                 <!-- sign up button-->
@@ -121,28 +120,54 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
-                        <div class="modal-body mt-0">
+                        <div class="modal-body">
                             <div class="container p-2">
                                 <img :src="details.photo"
-                                    style="width:500px; height:350px" alt="..." class="center "/>
+                                    style="width:500px; height:250px" alt="..." class="center "/>
                             </div>
-                            <p class="display-6 lead text-center mt-3">{{ details.name }}</p>
+                            <p class="display-6 lead text-center">{{ details.name }}</p>
                             <hr>
-                            <div class="container  text-break p-3 mt-3 fs-6" style="display: inline-block; text-align: left;">
-                                CCA: {{ details.club }}
-                                <br>
-                                Date: {{ details.date }}
-                                <br>
-                                Time: {{ details.time }}
-                                <br>
-                                Fees: {{ details.fees }}
-                                <br>
-                                Location: {{ details.location }}
-                                <br>
-                                Additional notes: Wear comfortable clothes and bring one large black trash bag
+                            <div class="container">
+                                <table class = "table table-striped text-start" width="50%">
+                                    <tr>
+                                        <th>
+                                            <img src = "https://cdn-icons-png.flaticon.com/128/3990/3990804.png" height = 20 width = 20> 
+                                            Club 
+                                        </th>
+                                        <td>{{ details.club }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th> 
+                                            <img src = "https://cdn-icons-png.flaticon.com/128/591/591607.png" height = 20 width = 20> 
+                                            Date
+                                        </th>
+                                        <td>{{ details.date }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <img src = "https://cdn-icons-png.flaticon.com/128/2997/2997985.png" height = 20 width = 20> 
+                                            Time 
+                                        </th>
+                                        <td>{{ details.time }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th> 
+                                            <img src = "https://cdn-icons-png.flaticon.com/128/1052/1052866.png" height = 20 width = 20> 
+                                            Fees
+                                        </th>
+                                        <td>{{ details.fees }} SGD</td>
+                                    </tr>
+                                    <tr>
+                                        <th> 
+                                            <img src = "https://cdn-icons-png.flaticon.com/128/819/819814.png" height = 20 width = 20> 
+                                            Location
+                                        </th>
+                                        <td>{{ details.location }}</td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
-                        <div class="modal-footer">
+                        <div class="modal-footer mt-0">
                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-dark" :data-bs-target="`#signUpPage${details.eventId}`"
                                 data-bs-toggle="modal" class="btn-signup">Sign up now</button>
@@ -210,23 +235,23 @@
             <div class="card my-5 mx-3" v-for="details of for_you_events" >
                 <!-- start of card-->
                 <div :id="`eventCard${details.eventId}`">
-                    <div class="text-box" style ="height: 370px">
+                    <div class="text-box" style ="height: 300px">
                         <div class="image-box">
                             <img :src="details.photo" />
                         </div>
                         <div class="text-container">
                             <h5 class="card-title"> {{ details.name }} </h5>
                             <!-- SUBTITLE -->
-                            <h6 class="card-subtitle mb-2 "> {{ details.club }} </h6>
+                            <h6 class="card-subtitle mb-2 "> {{ details.type }} </h6>
                             <!-- BODY -->
                             <p class="card-text text-wrap">
                                 Date: {{ details.date }}
                                 <br>
                                 Time: {{ details.time }}
                                 <br>
-                                Fees: {{ details.fees }}
+                                Club: {{ details.club }}
                                 <br>
-                                Location: {{ details.location }}
+                                Fees: {{ details.fees }} SGD
                             </p>
                             
                         </div>
@@ -252,25 +277,51 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
-                            <div class="modal-body mt-0">
+                            <div class="modal-body">
                                 <div class="container p-2">
                                     <img :src="details.photo"
-                                        style="width:500px; height:350px" alt="..." class="center "/>
+                                        style="width:500px; height:250px" alt="..." class="center "/>
                                 </div>
-                                <p class="display-6 lead text-center mt-3">{{ details.name }}</p>
+                                <p class="display-6 lead text-center">{{ details.name }}</p>
                                 <hr>
-                                <div class="container  text-break p-3 mt-3 fs-6" style="display: inline-block; text-align: left;">
-                                    CCA: {{ details.club }}
-                                    <br>
-                                    Date: {{ details.date }}
-                                    <br>
-                                    Time: {{ details.time }}
-                                    <br>
-                                    Fees: {{ details.fees }}
-                                    <br>
-                                    Location: {{ details.location }}
-                                    <br>
-                                    Additional notes: Wear comfortable clothes and bring one large black trash bag
+                                <div class="container">
+                                    <table class = "table table-striped text-start">
+                                        <tr>
+                                            <th>
+                                                <img src = "https://cdn-icons-png.flaticon.com/128/3990/3990804.png" height = 20 width = 20> 
+                                                Club 
+                                            </th>
+                                            <td>{{ details.club }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th> 
+                                                <img src = "https://cdn-icons-png.flaticon.com/128/591/591607.png" height = 20 width = 20> 
+                                                Date
+                                            </th>
+                                            <td>{{ details.date }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <img src = "https://cdn-icons-png.flaticon.com/128/2997/2997985.png" height = 20 width = 20> 
+                                                Time 
+                                            </th>
+                                            <td>{{ details.time }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th> 
+                                                <img src = "https://cdn-icons-png.flaticon.com/128/1052/1052866.png" height = 20 width = 20> 
+                                                Fees
+                                            </th>
+                                            <td>{{ details.fees }} SGD</td>
+                                        </tr>
+                                        <tr>
+                                            <th> 
+                                                <img src = "https://cdn-icons-png.flaticon.com/128/819/819814.png" height = 20 width = 20> 
+                                                Location
+                                            </th>
+                                            <td>{{ details.location }}</td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -307,7 +358,7 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button class="btn btn-dark" :data-bs-target="`#infoPage${details.eventId}`" data-bs-toggle="modal">Go
+                                <button class="btn btn-dark" :data-bs-target="`infoPage${details.eventId}`" data-bs-toggle="modal">Go
                                     back</button>
                             </div>
                         </div>
