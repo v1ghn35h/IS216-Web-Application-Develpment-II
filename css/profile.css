@@ -110,8 +110,31 @@ h2 {
 }
 
 .detail_value input, .detail_value select {
-    width: 90%;
+    width: 95%;
     font-size: 20px;
+}
+
+
+/* -------------------------------------------------- */
+/* EDIT FIELDS */
+form.is-readonly .btn-save {
+    display: none;
+}
+form.is-readonly input[disabled], form.is-readonly textarea[disabled], form.is-readonly select[disabled] {
+    cursor: text;
+    background-color: #fff;
+    border-color: transparent;
+    outline-color: transparent;
+    box-shadow: none;
+}
+form.is-editing .btn-edit {
+    display: none;
+}
+
+.btn-edit, .btn-save {
+    float: right;
+    margin-top: 10px;
+    width: 70px;
 }
 
 
@@ -159,7 +182,7 @@ td {
 
 
 /* -------------------------------------------------- */
-/* preference */
+/* PREFERENCE */
 .image-center {
     display: flex;
     justify-content: center;
@@ -185,7 +208,9 @@ td {
 }
 
 
-@media screen and (max-width: 600px) {
+/* -------------------------------------------------- */
+/* RESPONSIVENESS */
+@media screen and (max-width: 576px) {
     .detail_name {
         font-size: 16px;
     }
@@ -200,25 +225,18 @@ td {
     
 }
 
-/* -------------------------------------------------- */
-/* EDIT FIELDS */
-form.is-readonly .btn-save {
-    display: none;
-}
-form.is-readonly input[disabled], form.is-readonly textarea[disabled], form.is-readonly select[disabled] {
-    cursor: text;
-    background-color: #fff;
-    border-color: transparent;
-    outline-color: transparent;
-    box-shadow: none;
-}
-form.is-editing .btn-edit {
-    display: none;
+@media screen and (max-width: 992px) and (min-width: 768px) {
+    .detail_name {
+        font-size: 16px;
+    }
+    
+    .detail_value input, .detail_value select {
+        font-size: 16px;
+    }
+
+    td {
+        height: 60px;
+    }
+    
 }
 
-.btn-edit, .btn-save {
-    float: right;
-    margin-top: 10px;
-    width: 70px;
-}
-  

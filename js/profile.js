@@ -7,7 +7,6 @@ $(document).ready(function(){
     var isReadonly = $form.hasClass('is-readonly');
     $form.find('input,textarea,select').prop('disabled', isReadonly);
   });
-
 });
   
   
@@ -205,7 +204,6 @@ function displayDetails() {
 }
 
 
-
 //////////////////////////////////////////////////
 // UDPATE USER INFO
 function updateUserInfo() {
@@ -233,6 +231,8 @@ function updateUserInfo() {
 }
 
 
+//////////////////////////////////////////////////
+// DISPLAY CATEGORIES
 function displayCategories() {
     let tempHTML = ""
     for (const category in categories_obj) {
@@ -279,8 +279,6 @@ function displayCategories() {
     }
     document.getElementById('preference').innerHTML = tempHTML
 }
-
-
 
 //////////////////////////////////////////////////
 // UPDATE PREFERENCE
@@ -338,8 +336,8 @@ function UserForYouEvents () {
             let event_id= user_events[event].id
             let event_date= user_events[event].start.slice(0,10)
             let current_date = new Date().toJSON().slice(0, 10);
-            console.log(current_date, event_date);
-            console.log(current_date > event_date);
+            // console.log(current_date, event_date);
+            // console.log(current_date > event_date);
             if (current_date > event_date){
                 counter += 1
 				tempHTML += ` 
