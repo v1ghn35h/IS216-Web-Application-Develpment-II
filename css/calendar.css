@@ -22,11 +22,13 @@ html, body {
   display: flex;
   justify-content: center;
   padding: 30px;
+  width: 100%;
+  margin-top: 28px;
 }
 @media all and (min-width: 512px) {
   #pomodoro #clock {
-    margin-bottom: -32px;
-    padding: 50px 0;
+    /* margin-bottom: -32px; */
+    padding: 30px;
   }
 }
 @media all and (max-width: 184px) {
@@ -177,9 +179,10 @@ html, body {
   font-size: 28px;
   font-weight: normal;
   justify-content: center;
-  margin: 28px;
+  margin-top: 28px;
   text-align: center;
-  padding: 30px;
+  /* padding: 30px; */
+  width: 100%;
 }
 #pomodoro #options .option-title {
   color: #104547;
@@ -248,7 +251,6 @@ audio {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#47ff637f", endColorstr="#00ff6292", GradientType=0);
   flex: 1 1 25%;
   font: 600 calc(9px + 1vw) "Open Sans", sans-serif;
-  /* margin: 0 2px 0 0; */
   padding: 1vw;
   text-align: center;
   transition: all 0.43s;
@@ -274,7 +276,7 @@ audio {
   #audio-selector .theme {
     flex: 1 0 100%;
     font-size: 14px;
-    padding: 7px;
+    /* padding: 7px; */
   }
 }
 

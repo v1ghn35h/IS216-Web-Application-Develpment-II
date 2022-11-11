@@ -26,7 +26,7 @@ const firebaseConfig = {
 
 /* CONNECT TO DATABASE */
 // Import functions needed to read from realtime database
-import { getDatabase, ref, onValue, child, get, set, remove, push, update } from
+import { getDatabase, ref, onValue, child, get, set, remove, push, update, query, orderByChild } from
 "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
 
 // Connect to the realtime database
@@ -484,8 +484,16 @@ $(() => {
 
 
 // ---------------------------------------
+
+let s = "2022-11-15T17:40:00"
+let ans = s.slice(0, 10)
+console.log(ans)
+
+
 // SEARCH EVENTS
 let search_query = document.getElementById("search_results")
+// const allEvents = ref(db, `users/${current_user}/user_events/`)
+const allEvents = ref(db, 'events')
 
 // Vue Instance
 const app = Vue.createApp({
@@ -497,14 +505,43 @@ const app = Vue.createApp({
     data() {
         return {
             search_query: "",
-            search_result:""
-
+            search_result:"",
+            display_events: '',
+            db_events: '', // this stores all events extracted from db
+            sorted_events_by_date: null
         }
+    },
+
+    beforeMount() { 
+      console.log("====Function-GETALLEVENTS===")
+      onValue(allEvents, (snapshot) => {
+          const data = snapshot.val()
+          console.log("-------In event mounted------");
+          console.log(data);
+          this.db_events = data
+          this.display_events = data
+          // console.log(this.display_events);
+
+          console.log("-------end event mounted------");
+      }),
+
+      // events sorted by start date
+      get(query(allEvents, orderByChild("start"))).then((snapshot) => {
+        let sort_date = []
+    
+        snapshot.forEach(childSnapshot => {
+            sort_date.push(childSnapshot.val())
+        })
+        this.sorted_events_by_date = sort_date
+    })
     },
 
     // Method
     methods: {
         searchForEvents() {
+          // TO ADD AFTER TEH ADD FROM HOMEPAGE TO DB ISSUE HAS BEEN RECTIFIED
+          // let user_events = all_events // fetch all user events
+
           // clear previously populated events
           var placeholder = document.getElementById("search_results")
           placeholder.innerHTML = ""
@@ -512,15 +549,16 @@ const app = Vue.createApp({
 
           var search_val = this.search_query.toLowerCase()
           
-          for (var thing of all_events){
-            var ref = thing.title.toLowerCase()
+          for (var thing of this.sorted_events_by_date){
+            var ref = thing.name.toLowerCase()
 
-            if (ref.includes(search_val) && this.search_query != "") {
+            if (ref.includes(search_val) && this.search_query != "") { // add && user_events.includes(search_val)
 
-              let event_title = thing.title
-              let event_start = thing.start
-              let event_end = thing.end
-              let event_category = thing.category
+              let event_title = thing.name
+              console.log(event_title)
+              let event_date = thing.date
+              let event_time = thing.time
+              let event_category = thing.type
 
               let find_object = colors.find(o => o.name === event_category); 
               let event_color = find_object.hex
@@ -530,9 +568,9 @@ const app = Vue.createApp({
                                           <div class="card-body" style="color: white; background-color: ${event_color}">
                                             <h5 class="card-title"> ${event_title} </h5>
                                             <p class="card-text">
-                                              <b> Start: </b> ${event_start}
+                                              <b> Date: </b> ${event_date}
                                               <br>
-                                              <b> End: </b> ${event_end}
+                                              <b> Time: </b> ${event_time}
                                             </p>
                                           </div>
                                         </div>
