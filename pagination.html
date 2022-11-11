@@ -278,38 +278,6 @@
                   <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
             </div>
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card 32</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card 33</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card 34</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card 35</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
         </div>
     </div>
     <div class = "pagination center">
@@ -324,8 +292,9 @@
         <li class = "page-item next-page"><a class = "page-link" href = "#">Next</a></li>
     </div>
     
-    <script type = "text/javascript">
+    <script>
         function getPageList(totalPages, page, maxLength){
+            console.log($(".card-content .card").length)
             function range(start, end){
                 return Array.from(Array(end-start+1), (_,i) => i + start);
             }
@@ -351,20 +320,18 @@
             var totalPages = Math.ceil(numberOfItems/limitPerPage)
             var paginationSize = 7; //how many page elements visible in the pagination
             var currentPage; 
-
             function showPage(whichPage){
                 if(whichPage < 1 || whichPage > totalPages) return false;
-
                 currentPage = whichPage;
                 $(".card-content .card").hide().slice((currentPage - 1)* limitPerPage, currentPage * limitPerPage).show()
                 $(".pagination li").slice(1, -1).remove();
+                console.log(currentPage)
 
                 getPageList(totalPages, currentPage, paginationSize).forEach(item => {
                     $("<li>").addClass("page-item").addClass(item ? "current-page" : "dots")
                     .toggleClass("active", item == currentPage).append($("<a>").addClass("page-link")
                     .attr({href: "javascript:void()"}).text(item || "...")).insertBefore(".next-page")
                 })
-
                  $(".previous-page").toggleClass("disable", currentPage === 1);
                  $(".next-page").toggleClass("disable", currentPage === totalPages);
                  return true

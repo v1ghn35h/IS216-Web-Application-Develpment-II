@@ -36,8 +36,13 @@ const explorePage = Vue.createApp({
             sorted_events_by_fees: null,
             sorted_events_by_date: null,
             number_of_events: 0,
+<<<<<<< Updated upstream
             current_page: 1,
             number_of_pages: 0,
+=======
+            pageOfItems: [],
+            events_dict: {},
+>>>>>>> Stashed changes
 
             // search bar
             search_input_value: '',
@@ -65,6 +70,10 @@ const explorePage = Vue.createApp({
             console.log("-------In event mounted------");
             console.log(data);
             this.db_events = data
+<<<<<<< Updated upstream
+=======
+            this.display_events = Array.from(data)
+>>>>>>> Stashed changes
             console.log("-------end event mounted------");
         })
 
@@ -83,11 +92,15 @@ const explorePage = Vue.createApp({
             snapshot.forEach(childSnapshot => {
                 events.push(childSnapshot.val())
             })
+<<<<<<< Updated upstream
             this.db_events = events
             this.display_events = this.db_events.slice(0,12)
             console.log(this.display_events)
             this.number_of_pages = (this.db_events.length)/12
             console.log(this.number_of_pages)
+=======
+            this.display_events = events
+>>>>>>> Stashed changes
         })
 
         get(query(allEvents, orderByChild("type"))).then((snapshot) => {
@@ -97,6 +110,10 @@ const explorePage = Vue.createApp({
                 sort_type.push(childSnapshot.val())
                 counter += 1
             })
+<<<<<<< Updated upstream
+=======
+            
+>>>>>>> Stashed changes
             this.sorted_events_by_type = sort_type
         })
 
@@ -162,6 +179,10 @@ const explorePage = Vue.createApp({
 
     methods: {
 
+<<<<<<< Updated upstream
+=======
+        // filter works, to be completed
+>>>>>>> Stashed changes
         format_date(date) {
             const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
@@ -333,6 +354,7 @@ const explorePage = Vue.createApp({
             console.log("====FunctionEND-sort_events()===")
         },
 
+<<<<<<< Updated upstream
         pagination_next(){
             let lower_limit = (this.current_page - 1) * 12 + 12
             this.current_page += 1
@@ -345,6 +367,8 @@ const explorePage = Vue.createApp({
             let lower_limit = (this.current_page - 1) * 12
             this.display_events = this.db_events.slice(lower_limit, upper_limit)
         }
+=======
+>>>>>>> Stashed changes
     } 
 });
 
