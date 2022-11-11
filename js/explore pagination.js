@@ -25,8 +25,6 @@ const allEvents = ref(db, 'events')
 
 //////////////////////////////////////////////////
 
-
-
 const explorePage = Vue.createApp({ 
     data() { 
         return { 
@@ -37,6 +35,9 @@ const explorePage = Vue.createApp({
             sorted_events_by_type: null,
             sorted_events_by_fees: null,
             sorted_events_by_date: null,
+            number_of_events: 0,
+            current_page: 1,
+            number_of_pages: 0,
 
             // search bar
             search_input_value: '',
@@ -64,12 +65,8 @@ const explorePage = Vue.createApp({
             console.log("-------In event mounted------");
             console.log(data);
             this.db_events = data
-            this.display_events = data
-            // console.log(this.display_events);
-
             console.log("-------end event mounted------");
         })
-
 
         onValue(users, (snapshot) => {
             const data = snapshot.val()
@@ -80,15 +77,30 @@ const explorePage = Vue.createApp({
             console.log("-------end user  mounted------");
         })
 
-        // events sorted by type
+        // display events converted to list
+        get(query(allEvents, orderByChild("type"))).then((snapshot) => {
+            let events = []
+            snapshot.forEach(childSnapshot => {
+                events.push(childSnapshot.val())
+            })
+            this.db_events = events
+            this.display_events = this.db_events.slice(0,12)
+            console.log(this.display_events)
+            this.number_of_pages = (this.db_events.length)/12
+            console.log(this.number_of_pages)
+        })
+
         get(query(allEvents, orderByChild("type"))).then((snapshot) => {
             let sort_type = []
-        
+            let counter = 0
             snapshot.forEach(childSnapshot => {
                 sort_type.push(childSnapshot.val())
+                counter += 1
             })
-            this.sorted_events_by_type = sort_type
+                this.sorted_events_by_type = sort_type
         })
+
+        
 
         // events sorted by fees
         get(query(allEvents, orderByChild("fees"))).then((snapshot) => {
@@ -150,7 +162,6 @@ const explorePage = Vue.createApp({
 
     methods: {
 
-        // filter works, to be completed
         format_date(date) {
             const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
@@ -162,13 +173,13 @@ const explorePage = Vue.createApp({
             return date_formatted
         },
 
-        // remove_filter_badge(value) {
-        //     console.log(value);
-        //     let index = this.filter_club.indexOf(value)
+        remove_filter_badge(value) {
+            console.log(value);
+            let index = this.filter_club.indexOf(value)
 
-        //     this.filter_club.splice(index, 1)
-        //     this.filter_events()
-        // },
+            this.filter_club.splice(index, 1)
+            this.filter_events()
+        },
 
         search_input() {
             let searched_events = {}
@@ -191,8 +202,6 @@ const explorePage = Vue.createApp({
 
         filter_events() {
             console.log("====Function-filter_events()===")
-
-            // if (this.filter_club.length == 0 && this.filter_event_type.length == 0 && this.filter_start_date == null && this.filter_end_date == null && this.filter_min_price == null && this.filter_max_price == null) {
 
             console.log(this.db_events);
             let all_events= this.db_events
@@ -265,14 +274,12 @@ const explorePage = Vue.createApp({
             new_filtered_obj = {}
 
             // check if user selected any date to filter and if they did, extract those events
-            let filter_start_date_obj = new Date(this.filter_start_date)
-            let filter_end_date_obj = new Date(this.filter_end_date)
-
             if (this.filter_end_date != null) {
                 console.log(this.filter_end_date);
                 let use_db_events = Object.keys(old_filtered_obj).length == 0 ? all_events : old_filtered_obj
 
-                // let filter_start_date_obj = new Date(this.filter_start_date)
+                let filter_end_date_obj = new Date(this.filter_end_date)
+                let filter_start_date_obj = new Date(this.filter_start_date)
                 console.log(filter_end_date_obj);
                 console.log(filter_start_date_obj);
                 for (let [event, details] of Object.entries(use_db_events)) {
@@ -280,19 +287,6 @@ const explorePage = Vue.createApp({
                     let event_date_obj = new Date(event_date)
 
                     if ( event_date_obj >= filter_start_date_obj && event_date_obj <= filter_end_date_obj) {
-                        new_filtered_obj[event] = details
-                    }
-                }
-                old_filtered_obj = Object.assign({}, new_filtered_obj)
-            }
-            else {
-                let use_db_events = Object.keys(old_filtered_obj).length == 0 ? all_events : old_filtered_obj
-
-                for (let [event, details] of Object.entries(use_db_events)) {
-                    let event_date = details.date
-                    let event_date_obj = new Date(event_date)
-
-                    if ( event_date_obj >= filter_start_date_obj) {
                         new_filtered_obj[event] = details
                     }
                 }
@@ -339,73 +333,19 @@ const explorePage = Vue.createApp({
             console.log("====FunctionEND-sort_events()===")
         },
 
-        clear_selections() {
-            this.filter_club = []
-            this.filter_event_type = []
-            this.filter_min_price = null
-            this.filter_max_price = null
-            this.filter_start_date = new Date().toISOString().slice(0,10),
-            this.filter_end_date = null
-            this.selected_badge = ''
-
-            this.display_events = this.db_events
+        pagination_next(){
+            let lower_limit = (this.current_page - 1) * 12 + 12
+            this.current_page += 1
+            let upper_limit = (this.current_page - 1) * 12 + 12
+            this.display_events = this.db_events.slice(lower_limit, upper_limit)
+        },
+        pagination_prev(){
+            let upper_limit = (this.current_page - 1) * 12
+            this.current_page -= 1
+            let lower_limit = (this.current_page - 1) * 12
+            this.display_events = this.db_events.slice(lower_limit, upper_limit)
         }
-
-  
     } 
 });
 
 const vm = explorePage.mount('#explorePage'); 
-
-// ======================================couldnt figure out component
-// explorePage.component('anEvent', { 
-
-//     props: [ 'name', 'club', 'date', 'time', 'fees', 'location', 'photo' ],
-
-//      // props
-    
-//     data() {
-        
-//     }, // data
-    
-//     methods: {
-//         methodName() {
-            
-//         }
-//     }, // methods
-    
-//     template: `
-//     <div class="card-flyer" :id="">
-//         <div class="text-box" style ="height: 412px">
-//             <div class="image-box">
-//                 <img :src="photo" />
-//             </div>
-//             <div class="text-container">
-
-//                 <h5 class="card-title"> {{ name }} </h5>
-//                 <!-- SUBTITLE -->
-//                 <h6 class="card-subtitle mb-2 "> {{ club }} </h6>
-//                 <!-- BODY -->
-//                 <p class="card-text text-wrap">
-//                     Date: {{ date }}
-//                     <br>
-//                     Time: {{ time }}
-//                     <br>
-//                     <span v-if='details.fees == 0'> Fees: Free </span> 
-//                     <span v-else> Fees: {{ fees }} SGD </span> 
-                    
-//                     <br>
-//                     Location: {{ location }}
-//                 </p>
-                
-//             </div>
-//         </div>
-
-//         <div style="display:flex; align-content: flex-start; margin: 0px 15px 30px 15px;">
-//         <button type="button" class="btn details-btn mt-1 " :data-bs-target=""
-//             data-bs-toggle="modal">More info</button>
-//     </div>
-// </div>`
-// });
-
-// component must be declared before app.mount(...)

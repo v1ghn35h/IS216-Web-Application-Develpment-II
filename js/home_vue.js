@@ -26,29 +26,29 @@ const events = ref(db, 'events')
 
 //initialise global variables
 let user_name = ""
+let user_email = ""
+let user_matric = ""
 let user_preference = []
-let userInfo_data = {}
-let upcoming_events = {}
 let for_you = {}
+let userInfo = {}
 let user_upcoming_events = {}
 
 // FIREBASE POPULATE DETAILS [USER INFO]
 onValue(users, (snapshot => {
-	const data = snapshot.val(); 
-	userInfo_data = data.user1.user_profile_info
-    user_name = userInfo_data.name
-    user_preference = userInfo_data.preference_info.preference
+	  const data = snapshot.val(); 
+	  userInfo = data.user1.user_profile_info
+    user_name = userInfo.name
+    user_email = userInfo.email
+    user_matric = userInfo.matric_no
+    user_preference = userInfo.preference_info.preference
     user_upcoming_events = data.user1.user_events
-    var typed = new Typed(".auto-type", {
-      strings: [ `Welcome ${user_name}!`, `How are you doing today?`],
-      typeSpeed: 100,
-      backspeed: 300,
-      loop: false
-    })
-  UserUpcomingSchoolEvents()
+    let text = "Hello " + user_name + "!"
+    document.getElementById("greeting").innerHTML = text
+    UserUpcomingSchoolEvents()
 }));
 
 // FIREBASE POPULATE UPCOMING EVENTS
+let upcoming_events = {}
 onValue(events, (snapshot => {
 	const data = snapshot.val(); // get the new value
 	upcoming_events = data
@@ -100,9 +100,11 @@ const homePage = Vue.createApp({
         onValue(users, (snapshot) => {
             const data = snapshot.val()
             this.userInfo = data.user1.user_profile_info
-            this.preferences = this.userInfo.preferences
+            this.user_preference = this.userInfo.preference_info.preference
         })
+        console.log(for_you)
         this.for_you_events = for_you
+        console.log(this.for_you_events)
     },
     methods: {
         // ADD ID AND CHANGE DATE
@@ -128,7 +130,6 @@ const homePage = Vue.createApp({
                       event_time: time,
                   },
                 )
-              //   // display added successfully
               } 
               else {
                 console.log("No data available");
@@ -137,6 +138,17 @@ const homePage = Vue.createApp({
               console.error(error);
             });        
         },
+
+        format_date(date) {
+          const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+          let date_obj = new Date(date)
+          let day = date_obj.getDate()
+          let month = months[date_obj.getMonth()]
+          let year = date_obj.getFullYear()
+          let date_formatted = day + " " + month + " " + year
+          return date_formatted
+      },
 
         formatting_start_date(date, time){
           let split_time = time.split("-");
@@ -202,7 +214,7 @@ function UserUpcomingSchoolEvents () {
   let counter = 0;
 
   for (let event in user_upcoming_events) {
-  if (Object.hasOwnProperty.call(user_upcoming_events, event) && (counter <= 5)) {
+  if (Object.hasOwnProperty.call(user_upcoming_events, event) && (counter < 5)) {
           // || counter != user_upcoming_events.length)
           let name_of_event = user_upcoming_events[event].title
           let photo_of_event= user_upcoming_events[event].photo_url

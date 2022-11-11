@@ -48,8 +48,8 @@
     text-align: center;
 }
 .cards_landscape_wrap-2 .container{
-    padding-top: 80px; 
-    padding-bottom: 300px;
+    padding-top: 10px; 
+    padding-bottom: 10px;
 }
 .cards_landscape_wrap-2 a{
     text-decoration: none;
@@ -57,8 +57,7 @@
 }
 .cards_landscape_wrap-2 .card {
     border-radius: 5px; 
-    height: 50%;
-        
+    height: 90%;
 }
 .cards_landscape_wrap-2 .card .image-box{
     background: #ffffff;
@@ -94,9 +93,9 @@
     margin-top: 50px;
 }
 .cards_landscape_wrap-2 .card .text-box p{
-    margin-top: 10px;
+    /* margin-top: 10px;
     margin-bottom: 0px;
-    padding-bottom: 0px; 
+    padding-bottom: 0px;  */
     font-size: 14px;
     letter-spacing: 1px;
     color: #000000;
