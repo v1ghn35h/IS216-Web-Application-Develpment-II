@@ -583,7 +583,8 @@ const app = Vue.createApp({
             // add new events
             this.search_results += `<div class="card" style="width: 100%">
                                         <div class="card-body" style="color: white; background-color: ${event_color}">
-                                          <h5 class="card-title"> ${event_title} </h5>
+                                          <h5 class="card-title" style="word-wrap: break-word;
+                                          white-space: normal;"> ${event_title} </h5>
                                           <p class="card-text">
                                             <b> Start: </b> ${formatted_start}
                                             <br>
