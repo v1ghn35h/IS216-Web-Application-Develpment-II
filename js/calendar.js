@@ -727,8 +727,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('addEventButton').addEventListener("click", function() {
 
               // fetch title
-              let title = document.getElementById('title').value
-              console.log(title)
+              let title = document.getElementById('event_title').value
           
               // fetch start
               let start = document.getElementById('startDate').value
@@ -873,7 +872,8 @@ document.addEventListener('DOMContentLoaded', function() {
           }
           
           // fetch title
-          var title = document.getElementById('title').value
+          var title = document.getElementById('event_title').value
+          console.log(title)
       
           // fetch start
           var start = document.getElementById('startDate').value
@@ -1101,6 +1101,7 @@ document.addEventListener('DOMContentLoaded', function() {
           console.log(tasksRef)
 
           remove(tasksRef).then(() => {
+
             // display deleted successfully
             delete_success_modal.style.display = "block";
 

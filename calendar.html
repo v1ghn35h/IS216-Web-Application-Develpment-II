@@ -289,7 +289,7 @@
               Title 
             </label>
             <div class="col-12 col-xl-10">
-              <input type="text" class="form-control" id="title">
+              <input type="text" class="form-control" id="event_title">
             </div>
           </div>
     
@@ -366,9 +366,17 @@
     </form>
 
   <!-- successful add modal -->
-  <div id="addSuccessModal" class="modal">
-    <div class="modal-content">
-      Event Added Successfully!
+  <div  id="addSuccessModal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"> Add Event </h5>
+        </div>
+        <div class="modal-body text-center">
+          <img src="img/icons/happy.png" style="width: 50%">
+          <p class="pt-3"> Event Added Successfully </p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -407,9 +415,17 @@
     </div>
 
     <!-- successful delete modal -->
-    <div id="deleteSuccessModal" class="modal">
-      <div class="modal-content">
-        Event Deleted Successfully!
+    <div  id="deleteSuccessModal" class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"> Delete Event </h5>
+          </div>
+          <div class="modal-body text-center">
+            <img src="img/icons/happy.png" style="width: 50%">
+            <p class="pt-3"> Event Deleted Successfully </p>
+          </div>
+        </div>
       </div>
     </div>
 
