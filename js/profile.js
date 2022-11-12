@@ -34,7 +34,6 @@ const db = getDatabase();
 const users = ref(db, 'users') 
 const categories = ref(db, 'categories')
 
-
 //////////////////////////////////////////////////
 // FIREBASE GET categories
 let categories_obj = {} // stores all categories available
@@ -59,7 +58,7 @@ let schools = ["CIS", "SOA", "LKCSOB", "SOE", "SCIS", "YPHSOL", "SOSS"]
 onValue(users, (snapshot => {
     const data = snapshot.val(); 
 
-    document.getElementById('save').addEventListener("click", updateUserInfo);
+    document.getElementById('save').addEventListener("click", formControl);
 
     userInfo = data.user1.user_profile_info
     
@@ -145,7 +144,16 @@ function readURL(input) {
     getDownloadURL(profileRef)
         .then((url) => {
             // UPDATE JSON WITH THIS URL
-            // console.log(url);
+            console.log(url);
+            let picture_url = `url(${url})`
+
+            const db = getDatabase();
+            set(ref(db, 'users/' + "user1" + '/user_profile_info/profile_picture'), {
+                picture_url
+            })
+
+            $('#successModal').modal('show');
+
         })
         .catch((error) => {
             switch (error.code) {
@@ -162,7 +170,10 @@ function readURL(input) {
     
 }
 $("#imageUpload").change(function() {
+    console.log(document.getElementById('imagePreview').style.backgroundImage);
     readURL(this);
+
+    console.log(document.getElementById('imagePreview').style.backgroundImage);
 });
 
 function displayDetails() {
@@ -198,7 +209,8 @@ function displayDetails() {
     }
     document.getElementById('school').innerHTML = school_html
 
-    document.getElementById('imagePreview').style.backgroundImage = userInfo["profile_picture"]
+    document.getElementById('imagePreview').style.backgroundImage = userInfo["profile_picture"]["picture_url"]
+    console.log(userInfo["profile_picture"]["picture_url"]);
 
 
 }
@@ -218,7 +230,7 @@ function updateUserInfo() {
         email: document.getElementById('email').value,
         matric_no: document.getElementById('matric_no').value,
         phone_no: document.getElementById('phone_no').value, 
-        profile_picture: document.getElementById('imagePreview').style.backgroundImage,
+        profile_picture: {"picture_url": document.getElementById('imagePreview').style.backgroundImage},
 
         // preference: userInfo.preference,
         preference_info: userInfo.preference_info
@@ -228,6 +240,51 @@ function updateUserInfo() {
 
     $('#successModal').modal('show');
 
+}
+
+function formControl() {
+
+    let error_msg = ""
+
+    if (document.getElementById('name').value == "") {
+        error_msg += "Fill in your name"
+    }
+
+    if (document.getElementById('username').value == "") {
+        error_msg += "Fill in your username"
+    }
+
+    if (document.getElementById('birthday').value == "") {
+        error_msg += "Fill in your birthday"
+    }
+
+    if (document.getElementById('matric_no').value == "") {
+        error_msg += "Fill in your matric no."
+    } else if (document.getElementById('matric_no').value.length != 8) {
+        error_msg += "Enter a valid 8 digit matric no."
+    }
+
+    if (document.getElementById('phone_no').value == "") {
+        error_msg += "Fill in your phone no."
+    } else if (document.getElementById('phone_no').value.length != 8) {
+        error_msg += "Enter a valid 8 digit phone no."
+    }
+
+    if (error_msg != "") {
+        var $form = $(this).closest('form');
+        $form.toggleClass('is-readonly is-editing');
+        var isReadonly = $form.hasClass('is-readonly');
+        $form.find('input,textarea,select').prop('disabled', isReadonly);
+
+        document.getElementById('error_msg').innerText = error_msg;
+
+        $('#errorModal').modal('show');
+
+
+        return
+    }
+    
+    updateUserInfo()
 }
 
 
@@ -407,9 +464,31 @@ function UserForYouEvents () {
                 `
         }
     }}
-    document.getElementById('events').innerHTML = tempHTML
+    document.getElementById('past_events').innerHTML = tempHTML
 
     if (counter == 0) {
         document.getElementById('events_h2').innerText = "";
     }
 }
+
+function setButtonColor(elem) {
+    let info_btn = document.getElementById("info-tab")
+    let preference_btn =  document.getElementById("preference-tab")
+    let events_btn = document.getElementById("events-tab")
+    
+    // reset color and background color of both
+    info_btn.style.removeProperty("color")
+    info_btn.style.removeProperty("background-color")
+    preference_btn.style.removeProperty("color")
+    preference_btn.style.removeProperty("background-color")
+    events_btn.style.removeProperty("color")
+    events_btn.style.removeProperty("background-color")
+    
+    // set color of selected element
+    elem.style.color = "white"
+    elem.style.backgroundColor = "#104547"
+}
+
+document.getElementById('info-tab').addEventListener("click", function () { setButtonColor(this); })
+document.getElementById('preference-tab').addEventListener("click", function () { setButtonColor(this); })
+document.getElementById('events-tab').addEventListener("click", function () { setButtonColor(this); })

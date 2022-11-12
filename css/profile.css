@@ -4,18 +4,34 @@ h2 {
     text-align: center;
 }
 #info h2 {
-    padding-top: 50px;
+    padding-top: 40px;
     padding-bottom: 20px;
 }
 #user_preference h2 {
-    padding-top: 80px;
+    padding-top: 40px;
     padding-bottom: 30px;
 }
 
 #events_h2 {
     padding-top: 40px;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
 }
+#info {
+    padding-bottom: 20px;
+}
+
+
+/* -------------------------------------------------- */
+/* TABS */
+.my-nav-link {
+    color: #104547;
+  }
+  
+  .my-nav-link:hover {
+    color: white;
+    background-color:  #104547;
+    opacity: 70%;
+  }
 
 
 /* -------------------------------------------------- */
@@ -210,7 +226,7 @@ td {
     overflow-y: hidden;
     white-space: nowrap;
 }
-#events {
+#past_events {
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
