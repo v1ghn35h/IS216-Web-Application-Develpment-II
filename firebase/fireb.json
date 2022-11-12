@@ -117,6 +117,7 @@
     },
 
     "events": {
+        
             "event1": {
                 "name": "Beach Clean Up",
                 "club": "SMU Verts",
