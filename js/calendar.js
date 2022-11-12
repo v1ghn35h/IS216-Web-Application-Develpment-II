@@ -1152,6 +1152,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
           remove(tasksRef).then(() => {
+            
+            // modal.style.display = "none";
 
             // display deleted successfully
             delete_success_modal.style.display = "block";
