@@ -419,10 +419,15 @@ audio {
 
 .modal-content {
   background-color: #fefefe;
-  margin: 10% auto; /* 15% from the top and centered */
+  margin: 10% auto; /* from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 50%; /* Could be more or less, depending on screen size */
+  width: 100%; 
+}
+
+
+.modal-content #myModal {
+  width: 75%;
 }
 
 .close {
