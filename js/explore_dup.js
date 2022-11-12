@@ -224,40 +224,6 @@ const explorePage = Vue.createApp({
             return e_date > current_date
         },
 
-        addEvent(name, club, photo, date, location, time, type, id) {
-            const dbRef = ref(getDatabase());
-              get(child(dbRef, `users/` + this.current_user + `/user_events/`)).then((snapshot) => {
-                if (snapshot.exists()) {
-                  var db_values = snapshot.val();
-                  var db_size = Object.keys(db_values).length
-                  var new_db_size = db_size + 1
-                //   add event to array
-                  set(ref(db, 'users/' + this.current_user + '/user_events/event_' + new_db_size), 
-                    {
-                        title: name,
-                        start: this.formatting_start_date(date, time),
-                        end: this.formatting_end_date(date, time),
-                        category: type,
-                        event_id: id,
-                        event_club: club,
-                        photo_url: photo,
-                        event_date: date,
-                        event_location: location,
-                        event_time: time,
-                    },
-                  )
-                } 
-                else {
-                  console.log("No data available");
-                }
-              }).catch((error) => {
-                console.error(error);
-              });  
-              delete this.display_events.id;
-              delete this.for_you_events.id;
-          },
-
-
         // filter works, to be completed
         format_date(date) {
             const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
