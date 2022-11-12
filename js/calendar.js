@@ -1078,7 +1078,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var delete_success_modal = document.getElementById("deleteSuccessModal");
 
         // get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[1];
+        var span = document.getElementsByClassName("close")[2]
 
         // when the user clicks on the button, open the modal
         modal.style.display = "block";
