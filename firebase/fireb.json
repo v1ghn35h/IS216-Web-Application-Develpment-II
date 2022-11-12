@@ -453,7 +453,7 @@
                 "eventId": "2022-01-04-smux-skating-new-year-skate",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
-                "date": "2022-01-04",
+                "date": "2023-01-04",
                 "time": "1700-1900",
                 "fees": 15,
                 "location":" Outside SCIS Level 1"
@@ -464,7 +464,7 @@
                 "eventId": "2022-01-11-smux-skating-skating-session",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
-                "date": "2022-01-11",
+                "date": "2023-01-11",
                 "time": "1700-1900",
                 "fees": 15,
                 "location":" Outside SCIS Level 1"
@@ -475,7 +475,7 @@
                 "eventId": "2022-01-18-smux-skating-skating-session",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
-                "date": "2022-01-18",
+                "date": "2023-01-18",
                 "time": "1700-1900",
                 "fees": 15,
                 "location":" Outside SCIS Level 1"
@@ -486,7 +486,7 @@
                 "eventId": "2022-01-25-smux-skating-skating-session",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
-                "date": "2022-01-25",
+                "date": "2023-01-25",
                 "time": "1700-1900",
                 "fees": 15,
                 "location":" Outside SCIS Level 1"
@@ -497,7 +497,7 @@
                 "eventId": "2022-02-01-smux-skating-skating-session",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
-                "date": "2022-02-01",
+                "date": "2023-02-01",
                 "time": "1700-1900",
                 "fees": 15,
                 "location":" Outside SCIS Level 1"
@@ -508,15 +508,15 @@
                 "eventId": "2022-02-08-smux-skating-skating-session",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
-                "date": "2022-02-08",
+                "date": "2023-02-08",
                 "time": "1700-1900",
                 "fees": 15,
                 "location":" Outside SCIS Level 1"
             },
             "event38": {
                 "name": "Paddle X Pedal",
-                "club": "SMU-X Kayak",
-                "eventId": "2022-12-07-smux-kayak-paddle-x-pedal",
+                "club": "SMU-X Kayaking",
+                "eventId": "2022-12-07-smux-kayaking-paddle-x-pedal",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/161172/cycling-bike-trail-sport-161172.jpeg",
                 "date": "2022-12-07",
@@ -530,7 +530,7 @@
                 "eventId": "2022-02-14-smux-xseed-ski-x-bike",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/623919/pexels-photo-623919.jpeg",
-                "date": "2022-02-14",
+                "date": "2023-02-14",
                 "time": "1700-1900",
                 "fees": 22,
                 "location":"East Coast Park"
@@ -552,7 +552,7 @@
                 "club": "ICON",
                 "eventId": "2022-02-15-icon-traditional-food-exploration",
                 "type": "Arts & Culture",
-                "date": "2022-02-15",
+                "date": "2023-02-15",
                 "time": "1700-1900",
                 "fees": 5,
                 "location":"SMU Greenhouse"
@@ -585,7 +585,7 @@
                 "eventId": "2022-01-19-smu-internship-fair",
                 "type": "School Society",
                 "photo": "https://images.pexels.com/photos/3771097/pexels-photo-3771097.jpeg",
-                "date": "2022-01-19",
+                "date": "2023-01-19",
                 "time": "1400-1900",
                 "fees": 0,
                 "location":"SMU Greenhouse"
@@ -596,7 +596,7 @@
                 "eventId": "2022-02-30-smu-networking-night",
                 "type": "School Society",
                 "photo": "https://images.pexels.com/photos/3771097/pexels-photo-3771097.jpeg",
-                "date": "2022-02-30",
+                "date": "2023-02-30",
                 "time": "1400-1900",
                 "fees": 0,
                 "location":"SOB Seminar Room 3-2"
@@ -652,7 +652,7 @@
                 "eventId": "2022-01-17-smusaic-photography-challenge",
                 "type": "Arts & Culture",
                 "photo": "https://images.pexels.com/photos/403495/pexels-photo-403495.jpeg",
-                "date": "2022-01-17",
+                "date": "2023-01-17",
                 "time": "1900-2100",
                 "fees": 0,
                 "location":"SMU SCIS Classroom 4-1"
@@ -664,7 +664,7 @@
                 "eventId": "2022-01-11-stereomata-breakout-concert",
                 "type": "Arts & Culture",
                 "photo": "https://vivace.smu.edu.sg/sites/vivace.smu.edu.sg/files/styles/gallery/public/2020-08/1%20_%20club%20logo.jpg",
-                "date": "2022-01-11",
+                "date": "2023-01-11",
                 "time": "1900-2100",
                 "fees": 25,
                 "location":"Esplanade Auditorium 3"
