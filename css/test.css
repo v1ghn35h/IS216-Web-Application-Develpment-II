@@ -76,7 +76,7 @@
         transform: rotate(-90deg);
         
     }
-    
+
     circle:not(:first-child) {
         cursor: pointer;
         transition: opacity linear 0.2s, stroke-width linear 0.2s, transform linear 0.2s;
@@ -90,13 +90,13 @@
         border-radius: 4px;
     }
     .items-container {
-        display: flex;
-        flex-wrap: wrap;
+        /* display: flex; */
+        /* flex-wrap: wrap; */
         justify-content: center;
 
     }
 
-    .itmes-wrap {
+    .items-wrap {
         display: flex;
         align-items: center;
         transition: opacity 0.1s;

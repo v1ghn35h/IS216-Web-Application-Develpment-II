@@ -149,29 +149,44 @@ const homePage = Vue.createApp({
           let date_formatted = day + " " + month + " " + year
           return date_formatted
       },
-
+        // changed this cos it currently returns undefined for year and month
+        // formatting_start_date(date, time){
+        //   let split_time = time.split("-");
+        //   let start_time = split_time[0]
+        //   let calendar_start_time = start_time.slice(0,2) + ":" + start_time.slice(2,5) + ":00"
+        //   let split_date = date.split(" ")
+        //   let day = split_date[0]
+        //   let month = split_date[1]
+        //   let year = split_date[2]
+        //   let calendar_start_date = year + "-" + this.month_to_num[month] + "-" + day
+        //   let final_start = calendar_start_date+"T"+calendar_start_time
+        //   return final_start
+        // },
+        // formatting_end_date(date, time){
+        //   let split_time = time.split("-");
+        //   let end_time = split_time[1]
+        //   let calendar_end_time = end_time.slice(0,2) + ":" + end_time.slice(2,5) + ":00"
+        //   let split_date = date.split(" ")
+        //   let day = split_date[0]
+        //   let month = split_date[1]
+        //   let year = split_date[2]
+        //   let calendar_end_date = year + "-" + this.month_to_num[month] + "-" + day
+        //   let final_end = calendar_end_date+"T"+calendar_end_time
+        //   return final_end
+        // }
         formatting_start_date(date, time){
+          console.log(date);
           let split_time = time.split("-");
           let start_time = split_time[0]
           let calendar_start_time = start_time.slice(0,2) + ":" + start_time.slice(2,5) + ":00"
-          let split_date = date.split(" ")
-          let day = split_date[0]
-          let month = split_date[1]
-          let year = split_date[2]
-          let calendar_start_date = year + "-" + this.month_to_num[month] + "-" + day
-          let final_start = calendar_start_date+"T"+calendar_start_time
+          let final_start = date+"T"+calendar_start_time
           return final_start
         },
         formatting_end_date(date, time){
           let split_time = time.split("-");
           let end_time = split_time[1]
           let calendar_end_time = end_time.slice(0,2) + ":" + end_time.slice(2,5) + ":00"
-          let split_date = date.split(" ")
-          let day = split_date[0]
-          let month = split_date[1]
-          let year = split_date[2]
-          let calendar_end_date = year + "-" + this.month_to_num[month] + "-" + day
-          let final_end = calendar_end_date+"T"+calendar_end_time
+          let final_end = date+"T"+calendar_end_time
           return final_end
         }
     } 

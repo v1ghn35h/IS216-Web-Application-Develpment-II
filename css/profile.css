@@ -161,25 +161,6 @@ td {
     vertical-align: middle;
 }
 
-/* -------------------------------------------------- */
-/* EVENT CARDS */
-#events {
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
-    padding-bottom: 40px;
-}
-
-#events .card {
-    display: inline-block;
-    width: 18rem;
-    height: 25rem;
-    /* height: 350px; */
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-top: 0px;
-}
-
 
 /* -------------------------------------------------- */
 /* PREFERENCE */
@@ -206,6 +187,138 @@ td {
 .remove a:hover {
     color: red !important;
 }
+
+/* -------------------------------------------------- */
+/* EVENT CARDS */
+
+#intro {
+    background-color: #4b5358;
+    margin-top: 5%;
+    color: white;
+    border-radius: 15px;
+    padding: 30px;
+}
+.card {
+    display: inline-block;
+    width: 18rem;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 0px;
+}
+#upcoming {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+#events {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+.btn {
+    background-color: white !important;
+    color: #104547 !important;
+    border-color: #104547 !important;
+}
+#carousel_events{
+    background-color: #4B5358;
+    margin-top: 5%;
+    color: white;
+    border-radius: 15px;
+    padding: 30px
+}
+.center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+.cards_landscape_wrap-2{
+    text-align: center;
+}
+.cards_landscape_wrap-2 .container{
+    padding-top: 10px; 
+    padding-bottom: 10px;
+}
+.cards_landscape_wrap-2 a{
+    text-decoration: none;
+    outline: none;
+}
+.cards_landscape_wrap-2 .card {
+    border-radius: 5px; 
+    height: 90%;
+}
+.cards_landscape_wrap-2 .card .image-box{
+    background: #ffffff;
+    overflow: hidden;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.50);
+    border-radius: 5px;
+}
+.cards_landscape_wrap-2 .card .image-box img{
+    transition: all 1s ease;
+    width: 100%;
+    height: 150px;
+}
+.cards_landscape_wrap-2 .card:hover .image-box img{
+    opacity: 0.7;
+    transform: scale(1.15);
+}
+.cards_landscape_wrap-2 .card .text-box{
+    text-align: left;
+}
+.cards_landscape_wrap-2 .card .text-box .text-container{
+    padding: 30px 18px;
+}
+.cards_landscape_wrap-2 .card{
+    background: #FFFFFF;
+    margin-top: 50px;
+    transition: all 0.2s ease-in;
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.40);
+}
+.cards_landscape_wrap-2 .card:hover{
+    background: #FFFFFF;
+    box-shadow: 0px 15px 26px rgba(0, 0, 0, 0.50);
+    transition: all 0.2s ease-in;
+    margin-top: 50px;
+}
+.cards_landscape_wrap-2 .card .text-box p{
+    /* margin-top: 10px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;  */
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #000000;
+}
+.cards_landscape_wrap-2 .card .text-box h6{
+    margin-top: 0px;
+    margin-bottom: 4px; 
+    font-size: 10px;
+    font-weight: light;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #9ea7a8;
+}
+.cards_landscape_wrap-2 .card .text-box h5{
+    margin-top: 0px;
+    margin-bottom: 4px; 
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #104547;
+}
+.cards_landscape_wrap-2 .card .text-box .btn:hover{
+    background: #104547;
+}
+.cards_landscape_wrap-2 .card .text-box .signup-btn{
+    background-color: #104547;
+    color: #FFFFFF;
+}
+
+.footer{
+    background-color: #104547;
+}
+
+
+
 
 
 /* -------------------------------------------------- */
@@ -239,4 +352,3 @@ td {
     }
     
 }
-

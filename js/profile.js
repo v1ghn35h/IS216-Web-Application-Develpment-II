@@ -328,6 +328,7 @@ function UserForYouEvents () {
 		if (Object.hasOwnProperty.call(user_events, event)) {
             console.log(event);
             let name_of_event = user_events[event].title
+            let type_of_event = user_events[event].category
             let club_of_event = user_events[event].event_club
             let photo_of_event= user_events[event].photo_url
             let date_of_event= user_events[event].event_date
@@ -341,59 +342,69 @@ function UserForYouEvents () {
             if (current_date > event_date){
                 counter += 1
 				tempHTML += ` 
-                <div class="card mx-1" style="width: 18rem;">
-                <!-- PLACE IMAGE ON TOP OF CARD -->
-                <img src = ${photo_of_event} height = "125" class="card-img-top" alt="...">
-                <!-- HEADER [can be added to h* elements]-->
-                <div class="card-body">
-                    <!-- TITLE -->
-                    <h5 class="card-title text-wrap" id = "name">${name_of_event}</h5>  
-                    <!-- SUBTITLE -->
-                    <h6 class="card-subtitle mb-2 text-muted text-wrap">${club_of_event}</h6>
-                    <!-- BODY -->
-                    <p class="card-text text-wrap">
-                        Date: ${date_of_event}
-                        <br>
-                        Time: ${time_of_event}
-                        <br>
-                        Location: ${location_of_event}
-                    </p>
-                <!-- BUTTON -->
-                <div class="modal fade" id="event${event_id}" tabindex="-1" aria-labelledby="event${event_id}Label" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-scrollable modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header text-wrap">
-                            <h1 class="modal-title fs-5" id="event${event_id}">${name_of_event}</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body text-wrap">
-                            <div class="container">
-                            <img src = "${photo_of_event}" width= "300px" height = "250px" alt="..." class="center">
+                <div class="card my-5 mx-3" >
+                    <!-- start of card-->
+                    <div id="${event_id}">
+                        <div class="text-box" style ="height: 300px">
+                            <div class="image-box">
+                                <img src="${photo_of_event}" />
                             </div>
-                            <p class = "display-6 lead text-center mt-3">Event Information</p>
-                            <hr>
-                            <div class="container text-break p-3 mt-3 fs-6">
-                                CCA: ${club_of_event}
-                                <br>
-                                Date: ${date_of_event}
-                                <br>
-                                Time: ${time_of_event}
-                                <br>
-                                <br>
-                                Location: ${location_of_event}
+                            <div class="text-container">
+                                <h5 class="card-title"> ${name_of_event} </h5>
+                                <!-- SUBTITLE -->
+                                <h6 class="card-subtitle mb-2 "> ${type_of_event} </h6>
+                                <!-- BODY -->
+                                <p class="card-text text-wrap">
+                                    Date: ${date_of_event}
+                                    <br>
+                                    Time: ${time_of_event}
+                                    <br>
+                                    Club: ${club_of_event}
+                                </p>
+                                
                             </div>
                         </div>
-                        <div class="modal-footer text-wrap">
-                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-dark" data-bs-target="#event${event_id}SignUpPage" data-bs-toggle="modal">Sign up now</button>
+                        <!-- more info -->
+                        <div style="display:flex; align-content: flex-start; margin: 15px;">
+                            <button type="button" class="btn details-btn mt-3 " data-bs-target="#${event_id}-modal"
+                                data-bs-toggle="modal">More info</button>
                         </div>
                     </div>
-                </div>
-            </div>
-            
-            <a class="btn btn-dark" data-bs-toggle="modal" href="#event${event_id}" role="button">More info</a>
-            </div>
-            </div>`
+                    <!-- end of card-->
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="${event_id}-modal" tabindex="-1" aria-labelledby="InfoPageLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="InfoPageLabel">${club_of_event}</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container p-2">
+                                        <img src="${photo_of_event}"
+                                            style="width:500px; height:250px" alt="..." class="center "/>
+                                    </div>
+                                    <p class="display-6 lead text-center">${name_of_event}</p>
+                                    <hr>
+                                    <div class="container">
+                                        <p>testing text</p>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- END OF SIGN UP & MORE INFO -->
+                </div> <!-- end of event div-->
+                `
         }
     }}
     document.getElementById('events').innerHTML = tempHTML

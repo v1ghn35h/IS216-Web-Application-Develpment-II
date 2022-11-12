@@ -24,9 +24,12 @@
         <script type="module" src="js/test.js"></script>
     
         <script type="module" src="js/login-common.js"></script>
+
+        <script src="https://unpkg.com/vue@3.2.23/dist/vue.global.js"></script>
     
     </head>
 <body>
+    
     <div id="app">
       {{get_yummy_pie}}
 
@@ -34,6 +37,7 @@
           <pie-chart
                      :numbers="numbers"
                      :colors="colors"
+                     :event_legend="event_legend"
           >
           </pie-chart>
         </div>
@@ -41,9 +45,10 @@
       
       <script type="text/x-template" id="pie-chart">
         <div class="total">
-          <span>total </span>
+          <span>Total events:</span>
           {{ total }}
         </div>
+        
         <div class="pie-chart">
           <svg xmlns="http://www.w3.org/2000/svg" :viewBox="`0 0 ${center * 2} ${center * 2}`" :style="{ height: `${center * 2}px`, width: `${center * 2}px` }">
             <circle
@@ -71,16 +76,20 @@
                     @mouseleave="handleMouseleave(index)"
                     />
             </svg>
+        
           <div class="temp-item" :class="{ 'has-value': !!temp }">
             {{ temp }}
           </div>
         </div>
+
         <div class="items-container">
-          <div v-for="(n, index) in numbers" :key="index" class="items-wrap">
+          <div v-for="(n, index) in event_legend" :key="index" class="items-wrap">
+              
             <div class="items" :style="{ backgroundColor: colors[index] }"></div>
-            <span class="amount">{{ n }}</span>
+            <span class="event_type">{{ n }}</span>
+            <br>
           </div>
-          </div>
+        </div>
       </script>
 
       
