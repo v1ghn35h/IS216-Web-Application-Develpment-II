@@ -247,27 +247,40 @@ function formControl() {
     let error_msg = ""
 
     if (document.getElementById('name').value == "") {
-        error_msg += "Fill in your name"
+        error_msg += "Fill in your name \n"
     }
 
     if (document.getElementById('username').value == "") {
-        error_msg += "Fill in your username"
+        error_msg += "Fill in your username \n"
     }
 
     if (document.getElementById('birthday').value == "") {
-        error_msg += "Fill in your birthday"
+        error_msg += "Fill in your birthday \n"
     }
 
+    if (document.getElementById('email').value == "") {
+        error_msg += "Fill in your email \n"
+    } else if (!document.getElementById('email').value.includes("@")) {
+        error_msg += "Enter a valid email \n"
+    } else if (document.getElementById('email').value.indexOf("@") == 0) {
+        error_msg += "Enter a valid email \n"
+    } else if (document.getElementById('email').value.indexOf("@") == document.getElementById('email').value.length - 1) {
+        error_msg += "Enter a valid email \n"
+    } else if ((document.getElementById('email').value.match(/@/g) || []).length > 1) {
+        error_msg += "Enter a valid email \n"
+    }
+
+
     if (document.getElementById('matric_no').value == "") {
-        error_msg += "Fill in your matric no."
+        error_msg += "Fill in your matric no. \n"
     } else if (document.getElementById('matric_no').value.length != 8) {
-        error_msg += "Enter a valid 8 digit matric no."
+        error_msg += "Enter a valid 8 digit matric no. \n"
     }
 
     if (document.getElementById('phone_no').value == "") {
-        error_msg += "Fill in your phone no."
+        error_msg += "Fill in your phone no. \n"
     } else if (document.getElementById('phone_no').value.length != 8) {
-        error_msg += "Enter a valid 8 digit phone no."
+        error_msg += "Enter a valid 8 digit phone no. \n"
     }
 
     if (error_msg != "") {
