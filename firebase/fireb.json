@@ -373,10 +373,10 @@
             "event24": {
                 "name": "Netball Match",
                 "club": "SMU Netball",
-                "eventId": "2022-11-31-netball-netball-match",
+                "eventId": "2022-11-30-netball-netball-match",
                 "type": "Sports",
                 "photo": "https://www.sportshub.com.sg/sites/default/files/styles/convert_webp/public/2022-08/Banner%20Netball%20Academy%201784%20x%20675px_.png.webp",
-                "date": "2022-11-31",
+                "date": "2022-11-30",
                 "time": "1545-1915",
                 "fees": 25,
                 "location":"SMU Admin Building MPSH"
@@ -384,7 +384,7 @@
             "event25": {
                 "name": "Skating Session",
                 "club": "SMU-X Skating",
-                "eventId": "16",
+                "eventId": "2022-11-23-smux-skating-skating-session",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
                 "date": "2022-11-23",
@@ -395,10 +395,10 @@
             "event26": {
                 "name": "Skating Session",
                 "club": "SMU-X Skating",
-                "eventId": "16",
+                "eventId": "2022-11-29-smux-skating-skating-session",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
-                "date": "2022-11-31",
+                "date": "2022-11-29",
                 "time": "1700-1900",
                 "fees": 15,
                 "location":" Outside SCIS Level 1"
@@ -406,7 +406,7 @@
             "event27": {
                 "name": "Skating Session",
                 "club": "SMU-X Skating",
-                "eventId": "16",
+                "eventId": "2022-12-07-smux-skating-skating-session",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
                 "date": "2022-12-07",
@@ -417,7 +417,7 @@
             "event28": {
                 "name": "Skating Session",
                 "club": "SMU-X Skating",
-                "eventId": "16",
+                "eventId": "2022-12-14-smux-skating-skating-session",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
                 "date": "2022-12-14",
@@ -428,18 +428,18 @@
             "event29": {
                 "name": "Christmas Skate",
                 "club": "SMU-X Skating",
-                "eventId": "16",
+                "eventId": "2022-12-21-smux-skating-christmas-skate",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
                 "date": "2022-12-21",
                 "time": "1700-1900",
                 "fees": 15,
-                "location":" Outside SCIS Level 1"
+                "location":"Marina Bay Sands MRT Exit A"
             },
             "event30": {
                 "name": "Skating Session",
                 "club": "SMU-X Skating",
-                "eventId": "16",
+                "eventId": "2022-12-28-smux-skating-skating-session",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
                 "date": "2022-12-28",
@@ -450,7 +450,7 @@
             "event31": {
                 "name": "New Year Skate",
                 "club": "SMU-X Skating",
-                "eventId": "16",
+                "eventId": "2022-01-04-smux-skating-new-year-skate",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
                 "date": "2022-01-04",
@@ -461,7 +461,7 @@
             "event32": {
                 "name": "Skating Session",
                 "club": "SMU-X Skating",
-                "eventId": "16",
+                "eventId": "2022-01-11-smux-skating-skating-session",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
                 "date": "2022-01-11",
@@ -472,7 +472,7 @@
             "event34": {
                 "name": "Skating Session",
                 "club": "SMU-X Skating",
-                "eventId": "16",
+                "eventId": "2022-01-18-smux-skating-skating-session",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
                 "date": "2022-01-18",
@@ -483,7 +483,7 @@
             "event35": {
                 "name": "Skating Session",
                 "club": "SMU-X Skating",
-                "eventId": "16",
+                "eventId": "2022-01-25-smux-skating-skating-session",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
                 "date": "2022-01-25",
@@ -494,7 +494,7 @@
             "event36": {
                 "name": "Skating Session",
                 "club": "SMU-X Skating",
-                "eventId": "16",
+                "eventId": "2022-02-01-smux-skating-skating-session",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
                 "date": "2022-02-01",
@@ -505,7 +505,7 @@
             "event37": {
                 "name": "Skating Session",
                 "club": "SMU-X Skating",
-                "eventId": "16",
+                "eventId": "2022-02-08-smux-skating-skating-session",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
                 "date": "2022-02-08",
@@ -515,156 +515,156 @@
             },
             "event38": {
                 "name": "Paddle X Pedal",
-                "club": "SMU-X Skating",
-                "eventId": "16",
+                "club": "SMU-X Kayak",
+                "eventId": "2022-12-07-smux-kayak-paddle-x-pedal",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/161172/cycling-bike-trail-sport-161172.jpeg",
-                "date": "2022-02-08",
+                "date": "2022-12-07",
                 "time": "1700-1900",
-                "fees": 15,
-                "location":""
+                "fees": 30,
+                "location":"East Coast Park"
             },
             "event39": {
                 "name": "Ski X Bike",
-                "club": "SMU-X Skating",
-                "eventId": "16",
+                "club": "SMU-X Xseed",
+                "eventId": "2022-02-14-smux-xseed-ski-x-bike",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/623919/pexels-photo-623919.jpeg",
-                "date": "2022-02-08",
+                "date": "2022-02-14",
                 "time": "1700-1900",
-                "fees": 15,
-                "location":""
+                "fees": 22,
+                "location":"East Coast Park"
             }
             ,"event40": {
                 "name": "Board Exploration Day",
-                "club": "SMU-X Skating",
-                "eventId": "16",
+                "club": "SMU-X Xseed",
+                "eventId": "2022-12-18-smux-xseed-board-exploration-day",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/17606/night-street-skateboard-urban-17606.jpg",
-                "date": "2022-02-08",
+                "date": "2022-12-18",
                 "time": "1700-1900",
-                "fees": 15,
-                "location":""
+                "fees": 25,
+                "location":"National Stadium Gate 7"
             },
             "event42": {
                 "name": "Traditional Food Exploration",
-                "club": "Arts & Culture",
-                "eventId": "16",
-                "type": "Sports",
                 "photo": "https://images.pexels.com/photos/2349277/pexels-photo-2349277.jpeg",
-                "date": "2022-02-08",
+                "club": "ICON",
+                "eventId": "2022-02-15-icon-traditional-food-exploration",
+                "type": "Arts & Culture",
+                "date": "2022-02-15",
                 "time": "1700-1900",
-                "fees": 15,
-                "location":""
+                "fees": 5,
+                "location":"SMU Greenhouse"
             },
             "event43": {
                 "name": "Technology Career Fair",
                 "club": "SMU",
-                "eventId": "2022-11-12-smu-career-fair",
+                "eventId": "2022-11-29-smu-career-fair",
                 "type": "School Society",
                 "photo": "https://images.pexels.com/photos/4065876/pexels-photo-4065876.jpeg",
-                "date": "2022-11-12",
+                "date": "2022-11-29",
                 "time": "1400-1900",
                 "fees": 0,
-                "location":"YPHSL SR B1"
+                "location":"SMU Greenhouse"
             },
             "event44": {
                 "name": "SME Internship Fair",
                 "club": "SMU",
-                "eventId": "2022-11-12-smu-career-fair",
+                "eventId": "2022-12-21-smu-sme-internship-fair",
                 "type": "School Society",
                 "photo": "https://images.pexels.com/photos/5673488/pexels-photo-5673488.jpeg",
-                "date": "2022-11-12",
+                "date": "2022-12-21",
                 "time": "1400-1900",
                 "fees": 0,
                 "location":"YPHSL SR B1"
             },
             "event45": {
-                "name": "Career Fair",
+                "name": "Internship Fair",
                 "club": "SMU",
-                "eventId": "2022-11-12-smu-career-fair",
+                "eventId": "2022-01-19-smu-internship-fair",
                 "type": "School Society",
                 "photo": "https://images.pexels.com/photos/3771097/pexels-photo-3771097.jpeg",
-                "date": "2022-11-12",
+                "date": "2022-01-19",
                 "time": "1400-1900",
                 "fees": 0,
-                "location":"YPHSL SR B1"
+                "location":"SMU Greenhouse"
             },
             "event46": {
-                "name": "Career Fair",
+                "name": "Networking Night",
                 "club": "SMU",
-                "eventId": "2022-11-12-smu-career-fair",
+                "eventId": "2022-02-30-smu-networking-night",
                 "type": "School Society",
                 "photo": "https://images.pexels.com/photos/3771097/pexels-photo-3771097.jpeg",
-                "date": "2022-11-12",
+                "date": "2022-02-30",
                 "time": "1400-1900",
                 "fees": 0,
-                "location":"YPHSL SR B1"
+                "location":"SOB Seminar Room 3-2"
             },
             "event47": {
-                "name": "Career Fair",
+                "name": "Industry Experience Talk",
                 "club": "SMU",
-                "eventId": "2022-11-12-smu-career-fair",
+                "eventId": "2022-11-03-smu-industry-experience-talk",
                 "type": "School Society",
                 "photo": "https://images.pexels.com/photos/3771097/pexels-photo-3771097.jpeg",
-                "date": "2022-11-12",
+                "date": "2022-11-03",
                 "time": "1400-1900",
                 "fees": 0,
-                "location":"YPHSL SR B1"
+                "location":"SMU Connexion Level 5 Event Square"
             },
             "event48": {
                 "name": "Behind The Scene",
                 "club": "SMU Broadcast & Entertainment",
-                "eventId": "2022-11-11-ballare-ballet-night",
+                "eventId": "2022-11-12-broadcast-&-entertainment-behind-the-scene",
                 "type": "Arts & Culture",
                 "photo": "https://images.pexels.com/photos/3379934/pexels-photo-3379934.jpeg",
-                "date": "2022-11-11",
+                "date": "2022-11-12",
                 "time": "1900-2100",
                 "fees": 25,
-                "location":"Esplanade Auditorium 3"
+                "location":"SMU SOA Classroom 2-1"
             },
             "event49": {
                 "name": "Chacha with us",
                 "club": "SMU Caderas Latinas",
-                "eventId": "2022-11-11-ballare-ballet-night",
+                "eventId": "2022-12-11-caderas-latinas-chacha-with-us",
                 "type": "Arts & Culture",
                 "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Cha-Cha-Cha_Valente_Cruz_9543.JPG",
-                "date": "2022-11-11",
+                "date": "2022-12-11",
                 "time": "1900-2100",
-                "fees": 25,
-                "location":"Esplanade Auditorium 3"
+                "fees": 7,
+                "location":"SMU B1 Dance Studio"
             },
             "event50": {
                 "name": "Get Funky",
                 "club": "SMU Funk Movement",
-                "eventId": "2022-11-11-ballare-ballet-night",
+                "eventId": "2022-11-11-funk-movement-get-funky",
                 "type": "Arts & Culture",
                 "photo": "https://vivace.smu.edu.sg/sites/vivace.smu.edu.sg/files/styles/gallery/public/2021-08/funk%201.jpeg",
                 "date": "2022-11-11",
                 "time": "1900-2100",
-                "fees": 25,
-                "location":"Esplanade Auditorium 3"
+                "fees": 11,
+                "location":"SMU Ngee Ann Auditorium"
             }
             ,
             "event51": {
-                "name": "Photography Competition",
-                "club": "SMU SMUSAIC",
-                "eventId": "2022-11-11-ballare-ballet-night",
+                "name": "Photography Challenge",
+                "club": "SMUSAIC",
+                "eventId": "2022-01-17-smusaic-photography-challenge",
                 "type": "Arts & Culture",
                 "photo": "https://images.pexels.com/photos/403495/pexels-photo-403495.jpeg",
-                "date": "2022-11-11",
+                "date": "2022-01-17",
                 "time": "1900-2100",
-                "fees": 25,
-                "location":"Esplanade Auditorium 3"
+                "fees": 0,
+                "location":"SMU SCIS Classroom 4-1"
             }
             ,
             "event52": {
-                "name": "Breakout Concept",
+                "name": "Breakout Concert",
                 "club": "SMU Stereometa",
-                "eventId": "2022-11-11-ballare-ballet-night",
+                "eventId": "2022-01-11-stereomata-breakout-concert",
                 "type": "Arts & Culture",
                 "photo": "https://vivace.smu.edu.sg/sites/vivace.smu.edu.sg/files/styles/gallery/public/2020-08/1%20_%20club%20logo.jpg",
-                "date": "2022-11-11",
+                "date": "2022-01-11",
                 "time": "1900-2100",
                 "fees": 25,
                 "location":"Esplanade Auditorium 3"
@@ -673,13 +673,13 @@
             "event53": {
                 "name": "Chacha with us",
                 "club": "SMU Caderas Latinas",
-                "eventId": "2022-11-11-ballare-ballet-night",
+                "eventId": "2022-11-29-cahcha-with-us",
                 "type": "Arts & Culture",
                 "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Cha-Cha-Cha_Valente_Cruz_9543.JPG",
-                "date": "2022-11-11",
+                "date": "2022-11-29",
                 "time": "1900-2100",
-                "fees": 25,
-                "location":"Esplanade Auditorium 3"
+                "fees": 5,
+                "location":"SMU B1 Dance Studio"
             }
             
         }
