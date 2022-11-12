@@ -74,7 +74,9 @@ let upcoming_events = {}
 onValue(events, (snapshot => {
 	const data = snapshot.val(); // get the new value
 	upcoming_events = data
-  UserForYouEvents()
+  if (user_preference != []){
+    UserForYouEvents()
+  }
 }));
 
 function UserForYouEvents () {
@@ -111,7 +113,8 @@ const homePage = Vue.createApp({
               "November": '11',
               "December": '12',
             },
-            signed_up_events: []
+            signed_up_events: [],
+            for_you_event_present: false
         };
     }, 
     beforeMount() { 
@@ -139,8 +142,11 @@ const homePage = Vue.createApp({
                 }
               }
             })
+            if (for_you_counter != 0){
+              this.for_you_event_present= true
+              this.for_you_events = current_for_you_events
+            }
             this.display_events = current_upcoming_events
-            this.for_you_events = current_for_you_events
         })
         onValue(users, (snapshot => {
           const data = snapshot.val(); 
