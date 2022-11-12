@@ -26,8 +26,6 @@ const events = ref(db, 'events')
 
 //initialise global variables
 let user_name = ""
-let user_email = ""
-let user_matric = ""
 let user_preference = []
 let for_you = {}
 let userInfo = {}
@@ -109,7 +107,8 @@ const homePage = Vue.createApp({
               "October": '10',
               "November": '11',
               "December": '12',
-            }
+            },
+            
         };
     }, 
     beforeMount() { 
@@ -134,6 +133,10 @@ const homePage = Vue.createApp({
             this.display_events = current_upcoming_events
             this.for_you_events = current_for_you_events
         })
+        onValue(users, (snapshot => {
+          const data = snapshot.val(); 
+          this.userInfo = data.user1.user_profile_info
+        }))
     },
     methods: {
         // ADD ID AND CHANGE DATE
@@ -166,9 +169,7 @@ const homePage = Vue.createApp({
             }).catch((error) => {
               console.error(error);
             });  
-            console.log(this.display_events)
             delete this.display_events.id;
-            console.log(this.display_events)
             delete this.for_you_events.id;
         },
 
@@ -315,6 +316,7 @@ function UserUpcomingSchoolEvents (number_of_upcoming_events) {
         No upcoming events!
     </div>
     `
+    document.getElementById('carousel_user_events').innerHTML = tempHTML
   }
   else {
     let tempHTML = `<br>
@@ -415,7 +417,6 @@ function UserUpcomingSchoolEvents (number_of_upcoming_events) {
     </div>
     </div>
     `
-    console.log(tempHTML)
     document.getElementById('carousel_user_events').innerHTML = tempHTML
 
   }

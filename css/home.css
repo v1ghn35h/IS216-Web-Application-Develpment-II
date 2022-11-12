@@ -27,11 +27,7 @@
     overflow-y: hidden;
     white-space: nowrap;
 }
-.btn {
-    background-color: white !important;
-    color: #104547 !important;
-    border-color: #104547 !important;
-}
+
 #carousel_events{
     background-color: #4B5358;
     margin-top: 5%;
@@ -93,9 +89,6 @@
     margin-top: 50px;
 }
 .cards_landscape_wrap-2 .card .text-box p{
-    /* margin-top: 10px;
-    margin-bottom: 0px;
-    padding-bottom: 0px;  */
     font-size: 14px;
     letter-spacing: 1px;
     color: #000000;
@@ -120,7 +113,7 @@
 .cards_landscape_wrap-2 .card .text-box .btn:hover{
     background: #104547;
 }
-.cards_landscape_wrap-2 .card .text-box .signup-btn{
+.cards_landscape_wrap-2 .card .text-box .btn-signup{
     background-color: #104547;
     color: #FFFFFF;
 }
@@ -128,3 +121,23 @@
 .footer{
     background-color: #104547;
 }
+
+.details-btn{
+    border-color: #104547;
+    color: 104547;
+}
+
+.confirm-btn{
+    background-color: #104547;
+    color: white;
+}
+
+.details-btn:hover {
+    background-color: #104547;
+    color: white;
+  }
+
+.confirm-btn:hover {
+    background-color: #104547;
+    color: white;
+  }

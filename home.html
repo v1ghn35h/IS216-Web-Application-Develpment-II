@@ -53,7 +53,7 @@
                 <div id = "intro" class = "h-100 w-100 d-inline-block">
                     <p id = "temperature" class = "display-6" style = "color: white;"></p>
                     <hr>
-                    <input class="btn btn-light " type="button" value="Are you bored?" onclick="call_bored_api()">
+                    <input class="btn btn-light me-3" type="button" value="Are you bored?" onclick="call_bored_api()">
                     <input class="btn btn-light" type="button" value="Read a quote" onclick="call_quote_api()">
                     <br>
                     <span id = "api" style = "color: #fde7ef;"></span>
@@ -195,9 +195,11 @@
                                 <br>
                                 School: {{ userInfo.school }}
                                 <br>
-                                Payment: NA
+                                Payment: 
+                                <span v-if='details.fees == 0'>Free</span>
+                                <span v-else>{{ details.fees }} SGD</span>
                             </div>
-                            <button class="btn btn-warning center"
+                            <button class="btn confirm-btn center"
                             @click="addEvent(details.name, details.club, details.photo, details.date, details.location, details.time, details.type, details.eventId)"
                             :data-bs-target="`#addSuccessModal`" data-bs-toggle="modal">Confirm</button>
 
@@ -211,20 +213,17 @@
             </div>
             <!--Confirmation Page-->
             <div class="modal fade" :id="`addSuccessModal`" aria-hidden="true" aria-labelledby="addSuccessModalLabel" tabindex="-1">
-                <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="addSuccessModal">Confirmation</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <p class = "display-6 lead text-center mt-3 text-wrap">Event successfully added to calendar!</p>  
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
+                      <div class="modal-header">
+                        <h5 class="modal-title"> Add Event </h5>
+                      </div>
+                      <div class="modal-body text-center">
+                        <img src="img/icons/happy.png" style="width: 50%">
+                        <p class="pt-3"> Event Added Successfully </p>
+                      </div>
                     </div>
-                </div>
+                  </div>
             </div>
             <!-- END OF SIGN UP & MORE INFO -->
         </div> <!-- end of event div-->
@@ -356,7 +355,7 @@
                                     <br>
                                     Payment: NA
                                 </div>
-                                <button class="btn btn-warning center" id = "save" 
+                                <button class="btn confirm-btn center" id = "save" 
                                 @click="addEvent(details.name, details.club, details.photo, details.date, details.location, details.time, details.type, details.eventId)"
                                 >Confirm</button>
 
