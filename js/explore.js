@@ -1,6 +1,6 @@
 // FIREBASE IMPORT
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
-import { getDatabase, ref, onValue , set, query, orderByChild, get, child } from
+import { getDatabase, ref, onValue , set, query, orderByChild, get, child, update } from
 "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
 import { getStorage, ref as sref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-storage.js";
 
@@ -39,6 +39,8 @@ const explorePage = Vue.createApp({
             sorted_events_by_type: null,
             sorted_events_by_fees: null,
             sorted_events_by_date: null,
+
+            bookmarked_events: [],
 
             // search bar
             search_input_value: '',
@@ -126,7 +128,7 @@ const explorePage = Vue.createApp({
                     sort_type.push(event)
                 }
 
-                console.log(childSnapshot.val());
+                // console.log(childSnapshot.val());
             })
             this.sorted_events_by_type = sort_type
         })
@@ -165,6 +167,24 @@ const explorePage = Vue.createApp({
             this.sorted_events_by_date = sort_date
         })
 
+        // bookmarked events
+        get(query(allEvents, orderByChild("isBookmarked"))).then((snapshot) => {
+            let bkMarked_events = []
+        
+            snapshot.forEach(childSnapshot => {
+                let event = childSnapshot.val()
+                
+                if (event.isBookmarked) {
+                    bkMarked_events.push(event)
+                }
+
+
+            })
+            this.bookmarked_events = bkMarked_events
+        })
+
+        
+
     }, // beforeMount
 
     computed: {
@@ -201,9 +221,72 @@ const explorePage = Vue.createApp({
             return  [...new Set(organising_clubs)]
         },
 
+        bookmarked_events() {
+            let bookmarked_events = []
+
+            onValue(users, (snapshot) => {
+                const data = snapshot.val()
+                console.log("-------In user mounted------");
+                console.log(data);
+                let db_bkmark_events = data.user1.user_bkmark_events
+
+                for (let [event, details] of Object.entries(db_bkmark_events)) {
+                    bookmarked_events.push(details)
+                }
+                console.log(bookmarked_events);
+                console.log("-------end user  mounted------");
+            })
+            return bookmarked_events
+        }
+    
+
     },
 
     methods: {
+
+        show_bkmarked_events() {
+            console.log(this.bookmarked_events);
+            this.all_display_events = this.bookmarked_events
+
+            this.paginate(this.all_display_events)
+        },
+
+        bookmark_event(event, details) {
+            console.log("====Function-bookmark_event()===")
+            console.log(details);
+            console.log(event);
+            console.log(details.eventId);
+            console.log(details.isBookmarked);
+            
+
+
+            // this.addBkMarkEvent(details.club, details.date, details.eventId, details.fees, details.location, details.name, details.photo, details.time, details.type)
+            let new_bkmark_val = !details.isBookmarked
+            // console.log(btn);
+            this.updateBkMarkEvent(details.eventId, new_bkmark_val)
+
+            console.log("====END - Function-bookmark_event()===");
+        },
+        updateBkMarkEvent(eventId, isBookmark) {
+            console.log("====Function-updateBkMarkEvent()===")
+            update(ref(db, 'events/' + eventId), 
+                    {
+                        isBookmarked: isBookmark,
+                     
+                    },
+                  )
+                
+            .then(() => {
+                console.log('Data updated successfully!');
+            })
+            .catch((error) => {
+                console.error(error);
+            });  
+              // force page to reload
+            setTimeout(function(){
+            window.location.reload();
+            }, 500);
+          },
     
         paginate (events){
             console.log(events);
@@ -514,6 +597,7 @@ const explorePage = Vue.createApp({
             this.all_display_events = this.db_events
             this.paginate(this.all_display_events)
         },
+
 
 
   
