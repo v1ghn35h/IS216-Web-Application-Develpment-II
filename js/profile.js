@@ -387,7 +387,7 @@ onValue(users, (snapshot => {
     const data = snapshot.val(); // get the new value
 
     user_events = data.user1.user_events
-    console.log(user_events);
+    // console.log(user_events);
     UserForYouEvents()
 }));
 
@@ -396,7 +396,7 @@ function UserForYouEvents () {
     let counter = 0
     for (let event in user_events) {
 		if (Object.hasOwnProperty.call(user_events, event)) {
-            console.log(event);
+            // console.log(event);
             let name_of_event = user_events[event].title
             let type_of_event = user_events[event].category
             let club_of_event = user_events[event].event_club
@@ -404,11 +404,9 @@ function UserForYouEvents () {
             let date_of_event= user_events[event].event_date
             let time_of_event= user_events[event].event_time
             let location_of_event= user_events[event].event_location
-            let event_id= user_events[event].id
+            let event_id= user_events[event].id.toString()
             let event_date= user_events[event].start.slice(0,10)
             let current_date = new Date().toJSON().slice(0, 10);
-            // console.log(current_date, event_date);
-            // console.log(current_date > event_date);
             if (current_date > event_date){
                 counter += 1
 				tempHTML += ` 
@@ -436,7 +434,7 @@ function UserForYouEvents () {
                         </div>
                         <!-- more info -->
                         <div style="display:flex; align-content: flex-start; margin: 15px;">
-                            <button type="button" class="btn details-btn mt-3 " data-bs-target="#${event_id}-modal"
+                            <button type="button" id="button_${event_id}" class="btn details-btn mt-3 " data-bs-target="#modal-${event_id}"
                                 data-bs-toggle="modal">More info</button>
                         </div>
                     </div>
@@ -444,7 +442,7 @@ function UserForYouEvents () {
 
 
                     <!-- Modal -->
-                    <div class="modal fade" id="${event_id}-modal" tabindex="-1" aria-labelledby="InfoPageLabel"
+                    <div class="modal fade" id="modal-${event_id}" tabindex="-1" aria-labelledby="InfoPageLabel"
                         aria-hidden="true">
                         <div class="modal-dialog modal-dialog-scrollable modal-lg">
                             <div class="modal-content">
