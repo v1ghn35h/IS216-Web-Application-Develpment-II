@@ -231,7 +231,7 @@
                                 <h6 class="card-subtitle mb-2 "> {{ details.type }} </h6>
                                 <!-- BODY -->
                                 <p class="card-text text-wrap">
-                                    Date: {{ details.date }}
+                                    Date: {{ format_date(details.date) }}
                                     <br>
                                     Time: {{ details.time }}
                                     <br>
@@ -284,7 +284,7 @@
                                                     <img src = "https://cdn-icons-png.flaticon.com/128/591/591607.png" height = 20 width = 20> 
                                                     Date
                                                 </th>
-                                                <td>{{ details.date }}</td>
+                                                <td>{{ format_date(details.date) }}</td>
                                             </tr>
                                             <tr>
                                                 <th>
