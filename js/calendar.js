@@ -856,10 +856,10 @@ document.addEventListener('DOMContentLoaded', function() {
               error_modal.style.display = "block"
 
                // when the user clicks on <span> (x), close the modal
-               error_span.onclick = function() {
+              error_span.onclick = function() {
                 error_modal.style.display = "none";
               }
-                }
+            }
 
 
 
@@ -942,7 +942,6 @@ document.addEventListener('DOMContentLoaded', function() {
           
           // fetch title
           var title = document.getElementById('event_title').value
-          console.log(title)
       
           // fetch start
           var start = document.getElementById('startDate').value
@@ -962,7 +961,9 @@ document.addEventListener('DOMContentLoaded', function() {
             end += `T${end_time}:00`
           }
 
-          // fetch items from db
+          // if form fields are valid
+          if (title != "" && start != "" && end != "") {
+            // fetch items from db
           const dbRef = ref(getDatabase());
           get(child(dbRef, `users/${current_user}/user_events/`)).then((snapshot) => {
             if (snapshot.exists()) {
@@ -989,7 +990,6 @@ document.addEventListener('DOMContentLoaded', function() {
               console.log(all_events)
 
               // display added successfully
-              console.log(no_errors)
               add_success_modal.style.display = "block";
 
               // force page to reload
@@ -1009,8 +1009,50 @@ document.addEventListener('DOMContentLoaded', function() {
           }).catch((error) => {
             console.error(error);
           });
-          
+          }
+        
+        // there are errors
+        else  {
+          console.log("there are errors")
+
+          var errors = []
+        
+          // get the modal
+          let error_modal = document.getElementById("formValidationModal")
+
+          // get the <span> element that closes the modal
+          var error_span = document.getElementsByClassName("close")[1];
+
+          let error_output = document.getElementById("form_errors")
+
+          // check for empty fields
+          if (title == "") {
+            errors.push("Event Title")
+          }
+          if (start == "") {
+            errors.push("Start Date")
+          }
+          if (end == "") {
+            errors.push("End Date")
+          }
+          console.log(errors)
+
+          // add errors
+          error_output.innerHTML = '<ul>'
+          for (let err of errors) {
+            error_output.innerHTML += `<li> ${err} </li>`
+          }
+          error_output.innerHTML += '</ul>'
+
+          error_modal.style.display = "block"
+
+           // when the user clicks on <span> (x), close the modal
+          error_span.onclick = function() {
+            error_modal.style.display = "none";
+          }
         }
+          
+      }
     )},
 
     // API Key

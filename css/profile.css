@@ -153,6 +153,15 @@ form.is-editing .btn-edit {
     width: 70px;
 }
 
+textarea {
+    text-align: center;
+}
+
+p{
+    margin-top: 7px;
+}
+
+
 
 /* -------------------------------------------------- */
 /* BUTTONS */
