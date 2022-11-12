@@ -118,7 +118,7 @@
 
 .details-btn:hover {
     background-color: #104547;
-    color: white;
+    color: white;   
   }
 
 .filter-btn {
@@ -176,6 +176,26 @@ color: white;
     /* background-color: #26a2a7; */
     color: white;
     
+}
+.page_btn {
+    background-color: #104547;
+    color: white;
+    /* color: 104547; */
+}
+/* .page_btn:hover {
+    background-color: #104547;
+    color: white;
+    /* color: 104547; */
+/* } */
+/* .page_btn:active {
+    background-color: #104547;
+    color: white; */
+    /* color: 104547; */
+/* } */
+.page_btn:focus {
+    background-color: #104547;
+    color: white;
+    /* color: 104547; */
 }
 
 
