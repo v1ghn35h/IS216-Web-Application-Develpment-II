@@ -2,8 +2,6 @@
 //WEATHER API
 function call_weather_api() {
 
-    console.log("**** [START] call_weather_api() *****")
-
     // 1) API endpoint
     let api_endpoint_url = "https://api.openweathermap.org/data/2.5/weather?q=Singapore&appid=4665f83693c7ff637473b76e846e2a19";
 
@@ -11,17 +9,16 @@ function call_weather_api() {
     axios.get(api_endpoint_url)
     .then(response => {
 
-        // Inspect the response.data
         //DOM manipulation
         let weather_type_images = {
             "Clouds": "img/temperature/clouds.jpg",
-            "Clear": "img/temperature/okay.jpg",
+            "Clear": "img/temperature/clear.png",
             "Haze": "img/temperature/haze.jpg",
             "Mist": "img/temperature/mist.jpg",
             "Rain": "img/temperature/rain.jpg",
             "Smoke": "img/temperature/smoke.jpg",
             "Snow": "img/temperature/snow.jpg",
-            "Thunderstorm": "img/thunderstorm/clouds.jpg",
+            "Thunderstorm": "img/temperature/thunderstorm.jpg",
         }
         let body = document.getElementById("temperature");
         let temp = Number(response.data.main.temp) - 273.15
@@ -32,17 +29,17 @@ function call_weather_api() {
         img_text = document.getElementById("api");
         img_html = "<br><img src="
             if (temp < 5){
-                img_html += " 'img/temperature/cold.png' height='200' width='200'>"
+                img_html += " 'img/temperature/cold.png' height='125' width='125'>"
             }
             else if (temp > 5 && temp < 25){
-                img_html += " 'img/temperature/okay.jpg' height='200' width='200'>"
+                img_html += " 'img/temperature/okay.jpg' height='125' width='125'>"
             }
             else {
-                img_html += " 'img/temperature/hot.png' height='200' width='200'>"
+                img_html += " 'img/temperature/hot.png' height='125' width='125'>"
             }
             for (let weather of country_weather){
                 image = weather_type_images[weather.main]
-                img_html += "<img src="+image+" height='200' width='200'><br>"
+                img_html += "<img src="+image+" height='125' width='125'>"
             }
         img_text.innerHTML=img_html
 
@@ -52,14 +49,10 @@ function call_weather_api() {
         // In case of any error, see what it's about
         console.log(error.message)
     })
-
-    console.log("**** [END] call_weather_api() *****")
 }
 
 //BORED API
 function call_bored_api() {
-
-    console.log("**** [START] call_bored_api() *****")
 
     // 1) API endpoint
     let api_endpoint_url = "http://www.boredapi.com/api/activity/";
@@ -81,14 +74,10 @@ function call_bored_api() {
         // In case of any error, see what it's about
         console.log(error.message)
     })
-
-    console.log("**** [END] call_bored_api() *****")
 }
 
 //QUOTE API
 function call_quote_api() {
-
-    console.log("**** [START] call_quote_api() *****")
 
     // 1) API endpoint
     let api_endpoint_url = "https://api.quotable.io/random";
@@ -119,5 +108,4 @@ function call_quote_api() {
         // In case of any error, see what it's about
         console.log(error.message)
     })
-    console.log("**** [END] call_quote_api() *****")
 }
