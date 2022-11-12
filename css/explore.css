@@ -29,13 +29,10 @@
 .cards_landscape_wrap-2 .card {
     border-radius: 5px; 
     position: relative;
-    /* height: 390px; */
     width: 100%;
-    /* width: 280px; */ 
-    height: 420px;
+    height: 440px;
+    /* initially 420 but due to some long heading, got to increase height */
     max-width: 280px;
-    /* min-width: 280px; */
-    /* max-height: 410px; */
 
     display: absolute;
 
@@ -60,7 +57,7 @@
     
 }
 .cards_landscape_wrap-2 .card .text-box .text-container{
-    padding: 30px 18px;
+    padding: 35px 18px;
     
 }
 .cards_landscape_wrap-2 .card{
@@ -202,6 +199,7 @@ color: white;
     outline: 0;
     border: none;
   }
+
   
   
   .card__ribbon {
@@ -216,6 +214,10 @@ color: white;
   
   .card__ribbon:after {
     border-color: #A1A5A8;
+  }
+
+  .card__ribbon:active {
+    background-color: #FF9908;
   }
   
   .card__ribbon:hover:after {

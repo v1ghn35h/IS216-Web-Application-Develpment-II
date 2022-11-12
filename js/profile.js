@@ -13,7 +13,7 @@ $(document).ready(function(){
 //////////////////////////////////////////////////
 // FIREBASE IMPORT
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
-import { getDatabase, ref, onValue , set } from
+import { getDatabase, ref, onValue , set , get , query , orderByChild , child } from
 "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
 import { getStorage, ref as sref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-storage.js";
 
@@ -33,6 +33,7 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 const users = ref(db, 'users') 
 const categories = ref(db, 'categories')
+const all_user_events = ref(db, 'users/user1/user_events') 
 
 //////////////////////////////////////////////////
 // FIREBASE GET categories
@@ -386,20 +387,34 @@ function updatePreference(cat_id) {
 //////////////////////////////////////////////////
 // DISPLAY EVENTS
 let user_events = {}
+let user_events_original = {}
 onValue(users, (snapshot => {
     const data = snapshot.val(); // get the new value
 
-    user_events = data.user1.user_events
+    user_events_original = data.user1.user_events
     // console.log(user_events);
-    UserForYouEvents()
+    // UserForYouEvents()
 
-    addClickMessage() 
+    // addClickMessage() 
 
+    get(query(all_user_events, orderByChild("event_date"))).then((snapshot) => {
+        let sort_date = []
     
+        snapshot.forEach(childSnapshot => {
+            sort_date.push(childSnapshot.val())
+        })
+        user_events = sort_date
+    
+        UserPastEvents()
+    
+        addClickMessage() 
+    })
 
 }));
 
-function UserForYouEvents () {
+
+
+function UserPastEvents () {
     let tempHTML = ""
     let counter = 0
     for (let event in user_events) {
@@ -423,12 +438,12 @@ function UserForYouEvents () {
                     <div class="card my-5 mx-3" >
                         <!-- start of card-->
                         <div id="${event_id}">
-                            <div class="text-box" style ="height: 300px">
+                            <div class="text-box" style ="height: 320px">
                                 <div class="image-box">
                                     <img src="${photo_of_event}" />
                                 </div>
                                 <div class="text-container">
-                                    <h5 class="card-title"> ${name_of_event} </h5>
+                                    <h5 class="card-title text-wrap"> ${name_of_event} </h5>
                                     <!-- SUBTITLE -->
                                     <h6 class="card-subtitle mb-2 "> ${type_of_event} </h6>
                                     <!-- BODY -->
@@ -477,7 +492,7 @@ function UserForYouEvents () {
                                             <p class="display-6 lead text-center">${name_of_event}</p>
                                             <hr>
                                             <div class="container">
-                                                <p id="p_msg_${event_id}">${event_msg}</p>
+                                                <p id="p_msg_${event_id}" class="text-wrap">${event_msg}</p>
                                                 <textarea id="textarea_msg_${event_id}" style="display: none" class="form-control" placeholder="${event_msg}"></textarea>
                                             </div>
                                             
@@ -608,8 +623,8 @@ function displayEdited(ele) {
     let msg = document.getElementById(`textarea_msg_${event_id}`).value
     let event_key = ""
 
-    for (let event in user_events) {
-        if (user_events[event]["event_id"] == event_id) {
+    for (let event in user_events_original) {
+        if (user_events_original[event]["event_id"] == event_id) {
             event_key = event
         }
     }
@@ -630,8 +645,9 @@ function addMessage(ele) {
     let msg = document.getElementById(`textarea_${event_id}`).value
     let event_key = ""
 
-    for (let event in user_events) {
-        if (user_events[event]["event_id"] == event_id) {
+    // console.log(user_events);
+    for (let event in user_events_original) {
+        if (user_events_original[event]["event_id"] == event_id) {
             event_key = event
         }
     }

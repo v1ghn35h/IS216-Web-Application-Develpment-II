@@ -34,6 +34,8 @@ const explorePage = Vue.createApp({
             all_display_events: '',
             db_events: '', // this stores all events extracted from db
             userInfo: '',
+            userInfo: '',
+            current_user: "user1",
             sorted_events_by_type: null,
             sorted_events_by_fees: null,
             sorted_events_by_date: null,
@@ -87,10 +89,16 @@ const explorePage = Vue.createApp({
         })
 
         // display events converted to list
-        get(query(allEvents, orderByChild("type"))).then((snapshot) => {
+        get(query(allEvents, orderByChild("date"))).then((snapshot) => {
             let events = []
             snapshot.forEach(childSnapshot => {
-                events.push(childSnapshot.val())
+                // events.push(childSnapshot.val())
+                let event = childSnapshot.val()
+                let event_date = new Date(event.date)
+
+                if (this.check_date(event_date)) {
+                    events.push(event)
+                }
             })
             this.db_events = events
 
@@ -110,7 +118,15 @@ const explorePage = Vue.createApp({
             let sort_type = []
         
             snapshot.forEach(childSnapshot => {
-                sort_type.push(childSnapshot.val())
+                
+                let event = childSnapshot.val()
+                let event_date = new Date(event.date)
+
+                if (this.check_date(event_date)) {
+                    sort_type.push(event)
+                }
+
+                console.log(childSnapshot.val());
             })
             this.sorted_events_by_type = sort_type
         })
@@ -120,7 +136,14 @@ const explorePage = Vue.createApp({
             let sort_fees = []
         
             snapshot.forEach(childSnapshot => {
-                sort_fees.push(childSnapshot.val())
+                // sort_fees.push(childSnapshot.val())
+                let event = childSnapshot.val()
+                let event_date = new Date(event.date)
+
+                if (this.check_date(event_date)) {
+                    sort_fees.push(event)
+                }
+                
             })
             this.sorted_events_by_fees = sort_fees
         })
@@ -130,7 +153,14 @@ const explorePage = Vue.createApp({
             let sort_date = []
         
             snapshot.forEach(childSnapshot => {
-                sort_date.push(childSnapshot.val())
+                let event = childSnapshot.val()
+                let event_date = new Date(event.date)
+
+                if (this.check_date(event_date)) {
+                    sort_date.push(event)
+                }
+
+
             })
             this.sorted_events_by_date = sort_date
         })
@@ -230,7 +260,7 @@ const explorePage = Vue.createApp({
                 if (snapshot.exists()) {
                   var db_values = snapshot.val();
                   var db_size = Object.keys(db_values).length
-                  var new_db_size = db_size + 1
+                  var new_db_size = db_size + 2
                 //   add event to array
                   set(ref(db, 'users/' + this.current_user + '/user_events/event_' + new_db_size), 
                     {
@@ -253,12 +283,29 @@ const explorePage = Vue.createApp({
               }).catch((error) => {
                 console.error(error);
               });  
-              delete this.display_events.id;
-              delete this.for_you_events.id;
+              // force page to reload
+              setTimeout(function(){
+                window.location.reload();
+              }, 500);
           },
 
 
-        // filter works, to be completed
+        formatting_start_date(date, time){
+        let split_time = time.split("-");
+        let start_time = split_time[0]
+        let calendar_start_time = start_time.slice(0,2) + ":" + start_time.slice(2,5) + ":00"
+        let final_start = date+"T"+calendar_start_time
+        return final_start
+        },
+        
+        formatting_end_date(date, time){
+        let split_time = time.split("-");
+        let end_time = split_time[1]
+        let calendar_end_time = end_time.slice(0,2) + ":" + end_time.slice(2,5) + ":00"
+        let final_end = date+"T"+calendar_end_time
+        return final_end
+        },
+
         format_date(date) {
             const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
