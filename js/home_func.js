@@ -14,9 +14,9 @@ function call_weather_api() {
             "Clouds": "img/temperature/clouds.jpg",
             "Clear": "img/temperature/clear.png",
             "Haze": "img/temperature/haze.jpg",
-            "Mist": "img/temperature/mist.jpg",
-            "Rain": "img/temperature/rain.jpg",
-            "Smoke": "img/temperature/smoke.jpg",
+            "Mist": "img/temperature/mist.png",
+            "Rain": "img/temperature/rain.png",
+            "Smoke": "img/temperature/smoke.png",
             "Snow": "img/temperature/snow.jpg",
             "Thunderstorm": "img/temperature/thunderstorm.jpg",
         }
@@ -27,21 +27,35 @@ function call_weather_api() {
         let text = `Today's temperature is ${rounded} °C`
         body.innerText = text;
         img_text = document.getElementById("api");
-        img_html = "<br><img src="
+        weather_text = `<div style = "color: white">`
+        img_html = "<img src="
             if (temp < 5){
-                img_html += " 'img/temperature/cold.png' height='125' width='125'>"
+                // img_html += " 'img/temperature/cold.png' height='50' width='50'>"
+                weather_text += "<span class= 'lead my-5' style = 'font-size:30px;'>Temperature: Cold  <img src='img/temperature/cold.png' height='30' width='30'></span><br>"
             }
             else if (temp > 5 && temp < 25){
-                img_html += " 'img/temperature/okay.jpg' height='125' width='125'>"
+                // img_html += " 'img/temperature/okay.jpg' height='50' width='50'>"
+                weather_text += "<span class= 'lead mt-5' style = 'font-size:30px'>Temperature: Normal  <img src='img/temperature/okay.jpg' height='30' width='30'></span><br>"
             }
             else {
-                img_html += " 'img/temperature/hot.png' height='125' width='125'>"
+                // img_html += " 'img/temperature/hot.png' height='50' width='50'>"
+                weather_text += "<span class= 'lead my-5' style = 'font-size:30px'>Temperature: Hot  <img src='img/temperature/hot.png' height='30' width='30'></span><br>"
             }
+            let counter = 0
             for (let weather of country_weather){
                 image = weather_type_images[weather.main]
-                img_html += "<img src="+image+" height='125' width='125'>"
+                // img_html += "<img src="+image+" height='50' width='50'>"
+                if (counter==0){
+                    weather_text += `<span class= 'lead mt-5' style = 'font-size:30px'>Weather: ${weather.main}  <img src='${image}' height='30' width='30'></span>`
+                    counter += 1
+                }
+                else {
+                    weather_text += `<span class= 'lead my-5' style = 'font-size:30px'>,<img src='${image}' height='30' width='30'></span>`
+                }
             }
-        img_text.innerHTML=img_html
+            weather_text += `</div>`
+            console.log(weather_text)
+            img_text.innerHTML= weather_text
 
     }
     )
