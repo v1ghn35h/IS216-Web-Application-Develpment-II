@@ -12,28 +12,40 @@ function call_weather_api() {
     .then(response => {
 
         // Inspect the response.data
-        console.log(response);
         //DOM manipulation
-
+        let weather_type_images = {
+            "Clouds": "img/temperature/clouds.jpg",
+            "Clear": "img/temperature/okay.jpg",
+            "Haze": "img/temperature/haze.jpg",
+            "Mist": "img/temperature/mist.jpg",
+            "Rain": "img/temperature/rain.jpg",
+            "Smoke": "img/temperature/smoke.jpg",
+            "Snow": "img/temperature/snow.jpg",
+            "Thunderstorm": "img/thunderstorm/clouds.jpg",
+        }
         let body = document.getElementById("temperature");
         let temp = Number(response.data.main.temp) - 273.15
         let rounded = Math.round((temp + Number.EPSILON) * 100) / 100   //rounded to 2 decimal places
+        let country_weather = response.data.weather
         let text = `Today's temperature is ${rounded} °C`
         body.innerText = text;
         img_text = document.getElementById("api");
         img_html = "<br><img src="
             if (temp < 5){
-                img_html += " 'img/temperature/cold.png' height='250' width='250'>"
-                img_text.innerHTML=img_html
+                img_html += " 'img/temperature/cold.png' height='200' width='200'>"
             }
             else if (temp > 5 && temp < 25){
-                img_html += " 'img/temperature/okay.jpg' height='250' width='250'>"
-                img_text.innerHTML=img_html
+                img_html += " 'img/temperature/okay.jpg' height='200' width='200'>"
             }
             else {
-                img_html += " 'img/temperature/hot.png' height='250' width='250'>"
-                img_text.innerHTML=img_html
+                img_html += " 'img/temperature/hot.png' height='200' width='200'>"
             }
+            for (let weather of country_weather){
+                image = weather_type_images[weather.main]
+                img_html += "<img src="+image+" height='200' width='200'><br>"
+            }
+        img_text.innerHTML=img_html
+
     }
     )
     .catch(error => {
