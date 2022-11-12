@@ -243,24 +243,33 @@
   <!-- confirm delete modal -->
   <form id="confirmDeleteTask">
     <div id="confirmDeleteTaskModal" class="modal">
-      <div class="modal-content text-end">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-end">
 
-        <!-- event title -->
-        <div class="modal-header">
-          <h4 class="modal-title"> Confirm Delete </h4>
-        </div>
-        <div class="modal-body text-start" id="confirmDeleteTaskBody">
-        </div>
-
-        <div class="mb-3 row">
-          <div class="col">
-            <!-- cancel button -->
-            <button type="button" id="cancelDeleteTaskButton" class="btn btn-outline-secondary"> Cancel </button>
-            <!-- confirm delete button -->
-            <button type="button" id="confirmDeleteTaskButton" class="btn btn-danger"> Delete Task </button>
+          <!-- event title -->
+          <div class="modal-header justify-content-center">
+            <h4 class="modal-title"> Confirm Delete </h4>
           </div>
-        </div>
+          
+          <div class="modal-body text-center">
+            <img src="img/icons/warning.png" style="max-width: 100%; height: 50px;">
+            <!-- populate task here -->
+            <div id="confirmDeleteTaskBody">
+            </div>
+          </div>
 
+          <div class="modal-footer justify-content-center">
+            <div class="row">
+              <div class="col">
+                <!-- cancel button -->
+                <button type="button" id="cancelDeleteTaskButton" class="btn btn-outline-secondary"> Cancel </button>
+                <!-- confirm delete button -->
+                <button type="button" id="confirmDeleteTaskButton" class="btn btn-danger"> Delete Task </button>
+              </div>
+            </div>
+          </div>
+  
+        </div>
       </div>
     </div>
   </form>
@@ -269,97 +278,100 @@
   <!-- add event modal -->
     <form id="addEvent">
       <div id="myModal" class="modal">
-        <div class="modal-content">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content">
     
-          <div class="container text-center">
-            <span class="close" style="float: right">&times;</span>
-          </div>
-              
+            <div class="container text-center">
+              <span class="close" style="float: right">&times;</span>
+            </div>
+                
+      
+            <!-- event header -->
+            <div class="p-3">
+              <h4 class="display-8 text-center"> Create a New Event </h4>
+            </div>
+      
+            <!-- event name -->
+            <div class="mb-3 row">
+              <label for="title" class="col-12 col-xl-2 col-form-label"> 
+                <i class="bi bi-justify pe-2"></i>
+                Title 
+              </label>
+              <div class="col-12 col-xl-10">
+                <input type="text" class="form-control" id="event_title">
+              </div>
+            </div>
+      
+            <!-- start date & time -->
+            <div class="row">
+              <!-- start date -->
+              <label for="eventDate" class="col-12 col-xl-2 col-form-label"> 
+                <i class="bi bi-calendar-event pe-2"></i>
+                Start Date 
+              </label>
+              <div class="col-12 col-xl-4 mb-3">
+                <!-- fetch default date that the user clicked on, but allows user to change date also -->
+                <input type="date" class="form-control" id="startDate">
+              </div>
+              <!-- start time -->
+              <label for="eventDate" class="col-12 col-xl-2 col-form-label"> 
+                <i class="bi bi-clock pe-2"></i>
+                Start Time 
+              </label>
+              <div class="col-12 col-xl-4 mb-3">
+                <!-- fetch time that the user clicked on -->
+                <input type="time" class="form-control" id="startTime">
+              </div>
+            </div>
+      
+            <!-- end date & time -->
+            <div class="row">
+              <!-- end date -->
+              <label for="endDate" class="col-12 col-xl-2 col-form-label"> 
+                <i class="bi bi-calendar-event pe-2"></i>
+                End Date 
+              </label>
+              <div class="col-12 col-xl-4 mb-3">
+                <input type="date" class="form-control" id="endDate">
+              </div>
+              <!-- end time -->
+              <label for="endDate" class="col-12 col-xl-2 col-form-label"> 
+                <i class="bi bi-clock pe-2"></i>
+                End Time 
+              </label>
+              <div class="col-12 col-xl-4 mb-3">
+                <input type="time" class="form-control" id="endTime">
+              </div>
+            </div>
     
-          <!-- event header -->
-          <div class="p-3">
-            <h4 class="display-8 text-center"> Create a New Event </h4>
-          </div>
-    
-          <!-- event name -->
-          <div class="mb-3 row">
-            <label for="title" class="col-12 col-xl-2 col-form-label"> 
-              <i class="bi bi-justify pe-2"></i>
-              Title 
-            </label>
-            <div class="col-12 col-xl-10">
-              <input type="text" class="form-control" id="event_title">
+            <!-- category -->
+            <div id="category" class="row mb-3">
+              <label for="dropdown" class="col-12 col-xl-2 col-form-label"> 
+                <i class="bi bi-tags pe-2"></i>
+                Category 
+              </label>
+              <div class="dropdown col-12 col-xl-10">
+                <button class="btn btn-normal dropdown-toggle form-control" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" v-html="selector()"></button>
+                <ul class="dropdown-menu">
+                  <li v-for="color in colors" v-on:click="setColor(color.hex, color.name)">
+                    <a class="dropdown-item" href="#">
+                      <span v-bind:style="{background: color.hex}"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> 
+                      &nbsp;
+                      {{ color.name }}
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
-    
-          <!-- start date & time -->
-          <div class="row">
-            <!-- start date -->
-            <label for="eventDate" class="col-12 col-xl-2 col-form-label"> 
-              <i class="bi bi-calendar-event pe-2"></i>
-              Start Date 
-            </label>
-            <div class="col-12 col-xl-4 mb-3">
-              <!-- fetch default date that the user clicked on, but allows user to change date also -->
-              <input type="date" class="form-control" id="startDate">
-            </div>
-            <!-- start time -->
-            <label for="eventDate" class="col-12 col-xl-2 col-form-label"> 
-              <i class="bi bi-clock pe-2"></i>
-              Start Time 
-            </label>
-            <div class="col-12 col-xl-4 mb-3">
-              <input type="time" class="form-control" id="startTime">
-            </div>
-          </div>
-    
-          <!-- end date & time -->
-          <div class="row">
-            <!-- end date -->
-            <label for="endDate" class="col-12 col-xl-2 col-form-label"> 
-              <i class="bi bi-calendar-event pe-2"></i>
-              End Date 
-            </label>
-            <div class="col-12 col-xl-4 mb-3">
-              <input type="date" class="form-control" id="endDate">
-            </div>
-            <!-- end time -->
-            <label for="endDate" class="col-12 col-xl-2 col-form-label"> 
-              <i class="bi bi-clock pe-2"></i>
-              End Time 
-            </label>
-            <div class="col-12 col-xl-4 mb-3">
-              <input type="time" class="form-control" id="endTime">
-            </div>
-          </div>
   
-          <!-- category -->
-          <div id="category" class="row mb-3">
-            <label for="dropdown" class="col-12 col-xl-2 col-form-label"> 
-              <i class="bi bi-tags pe-2"></i>
-              Category 
-            </label>
-            <div class="dropdown col-12 col-xl-10">
-              <button class="btn btn-normal dropdown-toggle form-control" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" v-html="selector()"></button>
-              <ul class="dropdown-menu">
-                <li v-for="color in colors" v-on:click="setColor(color.hex, color.name)">
-                  <a class="dropdown-item" href="#">
-                    <span v-bind:style="{background: color.hex}"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> 
-                    &nbsp;
-                    {{ color.name }}
-                  </a>
-                </li>
-              </ul>
+            <!-- add event button -->
+            <div class="mb-3 row">
+              <div class="col-4">
+                <button type="button" id="addEventButton" class="btn btn-dark"> Add Event </button>
+              </div>
             </div>
+      
           </div>
-
-          <!-- add event button -->
-          <div class="mb-3 row">
-            <div class="col-4">
-              <button type="button" id="addEventButton" class="btn btn-dark"> Add Event </button>
-            </div>
-          </div>
-    
         </div>
       </div>
     </form>
@@ -381,49 +393,50 @@
 
   <!-- display event modal -->
   <div id="myOtherModal" class="modal">
-    <div class="modal-content">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
 
-      <!-- HEADER -->
-      <div class="modal-header">
-  
-          <!-- event header -->
-          <div class="container-fluid p-2">
-            <span class="close" style="float: right">&times;</span>
-            <span id="eventIcon" style="height: 50px"> </span>
-            &nbsp;&nbsp;&nbsp;
-            <span id="eventTitle" class="h4 fw-bold"></span>
-          </div>
+        <!-- HEADER -->
+        <div class="modal-header">
     
-      </div>
+            <!-- event header -->
+            <div class="container-fluid p-2">
+              <span class="close" style="float: right">&times;</span>
+              <span id="eventIcon" style="height: 50px"> </span>
+              &nbsp;&nbsp;&nbsp;
+              <span id="eventTitle" class="h4 fw-bold"></span>
+            </div>
       
-      <!-- BODY -->
-      <div class="modal-body">
-        <!-- event details -->
-        <div class="p-3">
-          <div id="eventPicture"></div>
+        </div>
+        
+        <!-- BODY -->
+        <div class="modal-body">
+          <!-- event details -->
+          <div class="p-3">
+            <div id="eventPicture"></div>
 
-          <div class="container">
-            <b> Start: </b>
-            <span id="eventStart"></span>
-            <br>
+            <div class="container">
+              <b> Start: </b>
+              <span id="eventStart"></span>
+              <br>
 
-            <b> End: </b>
-            <span id="eventEnd"></span>
-            <br>
+              <b> End: </b>
+              <span id="eventEnd"></span>
+              <br>
 
-            <b> Category: </b>
-            <span class="dot" id="eventColor"> </span>
-            <span id="eventCategory"></span>
+              <b> Category: </b>
+              <span class="dot" id="eventColor"> </span>
+              <span id="eventCategory"></span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- FOOTER -->
-      <div class="modal-footer">
-        <!-- delete event -->
-        <button id="deleteEventButton" type="button" class="btn btn-outline-danger" data-bs-dismiss="myOtherModal"> Delete Event </button>
+        <!-- FOOTER -->
+        <div class="modal-footer">
+          <!-- delete event -->
+          <button id="deleteEventButton" type="button" class="btn btn-outline-danger" data-bs-dismiss="myOtherModal"> Delete Event </button>
+        </div>
       </div>
-    
     </div>
 
     <!-- successful delete modal -->

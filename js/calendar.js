@@ -829,7 +829,7 @@ document.addEventListener('DOMContentLoaded', function() {
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: 'addEvent dayGridMonth listYear',
+      right: 'addEvent dayGridMonth,listYear',
     },
 
     buttonText: {
@@ -873,6 +873,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // set HTML input value as date selected
         let date_selected = document.getElementById("startDate")
         date_selected.value = dateStr
+
+        console.log(date_selected)
 
         // when button is clicked
         document.getElementById('addEventButton').addEventListener("click", function() {
@@ -1090,12 +1092,6 @@ document.addEventListener('DOMContentLoaded', function() {
             let event_pic = event_media[event_category][2]
             eventPicture.innerHTML = `<img src="img/${event_pic}" style="width: 100%; padding-bottom: 10px;">`
           }
-
-          // // event category is not set
-          // else if (event_category = "") {
-          //   let default_pic = event_pictures["Default"]
-          //   eventCategory.innerHTML = `<img src="img/${default_pic}" style="width: 50%; padding-bottom: 10px;">`
-          // }
         }
 
         // set event title
@@ -1152,8 +1148,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
           remove(tasksRef).then(() => {
-            
-            // modal.style.display = "none";
 
             // display deleted successfully
             delete_success_modal.style.display = "block";
