@@ -34,7 +34,6 @@ const db = getDatabase();
 const users = ref(db, 'users') 
 const categories = ref(db, 'categories')
 
-
 //////////////////////////////////////////////////
 // FIREBASE GET categories
 let categories_obj = {} // stores all categories available
@@ -407,9 +406,31 @@ function UserForYouEvents () {
                 `
         }
     }}
-    document.getElementById('events').innerHTML = tempHTML
+    document.getElementById('past_events').innerHTML = tempHTML
 
     if (counter == 0) {
         document.getElementById('events_h2').innerText = "";
     }
 }
+
+function setButtonColor(elem) {
+    let info_btn = document.getElementById("info-tab")
+    let preference_btn =  document.getElementById("preference-tab")
+    let events_btn = document.getElementById("events-tab")
+    
+    // reset color and background color of both
+    info_btn.style.removeProperty("color")
+    info_btn.style.removeProperty("background-color")
+    preference_btn.style.removeProperty("color")
+    preference_btn.style.removeProperty("background-color")
+    events_btn.style.removeProperty("color")
+    events_btn.style.removeProperty("background-color")
+    
+    // set color of selected element
+    elem.style.color = "white"
+    elem.style.backgroundColor = "#104547"
+}
+
+document.getElementById('info-tab').addEventListener("click", function () { setButtonColor(this); })
+document.getElementById('preference-tab').addEventListener("click", function () { setButtonColor(this); })
+document.getElementById('events-tab').addEventListener("click", function () { setButtonColor(this); })
