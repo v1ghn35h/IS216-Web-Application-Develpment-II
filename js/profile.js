@@ -58,7 +58,7 @@ let schools = ["CIS", "SOA", "LKCSOB", "SOE", "SCIS", "YPHSOL", "SOSS"]
 onValue(users, (snapshot => {
     const data = snapshot.val(); 
 
-    document.getElementById('save').addEventListener("click", updateUserInfo);
+    document.getElementById('save').addEventListener("click", formControl);
 
     userInfo = data.user1.user_profile_info
     
@@ -240,6 +240,51 @@ function updateUserInfo() {
 
     $('#successModal').modal('show');
 
+}
+
+function formControl() {
+
+    let error_msg = ""
+
+    if (document.getElementById('name').value == "") {
+        error_msg += "Fill in your name"
+    }
+
+    if (document.getElementById('username').value == "") {
+        error_msg += "Fill in your username"
+    }
+
+    if (document.getElementById('birthday').value == "") {
+        error_msg += "Fill in your birthday"
+    }
+
+    if (document.getElementById('matric_no').value == "") {
+        error_msg += "Fill in your matric no."
+    } else if (document.getElementById('matric_no').value.length != 8) {
+        error_msg += "Enter a valid 8 digit matric no."
+    }
+
+    if (document.getElementById('phone_no').value == "") {
+        error_msg += "Fill in your phone no."
+    } else if (document.getElementById('phone_no').value.length != 8) {
+        error_msg += "Enter a valid 8 digit phone no."
+    }
+
+    if (error_msg != "") {
+        var $form = $(this).closest('form');
+        $form.toggleClass('is-readonly is-editing');
+        var isReadonly = $form.hasClass('is-readonly');
+        $form.find('input,textarea,select').prop('disabled', isReadonly);
+
+        document.getElementById('error_msg').innerText = error_msg;
+
+        $('#errorModal').modal('show');
+
+
+        return
+    }
+    
+    updateUserInfo()
 }
 
 
