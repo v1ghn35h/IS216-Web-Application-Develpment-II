@@ -34,7 +34,6 @@ const db = getDatabase();
 const users = ref(db, 'users') 
 const categories = ref(db, 'categories')
 const all_user_events = ref(db, 'users/user1/user_events') 
-console.log(all_user_events);
 
 //////////////////////////////////////////////////
 // FIREBASE GET categories
