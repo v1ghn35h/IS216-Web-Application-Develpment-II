@@ -38,13 +38,34 @@ onValue(users, (snapshot => {
 	  const data = snapshot.val(); 
 	  userInfo = data.user1.user_profile_info
     user_name = userInfo.name
-    user_email = userInfo.email
-    user_matric = userInfo.matric_no
     user_preference = userInfo.preference_info.preference
-    user_upcoming_events = data.user1.user_events
     let text = "Hello " + user_name + "!"
     document.getElementById("greeting").innerHTML = text
-    UserUpcomingSchoolEvents()
+    user_upcoming_events = data.user1.user_events
+    let counter = 0
+    let current_date = new Date()
+    for(let event_info in user_upcoming_events){
+      if (Object.hasOwnProperty.call(user_upcoming_events, event_info)){
+        let info_of_event= user_upcoming_events[event_info].start
+        let formatted_event_date = ""
+        if (info_of_event.includes("T")){
+          let info_split = info_of_event.split("T")
+          formatted_event_date = info_split[0]
+        }
+        else {
+          formatted_event_date = info_of_event
+        }
+        let e_date = new Date(formatted_event_date)
+        console.log(e_date)
+        console.log(current_date)
+        let check = e_date > current_date
+          if (check){
+            counter += 1
+          }
+      }
+    }
+    let number_of_upcoming_events = counter
+    UserUpcomingSchoolEvents(number_of_upcoming_events)
 }));
 
 // FIREBASE POPULATE UPCOMING EVENTS
@@ -70,11 +91,11 @@ function UserForYouEvents () {
 const homePage = Vue.createApp({ 
     data() { 
         return { 
-            display_events: {},
+            display_events:[],
             db_events: {}, 
             userInfo: '',
             current_user: "user1",
-            for_you_events: {},
+            for_you_events: [],
             month_to_num: {
               "January": '01',
               "February": '02',
@@ -95,16 +116,24 @@ const homePage = Vue.createApp({
         onValue(events, (snapshot) => {
             const data = snapshot.val()
             this.db_events = data
-            this.display_events = this.db_events
+            let current_upcoming_events = {}
+            let current_for_you_events = {}
+            let upcoming_counter = 0
+            let for_you_counter = 0
+            snapshot.forEach(childSnapshot => {
+              if (upcoming_counter <= 10 && this.check_date(childSnapshot.val().date)){
+                let event_id = childSnapshot.val().eventId
+                current_upcoming_events[event_id] = childSnapshot.val()
+                upcoming_counter += 1
+              }
+              if (for_you_counter <= 10 && this.check_date(childSnapshot.val().date) && user_preference.includes(childSnapshot.val().type)){
+                current_for_you_events[childSnapshot.val().eventId] = childSnapshot.val()
+                for_you_counter += 1
+              }
+            })
+            this.display_events = current_upcoming_events
+            this.for_you_events = current_for_you_events
         })
-        onValue(users, (snapshot) => {
-            const data = snapshot.val()
-            this.userInfo = data.user1.user_profile_info
-            this.user_preference = this.userInfo.preference_info.preference
-        })
-        console.log(for_you)
-        this.for_you_events = for_you
-        console.log(this.for_you_events)
     },
     methods: {
         // ADD ID AND CHANGE DATE
@@ -136,21 +165,14 @@ const homePage = Vue.createApp({
               }
             }).catch((error) => {
               console.error(error);
-            });        
+            });  
+            console.log(this.display_events)
+            delete this.display_events.id;
+            console.log(this.display_events)
+            delete this.for_you_events.id;
         },
 
-        format_date(date) {
-          const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-          let date_obj = new Date(date)
-          let day = date_obj.getDate()
-          let month = months[date_obj.getMonth()]
-          let year = date_obj.getFullYear()
-          let date_formatted = day + " " + month + " " + year
-          return date_formatted
-      },
         formatting_start_date(date, time){
-          console.log(date);
           let split_time = time.split("-");
           let start_time = split_time[0]
           let calendar_start_time = start_time.slice(0,2) + ":" + start_time.slice(2,5) + ":00"
@@ -163,110 +185,238 @@ const homePage = Vue.createApp({
           let calendar_end_time = end_time.slice(0,2) + ":" + end_time.slice(2,5) + ":00"
           let final_end = date+"T"+calendar_end_time
           return final_end
-        }
+        },
+        format_date(date) {
+          const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+          let date_obj = new Date(date)
+          let day = date_obj.getDate()
+          let month = months[date_obj.getMonth()]
+          let year = date_obj.getFullYear()
+          let date_formatted = day + " " + month + " " + year
+          return date_formatted
+      },
+      check_date(date){
+        let current_date = new Date()
+        let e_date = new Date(date)
+        return e_date > current_date
+      }
     } 
 });
 
 const vm = homePage.mount('#homePage'); 
 
-function UserUpcomingSchoolEvents () {
-  let tempHTML = `
-  <br>
-  <div class="mx-auto box">
-  <div id="UpcomingEvents" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-      <button type="button" data-bs-target="#UpcomingEvents" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#UpcomingEvents" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#UpcomingEvents" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      <button type="button" data-bs-target="#UpcomingEvents" data-bs-slide-to="3" aria-label="Slide 4"></button>
-      <button type="button" data-bs-target="#UpcomingEvents" data-bs-slide-to="4" aria-label="Slide 5"></button>
-      <button type="button" data-bs-target="#UpcomingEvents" data-bs-slide-to="5" aria-label="Slide 6"></button>
-  </div>
-  <div class="carousel-inner">` 
-  let current_date = new Date()
-  let num_to_month = {
-    "01": 'January',
-    "02": 'February',
-    "03": 'March',
-    "04": 'April',
-    "05": 'May',
-    "06": 'June',
-    "07": 'July',
-    "08": 'August',
-    "09": 'September',
-    "10": 'October',
-    "11": 'November',
-    "12": 'December',
-  }
-  let counter = 0;
+function UserUpcomingSchoolEvents (number_of_upcoming_events) {
+  console.log(number_of_upcoming_events)
+  if (number_of_upcoming_events >= 6){
+    let tempHTML = `
+    <br>
+    <div class="mx-auto box">
+    <div id="UpcomingEvents" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#UpcomingEvents" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#UpcomingEvents" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#UpcomingEvents" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#UpcomingEvents" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#UpcomingEvents" data-bs-slide-to="4" aria-label="Slide 5"></button>
+        <button type="button" data-bs-target="#UpcomingEvents" data-bs-slide-to="5" aria-label="Slide 6"></button>
+    </div>
+    <div class="carousel-inner">` 
+    let current_date = new Date()
+    let num_to_month = {
+      "01": 'January',
+      "02": 'February',
+      "03": 'March',
+      "04": 'April',
+      "05": 'May',
+      "06": 'June',
+      "07": 'July',
+      "08": 'August',
+      "09": 'September',
+      "10": 'October',
+      "11": 'November',
+      "12": 'December',
+    }
+    let counter = 0;
+    for (let event in user_upcoming_events) {
+    if (Object.hasOwnProperty.call(user_upcoming_events, event)) {
+            let name_of_event = user_upcoming_events[event].title
+            let photo_of_event= user_upcoming_events[event].photo_url
+            let info_of_event= user_upcoming_events[event].start
+            let formatted_event_date = ""
+            if (info_of_event.includes("T")){
+              let info_split = info_of_event.split("T")
+              formatted_event_date = info_split[0]
+              let event_date = formatted_event_date.split('-')
+              let time = info_split[1].split(':')
+              let day = event_date[2]
+              let month = event_date[1]
+              let year = event_date[0]
+              let hour = time[0]
+              let min = time[1]
+              info_of_event = day + " " + num_to_month[month] + " " + year + ", " + hour + min
+            }
+            else {
+              formatted_event_date = info_of_event
+              let event_date = formatted_event_date.split('-')
+              let day = event_date[2]
+              let month = event_date[1]
+              let year = event_date[0]
+              info_of_event = day + " " + num_to_month[month] + " " + year
+            }
+  
+            let e_date = new Date(formatted_event_date)
+            let check = e_date > current_date
 
-  for (let event in user_upcoming_events) {
-  if (Object.hasOwnProperty.call(user_upcoming_events, event) && (counter < 5)) {
-          let name_of_event = user_upcoming_events[event].title
-          let photo_of_event= user_upcoming_events[event].photo_url
-          let info_of_event= user_upcoming_events[event].start
-          let formatted_event_date = ""
-          if (info_of_event.includes("T")){
-            let info_split = info_of_event.split("T")
-            formatted_event_date = info_split[0]
-            let event_date = formatted_event_date.split('-')
-            let time = info_split[1].split(':')
-            let day = event_date[2]
-            let month = event_date[1]
-            let year = event_date[0]
-            let hour = time[0]
-            let min = time[1]
-            info_of_event = day + " " + num_to_month[month] + " " + year + ", " + hour + min
-          }
-          else {
-            formatted_event_date = info_of_event
-            let event_date = formatted_event_date.split('-')
-            let day = event_date[2]
-            let month = event_date[1]
-            let year = event_date[0]
-            info_of_event = day + " " + num_to_month[month] + " " + year
-          }
-
-          let e_date = new Date(formatted_event_date)
-          let check = e_date > current_date
-          if (counter == "0" && check){
-              tempHTML += `
-              <div class="carousel-item active">
-              <img src="${photo_of_event}" class="d-block w-100" height="300" width="600">
-                <div class="carousel-caption d-block" style = "background-color: white; color: black; font-family: font-family: Georgia, 'Times New Roman', Times, serif">
+            if (counter == "0" && check){
+                tempHTML += `
+                <div class="carousel-item active">
+                <img src="${photo_of_event}" class="d-block w-100" height="300" width="600">
+                  <div class="carousel-caption d-block" style = "background-color: white; color: black; font-family: font-family: Georgia, 'Times New Roman', Times, serif">
+                      <h5>${name_of_event}</h5>
+                      <p>${info_of_event}</p>
+                  </div>
+                </div>
+                `
+            }
+            else if (check){
+              console.log("here too")
+                tempHTML += `
+                <div class="carousel-item">
+                <img src="${photo_of_event}" class="d-block w-100" height="300" width="600">
+                  <div class="carousel-caption d-block" style = "background-color: white; color: black; font-family: Georgia, 'Times New Roman', Times, serif">
                     <h5>${name_of_event}</h5>
                     <p>${info_of_event}</p>
+                  </div>
                 </div>
-              </div>
-              `
-          }
-          else if (check){
-              tempHTML += `
-              <div class="carousel-item">
-              <img src="${photo_of_event}" class="d-block w-100" height="300" width="600">
-                <div class="carousel-caption d-block" style = "background-color: white; color: black; font-family: Georgia, 'Times New Roman', Times, serif">
-                  <h5>${name_of_event}</h5>
-                  <p>${info_of_event}</p>
+                `
+            }
+            counter += 1
+        }}
+    
+    tempHTML += `
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#UpcomingEvents" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#UpcomingEvents" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+    </div>
+    </div>
+    `
+    console.log(tempHTML)
+    document.getElementById('carousel_user_events').innerHTML = tempHTML
+  }
+  else if (number_of_upcoming_events == 0){
+    tempHTML = `
+    <div class = "container text-center m-3 p-5 display-6 rounded" style = "border: 1px solid #ccc; background-color: #104547; color: white">
+        No upcoming events!
+    </div>
+    `
+  }
+  else {
+    let tempHTML = `<br>
+    <div class="mx-auto box">
+    <div id="UpcomingEvents" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">`
+    for (let i = 0; i < number_of_upcoming_events; i++) {
+      if(i == 0){
+        tempHTML += `<button type="button" data-bs-target="#UpcomingEvents" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>`;
+      }
+      else {
+        tempHTML += `<button type="button" data-bs-target="#UpcomingEvents" data-bs-slide-to="${i}" aria-label="Slide ${i+1}"></button>`
+      }
+    }
+    tempHTML += `</div>
+    <div class="carousel-inner">`
+    let current_date = new Date()
+    let num_to_month = {
+      "01": 'January',
+      "02": 'February',
+      "03": 'March',
+      "04": 'April',
+      "05": 'May',
+      "06": 'June',
+      "07": 'July',
+      "08": 'August',
+      "09": 'September',
+      "10": 'October',
+      "11": 'November',
+      "12": 'December',
+    }
+    let counter = 0
+    for (let event in user_upcoming_events) {
+    if (Object.hasOwnProperty.call(user_upcoming_events, event)) {
+      console.log(user_upcoming_events[event])
+            let name_of_event = user_upcoming_events[event].title
+            let photo_of_event= user_upcoming_events[event].photo_url
+            let info_of_event= user_upcoming_events[event].start
+            let formatted_event_date = ""
+            if (info_of_event.includes("T")){
+              let info_split = info_of_event.split("T")
+              formatted_event_date = info_split[0]
+              let event_date = formatted_event_date.split('-')
+              let time = info_split[1].split(':')
+              let day = event_date[2]
+              let month = event_date[1]
+              let year = event_date[0]
+              let hour = time[0]
+              let min = time[1]
+              info_of_event = day + " " + num_to_month[month] + " " + year + ", " + hour + min
+            }
+            else {
+              formatted_event_date = info_of_event
+              let event_date = formatted_event_date.split('-')
+              let day = event_date[2]
+              let month = event_date[1]
+              let year = event_date[0]
+              info_of_event = day + " " + num_to_month[month] + " " + year
+            }
+            let e_date = new Date(formatted_event_date)
+            let check = e_date > current_date
+            if (counter == "0" && check){
+                tempHTML += `
+                <div class="carousel-item active">
+                <img src="${photo_of_event}" class="d-block w-100" height="300" width="600">
+                  <div class="carousel-caption d-block" style = "background-color: white; color: black; font-family: font-family: Georgia, 'Times New Roman', Times, serif">
+                      <h5>${name_of_event}</h5>
+                      <p>${info_of_event}</p>
+                  </div>
                 </div>
-              </div>
-              `
-          }
-          counter += 1
-          // }
-      }}
-  
-  tempHTML += `
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#UpcomingEvents" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#UpcomingEvents" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-  </button>
-  </div>
-  </div>
-  `
-  document.getElementById('carousel_user_events').innerHTML = tempHTML
+                `
+            }
+            else if (check){
+              console.log(counter)
+                tempHTML += `
+                <div class="carousel-item">
+                <img src="${photo_of_event}" class="d-block w-100" height="300" width="600">
+                  <div class="carousel-caption d-block" style = "background-color: white; color: black; font-family: Georgia, 'Times New Roman', Times, serif">
+                    <h5>${name_of_event}</h5>
+                    <p>${info_of_event}</p>
+                  </div>
+                </div>
+                `
+            }
+            counter += 1
+        }}
+    
+    tempHTML += `
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#UpcomingEvents" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#UpcomingEvents" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+    </div>
+    </div>
+    `
+    console.log(tempHTML)
+    document.getElementById('carousel_user_events').innerHTML = tempHTML
+
+  }
 }

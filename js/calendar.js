@@ -485,9 +485,7 @@ $(() => {
 
 // ---------------------------------------
 // SEARCH EVENTS
-let search_query = document.getElementById("search_results")
-// const allEvents = ref(db, `users/${current_user}/user_events/`)
-const allEvents = ref(db, 'events')
+let search_results = document.getElementById("search_results")
 
 // Vue Instance
 const app = Vue.createApp({
@@ -499,78 +497,104 @@ const app = Vue.createApp({
     data() {
         return {
             search_query: "",
-            search_result:"",
-            display_events: '',
-            db_events: '', // this stores all events extracted from db
-            sorted_events_by_date: null
+            search_results: ""
         }
-    },
-
-    beforeMount() { 
-      console.log("====Function-GETALLEVENTS===")
-      onValue(allEvents, (snapshot) => {
-          const data = snapshot.val()
-          console.log("-------In event mounted------");
-          console.log(data);
-          this.db_events = data
-          this.display_events = data
-          // console.log(this.display_events);
-
-          console.log("-------end event mounted------");
-      }),
-
-      // events sorted by start date
-      get(query(allEvents, orderByChild("start"))).then((snapshot) => {
-        let sort_date = []
-    
-        snapshot.forEach(childSnapshot => {
-            sort_date.push(childSnapshot.val())
-        })
-        this.sorted_events_by_date = sort_date
-    })
     },
 
     // Method
     methods: {
         searchForEvents() {
-          // TO ADD AFTER TEH ADD FROM HOMEPAGE TO DB ISSUE HAS BEEN RECTIFIED
-          // let user_events = all_events // fetch all user events
 
           // clear previously populated events
-          var placeholder = document.getElementById("search_results")
-          placeholder.innerHTML = ""
-          search_query.innerHTML = ""
+          this.search_results = ""
 
           var search_val = this.search_query.toLowerCase()
           
-          for (var thing of this.sorted_events_by_date){
-            var ref = thing.name.toLowerCase()
+          let this_search_query_events = []
 
-            if (ref.includes(search_val) && this.search_query != "") { // add && user_events.includes(search_val)
+          for (var thing of all_events){
+            var ref = thing.title.toLowerCase()
 
-              let event_title = thing.name
-              console.log(event_title)
-              let event_date = thing.date
-              let event_time = thing.time
-              let event_category = thing.type
+            if (ref.includes(search_val) && this.search_query != "") {
 
-              let find_object = colors.find(o => o.name === event_category); 
-              let event_color = find_object.hex
+              // thing is an object
+
+              let category = thing.category
+              let end = thing.end
+              let id = thing.id
+              let photo_url = thing.photo_url
+              let start = thing.start
+              let start_date = Date.parse(thing.start)
+              let title = thing.title
               
-              // add new events
-              placeholder.innerHTML += `<div class="card" style="width: 100%">
-                                          <div class="card-body" style="color: white; background-color: ${event_color}">
-                                            <h5 class="card-title"> ${event_title} </h5>
-                                            <p class="card-text">
-                                              <b> Date: </b> ${event_date}
-                                              <br>
-                                              <b> Time: </b> ${event_time}
-                                            </p>
-                                          </div>
-                                        </div>
-                                          `
+              this_search_query_events.push({"category": category, 
+                                            "end": end,
+                                            "id": id,
+                                            "photo_url": photo_url,
+                                            "start": start,
+                                            "start_date": start_date,
+                                            "title": title
+                                            })
 
             }
+          }
+          
+          // sort this_search_query_events
+          let sorted_events_by_date = this_search_query_events.sort((a,b) => a.start - b.start)
+
+          for (let curr_event of sorted_events_by_date) {
+
+            let event_title = curr_event.title
+
+            // format date time
+            let event_start = curr_event.start
+            let event_end = curr_event.end
+
+            let formatted_start = ""
+            let formatted_end = ""
+
+            if (event_start.includes("T")) { // if there is time
+              let e_start = event_start.split("T")
+              let e_start_date = e_start[0]
+              let e_start_time = e_start[1].slice(0,5)
+              formatted_start = `${e_start_date} (${e_start_time})`
+            }
+            else {
+              formatted_start = `${event_start} (All Day)`
+            }
+
+            if (event_end.includes("T")) { // if there is time
+              let e_end = event_end.split("T")
+              let e_end_date = e_end[0]
+              let e_end_time = e_end[1].slice(0,5)
+              formatted_end = `${e_end_date} (${e_end_time})`
+            }
+            else {
+              formatted_end = `${event_end} (All Day)`
+            }
+
+            let event_category = curr_event.category
+            if (event_category == "") {
+              event_category = "Default"
+            }
+            let find_object = colors.find(o => o.name === event_category); 
+            let event_color = find_object.hex
+
+            // add new events
+            this.search_results += `<div class="card" style="width: 100%">
+                                        <div class="card-body" style="color: white; background-color: ${event_color}">
+                                          <h5 class="card-title"> ${event_title} </h5>
+                                          <p class="card-text">
+                                            <b> Start: </b> ${formatted_start}
+                                            <br>
+                                            <b> End: </b> ${formatted_end}
+                                          </p>
+                                        </div>
+                                      </div>
+                                        `
+
+            // this.search_results += "hi"
+            
           }
           
         }
