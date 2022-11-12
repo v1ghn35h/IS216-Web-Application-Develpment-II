@@ -389,6 +389,11 @@ onValue(users, (snapshot => {
     user_events = data.user1.user_events
     // console.log(user_events);
     UserForYouEvents()
+
+    addClickMessage() 
+
+    
+
 }));
 
 function UserForYouEvents () {
@@ -397,89 +402,256 @@ function UserForYouEvents () {
     for (let event in user_events) {
 		if (Object.hasOwnProperty.call(user_events, event)) {
             // console.log(event);
-            let name_of_event = user_events[event].title
-            let type_of_event = user_events[event].category
-            let club_of_event = user_events[event].event_club
-            let photo_of_event= user_events[event].photo_url
-            let date_of_event= user_events[event].event_date
-            let time_of_event= user_events[event].event_time
-            let location_of_event= user_events[event].event_location
-            let event_id= user_events[event].id.toString()
-            let event_date= user_events[event].start.slice(0,10)
-            let current_date = new Date().toJSON().slice(0, 10);
-            if (current_date > event_date){
-                counter += 1
-				tempHTML += ` 
-                <div class="card my-5 mx-3" >
-                    <!-- start of card-->
-                    <div id="${event_id}">
-                        <div class="text-box" style ="height: 300px">
-                            <div class="image-box">
-                                <img src="${photo_of_event}" />
-                            </div>
-                            <div class="text-container">
-                                <h5 class="card-title"> ${name_of_event} </h5>
-                                <!-- SUBTITLE -->
-                                <h6 class="card-subtitle mb-2 "> ${type_of_event} </h6>
-                                <!-- BODY -->
-                                <p class="card-text text-wrap">
-                                    Date: ${date_of_event}
-                                    <br>
-                                    Time: ${time_of_event}
-                                    <br>
-                                    Club: ${club_of_event}
-                                </p>
-                                
-                            </div>
-                        </div>
-                        <!-- more info -->
-                        <div style="display:flex; align-content: flex-start; margin: 15px;">
-                            <button type="button" id="button_${event_id}" class="btn details-btn mt-3 " data-bs-target="#modal-${event_id}"
-                                data-bs-toggle="modal">More info</button>
-                        </div>
-                    </div>
-                    <!-- end of card-->
+            if (Object.hasOwnProperty.call(user_events[event], "event_id")) {
 
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="modal-${event_id}" tabindex="-1" aria-labelledby="InfoPageLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-scrollable modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="InfoPageLabel">${club_of_event}</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
+                let name_of_event = user_events[event].title
+                console.log(name_of_event);
+                let type_of_event = user_events[event].category
+                let club_of_event = user_events[event].event_club
+                let photo_of_event= user_events[event].photo_url
+                let date_of_event= user_events[event].event_date
+                let time_of_event= user_events[event].event_time
+                // let location_of_event= user_events[event].event_location
+                let event_id= user_events[event].event_id
+                let event_date= user_events[event].start.slice(0,10)
+                let current_date = new Date().toJSON().slice(0, 10);
+                if (current_date > event_date){
+                    counter += 1
+                    tempHTML += ` 
+                    <div class="card my-5 mx-3" >
+                        <!-- start of card-->
+                        <div id="${event_id}">
+                            <div class="text-box" style ="height: 300px">
+                                <div class="image-box">
+                                    <img src="${photo_of_event}" />
                                 </div>
-                                <div class="modal-body">
-                                    <div class="container p-2">
-                                        <img src="${photo_of_event}"
-                                            style="width:500px; height:250px" alt="..." class="center "/>
-                                    </div>
-                                    <p class="display-6 lead text-center">${name_of_event}</p>
-                                    <hr>
-                                    <div class="container">
-                                        <p>testing text</p>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                <div class="text-container">
+                                    <h5 class="card-title"> ${name_of_event} </h5>
+                                    <!-- SUBTITLE -->
+                                    <h6 class="card-subtitle mb-2 "> ${type_of_event} </h6>
+                                    <!-- BODY -->
+                                    <p class="card-text text-wrap">
+                                        Date: ${date_of_event}
+                                        <br>
+                                        Time: ${time_of_event}
+                                        <br>
+                                        Club: ${club_of_event}
+                                    </p>
                                     
                                 </div>
                             </div>
+                            <!-- more info -->
+                            <div style="display:flex; align-content: flex-start; margin: 15px;">
+                                <button type="button" id="button_${event_id}" class="btn details-btn mt-3 " data-bs-target="#modal-${event_id}"
+                                    data-bs-toggle="modal">More info</button>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <!-- END OF SIGN UP & MORE INFO -->
-                </div> <!-- end of event div-->
-                `
-        }
+                        <!-- end of card-->
+                    </div> <!-- end of event div-->
+                    `
+
+                    // START OF MODEL
+                    tempHTML += `
+                    <div class="modal fade" id="modal-${event_id}" tabindex="-1" aria-labelledby="InfoPageLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="InfoPageLabel">${club_of_event}</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                    `
+
+                    if (Object.hasOwnProperty.call(user_events[event], "event_msg")) {
+                        let event_msg = user_events[event].event_msg.msg
+                        if (event_msg != "") {
+                            tempHTML += `
+                                        <div class="modal-body" id="modal-body-${event_id}">
+                                            <div class="container p-2">
+                                                <img src="${photo_of_event}"
+                                                    style="width:500px; height:250px" alt="..." class="center "/>
+                                            </div>
+                                            <p class="display-6 lead text-center">${name_of_event}</p>
+                                            <hr>
+                                            <div class="container">
+                                                <p id="p_msg_${event_id}">${event_msg}</p>
+                                                <textarea id="textarea_msg_${event_id}" style="display: none" class="form-control" placeholder="${event_msg}"></textarea>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" id="edit_msg_${event_id}" class="btn">Edit</button>
+                                        <button style="display: none" type="button" id="save_msg_${event_id}" class="btn">Save</button>
+                                        </div>     
+                            `
+                        } else {
+                            tempHTML += `
+                                        <div class="modal-body">
+                                            <div class="container p-2">
+                                                <img src="${photo_of_event}"
+                                                    style="width:500px; height:250px" alt="..." class="center "/>
+                                            </div>
+                                            <p class="display-6 lead text-center">${name_of_event}</p>
+                                            <hr>
+                                            <div class="container">
+                                                <p><textarea id="textarea_${event_id}" class="form-control" placeholder="Type your message here..."></textarea></p>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" id="add_msg_${event_id}" class="btn">Add</button>
+                                        </div>
+                            `  
+                        }
+                    } else {
+                        tempHTML += `
+                                    <div class="modal-body">
+                                        <div class="container p-2">
+                                            <img src="${photo_of_event}"
+                                                style="width:500px; height:250px" alt="..." class="center "/>
+                                        </div>
+                                        <p class="display-6 lead text-center">${name_of_event}</p>
+                                        <hr>
+                                        <div class="container">
+                                            <p><textarea id="textarea_${event_id}" class="form-control" placeholder="Type your message here..."></textarea></p>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" id="add_msg_${event_id}" class="btn">Add</button>
+                                    </div>
+                                
+                        `
+                    }
+
+                    tempHTML += `
+                                </div>
+                            </div>
+                        </div>
+                    `
+                }
+                
+            }
+
     }}
     document.getElementById('past_events').innerHTML = tempHTML
 
     if (counter == 0) {
         document.getElementById('events_h2').innerText = "";
     }
+
+}
+
+
+function addClickMessage() {
+    for (let event in user_events) {
+        if (Object.hasOwnProperty.call(user_events, event)) {
+            if (Object.hasOwnProperty.call(user_events[event], "event_id")) {
+                if (!Object.hasOwnProperty.call(user_events[event], "event_msg")) {
+
+                    let event_date= user_events[event].start.slice(0,10)
+                    let current_date = new Date().toJSON().slice(0, 10);
+                    if (current_date > event_date){
+    
+                        let event_id = user_events[event]["event_id"]
+                        console.log(event_id);
+                        document.getElementById(`add_msg_${event_id}`).addEventListener("click", function() {addMessage(this)} )
+                    }
+                } else if (user_events[event]["event_msg"]["msg"] == "") {
+                    let event_date= user_events[event].start.slice(0,10)
+                    let current_date = new Date().toJSON().slice(0, 10);
+                    if (current_date > event_date){
+    
+                        let event_id = user_events[event]["event_id"]
+                        console.log(event_id);
+                        document.getElementById(`add_msg_${event_id}`).addEventListener("click", function() {addMessage(this)} )
+                    }
+                } else {
+                    let event_date= user_events[event].start.slice(0,10)
+                    let current_date = new Date().toJSON().slice(0, 10);
+                    if (current_date > event_date){
+    
+                        let event_id = user_events[event]["event_id"]
+                        console.log(event_id);
+                        document.getElementById(`edit_msg_${event_id}`).addEventListener("click", function() { displayEdit(this)} )
+                        document.getElementById(`save_msg_${event_id}`).addEventListener("click", function() { displayEdited(this)} )
+                    }             
+                }
+            }
+        }
+    }
+}
+
+function displayEdit(ele) {
+    let event_id = ele.id.split("_")[2]
+    document.getElementById(`p_msg_${event_id}`).style.display = "none"
+    document.getElementById(`textarea_msg_${event_id}`).style = ""
+    document.getElementById(`edit_msg_${event_id}`).style.display = "none"
+    document.getElementById(`save_msg_${event_id}`).style = ""
+
+}
+function displayEdited(ele) {
+    let event_id = ele.id.split("_")[2]
+    console.log("save");
+    document.getElementById(`p_msg_${event_id}`).style = ""
+    document.getElementById(`textarea_msg_${event_id}`).style.display = "none"
+    document.getElementById(`edit_msg_${event_id}`).style = ""
+    document.getElementById(`save_msg_${event_id}`).style.display = "none"
+
+    let msg = document.getElementById(`textarea_msg_${event_id}`).value
+    console.log(msg);
+    console.log(event_id);
+    let event_key = ""
+
+    for (let event in user_events) {
+        if (user_events[event]["event_id"] == event_id) {
+            event_key = event
+        }
+    }
+
+    $(`#modal-${event_id}`).modal('hide')
+    $('#successModal').modal('show');
+
+    const db = getDatabase();
+    set(ref(db, 'users/' + "user1" + '/user_events/' + event_key + '/event_msg' ), {
+        msg
+    })
+
+    console.log("success");
+}
+
+
+function addMessage(ele) {
+    let event_id = ele.id.split("_")[2]
+    let msg = document.getElementById(`textarea_${event_id}`).value
+    console.log(msg);
+    console.log(event_id);
+    let event_key = ""
+
+    for (let event in user_events) {
+        if (user_events[event]["event_id"] == event_id) {
+            event_key = event
+        }
+    }
+
+    console.log(event_key);
+
+    console.log("hi");
+
+    
+    $(`#modal-${event_id}`).modal('hide')
+    $('#successModal').modal('show');
+
+    const db = getDatabase();
+    set(ref(db, 'users/' + "user1" + '/user_events/' + event_key + '/event_msg' ), {
+        msg
+    })
+
+    console.log("success");
+
 }
 
 function setButtonColor(elem) {
