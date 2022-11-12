@@ -113,7 +113,7 @@
 .cards_landscape_wrap-2 .card .text-box .btn:hover{
     background: #104547;
 }
-.cards_landscape_wrap-2 .card .text-box .btn-signup{
+.cards_landscape_wrap-2 .card .text-box .btn{
     background-color: #104547;
     color: #FFFFFF;
 }
@@ -141,3 +141,19 @@
     background-color: #104547;
     color: white;
   }
+
+.details-btn{
+    border-color: #104547;
+    color: 104547;
+}
+
+.signup-btn{
+    background-color: #104547;
+    color: white;
+}
+
+.signup-btn:hover{
+    background-color: white;
+    color: #104547;
+    border: 1px solid #104547;
+}

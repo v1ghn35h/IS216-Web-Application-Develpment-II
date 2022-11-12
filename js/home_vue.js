@@ -30,6 +30,7 @@ let user_preference = []
 let for_you = {}
 let userInfo = {}
 let user_upcoming_events = {}
+let user_events_keys = []
 
 // FIREBASE POPULATE DETAILS [USER INFO]
 onValue(users, (snapshot => {
@@ -43,6 +44,9 @@ onValue(users, (snapshot => {
     let counter = 0
     let current_date = new Date()
     for(let event_info in user_upcoming_events){
+      if ("event_id" in user_upcoming_events[event_info]){
+        user_events_keys.push(user_upcoming_events[event_info].event_id) 
+      }
       if (Object.hasOwnProperty.call(user_upcoming_events, event_info)){
         let info_of_event= user_upcoming_events[event_info].start
         let formatted_event_date = ""
@@ -54,8 +58,7 @@ onValue(users, (snapshot => {
           formatted_event_date = info_of_event
         }
         let e_date = new Date(formatted_event_date)
-        console.log(e_date)
-        console.log(current_date)
+       
         let check = e_date > current_date
           if (check){
             counter += 1
@@ -64,6 +67,7 @@ onValue(users, (snapshot => {
     }
     let number_of_upcoming_events = counter
     UserUpcomingSchoolEvents(number_of_upcoming_events)
+    console.log(user_events_keys)
 }));
 
 // FIREBASE POPULATE UPCOMING EVENTS
@@ -108,10 +112,11 @@ const homePage = Vue.createApp({
               "November": '11',
               "December": '12',
             },
-            
+            signed_up_events: []
         };
     }, 
     beforeMount() { 
+        this.signed_up_events = user_events_keys
         onValue(events, (snapshot) => {
             const data = snapshot.val()
             this.db_events = data
@@ -122,12 +127,17 @@ const homePage = Vue.createApp({
             snapshot.forEach(childSnapshot => {
               if (upcoming_counter <= 10 && this.check_date(childSnapshot.val().date)){
                 let event_id = childSnapshot.val().eventId
-                current_upcoming_events[event_id] = childSnapshot.val()
-                upcoming_counter += 1
+                if (!this.signed_up_events.includes(event_id)){
+                  current_upcoming_events[event_id] = childSnapshot.val()
+                  upcoming_counter += 1
+                }
               }
               if (for_you_counter <= 10 && this.check_date(childSnapshot.val().date) && user_preference.includes(childSnapshot.val().type)){
-                current_for_you_events[childSnapshot.val().eventId] = childSnapshot.val()
-                for_you_counter += 1
+                let event_id = childSnapshot.val().eventId
+                if (!this.signed_up_events.includes(event_id)){
+                  current_for_you_events[event_id] = childSnapshot.val()
+                  for_you_counter += 1
+                }
               }
             })
             this.display_events = current_upcoming_events
@@ -137,6 +147,7 @@ const homePage = Vue.createApp({
           const data = snapshot.val(); 
           this.userInfo = data.user1.user_profile_info
         }))
+        
     },
     methods: {
         // ADD ID AND CHANGE DATE
@@ -146,7 +157,7 @@ const homePage = Vue.createApp({
               if (snapshot.exists()) {
                 var db_values = snapshot.val();
                 var db_size = Object.keys(db_values).length
-                var new_db_size = db_size + 1
+                var new_db_size = db_size + 2
               //   add event to array
                 set(ref(db, 'users/' + this.current_user + '/user_events/event_' + new_db_size), 
                   {
@@ -169,8 +180,10 @@ const homePage = Vue.createApp({
             }).catch((error) => {
               console.error(error);
             });  
-            delete this.display_events.id;
-            delete this.for_you_events.id;
+            // force page to reload
+            setTimeout(function(){
+              window.location.reload();
+            }, 500);
         },
 
         formatting_start_date(date, time){
@@ -207,7 +220,6 @@ const homePage = Vue.createApp({
 const vm = homePage.mount('#homePage'); 
 
 function UserUpcomingSchoolEvents (number_of_upcoming_events) {
-  console.log(number_of_upcoming_events)
   if (number_of_upcoming_events >= 6){
     let tempHTML = `
     <br>
@@ -280,7 +292,6 @@ function UserUpcomingSchoolEvents (number_of_upcoming_events) {
                 `
             }
             else if (check){
-              console.log("here too")
                 tempHTML += `
                 <div class="carousel-item">
                 <img src="${photo_of_event}" class="d-block w-100" height="300" width="600">
@@ -307,7 +318,6 @@ function UserUpcomingSchoolEvents (number_of_upcoming_events) {
     </div>
     </div>
     `
-    console.log(tempHTML)
     document.getElementById('carousel_user_events').innerHTML = tempHTML
   }
   else if (number_of_upcoming_events == 0){
@@ -351,7 +361,6 @@ function UserUpcomingSchoolEvents (number_of_upcoming_events) {
     let counter = 0
     for (let event in user_upcoming_events) {
     if (Object.hasOwnProperty.call(user_upcoming_events, event)) {
-      console.log(user_upcoming_events[event])
             let name_of_event = user_upcoming_events[event].title
             let photo_of_event= user_upcoming_events[event].photo_url
             let info_of_event= user_upcoming_events[event].start
@@ -390,7 +399,6 @@ function UserUpcomingSchoolEvents (number_of_upcoming_events) {
                 `
             }
             else if (check){
-              console.log(counter)
                 tempHTML += `
                 <div class="carousel-item">
                 <img src="${photo_of_event}" class="d-block w-100" height="300" width="600">
