@@ -383,35 +383,48 @@
   <!-- display event modal -->
   <div id="myOtherModal" class="modal">
     <div class="modal-content">
-      <div class="container text-center">
-        <span class="close" style="float: right">&times;</span>
-      </div>
-        <!-- event header -->
-        <div class="p-2">
+
+      <!-- HEADER -->
+      <div class="modal-header">
+  
+          <!-- event header -->
+          <div class="container-fluid p-2">
+            <span class="close" style="float: right">&times;</span>
             <span id="eventIcon" style="height: 50px"> </span>
             &nbsp;&nbsp;&nbsp;
             <span id="eventTitle" class="h4 fw-bold"></span>
-
-        </div>
-
+          </div>
+    
+      </div>
+      
+      <!-- BODY -->
+      <div class="modal-body">
         <!-- event details -->
         <div class="p-3">
-          <b> Start: </b>
-          <span id="eventStart"></span>
-          <br>
+          <div id="eventPicture"></div>
 
-          <b> End: </b>
-          <span id="eventEnd"></span>
-          <br>
+          <div class="container">
+            <b> Start: </b>
+            <span id="eventStart"></span>
+            <br>
 
-          <b> Category: </b>
-          <span class="dot" id="eventColor"> </span>
-          <span id="eventCategory"></span>
+            <b> End: </b>
+            <span id="eventEnd"></span>
+            <br>
+
+            <b> Category: </b>
+            <span class="dot" id="eventColor"> </span>
+            <span id="eventCategory"></span>
+          </div>
         </div>
+      </div>
 
+      <!-- FOOTER -->
+      <div class="modal-footer">
         <!-- delete event -->
         <button id="deleteEventButton" type="button" class="btn btn-outline-danger"> Delete Event </button>
-
+      </div>
+    
     </div>
 
     <!-- successful delete modal -->

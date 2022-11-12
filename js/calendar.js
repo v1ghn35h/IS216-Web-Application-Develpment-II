@@ -484,12 +484,6 @@ $(() => {
 
 
 // ---------------------------------------
-
-let s = "2022-11-15T17:40:00"
-let ans = s.slice(0, 10)
-console.log(ans)
-
-
 // SEARCH EVENTS
 let search_query = document.getElementById("search_results")
 // const allEvents = ref(db, `users/${current_user}/user_events/`)
@@ -589,16 +583,18 @@ app.mount("#searchtab")
 // ----------------------------------------
 // CALENDAR
 
-
 // event icons & pictures
 // {'category': [color, icon, image], ...}
-let event_media = {'Adventure': ['#ffb700', 'icons/adventure.png'], 
-                    'Arts & Culture': ['#ffc2d1', 'icons/artsculture.png', ''],
-                    'Community': ['#ffd81a', 'icons/community.png'],
-                    'Global Culture': ['#ecbcfd', 'icons/globalculture.png'],
-                    'School Society': ['#adc178', 'icons/schoolsociety.png'],
-                    'Sports': ['#01497c', 'icons/sports.png'],
-                    'Student Bodies': ['#8ecae6', 'icons/studentbodies.png']
+let event_media = {'Adventure': ['#ffb700', 'icons/adventure.png', 'event-img/adventure.jpg'], 
+                    'Arts & Culture': ['#ffc2d1', 'icons/artsculture.png', 'event-img/artsculture.jpg'],
+                    'Community': ['#ffd81a', 'icons/community.png', 'event-img/community.jpg'],
+                    'Global Culture': ['#ecbcfd', 'icons/globalculture.png', 'event-img/globalculture.jpg'],
+                    'School Society': ['#adc178', 'icons/schoolsociety.png', 'event-img/schoolsociety.jpg'],
+                    'Sports': ['#01497c', 'icons/sports.png', 'event-img/sports.jpg'],
+                    'Student Bodies': ['#8ecae6', 'icons/studentbodies.png', 'event-img/studentbodies.jpg'],
+                    'Academics': ['#ff8fab', 'icons/academics.png', 'event-img/academics.jpg'],
+                    'Miscellaneous': ['#ced4da', 'icons/miscellaneous.png', 'event-img/miscellaneous.jpg'],
+                    'Default': ['#4d4d4d', 'icons/default.png', 'event-img/default.jpg']
                   }
 
 /* colour picker */
@@ -638,7 +634,11 @@ var colors = [
   {
     name: 'Miscellaneous',
     hex: '#ced4da'
-  }
+  },
+  {
+    name: 'Default',
+    hex: '#4d4d4d'
+  },
 ];
 
 let event_class = ""
@@ -756,7 +756,7 @@ document.addEventListener('DOMContentLoaded', function() {
                   // empty and readd items
                   all_events = Object.entries(db_values)
                   console.log(all_events)
-                  new_db_size = all_events.length + 1
+                  new_db_size = all_events.length + 2
 
                   // add event to array
                   set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
@@ -901,7 +901,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
               // empty and readd items
               all_events = Object.entries(db_values)
-              new_db_size = all_events.length + 1
+              console.log(all_events)
+              new_db_size = all_events.length + 2
 
               // add event to array
               set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
@@ -967,29 +968,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
           for (let event in upcoming_events) {
             let new_event_obj = upcoming_events[event]
-
+            
             // set event color by category
             let new_event_category = new_event_obj.category
 
-            if (new_event_category != "") {
+            if (new_event_category == "") {
+              new_event_category = "Default"
+            }
 
-              try {
-                let find_object = colors.find(o => o.name === new_event_category); // find object with the name == new_event_category
-                let new_event_color = find_object.hex
-    
-                // add color to event object
-                new_event_obj["color"] = new_event_color
-              }
+            try {
+              let find_object = colors.find(o => o.name === new_event_category); // find object with the name == new_event_category
+              let new_event_color = find_object.hex
+  
+              // add color to event object
+              new_event_obj["color"] = new_event_color
+            }
 
-              catch(error) {
-                // console.log(new_event_obj)
-                console.log(error)
-              }
-              
+            catch(error) {
+              // console.log(new_event_obj)
+              console.log(error)
             }
             
             all_events.push(new_event_obj)
-        }
+          }
 
         successCallback(all_events)
 
@@ -1024,26 +1025,53 @@ document.addEventListener('DOMContentLoaded', function() {
         let event_category = info.event._def.extendedProps.category
 
         // if event_category is selected, set icon based on category
-        if (event_category != "") {
+        if (event_category == "") {
+          event_category = "Default"
+        }
 
-          // if category is valid, set color based on category
-          try {
-            let obj = colors.find(o => o.name === event_category); // find object with the name == new_event_category
-          
-            let event_colour = obj.hex
-            let dot = document.getElementById("eventColor")
-            dot.style.background = event_colour
+        // if category is valid, set color based on category
+        try {
+          let obj = colors.find(o => o.name === event_category); // find object with the name == new_event_category
+        
+          let event_colour = obj.hex
+          let dot = document.getElementById("eventColor")
+          dot.style.background = event_colour
 
-            // set icon based on category
-            let event_icon = event_media[event_category][1]
-            let icon = document.getElementById("eventIcon")
-            icon.innerHTML = `<img src="img/${event_icon}" style='height: 50px;'>`
+          // set icon based on category
+          let event_icon = event_media[event_category][1]
+          let icon = document.getElementById("eventIcon")
+          icon.innerHTML = `<img src="img/${event_icon}" style='height: 50px;'>`
+        }
+
+        catch (error) {
+          console.log(event_id)
+          console.log(error)
+        }
+
+        // set event picture
+        let eventPicture = document.getElementById("eventPicture")
+        let photo = info.event._def.extendedProps.photo_url
+
+        // if picture retrieved from database
+        if (photo != undefined) {
+          eventPicture.innerHTML = `<img src=${photo} style="max-width: 100%; padding-bottom: 10px;">`
+        }
+
+        // else show default image
+        else {
+          let eventCategory = document.getElementById("eventCategory")
+
+          // event category is set
+          if (event_category != "") {
+            let event_pic = event_media[event_category][2]
+            eventPicture.innerHTML = `<img src="img/${event_pic}" style="width: 100%; padding-bottom: 10px;">`
           }
 
-          catch (error) {
-            console.log(event_id)
-            console.log(error)
-          }
+          // // event category is not set
+          // else if (event_category = "") {
+          //   let default_pic = event_pictures["Default"]
+          //   eventCategory.innerHTML = `<img src="img/${default_pic}" style="width: 50%; padding-bottom: 10px;">`
+          // }
         }
 
         // set event title
@@ -1098,7 +1126,6 @@ document.addEventListener('DOMContentLoaded', function() {
           // Delete event
           const tasksRef = ref(db, 'users/' + current_user + '/user_events/event_' + event_id);
 
-          console.log(tasksRef)
 
           remove(tasksRef).then(() => {
 
