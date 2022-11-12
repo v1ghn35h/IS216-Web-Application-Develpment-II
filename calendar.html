@@ -280,94 +280,97 @@
       <div id="myModal" class="modal">
         <div class="modal-dialog modal-lg modal-dialog-centered">
           <div class="modal-content">
-    
-            <div class="container text-center">
+
+            <div class="modal-header">
+              <h5 class="modal-title"> Create a New Event </h5>
               <span class="close" style="float: right">&times;</span>
             </div>
-                
       
-            <!-- event header -->
-            <div class="p-3">
-              <h4 class="display-8 text-center"> Create a New Event </h4>
-            </div>
+            <div class="modal-body">
+              <!-- event name -->
+              <div class="mb-3 row">
+                <label for="title" class="col-12 col-xl-2 col-form-label"> 
+                  <i class="bi bi-justify pe-2"></i>
+                  Title 
+                </label>
+                <div class="col-12 col-xl-10">
+                  <input type="text" class="form-control" id="event_title">
+                </div>
+              </div>
+        
+              <!-- start date & time -->
+              <div class="row">
+                <!-- start date -->
+                <label for="eventDate" class="col-12 col-xl-2 col-form-label"> 
+                  <i class="bi bi-calendar-event pe-2"></i>
+                  Start Date 
+                </label>
+                <div class="col-12 col-xl-4 mb-3">
+                  <!-- fetch default date that the user clicked on, but allows user to change date also -->
+                  <input type="date" class="form-control" id="startDate">
+                </div>
+                <!-- start time -->
+                <label for="eventDate" class="col-12 col-xl-2 col-form-label"> 
+                  <i class="bi bi-clock pe-2"></i>
+                  Start Time 
+                  <span style="color: #9c9b9b"> (Optional) </span>
+                </label>
+                <div class="col-12 col-xl-4 mb-3">
+                  <!-- fetch time that the user clicked on -->
+                  <input type="time" class="form-control" id="startTime">
+                </div>
+              </div>
+        
+              <!-- end date & time -->
+              <div class="row">
+                <!-- end date -->
+                <label for="endDate" class="col-12 col-xl-2 col-form-label"> 
+                  <i class="bi bi-calendar-event pe-2"></i>
+                  End Date 
+                </label>
+                <div class="col-12 col-xl-4 mb-3">
+                  <input type="date" class="form-control" id="endDate">
+                </div>
+                <!-- end time -->
+                <label for="endDate" class="col-12 col-xl-2 col-form-label"> 
+                  <i class="bi bi-clock pe-2"></i>
+                  End Time 
+                  <span style="color: #9c9b9b"> (Optional) </span>
+                </label>
+                <div class="col-12 col-xl-4 mb-3">
+                  <input type="time" class="form-control" id="endTime">
+                </div>
+              </div>
       
-            <!-- event name -->
-            <div class="mb-3 row">
-              <label for="title" class="col-12 col-xl-2 col-form-label"> 
-                <i class="bi bi-justify pe-2"></i>
-                Title 
-              </label>
-              <div class="col-12 col-xl-10">
-                <input type="text" class="form-control" id="event_title">
-              </div>
-            </div>
-      
-            <!-- start date & time -->
-            <div class="row">
-              <!-- start date -->
-              <label for="eventDate" class="col-12 col-xl-2 col-form-label"> 
-                <i class="bi bi-calendar-event pe-2"></i>
-                Start Date 
-              </label>
-              <div class="col-12 col-xl-4 mb-3">
-                <!-- fetch default date that the user clicked on, but allows user to change date also -->
-                <input type="date" class="form-control" id="startDate">
-              </div>
-              <!-- start time -->
-              <label for="eventDate" class="col-12 col-xl-2 col-form-label"> 
-                <i class="bi bi-clock pe-2"></i>
-                Start Time 
-              </label>
-              <div class="col-12 col-xl-4 mb-3">
-                <!-- fetch time that the user clicked on -->
-                <input type="time" class="form-control" id="startTime">
-              </div>
-            </div>
-      
-            <!-- end date & time -->
-            <div class="row">
-              <!-- end date -->
-              <label for="endDate" class="col-12 col-xl-2 col-form-label"> 
-                <i class="bi bi-calendar-event pe-2"></i>
-                End Date 
-              </label>
-              <div class="col-12 col-xl-4 mb-3">
-                <input type="date" class="form-control" id="endDate">
-              </div>
-              <!-- end time -->
-              <label for="endDate" class="col-12 col-xl-2 col-form-label"> 
-                <i class="bi bi-clock pe-2"></i>
-                End Time 
-              </label>
-              <div class="col-12 col-xl-4 mb-3">
-                <input type="time" class="form-control" id="endTime">
-              </div>
-            </div>
-    
-            <!-- category -->
-            <div id="category" class="row mb-3">
-              <label for="dropdown" class="col-12 col-xl-2 col-form-label"> 
-                <i class="bi bi-tags pe-2"></i>
-                Category 
-              </label>
-              <div class="dropdown col-12 col-xl-10">
-                <button class="btn btn-normal dropdown-toggle form-control" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" v-html="selector()"></button>
-                <ul class="dropdown-menu">
-                  <li v-for="color in colors" v-on:click="setColor(color.hex, color.name)">
-                    <a class="dropdown-item" href="#">
-                      <span v-bind:style="{background: color.hex}"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> 
-                      &nbsp;
-                      {{ color.name }}
-                    </a>
-                  </li>
-                </ul>
+              <!-- category -->
+              <div id="category" class="row mb-3">
+                <label for="dropdown" class="col-12 col-xl-2 col-form-label"> 
+                  <i class="bi bi-tags pe-2"></i>
+                  Category 
+                  <span style="color: #9c9b9b"> (Optional) </span>
+                </label>
+                <div class="dropdown col-12 col-xl-10">
+                  <button class="btn btn-normal dropdown-toggle text-start form-control" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false" v-html="selector()">
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li v-for="color in colors" v-on:click="setColor(color.hex, color.name)">
+                      <a class="dropdown-item">
+                        <span v-bind:style="{background: color.hex}"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> 
+                        &nbsp;
+                        {{ color.name }}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
   
-            <!-- add event button -->
-            <div class="mb-3 row">
-              <div class="col-4">
-                <button type="button" id="addEventButton" class="btn btn-dark"> Add Event </button>
+            <div class="modal-footer">
+              <!-- add event button -->
+              <div class="mb-3 row">
+                <div class="col-4">
+                  <button type="button" id="addEventButton" class="btn btn-dark"> Add Event </button>
+                </div>
               </div>
             </div>
       
@@ -375,6 +378,26 @@
         </div>
       </div>
     </form>
+
+
+  <!-- form validation modal -->
+  <div id="formValidationModal" class="modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-start">
+
+        <div class="modal-header">
+          <h5 class="modal-title"> Errors </h5>
+          <span class="close" style="float: right">&times;</span>
+        </div>
+
+        <div class="modal-body text-center">
+          <p> Please add the following fields: </p>
+          <!-- Populate Form Errors -->
+          <div id="form_errors"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- successful add modal -->
   <div id="addSuccessModal" class="modal" tabindex="-1">
