@@ -144,7 +144,7 @@ function readURL(input) {
     getDownloadURL(profileRef)
         .then((url) => {
             // UPDATE JSON WITH THIS URL
-            console.log(url);
+            // console.log(url);
             let picture_url = `url(${url})`
 
             const db = getDatabase();
@@ -170,10 +170,10 @@ function readURL(input) {
     
 }
 $("#imageUpload").change(function() {
-    console.log(document.getElementById('imagePreview').style.backgroundImage);
+    // console.log(document.getElementById('imagePreview').style.backgroundImage);
     readURL(this);
 
-    console.log(document.getElementById('imagePreview').style.backgroundImage);
+    // console.log(document.getElementById('imagePreview').style.backgroundImage);
 });
 
 function displayDetails() {
@@ -210,7 +210,7 @@ function displayDetails() {
     document.getElementById('school').innerHTML = school_html
 
     document.getElementById('imagePreview').style.backgroundImage = userInfo["profile_picture"]["picture_url"]
-    console.log(userInfo["profile_picture"]["picture_url"]);
+    // console.log(userInfo["profile_picture"]["picture_url"]);
 
 
 }
@@ -236,7 +236,7 @@ function updateUserInfo() {
         preference_info: userInfo.preference_info
     })
 
-    console.log("change success");
+    // console.log("change success");
 
     $('#successModal').modal('show');
 
@@ -350,6 +350,7 @@ function displayCategories() {
     document.getElementById('preference').innerHTML = tempHTML
 }
 
+
 //////////////////////////////////////////////////
 // UPDATE PREFERENCE
 function updatePreference(cat_id) {
@@ -382,6 +383,8 @@ function updatePreference(cat_id) {
 }
 
 
+//////////////////////////////////////////////////
+// DISPLAY EVENTS
 let user_events = {}
 onValue(users, (snapshot => {
     const data = snapshot.val(); // get the new value
@@ -405,7 +408,6 @@ function UserForYouEvents () {
             if (Object.hasOwnProperty.call(user_events[event], "event_id")) {
 
                 let name_of_event = user_events[event].title
-                console.log(name_of_event);
                 let type_of_event = user_events[event].category
                 let club_of_event = user_events[event].event_club
                 let photo_of_event= user_events[event].photo_url
@@ -546,6 +548,8 @@ function UserForYouEvents () {
 }
 
 
+//////////////////////////////////////////////////
+// ADD EVENT LISTENER
 function addClickMessage() {
     for (let event in user_events) {
         if (Object.hasOwnProperty.call(user_events, event)) {
@@ -557,7 +561,6 @@ function addClickMessage() {
                     if (current_date > event_date){
     
                         let event_id = user_events[event]["event_id"]
-                        console.log(event_id);
                         document.getElementById(`add_msg_${event_id}`).addEventListener("click", function() {addMessage(this)} )
                     }
                 } else if (user_events[event]["event_msg"]["msg"] == "") {
@@ -566,7 +569,6 @@ function addClickMessage() {
                     if (current_date > event_date){
     
                         let event_id = user_events[event]["event_id"]
-                        console.log(event_id);
                         document.getElementById(`add_msg_${event_id}`).addEventListener("click", function() {addMessage(this)} )
                     }
                 } else {
@@ -575,7 +577,6 @@ function addClickMessage() {
                     if (current_date > event_date){
     
                         let event_id = user_events[event]["event_id"]
-                        console.log(event_id);
                         document.getElementById(`edit_msg_${event_id}`).addEventListener("click", function() { displayEdit(this)} )
                         document.getElementById(`save_msg_${event_id}`).addEventListener("click", function() { displayEdited(this)} )
                     }             
@@ -585,6 +586,9 @@ function addClickMessage() {
     }
 }
 
+
+//////////////////////////////////////////////////
+// EDITING OF MORE INFO
 function displayEdit(ele) {
     let event_id = ele.id.split("_")[2]
     document.getElementById(`p_msg_${event_id}`).style.display = "none"
@@ -593,17 +597,15 @@ function displayEdit(ele) {
     document.getElementById(`save_msg_${event_id}`).style = ""
 
 }
+
 function displayEdited(ele) {
     let event_id = ele.id.split("_")[2]
-    console.log("save");
     document.getElementById(`p_msg_${event_id}`).style = ""
     document.getElementById(`textarea_msg_${event_id}`).style.display = "none"
     document.getElementById(`edit_msg_${event_id}`).style = ""
     document.getElementById(`save_msg_${event_id}`).style.display = "none"
 
     let msg = document.getElementById(`textarea_msg_${event_id}`).value
-    console.log(msg);
-    console.log(event_id);
     let event_key = ""
 
     for (let event in user_events) {
@@ -620,15 +622,12 @@ function displayEdited(ele) {
         msg
     })
 
-    console.log("success");
+    // console.log("success");
 }
-
 
 function addMessage(ele) {
     let event_id = ele.id.split("_")[2]
     let msg = document.getElementById(`textarea_${event_id}`).value
-    console.log(msg);
-    console.log(event_id);
     let event_key = ""
 
     for (let event in user_events) {
@@ -636,10 +635,6 @@ function addMessage(ele) {
             event_key = event
         }
     }
-
-    console.log(event_key);
-
-    console.log("hi");
 
     
     $(`#modal-${event_id}`).modal('hide')
@@ -650,10 +645,12 @@ function addMessage(ele) {
         msg
     })
 
-    console.log("success");
-
+    // console.log("success");
 }
 
+
+//////////////////////////////////////////////////
+// TABS STYLE
 function setButtonColor(elem) {
     let info_btn = document.getElementById("info-tab")
     let preference_btn =  document.getElementById("preference-tab")
