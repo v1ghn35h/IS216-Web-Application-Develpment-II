@@ -252,10 +252,10 @@
             "event13": {
                 "name": "Volunteering Opportunities",
                 "club": "SMU Rotaract",
-                "eventId": "2022-01-17-rotaract-volunteering-opportunities",
+                "eventId": "2023-01-17-rotaract-volunteering-opportunities",
                 "type": "Community",
                 "photo": "https://images.pexels.com/photos/6590920/pexels-photo-6590920.jpeg",
-                "date": "2022-01-17",
+                "date": "2023-01-17",
                 "time": "1130-1300",
                 "fees": 0,
                 "location":"East Coast Park near Carpark 4"
@@ -274,8 +274,8 @@
             "event15": {
                 "name": "Laser Cutting Art Workshop",
                 "club": "SMU Artdicted",
-                "eventId": "Laser Cutting Art Workshop",
-                "type": "2022-12-21-artdicted-laser-cutting-art-workshop",
+                "eventId": "2022-12-21-artdicted-laser-cutting-art-workshop",
+                "type": "Arts & Culture",
                 "photo": "https://images.pexels.com/photos/7254428/pexels-photo-7254428.jpeg",
                 "date": "2022-12-21",
                 "time": "1700-1900",
@@ -450,7 +450,7 @@
             "event31": {
                 "name": "New Year Skate",
                 "club": "SMU-X Skating",
-                "eventId": "2022-01-04-smux-skating-new-year-skate",
+                "eventId": "2023-01-04-smux-skating-new-year-skate",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
                 "date": "2023-01-04",
@@ -461,7 +461,7 @@
             "event32": {
                 "name": "Skating Session",
                 "club": "SMU-X Skating",
-                "eventId": "2022-01-11-smux-skating-skating-session",
+                "eventId": "2023-01-11-smux-skating-skating-session",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
                 "date": "2023-01-11",
@@ -472,7 +472,7 @@
             "event34": {
                 "name": "Skating Session",
                 "club": "SMU-X Skating",
-                "eventId": "2022-01-18-smux-skating-skating-session",
+                "eventId": "2023-01-18-smux-skating-skating-session",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
                 "date": "2023-01-18",
@@ -483,7 +483,7 @@
             "event35": {
                 "name": "Skating Session",
                 "club": "SMU-X Skating",
-                "eventId": "2022-01-25-smux-skating-skating-session",
+                "eventId": "2023-01-25-smux-skating-skating-session",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
                 "date": "2023-01-25",
@@ -494,7 +494,7 @@
             "event36": {
                 "name": "Skating Session",
                 "club": "SMU-X Skating",
-                "eventId": "2022-02-01-smux-skating-skating-session",
+                "eventId": "2023-02-01-smux-skating-skating-session",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
                 "date": "2023-02-01",
@@ -505,7 +505,7 @@
             "event37": {
                 "name": "Skating Session",
                 "club": "SMU-X Skating",
-                "eventId": "2022-02-08-smux-skating-skating-session",
+                "eventId": "2023-02-08-smux-skating-skating-session",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
                 "date": "2023-02-08",
@@ -527,7 +527,7 @@
             "event39": {
                 "name": "Ski X Bike",
                 "club": "SMU-X Xseed",
-                "eventId": "2022-02-14-smux-xseed-ski-x-bike",
+                "eventId": "2023-02-14-smux-xseed-ski-x-bike",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/623919/pexels-photo-623919.jpeg",
                 "date": "2023-02-14",
@@ -538,10 +538,10 @@
             ,"event40": {
                 "name": "Board Exploration Day",
                 "club": "SMU-X Xseed",
-                "eventId": "2022-12-18-smux-xseed-board-exploration-day",
+                "eventId": "2022-01-02-smux-xseed-board-exploration-day",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/17606/night-street-skateboard-urban-17606.jpg",
-                "date": "2022-12-18",
+                "date": "2022-01-02",
                 "time": "1700-1900",
                 "fees": 25,
                 "location":"National Stadium Gate 7"
@@ -550,7 +550,7 @@
                 "name": "Traditional Food Exploration",
                 "photo": "https://images.pexels.com/photos/2349277/pexels-photo-2349277.jpeg",
                 "club": "ICON",
-                "eventId": "2022-02-15-icon-traditional-food-exploration",
+                "eventId": "2023-02-15-icon-traditional-food-exploration",
                 "type": "Arts & Culture",
                 "date": "2023-02-15",
                 "time": "1700-1900",
@@ -582,7 +582,7 @@
             "event45": {
                 "name": "Internship Fair",
                 "club": "SMU",
-                "eventId": "2022-01-19-smu-internship-fair",
+                "eventId": "2023-01-19-smu-internship-fair",
                 "type": "School Society",
                 "photo": "https://images.pexels.com/photos/3771097/pexels-photo-3771097.jpeg",
                 "date": "2023-01-19",
@@ -593,7 +593,7 @@
             "event46": {
                 "name": "Networking Night",
                 "club": "SMU",
-                "eventId": "2022-02-30-smu-networking-night",
+                "eventId": "2023-02-30-smu-networking-night",
                 "type": "School Society",
                 "photo": "https://images.pexels.com/photos/3771097/pexels-photo-3771097.jpeg",
                 "date": "2023-02-30",
@@ -615,10 +615,10 @@
             "event48": {
                 "name": "Behind The Scene",
                 "club": "SMU Broadcast & Entertainment",
-                "eventId": "2022-11-12-broadcast-&-entertainment-behind-the-scene",
+                "eventId": "2023-01-27-broadcast-&-entertainment-behind-the-scene",
                 "type": "Arts & Culture",
                 "photo": "https://images.pexels.com/photos/3379934/pexels-photo-3379934.jpeg",
-                "date": "2022-11-12",
+                "date": "2023-01-27",
                 "time": "1900-2100",
                 "fees": 25,
                 "location":"SMU SOA Classroom 2-1"
@@ -649,7 +649,7 @@
             "event51": {
                 "name": "Photography Challenge",
                 "club": "SMUSAIC",
-                "eventId": "2022-01-17-smusaic-photography-challenge",
+                "eventId": "2023-01-17-smusaic-photography-challenge",
                 "type": "Arts & Culture",
                 "photo": "https://images.pexels.com/photos/403495/pexels-photo-403495.jpeg",
                 "date": "2023-01-17",
@@ -661,7 +661,7 @@
             "event52": {
                 "name": "Breakout Concert",
                 "club": "SMU Stereometa",
-                "eventId": "2022-01-11-stereomata-breakout-concert",
+                "eventId": "2023-01-11-stereomata-breakout-concert",
                 "type": "Arts & Culture",
                 "photo": "https://vivace.smu.edu.sg/sites/vivace.smu.edu.sg/files/styles/gallery/public/2020-08/1%20_%20club%20logo.jpg",
                 "date": "2023-01-11",
@@ -673,10 +673,10 @@
             "event53": {
                 "name": "Chacha with us",
                 "club": "SMU Caderas Latinas",
-                "eventId": "2022-11-29-cahcha-with-us",
+                "eventId": "2022-02-05-cahcha-with-us",
                 "type": "Arts & Culture",
                 "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Cha-Cha-Cha_Valente_Cruz_9543.JPG",
-                "date": "2022-11-29",
+                "date": "2022-02-05",
                 "time": "1900-2100",
                 "fees": 5,
                 "location":"SMU B1 Dance Studio"
