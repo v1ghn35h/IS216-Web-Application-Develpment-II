@@ -545,9 +545,33 @@ const app = Vue.createApp({
           for (let curr_event of sorted_events_by_date) {
 
             let event_title = curr_event.title
-            let event_start = curr_event.start
 
+            // format date time
+            let event_start = curr_event.start
             let event_end = curr_event.end
+
+            let formatted_start = ""
+            let formatted_end = ""
+
+            if (event_start.includes("T")) { // if there is time
+              let e_start = event_start.split("T")
+              let e_start_date = e_start[0]
+              let e_start_time = e_start[1].slice(0,5)
+              formatted_start = `${e_start_date} (${e_start_time})`
+            }
+            else {
+              formatted_start = `${event_start} (All Day)`
+            }
+
+            if (event_end.includes("T")) { // if there is time
+              let e_end = event_end.split("T")
+              let e_end_date = e_end[0]
+              let e_end_time = e_end[1].slice(0,5)
+              formatted_end = `${e_end_date} (${e_end_time})`
+            }
+            else {
+              formatted_end = `${event_end} (All Day)`
+            }
 
             let event_category = curr_event.category
             if (event_category == "") {
@@ -561,9 +585,9 @@ const app = Vue.createApp({
                                         <div class="card-body" style="color: white; background-color: ${event_color}">
                                           <h5 class="card-title"> ${event_title} </h5>
                                           <p class="card-text">
-                                            <b> Start: </b> ${event_start}
+                                            <b> Start: </b> ${formatted_start}
                                             <br>
-                                            <b> End: </b> ${event_end}
+                                            <b> End: </b> ${formatted_end}
                                           </p>
                                         </div>
                                       </div>
