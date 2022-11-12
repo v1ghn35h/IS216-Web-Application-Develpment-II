@@ -117,7 +117,7 @@
     },
 
     "events": {
-        
+
             "event1": {
                 "name": "Beach Clean Up",
                 "club": "SMU Verts",
@@ -539,10 +539,10 @@
             ,"event40": {
                 "name": "Board Exploration Day",
                 "club": "SMU-X Xseed",
-                "eventId": "2022-01-02-smux-xseed-board-exploration-day",
+                "eventId": "2023-01-02-smux-xseed-board-exploration-day",
                 "type": "Sports",
                 "photo": "https://images.pexels.com/photos/17606/night-street-skateboard-urban-17606.jpg",
-                "date": "2022-01-02",
+                "date": "2023-01-02",
                 "time": "1700-1900",
                 "fees": 25,
                 "location":"National Stadium Gate 7"
@@ -594,10 +594,10 @@
             "event46": {
                 "name": "Networking Night",
                 "club": "SMU",
-                "eventId": "2023-02-30-smu-networking-night",
+                "eventId": "2023-02-29-smu-networking-night",
                 "type": "School Society",
                 "photo": "https://images.pexels.com/photos/3771097/pexels-photo-3771097.jpeg",
-                "date": "2023-02-30",
+                "date": "2023-02-29",
                 "time": "1400-1900",
                 "fees": 0,
                 "location":"SOB Seminar Room 3-2"
@@ -674,10 +674,10 @@
             "event53": {
                 "name": "Chacha with us",
                 "club": "SMU Caderas Latinas",
-                "eventId": "2022-02-05-cahcha-with-us",
+                "eventId": "2023-02-05-chacha-with-us",
                 "type": "Arts & Culture",
                 "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Cha-Cha-Cha_Valente_Cruz_9543.JPG",
-                "date": "2022-02-05",
+                "date": "2023-02-05",
                 "time": "1900-2100",
                 "fees": 5,
                 "location":"SMU B1 Dance Studio"
