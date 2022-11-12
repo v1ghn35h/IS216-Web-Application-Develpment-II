@@ -30,8 +30,8 @@ const allEvents = ref(db, 'events')
 const explorePage = Vue.createApp({ 
     data() { 
         return { 
-      
-            display_events: '',
+            curr_display_events: [],
+            all_display_events: '',
             db_events: '', // this stores all events extracted from db
             userInfo: '',
             sorted_events_by_type: null,
@@ -54,21 +54,27 @@ const explorePage = Vue.createApp({
 
             selected_badge: '',
 
+            // pagination
+            number_of_events: 0,
+            current_page: 1,
+            number_of_pages: 0,
+
         };
     }, // data
  
     beforeMount() { 
         console.log("====Function-GETALLEVENTS===")
-        onValue(allEvents, (snapshot) => {
-            const data = snapshot.val()
-            console.log("-------In event mounted------");
-            console.log(data);
-            this.db_events = data
-            this.display_events = data
-            // console.log(this.display_events);
+        // onValue(allEvents, (snapshot) => {
+        //     let events = []
+        //     const data = snapshot.val()
+        //     console.log("-------In event mounted------");
+        //     console.log(data);
+        //     this.db_events = data
+        //     this.display_events = data
+        //     // console.log(this.display_events);
 
-            console.log("-------end event mounted------");
-        })
+        //     console.log("-------end event mounted------");
+        // })
 
 
         onValue(users, (snapshot) => {
@@ -79,6 +85,25 @@ const explorePage = Vue.createApp({
             console.log(this.userInfo);
             console.log("-------end user  mounted------");
         })
+
+        // display events converted to list
+        get(query(allEvents, orderByChild("type"))).then((snapshot) => {
+            let events = []
+            snapshot.forEach(childSnapshot => {
+                events.push(childSnapshot.val())
+            })
+            this.db_events = events
+
+            this.all_display_events = this.db_events
+            // console.log(this.all_display_events);
+
+            this.paginate(this.all_display_events)
+            // this.all_display_events = this.db_events.slice(0,12)
+            // console.log(this.all_display_events)
+            // this.number_of_pages = (this.db_events.length)/12
+            // console.log(this.number_of_pages)
+        })
+
 
         // events sorted by type
         get(query(allEvents, orderByChild("type"))).then((snapshot) => {
@@ -149,7 +174,50 @@ const explorePage = Vue.createApp({
     },
 
     methods: {
+    
+        paginate (events){
+            console.log(events);
+
+            console.log(this.number_of_pages);
+            if (events.length > 12) {
+                this.number_of_pages = (events.length)/12
+            }
+            else {
+                this.number_of_pages = 1
+            }
+            console.log(this.number_of_pages);
+            
+            if (this.number_of_pages > 1) {
+                // this.number_of_pages = Math.ceil(this.number_of_pages)
+                this.curr_display_events = events.slice(0,12)
+                console.log(this.curr_display_events)
+                console.log(this.number_of_pages)
+            }
+
+            else {
+                this.curr_display_events = events
+                console.log(this.curr_display_events)
+            }
+        },
         
+        pagination_next(events){
+            if (this.current_page < this.number_of_pages) {
+
+                let lower_limit = (this.current_page - 1) * 12 + 12
+                this.current_page += 1
+
+                let upper_limit = (this.current_page - 1) * 12 + 12
+                this.curr_display_events = events.slice(lower_limit, upper_limit)
+            }
+        },
+        
+        pagination_prev(events){
+            let upper_limit = (this.current_page - 1) * 12
+            this.current_page -= 1
+            let lower_limit = (this.current_page - 1) * 12
+            this.curr_display_events = events.slice(lower_limit, upper_limit)
+        },
+
         check_date(date){
             let current_date = new Date()
             let e_date = new Date(date)
@@ -168,52 +236,51 @@ const explorePage = Vue.createApp({
             return date_formatted
         },
 
-        // remove_filter_badge(value) {
-        //     console.log(value);
-        //     let index = this.filter_club.indexOf(value)
-
-        //     this.filter_club.splice(index, 1)
-        //     this.filter_events()
-        // },
-
         search_input() {
-            let searched_events = {}
+            let searched_events = []
 
-            for (let [event, details] of Object.entries(this.db_events)) {
-                if (details.name.toLowerCase().includes(this.search_input_value.toLowerCase())) {
-                    searched_events[event] = details
+            let all_events= this.db_events
+
+            for (let event of all_events) {
+                if (event.name.toLowerCase().includes(this.search_input_value.toLowerCase())) {
+                    searched_events.push(event)
                 }
 
-                if (details.club.toLowerCase().includes(this.search_input_value.toLowerCase())) {
-                    searched_events[event] = details
+                if (event.club.toLowerCase().includes(this.search_input_value.toLowerCase())) {
+                    searched_events.push(event)
                 }
 
-                if (details.type.toLowerCase().includes(this.search_input_value.toLowerCase())) {
-                    searched_events[event] = details
+                if (event.type.toLowerCase().includes(this.search_input_value.toLowerCase())) {
+                    searched_events.push(event)
                 }
             }
-            this.display_events = searched_events
+            this.all_display_events = searched_events
+            // console.log(this.all_display_events);
+            this.paginate(this.all_display_events)
         },
 
         filter_events() {
             console.log("====Function-filter_events()===")
 
-            // if (this.filter_club.length == 0 && this.filter_event_type.length == 0 && this.filter_start_date == null && this.filter_end_date == null && this.filter_min_price == null && this.filter_max_price == null) {
-
             console.log(this.db_events);
             let all_events= this.db_events
 
-            let old_filtered_obj = {}
-            let new_filtered_obj = {}
+            let old_filtered_arr = []
+            let new_filtered_arr = []
 
             this.selected_badge = ''
 
 
             // check if user selected any clubs to filter and if they did, extract those events
             if (this.filter_club.length > 0) {
-                for (let [event, details] of Object.entries(all_events)) {
-                    if (this.filter_club.includes(details.club)) {
-                        old_filtered_obj[event] = details
+                
+                for (let event of all_events) {
+                    // console.log(event);
+
+                    if (this.filter_club.includes(event.club)) {
+                        
+
+                        old_filtered_arr.push(event)
                     }
                 }
             }
@@ -221,92 +288,97 @@ const explorePage = Vue.createApp({
             // check if user selected any event types to filter and if they did, extract those events
             if (this.filter_event_type.length > 0) {
 
-                let use_db_events = Object.keys(old_filtered_obj).length == 0 ? all_events : old_filtered_obj
+                let use_db_events = old_filtered_arr.length == 0 ? all_events : old_filtered_arr
                 
                 // console.log(use_db_events);
                 
-                for (let [event, details] of Object.entries(use_db_events)) {
+                for (let event of use_db_events) {
                     
-                    if (this.filter_event_type.includes( details.type )) {
+                    if (this.filter_event_type.includes( event.type )) {
                         // console.log(details);
                         
-                        new_filtered_obj[event] = details
+                        
+                        new_filtered_arr.push(event)
                         // console.log(new_filtered_obj);
                     }
                 }
-                old_filtered_obj = Object.assign({}, new_filtered_obj)
+                old_filtered_arr = new_filtered_arr
             }
             
     
-            new_filtered_obj = {}
+            new_filtered_arr = []
 
-            // console.log(old_filtered_obj);
-            
             // check if user selected any price to filter and if they did, extract those events
             if (this.filter_min_price != null || this.filter_max_price != null) {
 
-                let use_db_events = Object.keys(old_filtered_obj).length == 0 ? all_events : old_filtered_obj
+                let use_db_events = old_filtered_arr.length == 0 ? all_events : old_filtered_arr
 
-                for (let [event, details] of Object.entries(use_db_events)) {
+                for (let event of use_db_events) {
        
-                    let event_price = details.fees
+                    let event_price = event.fees
                     
 
                     if (this.filter_min_price != null && this.filter_max_price == null && event_price >= this.filter_min_price) {
-                        new_filtered_obj[event] = details
+                        
+                        new_filtered_arr.push(event)
                     }
                     else if (this.filter_max_price != null && this.filter_min_price == null && event_price <= this.filter_max_price) {
-                        new_filtered_obj[event] = details
+            
+                        new_filtered_arr.push(event)
                     }
                     
                     else if (event_price >= this.filter_min_price && event_price <= this.filter_max_price) {
-                        // console.log("im here");
-                        new_filtered_obj[event] = details
+
+                        new_filtered_arr.push(event)
                         
                     }
                 }
-                old_filtered_obj = Object.assign({}, new_filtered_obj)
+                old_filtered_arr = new_filtered_arr
             }
 
-            new_filtered_obj = {}
+            new_filtered_arr = []
 
-            // check if user selected any date to filter and if they did, extract those events
+
+             // check if user selected any date to filter and if they did, extract those events
             let filter_start_date_obj = new Date(this.filter_start_date)
             let filter_end_date_obj = new Date(this.filter_end_date)
 
             if (this.filter_end_date != null) {
-                console.log(this.filter_end_date);
-                let use_db_events = Object.keys(old_filtered_obj).length == 0 ? all_events : old_filtered_obj
+            
+                let use_db_events = old_filtered_arr.length == 0 ? all_events : old_filtered_arr
 
-                // let filter_start_date_obj = new Date(this.filter_start_date)
-                console.log(filter_end_date_obj);
-                console.log(filter_start_date_obj);
-                for (let [event, details] of Object.entries(use_db_events)) {
-                    let event_date = details.date
+              
+                for (let event of use_db_events) {
+                    let event_date = event.date
                     let event_date_obj = new Date(event_date)
 
                     if ( event_date_obj >= filter_start_date_obj && event_date_obj <= filter_end_date_obj) {
-                        new_filtered_obj[event] = details
+                    
+                        new_filtered_arr.push(event)
                     }
                 }
-                old_filtered_obj = Object.assign({}, new_filtered_obj)
+                
+                old_filtered_arr = new_filtered_arr
             }
             else {
-                let use_db_events = Object.keys(old_filtered_obj).length == 0 ? all_events : old_filtered_obj
+                let use_db_events = old_filtered_arr.length == 0 ? all_events : old_filtered_arr
 
-                for (let [event, details] of Object.entries(use_db_events)) {
-                    let event_date = details.date
+                for (let event of use_db_events) {
+                    let event_date = event.date
                     let event_date_obj = new Date(event_date)
 
                     if ( event_date_obj >= filter_start_date_obj) {
-                        new_filtered_obj[event] = details
+                        
+                        new_filtered_arr.push(event)
                     }
                 }
-                old_filtered_obj = Object.assign({}, new_filtered_obj)
+    
+                old_filtered_arr = new_filtered_arr
             }
-        
 
-            this.display_events = old_filtered_obj
+            console.log(old_filtered_arr);
+            this.all_display_events = old_filtered_arr
+            this.paginate(this.all_display_events)
 
 
             // add filter badges to display below search bar
@@ -333,14 +405,16 @@ const explorePage = Vue.createApp({
             console.log("====Function-sort_events()===")
             
             if (this.sort_by == "event") {
-                this.display_events = this.sorted_events_by_type
+                this.all_display_events = this.sorted_events_by_type
             }
             else if (this.sort_by == "fees") {
-                this.display_events = this.sorted_events_by_fees
+                this.all_display_events = this.sorted_events_by_fees
             }
             else if (this.sort_by == "date") {
-                this.display_events = this.sorted_events_by_date
+                this.all_display_events = this.sorted_events_by_date
             }
+
+            this.paginate(this.all_display_events)
 
             console.log("====FunctionEND-sort_events()===")
         },
@@ -354,8 +428,12 @@ const explorePage = Vue.createApp({
             this.filter_end_date = null
             this.selected_badge = ''
 
-            this.display_events = this.db_events
-        }
+            this.sort_by = undefined        
+
+            this.all_display_events = this.db_events
+            this.paginate(this.all_display_events)
+        },
+
 
   
     } 
