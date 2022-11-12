@@ -593,7 +593,7 @@
         "fees": 0,
         "location":"YPHSL SR B1"
     },
-    "event8": {
+    "event44": {
         "name": "Career Fair",
         "club": "SMU",
         "eventId": "2022-11-12-smu-career-fair",
@@ -604,7 +604,7 @@
         "fees": 0,
         "location":"YPHSL SR B1"
     },
-    "event8": {
+    "event45": {
         "name": "Career Fair",
         "club": "SMU",
         "eventId": "2022-11-12-smu-career-fair",
@@ -615,7 +615,7 @@
         "fees": 0,
         "location":"YPHSL SR B1"
     },
-    "event7": {
+    "event46": {
         "name": "Behind The Scene",
         "club": "SMU Broadcast & Entertainment",
         "eventId": "2022-11-11-ballare-ballet-night",
@@ -626,7 +626,7 @@
         "fees": 25,
         "location":"Esplanade Auditorium 3"
     },
-    "event7": {
+    "event47": {
         "name": "Chacha with us",
         "club": "SMU Caderas Latinas",
         "eventId": "2022-11-11-ballare-ballet-night",
@@ -637,7 +637,7 @@
         "fees": 25,
         "location":"Esplanade Auditorium 3"
     },
-    "event7": {
+    "event48": {
         "name": "Get Funky",
         "club": "SMU Funk Movement",
         "eventId": "2022-11-11-ballare-ballet-night",
@@ -649,7 +649,7 @@
         "location":"Esplanade Auditorium 3"
     }
     ,
-    "event7": {
+    "event49": {
         "name": "Photography Competition",
         "club": "SMU SMUSAIC",
         "eventId": "2022-11-11-ballare-ballet-night",
@@ -661,7 +661,7 @@
         "location":"Esplanade Auditorium 3"
     }
     ,
-    "event7": {
+    "event50": {
         "name": "Breakout Concept",
         "club": "SMU Stereometa",
         "eventId": "2022-11-11-ballare-ballet-night",
@@ -673,7 +673,7 @@
         "location":"Esplanade Auditorium 3"
     }
     ,
-    "event7": {
+    "event51": {
         "name": "Chacha with us",
         "club": "SMU Caderas Latinas",
         "eventId": "2022-11-11-ballare-ballet-night",
