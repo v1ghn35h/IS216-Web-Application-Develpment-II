@@ -76,20 +76,20 @@
     <hr style = "color: #104547">
     <div class="cards_landscape_wrap-2" id = "upcoming">
                 <!--template for an event-->
-        <div class="card my-5 mx-3" v-for="details in display_events" >
+        <div class="card my-5 mx-3" v-for="(details, eventId) in display_events" >
             <!-- start of card-->
             <div :id="`eventCard${details.eventId}`">
-                <div class="text-box" style ="height: 300px">
+                <div class="text-box" style ="height: 320px">
                     <div class="image-box">
                         <img :src="details.photo" />
                     </div>
                     <div class="text-container">
-                        <h5 class="card-title"> {{ details.name }} </h5>
+                        <h5 class="card-title text-wrap"> {{ details.name }} </h5>
                         <!-- SUBTITLE -->
                         <h6 class="card-subtitle mb-2 "> {{ details.type }} </h6>
                         <!-- BODY -->
                         <p class="card-text text-wrap">
-                            Date: {{ details.date }}
+                            Date: {{ format_date(details.date) }}
                             <br>
                             Time: {{ details.time }}
                             <br>
@@ -142,7 +142,7 @@
                                             <img src = "https://cdn-icons-png.flaticon.com/128/591/591607.png" height = 20 width = 20> 
                                             Date
                                         </th>
-                                        <td>{{ details.date }}</td>
+                                        <td>{{ format_date(details.date) }}</td>
                                     </tr>
                                     <tr>
                                         <th>
@@ -198,7 +198,7 @@
                                 Payment: NA
                             </div>
                             <button class="btn btn-warning center"
-                            @click="addEvent(details.name, details.club, details.photo, details.date, details.location, details.time, details.type)"
+                            @click="addEvent(details.name, details.club, details.photo, details.date, details.location, details.time, details.type, details.eventId)"
                             :data-bs-target="`#addSuccessModal`" data-bs-toggle="modal">Confirm</button>
 
                         </div>
@@ -234,20 +234,20 @@
     <hr style = "color: #104547">
     <div class="cards_landscape_wrap-2" id = "for_you">
             <!--template for an event-->
-            <div class="card my-5 mx-3" v-for="details of for_you_events" >
+            <div class="card my-5 mx-3" v-for="(details, eventId) in for_you_events" >
                 <!-- start of card-->
                 <div :id="`eventCard${details.eventId}`">
-                    <div class="text-box" style ="height: 300px">
+                    <div class="text-box" style ="height: 320px">
                         <div class="image-box">
                             <img :src="details.photo" />
                         </div>
                         <div class="text-container">
-                            <h5 class="card-title"> {{ details.name }} </h5>
+                            <h5 class="card-title text-wrap"> {{ details.name }} </h5>
                             <!-- SUBTITLE -->
                             <h6 class="card-subtitle mb-2 "> {{ details.type }} </h6>
                             <!-- BODY -->
                             <p class="card-text text-wrap">
-                                Date: {{ details.date }}
+                                Date: {{ format_date(details.date) }}
                                 <br>
                                 Time: {{ details.time }}
                                 <br>
@@ -301,7 +301,7 @@
                                                 <img src = "https://cdn-icons-png.flaticon.com/128/591/591607.png" height = 20 width = 20> 
                                                 Date
                                             </th>
-                                            <td>{{ details.date }}</td>
+                                            <td>{{ format_date(details.date) }}</td>
                                         </tr>
                                         <tr>
                                             <th>
@@ -357,7 +357,7 @@
                                     Payment: NA
                                 </div>
                                 <button class="btn btn-warning center" id = "save" 
-                                @click="addEvent(details.name, details.club, details.photo, details.date, details.location, details.time, details.eventId)"
+                                @click="addEvent(details.name, details.club, details.photo, details.date, details.location, details.time, details.type, details.eventId)"
                                 >Confirm</button>
 
                             </div>
