@@ -67,7 +67,6 @@ onValue(users, (snapshot => {
     }
     let number_of_upcoming_events = counter
     UserUpcomingSchoolEvents(number_of_upcoming_events)
-    console.log(user_events_keys)
 }));
 
 // FIREBASE POPULATE UPCOMING EVENTS
@@ -147,7 +146,6 @@ const homePage = Vue.createApp({
           const data = snapshot.val(); 
           this.userInfo = data.user1.user_profile_info
         }))
-        
     },
     methods: {
         // ADD ID AND CHANGE DATE
