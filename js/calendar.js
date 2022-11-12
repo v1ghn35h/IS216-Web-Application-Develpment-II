@@ -540,7 +540,7 @@ const app = Vue.createApp({
           }
           
           // sort this_search_query_events
-          let sorted_events_by_date = this_search_query_events.sort((a,b) => a.start - b.start)
+          let sorted_events_by_date = this_search_query_events.sort((a,b) => a.start_date - b.start_date)
 
           for (let curr_event of sorted_events_by_date) {
 
