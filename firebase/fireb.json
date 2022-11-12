@@ -249,7 +249,6 @@
                 "fees": 84,
                 "location":"SMU Admin Building MPSH"
             },
-
             "event13": {
                 "name": "Volunteering Opportunities",
                 "club": "SMU Rotaract",
@@ -381,309 +380,307 @@
                 "time": "1545-1915",
                 "fees": 25,
                 "location":"SMU Admin Building MPSH"
-        },
-        "event25": {
-            "name": "Skating Session",
-            "club": "SMU-X Skating",
-            "eventId": "16",
-            "type": "Sports",
-            "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
-            "date": "2022-11-23",
-            "time": "1700-1900",
-            "fees": 15,
-            "location":" Outside SCIS Level 1"
-        },
-        "event26": {
-            "name": "Skating Session",
-            "club": "SMU-X Skating",
-            "eventId": "16",
-            "type": "Sports",
-            "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
-            "date": "2022-11-31",
-            "time": "1700-1900",
-            "fees": 15,
-            "location":" Outside SCIS Level 1"
-        },
-        "event27": {
-            "name": "Skating Session",
-            "club": "SMU-X Skating",
-            "eventId": "16",
-            "type": "Sports",
-            "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
-            "date": "2022-12-07",
-            "time": "1700-1900",
-            "fees": 15,
-            "location":" Outside SCIS Level 1"
-        },
-        "event28": {
-            "name": "Skating Session",
-            "club": "SMU-X Skating",
-            "eventId": "16",
-            "type": "Sports",
-            "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
-            "date": "2022-12-14",
-            "time": "1700-1900",
-            "fees": 15,
-            "location":" Outside SCIS Level 1"
-        },
-        "event29": {
-            "name": "Christmas Skate",
-            "club": "SMU-X Skating",
-            "eventId": "16",
-            "type": "Sports",
-            "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
-            "date": "2022-12-21",
-            "time": "1700-1900",
-            "fees": 15,
-            "location":" Outside SCIS Level 1"
-        },
-        "event30": {
-            "name": "Skating Session",
-            "club": "SMU-X Skating",
-            "eventId": "16",
-            "type": "Sports",
-            "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
-            "date": "2022-12-28",
-            "time": "1700-1900",
-            "fees": 15,
-            "location":" Outside SCIS Level 1"
-        },
-        "event31": {
-            "name": "New Year Skate",
-            "club": "SMU-X Skating",
-            "eventId": "16",
-            "type": "Sports",
-            "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
-            "date": "2022-01-04",
-            "time": "1700-1900",
-            "fees": 15,
-            "location":" Outside SCIS Level 1"
-        },
-        "event32": {
-            "name": "Skating Session",
-            "club": "SMU-X Skating",
-            "eventId": "16",
-            "type": "Sports",
-            "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
-            "date": "2022-01-11",
-            "time": "1700-1900",
-            "fees": 15,
-            "location":" Outside SCIS Level 1"
-        },
-        "event34": {
-            "name": "Skating Session",
-            "club": "SMU-X Skating",
-            "eventId": "16",
-            "type": "Sports",
-            "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
-            "date": "2022-01-18",
-            "time": "1700-1900",
-            "fees": 15,
-            "location":" Outside SCIS Level 1"
-        },
-        "event35": {
-            "name": "Skating Session",
-            "club": "SMU-X Skating",
-            "eventId": "16",
-            "type": "Sports",
-            "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
-            "date": "2022-01-25",
-            "time": "1700-1900",
-            "fees": 15,
-            "location":" Outside SCIS Level 1"
-        },
-        "event36": {
-            "name": "Skating Session",
-            "club": "SMU-X Skating",
-            "eventId": "16",
-            "type": "Sports",
-            "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
-            "date": "2022-02-01",
-            "time": "1700-1900",
-            "fees": 15,
-            "location":" Outside SCIS Level 1"
-        },
-        "event37": {
-            "name": "Skating Session",
-            "club": "SMU-X Skating",
-            "eventId": "16",
-            "type": "Sports",
-            "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
-            "date": "2022-02-08",
-            "time": "1700-1900",
-            "fees": 15,
-            "location":" Outside SCIS Level 1"
+            },
+            "event25": {
+                "name": "Skating Session",
+                "club": "SMU-X Skating",
+                "eventId": "16",
+                "type": "Sports",
+                "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
+                "date": "2022-11-23",
+                "time": "1700-1900",
+                "fees": 15,
+                "location":" Outside SCIS Level 1"
+            },
+            "event26": {
+                "name": "Skating Session",
+                "club": "SMU-X Skating",
+                "eventId": "16",
+                "type": "Sports",
+                "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
+                "date": "2022-11-31",
+                "time": "1700-1900",
+                "fees": 15,
+                "location":" Outside SCIS Level 1"
+            },
+            "event27": {
+                "name": "Skating Session",
+                "club": "SMU-X Skating",
+                "eventId": "16",
+                "type": "Sports",
+                "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
+                "date": "2022-12-07",
+                "time": "1700-1900",
+                "fees": 15,
+                "location":" Outside SCIS Level 1"
+            },
+            "event28": {
+                "name": "Skating Session",
+                "club": "SMU-X Skating",
+                "eventId": "16",
+                "type": "Sports",
+                "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
+                "date": "2022-12-14",
+                "time": "1700-1900",
+                "fees": 15,
+                "location":" Outside SCIS Level 1"
+            },
+            "event29": {
+                "name": "Christmas Skate",
+                "club": "SMU-X Skating",
+                "eventId": "16",
+                "type": "Sports",
+                "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
+                "date": "2022-12-21",
+                "time": "1700-1900",
+                "fees": 15,
+                "location":" Outside SCIS Level 1"
+            },
+            "event30": {
+                "name": "Skating Session",
+                "club": "SMU-X Skating",
+                "eventId": "16",
+                "type": "Sports",
+                "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
+                "date": "2022-12-28",
+                "time": "1700-1900",
+                "fees": 15,
+                "location":" Outside SCIS Level 1"
+            },
+            "event31": {
+                "name": "New Year Skate",
+                "club": "SMU-X Skating",
+                "eventId": "16",
+                "type": "Sports",
+                "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
+                "date": "2022-01-04",
+                "time": "1700-1900",
+                "fees": 15,
+                "location":" Outside SCIS Level 1"
+            },
+            "event32": {
+                "name": "Skating Session",
+                "club": "SMU-X Skating",
+                "eventId": "16",
+                "type": "Sports",
+                "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
+                "date": "2022-01-11",
+                "time": "1700-1900",
+                "fees": 15,
+                "location":" Outside SCIS Level 1"
+            },
+            "event34": {
+                "name": "Skating Session",
+                "club": "SMU-X Skating",
+                "eventId": "16",
+                "type": "Sports",
+                "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
+                "date": "2022-01-18",
+                "time": "1700-1900",
+                "fees": 15,
+                "location":" Outside SCIS Level 1"
+            },
+            "event35": {
+                "name": "Skating Session",
+                "club": "SMU-X Skating",
+                "eventId": "16",
+                "type": "Sports",
+                "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
+                "date": "2022-01-25",
+                "time": "1700-1900",
+                "fees": 15,
+                "location":" Outside SCIS Level 1"
+            },
+            "event36": {
+                "name": "Skating Session",
+                "club": "SMU-X Skating",
+                "eventId": "16",
+                "type": "Sports",
+                "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
+                "date": "2022-02-01",
+                "time": "1700-1900",
+                "fees": 15,
+                "location":" Outside SCIS Level 1"
+            },
+            "event37": {
+                "name": "Skating Session",
+                "club": "SMU-X Skating",
+                "eventId": "16",
+                "type": "Sports",
+                "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
+                "date": "2022-02-08",
+                "time": "1700-1900",
+                "fees": 15,
+                "location":" Outside SCIS Level 1"
+            },
+            "event38": {
+                "name": "Paddle X Pedal",
+                "club": "SMU-X Skating",
+                "eventId": "16",
+                "type": "Sports",
+                "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
+                "date": "2022-02-08",
+                "time": "1700-1900",
+                "fees": 15,
+                "location":""
+            },
+            "event39": {
+                "name": "Ski X Bike",
+                "club": "SMU-X Skating",
+                "eventId": "16",
+                "type": "Sports",
+                "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
+                "date": "2022-02-08",
+                "time": "1700-1900",
+                "fees": 15,
+                "location":""
+            }
+            ,"event40": {
+                "name": "Board Exploration Day",
+                "club": "SMU-X Skating",
+                "eventId": "16",
+                "type": "Sports",
+                "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
+                "date": "2022-02-08",
+                "time": "1700-1900",
+                "fees": 15,
+                "location":""
+            },
+            "event42": {
+                "name": "Traditional Food Exploration",
+                "club": "Arts & Culture",
+                "eventId": "16",
+                "type": "Sports",
+                "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
+                "date": "2022-02-08",
+                "time": "1700-1900",
+                "fees": 15,
+                "location":""
+            },
+            "event43": {
+                "name": "Technology Career Fair",
+                "club": "SMU",
+                "eventId": "2022-11-12-smu-career-fair",
+                "type": "School Society",
+                "photo": "https://www.ntu.edu.sg/images/default-source/cao/mass-recruitment/41d0833af-4623-42de-8aa6-6a4884c783a4.png?sfvrsn=c91a3e5d_5",
+                "date": "2022-11-12",
+                "time": "1400-1900",
+                "fees": 0,
+                "location":"YPHSL SR B1"
+            },
+            "event44": {
+                "name": "SME Internship Fair",
+                "club": "SMU",
+                "eventId": "2022-11-12-smu-career-fair",
+                "type": "School Society",
+                "photo": "https://www.ntu.edu.sg/images/default-source/cao/mass-recruitment/41d0833af-4623-42de-8aa6-6a4884c783a4.png?sfvrsn=c91a3e5d_5",
+                "date": "2022-11-12",
+                "time": "1400-1900",
+                "fees": 0,
+                "location":"YPHSL SR B1"
+            },
+            "event45": {
+                "name": "Career Fair",
+                "club": "SMU",
+                "eventId": "2022-11-12-smu-career-fair",
+                "type": "School Society",
+                "photo": "https://www.ntu.edu.sg/images/default-source/cao/mass-recruitment/41d0833af-4623-42de-8aa6-6a4884c783a4.png?sfvrsn=c91a3e5d_5",
+                "date": "2022-11-12",
+                "time": "1400-1900",
+                "fees": 0,
+                "location":"YPHSL SR B1"
+            },
+            "event46": {
+                "name": "Career Fair",
+                "club": "SMU",
+                "eventId": "2022-11-12-smu-career-fair",
+                "type": "School Society",
+                "photo": "https://www.ntu.edu.sg/images/default-source/cao/mass-recruitment/41d0833af-4623-42de-8aa6-6a4884c783a4.png?sfvrsn=c91a3e5d_5",
+                "date": "2022-11-12",
+                "time": "1400-1900",
+                "fees": 0,
+                "location":"YPHSL SR B1"
+            },
+            "event47": {
+                "name": "Career Fair",
+                "club": "SMU",
+                "eventId": "2022-11-12-smu-career-fair",
+                "type": "School Society",
+                "photo": "https://www.ntu.edu.sg/images/default-source/cao/mass-recruitment/41d0833af-4623-42de-8aa6-6a4884c783a4.png?sfvrsn=c91a3e5d_5",
+                "date": "2022-11-12",
+                "time": "1400-1900",
+                "fees": 0,
+                "location":"YPHSL SR B1"
+            },
+            "event48": {
+                "name": "Behind The Scene",
+                "club": "SMU Broadcast & Entertainment",
+                "eventId": "2022-11-11-ballare-ballet-night",
+                "type": "Arts & Culture",
+                "photo": "https://static.nationalgeographic.co.uk/files/styles/image_3200/public/mm9901_220313_01614.jpg?w=1900&h=1520",
+                "date": "2022-11-11",
+                "time": "1900-2100",
+                "fees": 25,
+                "location":"Esplanade Auditorium 3"
+            },
+            "event49": {
+                "name": "Chacha with us",
+                "club": "SMU Caderas Latinas",
+                "eventId": "2022-11-11-ballare-ballet-night",
+                "type": "Arts & Culture",
+                "photo": "https://static.nationalgeographic.co.uk/files/styles/image_3200/public/mm9901_220313_01614.jpg?w=1900&h=1520",
+                "date": "2022-11-11",
+                "time": "1900-2100",
+                "fees": 25,
+                "location":"Esplanade Auditorium 3"
+            },
+            "event50": {
+                "name": "Get Funky",
+                "club": "SMU Funk Movement",
+                "eventId": "2022-11-11-ballare-ballet-night",
+                "type": "Arts & Culture",
+                "photo": "https://static.nationalgeographic.co.uk/files/styles/image_3200/public/mm9901_220313_01614.jpg?w=1900&h=1520",
+                "date": "2022-11-11",
+                "time": "1900-2100",
+                "fees": 25,
+                "location":"Esplanade Auditorium 3"
+            }
+            ,
+            "event51": {
+                "name": "Photography Competition",
+                "club": "SMU SMUSAIC",
+                "eventId": "2022-11-11-ballare-ballet-night",
+                "type": "Arts & Culture",
+                "photo": "https://static.nationalgeographic.co.uk/files/styles/image_3200/public/mm9901_220313_01614.jpg?w=1900&h=1520",
+                "date": "2022-11-11",
+                "time": "1900-2100",
+                "fees": 25,
+                "location":"Esplanade Auditorium 3"
+            }
+            ,
+            "event52": {
+                "name": "Breakout Concept",
+                "club": "SMU Stereometa",
+                "eventId": "2022-11-11-ballare-ballet-night",
+                "type": "Arts & Culture",
+                "photo": "https://static.nationalgeographic.co.uk/files/styles/image_3200/public/mm9901_220313_01614.jpg?w=1900&h=1520",
+                "date": "2022-11-11",
+                "time": "1900-2100",
+                "fees": 25,
+                "location":"Esplanade Auditorium 3"
+            }
+            ,
+            "event53": {
+                "name": "Chacha with us",
+                "club": "SMU Caderas Latinas",
+                "eventId": "2022-11-11-ballare-ballet-night",
+                "type": "Arts & Culture",
+                "photo": "https://static.nationalgeographic.co.uk/files/styles/image_3200/public/mm9901_220313_01614.jpg?w=1900&h=1520",
+                "date": "2022-11-11",
+                "time": "1900-2100",
+                "fees": 25,
+                "location":"Esplanade Auditorium 3"
+            }
+            
         }
-
-        
-    ,"event38": {
-        "name": "Paddle X Pedal",
-        "club": "SMU-X Skating",
-        "eventId": "16",
-        "type": "Sports",
-        "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
-        "date": "2022-02-08",
-        "time": "1700-1900",
-        "fees": 15,
-        "location":""
-    },
-    "event39": {
-        "name": "Ski X Bike",
-        "club": "SMU-X Skating",
-        "eventId": "16",
-        "type": "Sports",
-        "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
-        "date": "2022-02-08",
-        "time": "1700-1900",
-        "fees": 15,
-        "location":""
-    }
-    ,"event40": {
-        "name": "Board Exploration Day",
-        "club": "SMU-X Skating",
-        "eventId": "16",
-        "type": "Sports",
-        "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
-        "date": "2022-02-08",
-        "time": "1700-1900",
-        "fees": 15,
-        "location":""
-    },
-    "event37": {
-        "name": "Traditional Food Exploration",
-        "club": "Arts & Culture",
-        "eventId": "16",
-        "type": "Sports",
-        "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
-        "date": "2022-02-08",
-        "time": "1700-1900",
-        "fees": 15,
-        "location":""
-    },
-    "event41": {
-        "name": "Technology Career Fair",
-        "club": "SMU",
-        "eventId": "2022-11-12-smu-career-fair",
-        "type": "School Society",
-        "photo": "https://www.ntu.edu.sg/images/default-source/cao/mass-recruitment/41d0833af-4623-42de-8aa6-6a4884c783a4.png?sfvrsn=c91a3e5d_5",
-        "date": "2022-11-12",
-        "time": "1400-1900",
-        "fees": 0,
-        "location":"YPHSL SR B1"
-    },
-    "event42": {
-        "name": "SME Internship Fair",
-        "club": "SMU",
-        "eventId": "2022-11-12-smu-career-fair",
-        "type": "School Society",
-        "photo": "https://www.ntu.edu.sg/images/default-source/cao/mass-recruitment/41d0833af-4623-42de-8aa6-6a4884c783a4.png?sfvrsn=c91a3e5d_5",
-        "date": "2022-11-12",
-        "time": "1400-1900",
-        "fees": 0,
-        "location":"YPHSL SR B1"
-    },
-    "event43": {
-        "name": "Career Fair",
-        "club": "SMU",
-        "eventId": "2022-11-12-smu-career-fair",
-        "type": "School Society",
-        "photo": "https://www.ntu.edu.sg/images/default-source/cao/mass-recruitment/41d0833af-4623-42de-8aa6-6a4884c783a4.png?sfvrsn=c91a3e5d_5",
-        "date": "2022-11-12",
-        "time": "1400-1900",
-        "fees": 0,
-        "location":"YPHSL SR B1"
-    },
-    "event44": {
-        "name": "Career Fair",
-        "club": "SMU",
-        "eventId": "2022-11-12-smu-career-fair",
-        "type": "School Society",
-        "photo": "https://www.ntu.edu.sg/images/default-source/cao/mass-recruitment/41d0833af-4623-42de-8aa6-6a4884c783a4.png?sfvrsn=c91a3e5d_5",
-        "date": "2022-11-12",
-        "time": "1400-1900",
-        "fees": 0,
-        "location":"YPHSL SR B1"
-    },
-    "event45": {
-        "name": "Career Fair",
-        "club": "SMU",
-        "eventId": "2022-11-12-smu-career-fair",
-        "type": "School Society",
-        "photo": "https://www.ntu.edu.sg/images/default-source/cao/mass-recruitment/41d0833af-4623-42de-8aa6-6a4884c783a4.png?sfvrsn=c91a3e5d_5",
-        "date": "2022-11-12",
-        "time": "1400-1900",
-        "fees": 0,
-        "location":"YPHSL SR B1"
-    },
-    "event46": {
-        "name": "Behind The Scene",
-        "club": "SMU Broadcast & Entertainment",
-        "eventId": "2022-11-11-ballare-ballet-night",
-        "type": "Arts & Culture",
-        "photo": "https://static.nationalgeographic.co.uk/files/styles/image_3200/public/mm9901_220313_01614.jpg?w=1900&h=1520",
-        "date": "2022-11-11",
-        "time": "1900-2100",
-        "fees": 25,
-        "location":"Esplanade Auditorium 3"
-    },
-    "event47": {
-        "name": "Chacha with us",
-        "club": "SMU Caderas Latinas",
-        "eventId": "2022-11-11-ballare-ballet-night",
-        "type": "Arts & Culture",
-        "photo": "https://static.nationalgeographic.co.uk/files/styles/image_3200/public/mm9901_220313_01614.jpg?w=1900&h=1520",
-        "date": "2022-11-11",
-        "time": "1900-2100",
-        "fees": 25,
-        "location":"Esplanade Auditorium 3"
-    },
-    "event48": {
-        "name": "Get Funky",
-        "club": "SMU Funk Movement",
-        "eventId": "2022-11-11-ballare-ballet-night",
-        "type": "Arts & Culture",
-        "photo": "https://static.nationalgeographic.co.uk/files/styles/image_3200/public/mm9901_220313_01614.jpg?w=1900&h=1520",
-        "date": "2022-11-11",
-        "time": "1900-2100",
-        "fees": 25,
-        "location":"Esplanade Auditorium 3"
-    }
-    ,
-    "event49": {
-        "name": "Photography Competition",
-        "club": "SMU SMUSAIC",
-        "eventId": "2022-11-11-ballare-ballet-night",
-        "type": "Arts & Culture",
-        "photo": "https://static.nationalgeographic.co.uk/files/styles/image_3200/public/mm9901_220313_01614.jpg?w=1900&h=1520",
-        "date": "2022-11-11",
-        "time": "1900-2100",
-        "fees": 25,
-        "location":"Esplanade Auditorium 3"
-    }
-    ,
-    "event50": {
-        "name": "Breakout Concept",
-        "club": "SMU Stereometa",
-        "eventId": "2022-11-11-ballare-ballet-night",
-        "type": "Arts & Culture",
-        "photo": "https://static.nationalgeographic.co.uk/files/styles/image_3200/public/mm9901_220313_01614.jpg?w=1900&h=1520",
-        "date": "2022-11-11",
-        "time": "1900-2100",
-        "fees": 25,
-        "location":"Esplanade Auditorium 3"
-    }
-    ,
-    "event51": {
-        "name": "Chacha with us",
-        "club": "SMU Caderas Latinas",
-        "eventId": "2022-11-11-ballare-ballet-night",
-        "type": "Arts & Culture",
-        "photo": "https://static.nationalgeographic.co.uk/files/styles/image_3200/public/mm9901_220313_01614.jpg?w=1900&h=1520",
-        "date": "2022-11-11",
-        "time": "1900-2100",
-        "fees": 25,
-        "location":"Esplanade Auditorium 3"
-    }
-    
-}
-}
+        }
