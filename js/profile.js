@@ -405,7 +405,6 @@ onValue(users, (snapshot => {
             sort_date.push(childSnapshot.val())
         })
         user_events = sort_date
-        console.log(user_events);
     
         UserPastEvents()
     
