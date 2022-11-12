@@ -44,7 +44,8 @@ const app = Vue.createApp({
 
         //EDIT:CORRESPONDING numbers & colours BASE ON EVENTS
         numbers: [],
-        colors: []
+        colors: [],
+        event_legend: []
 
     }},
 
@@ -66,24 +67,6 @@ const app = Vue.createApp({
                 // event category counts (named: e_c_NUM_count)
 
                 var e_c_dict = {};
-
-                //PREVIOUSLY USED HARDCODE -> CHANGED TO DYNAMIC 
-                    // //1: Arts & Culture
-                    // var e_c_1_count = 0
-                    // //2: Community
-                    // var e_c_2_count = 0
-                    // //3: Global Culture
-                    // var e_c_3_count = 0
-                    // //4: School Society 
-                    // var e_c_4_count = 0
-                    // //5: Sports
-                    // var e_c_5_count = 0
-                    // //6:Student Bodies 
-                    // var e_c_6_count = 0
-                    // //7: Academics
-                    // var e_c_7_count = 0
-                    // //8: Miscellaneous
-                    // var e_c_8_count = 0
 
             for (let an_event_obj in db_values) {
                 let event_obj = db_values[an_event_obj]
@@ -131,12 +114,6 @@ const app = Vue.createApp({
                 let color_code = colors_dict[event_cat][0]
                 console.log("this is event_cat_colour :"+colors_dict[event_cat][0])
                 color_list.push(color_code)
-                
-                // color_list.JSON.parse(color_list)
-                // Array.from(color_list);
-
-
-
             }
             let color_list1 = Array.from(color_list)
             console.log(color_list1)
@@ -144,6 +121,7 @@ const app = Vue.createApp({
 
             this.colors = color_list1
             this.numbers = event_values
+            this.event_legend = event_keys
             // NOTE: color_list give list of color codes used like: ['#ffb700', '#01497c', '#adc178']
             
             console.log("===END - MANIPULATING DATABASE VALUE SUCCESS====")
@@ -178,6 +156,9 @@ const app = Vue.createApp({
             strokeWidth: {
                 type: Number,
                 default: 8
+            },
+            event_legend: {
+
             }
         },
 
@@ -209,22 +190,21 @@ const app = Vue.createApp({
         },
         methods: {
             handleMouseenter(index) {
-                // innerRadius = radius - strokeWidth / 2
-                // (newWidh - strokeWidth) / 2 = diff
-                // diff / (innerRadius - diff) = SCALE
-                const diff = (this.radius - this.strokeWidth / 2) * SCALE / (1 + SCALE)
-                const width = diff * 2 + this.strokeWidth
-                this.$ref["circle1"].style.cssText = `
+              // innerRadius = radius - strokeWidth / 2
+              // (newWidh - strokeWidth) / 2 = diff
+              // diff / (innerRadius - diff) = SCALE
+              const diff = (this.radius - this.strokeWidth / 2) * SCALE / (1 + SCALE)
+              const width = diff * 2 + this.strokeWidth
+              this.$refs[`circle${index}`].style.cssText = `
                 opacity: 0.8;
                 stroke-width: ${width};
                 transform: scale(${1 + SCALE});
                 `
-                this.temp = (this.percentage[index] * 100).toFixed(2) + '%'
+              this.temp = (this.percentage[index] * 100).toFixed(2) + '%'
             },
-
             handleMouseleave(index) {
-                this.$ref["circle1"].style.cssText = ''
-                this.temp = ''
+              this.$refs[`circle${index}`].style.cssText = ''
+              this.temp = ''
             }
         }
     })
