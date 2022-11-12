@@ -274,7 +274,8 @@
                                     </div>
                                     <p class="display-6 lead text-center">{{ details.name }}</p>
                                     <hr>
-                                    <div class="container">
+                                    <div class="container pt-1 pb-1">
+                                        
                                         <table class = "table table-striped text-start" width="50%">
                                             <tr>
                                                 <th>
@@ -318,9 +319,9 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer mt-0">
-                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-dark" :data-bs-target="`#signUpPage${details.eventId}`"
-                                        data-bs-toggle="modal" class="btn-signup">Sign up now</button>
+                                    <!-- <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button> -->
+                                    <button type="button" class="btn sign_up_btn" :data-bs-target="`#signUpPage${details.eventId}`"
+                                        data-bs-toggle="modal" >Sign up now</button>
                                 </div>
                             </div>
                         </div>
@@ -329,8 +330,8 @@
 
                     <!-- SIGN UP Modal-->
                     <div class="modal fade" :id="`signUpPage${details.eventId}`" aria-hidden="true" aria-labelledby="SignUpPageLabel"
-                        tabindex="-1">
-                        <div class="modal-dialog modal-dia  log-scrollable ">
+                tabindex="-1">
+                        <div class="modal-dialog modal-dia  log-scrollable modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="SignUpPageLabel">Sign Up Page</h1>
@@ -346,15 +347,38 @@
                                         <br>
                                         School: {{ userInfo.school }}
                                         <br>
-                                        Payment: NA
+                                        Payment: 
+                                        <span v-if='details.fees == 0'>Free</span>
+                                        <span v-else>{{ details.fees }} SGD</span>
                                     </div>
-                                    <button class="btn sign_up_btn center" @click="testing()">Confirm</button>
+
+                                    <div class="d-grid gap-2 col-6 mx-auto">
+                                    
+                                        <button class="btn confirm-btn center"
+                                        @click="addEvent(details.name, details.club, details.photo, details.date, details.location, details.time, details.type, details.eventId)"
+                                        :data-bs-target="`#addSuccessModal`" data-bs-toggle="modal">Confirm</button>
+
+                                    </div>
 
                                 </div>
                                 <div class="modal-footer">
-                                    <button class="btn btn-light    " :data-bs-target="`#infoPage${details.eventId}`" data-bs-toggle="modal">Go
+                                    <button class="btn btn-dark" :data-bs-target="`#infoPage${details.eventId}`" data-bs-toggle="modal">Go
                                         back</button>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Confirmation Page-->
+                    <div class="modal fade" :id="`addSuccessModal`" aria-hidden="true" aria-labelledby="addSuccessModalLabel" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title"> Add Event </h5>
+                            </div>
+                            <div class="modal-body text-center">
+                                <img src="img/icons/happy.png" style="width: 50%">
+                                <p class="pt-3"> Event Added Successfully </p>
+                            </div>
                             </div>
                         </div>
                     </div>
