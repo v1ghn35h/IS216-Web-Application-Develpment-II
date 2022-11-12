@@ -40,181 +40,144 @@
         </div>
     </nav>
 
-    <!-- Profile - PERSONAL INFORMATION -->  
-    <div class="container" >
-        <div class="row" id="info">
+    <div class="container" id="tabs">
 
-            <h2>Personal Information</h2>
+        <!-- TABS -->
+        <ul class="nav nav-tabs pt-5 nav-fill" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button style="color: white; background-color: #104547" class="nav-link my-nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#info-tab-pane" type="button" role="tab" aria-controls="info-tab-pane" aria-selected="true"> Personal Information </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link my-nav-link" id="preference-tab" data-bs-toggle="tab" data-bs-target="#preference-tab-pane" type="button" role="tab" aria-controls="preference-tab-pane" aria-selected="true"> Preference </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link my-nav-link" id="events-tab" data-bs-toggle="tab" data-bs-target="#events-tab-pane" type="button" role="tab" aria-controls="events-tab-pane" aria-selected="false" > Events </button>
+            </li>
+        </ul>
 
-            <!-- IMAGE -->
-            <div class="col-lg-3 col-md-4 col-12">
-                <div class="avatar-upload">
-                    <!-- edit button -->
-                    <div class="avatar-edit"> 
-                        <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
-                        <label for="imageUpload"></label>
-                    </div>
-                    <!-- picture -->
-                    <div class="avatar-preview">
-                        <div id="imagePreview" style="background-image: url('');">
+
+        <!-- START OF CONTENT -->
+        <div class="tab-content" id="myTabContent">
+
+            <!-- INFO TAB -->
+            <div class="tab-pane fade show active" id="info-tab-pane" role="tabpanel" aria-labelledby="info-tab" tabindex="0"> 
+                <!-- INFO DIV -->
+                <div class="row" id="info">
+
+                    <h2>Personal Information</h2>
+        
+                    <!-- IMAGE -->
+                    <div class="col-lg-3 col-md-4 col-12">
+                        <div class="avatar-upload">
+                            <!-- EDIT BUTTON -->
+                            <div class="avatar-edit"> 
+                                <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                <label for="imageUpload"></label>
+                            </div>
+                            <!-- PICTURE -->
+                            <div class="avatar-preview">
+                                <div id="imagePreview" style="background-image: url('');">
+                                </div>
+                            </div>
                         </div>
+                    </div>
+        
+                    <!-- TABLE OF INFO -->
+                    <div id="info" class="col-md-7 col-12 col-lg-8">
+                        <form class="is-readonly">
+                            <table class="table">
+                                <tr>
+                                    <div class="form-group">
+                                    <td class="detail_name"><label for="name">Name</label></td>
+                                    <td class="detail_value"><input type="text" class="form-control is-disabled" id="name" placeholder="" value="" disabled></td>
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div class="form-group">
+                                    <td class="detail_name"><label for="username">Username</label></td>
+                                    <td class="detail_value"><input type="text" class="form-control is-disabled" id="username" placeholder="" value="" disabled></td>
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div class="form-group">
+                                    <td class="detail_name"><label for="gender">Gender</label></td>
+                                    <td class="detail_value"><select class="form-control is-disabled" id="gender" disabled></select></td>
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div class="form-group">
+                                    <td class="detail_name"><label for="birthday">Birthday</label></td>
+                                    <td class="detail_value"><input type="date" class="form-control is-disabled" id="birthday" placeholder="" value="" disabled></td>
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div class="form-group">
+                                    <td class="detail_name"><label for="school">School</label></td>
+                                    <td class="detail_value"><select class="form-control is-disabled" id="school" disabled></select></td>
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div class="form-group">
+                                    <td class="detail_name"><label for="email">Email</label></td>
+                                    <td class="detail_value"><input type="text" class="form-control is-disabled" id="email" placeholder="" value="" disabled></td>
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div class="form-group">
+                                    <td class="detail_name"><label for="matric_no">Matric No.</label></td>
+                                    <td class="detail_value"><input type="number" class="form-control is-disabled" id="matric_no" placeholder="" value="" disabled></td>
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div class="form-group">
+                                    <td class="detail_name"><label for="phone_no">Phone No.</label></td>
+                                    <td class="detail_value"><input type="number" class="form-control is-disabled" id="phone_no" placeholder="" value="" disabled></td>
+                                    </div>
+                                </tr>
+        
+        
+                            </table>
+                            
+                            <button type="button" class="btn btn-default btn-edit js-edit">Edit</button>
+                            <button type="button" class="btn btn-default btn-save js-save" id="save" >Save</button>
+                        </form>
                     </div>
                 </div>
             </div>
 
-            <!-- <div class="col-md-1 col-lg-0"></div> -->
-
-            <!-- TABLE OF INFO -->
-            <div id="info" class="col-md-7 col-12 col-lg-8">
-                <form class="is-readonly">
-                    <table class="table">
-                        <tr>
-                            <div class="form-group">
-                            <td class="detail_name"><label for="name">Name</label></td>
-                            <td class="detail_value"><input type="text" class="form-control is-disabled" id="name" placeholder="" value="" disabled></td>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="form-group">
-                            <td class="detail_name"><label for="username">Username</label></td>
-                            <td class="detail_value"><input type="text" class="form-control is-disabled" id="username" placeholder="" value="" disabled></td>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="form-group">
-                            <td class="detail_name"><label for="gender">Gender</label></td>
-                            <td class="detail_value"><select class="form-control is-disabled" id="gender" disabled></select></td>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="form-group">
-                            <td class="detail_name"><label for="birthday">Birthday</label></td>
-                            <td class="detail_value"><input type="date" class="form-control is-disabled" id="birthday" placeholder="" value="" disabled></td>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="form-group">
-                            <td class="detail_name"><label for="school">School</label></td>
-                            <td class="detail_value"><select class="form-control is-disabled" id="school" disabled></select></td>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="form-group">
-                            <td class="detail_name"><label for="email">Email</label></td>
-                            <td class="detail_value"><input type="text" class="form-control is-disabled" id="email" placeholder="" value="" disabled></td>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="form-group">
-                            <td class="detail_name"><label for="matric_no">Matric No.</label></td>
-                            <td class="detail_value"><input type="number" class="form-control is-disabled" id="matric_no" placeholder="" value="" disabled></td>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="form-group">
-                            <td class="detail_name"><label for="phone_no">Phone No.</label></td>
-                            <td class="detail_value"><input type="number" class="form-control is-disabled" id="phone_no" placeholder="" value="" disabled></td>
-                            </div>
-                        </tr>
-
-
-                    </table>
-                    
-                    <button type="button" class="btn btn-default btn-edit js-edit">Edit</button>
-                    <button type="button" class="btn btn-default btn-save js-save" id="save" >Save</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- USER PREFERENCE -->
-    <div class="container">
-        <div id="user_preference">
-            <h2>Preferences</h2>
-
-            <div class="row justify-content-center" id="preference">
-                
-                <!-- populated by firebase -->
-
-                <!-- ADD BUTTON -->
-                
-            </div>
-
-
-        </div>
-    </div>
-
-    <!-- PAST EVENTS -->
-    <div class="container">
+            <!-- PREFERENCE TAB -->
+            <div class="tab-pane fade" id="preference-tab-pane" role="tabpanel" aria-labelledby="preference-tab" tabindex="0">
+                <!-- PREFERENCE -->
+                <div id="user_preference">
+                    <h2>Preferences</h2>
         
-        <h2 id="events_h2">Past Events</h2>
+                    <div class="row justify-content-center" id="preference">
+                        
+                        <!-- populated by firebase -->
         
-        <div class="cards_landscape_wrap-2" id="events">
-            
-        </div>
-
-    </div>
-
-
-    <!-- MODAL (BEACH)-->
-    <div>
-        <div class="modal fade" id="beach" tabindex="-1" >
-        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title">Beach Clean Up</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <img style="margin: auto; display:block;" width="70%" src="https://www.sassymamasg.com/wp-content/uploads/2018/08/kids-beach-clean-up-1024x796.jpg" alt="">
-
-            <div>
-                <br>
-                SMU Volleyball’s first ever signature event, Take Flight and Spike 2022 was a blast! 🎉🤩 <br> <br>
-    
-                Thank you for joining us on this exciting endeavour - organising an exclusive SMU Volleyball
-    
-                event that will be our signature event from now on!😗 <br> <br>
-    
-                Thank you to all our event organisers and the participants for such an unforgettable first run 
-    
-                of Take Flight and Spike! A special thank you to the Office of Student Life for making this
-    
-                experience a memorable one. 🌟🌟 <br> <br>
-    
-                We would like to extend our heartfelt gratitude to our amazing and trustworthy sponsors for
-    
-                making Take Flight and Spike 2022 possible and supporting our endeavours!🙌 🥰 <br> <br>
+                    </div>
+        
+                </div>
             </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-        </div>
-        </div>
-        </div>
-    </div>
 
-    <!-- MODAL (SUCCESS)-->
-    <div>
-        <div class="modal fade" id="successModal" tabindex="-1" >
-        <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title">Success!</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <!-- EVENTS TAB -->
+            <div class="tab-pane fade" id="events-tab-pane" role="tabpanel" aria-labelledby="events-tab" tabindex="0">
+
+                <!-- ALL EVENTS -->
+                
+
+                <!-- PAST EVENTS -->
+                <div class="container">
+                    <h2 id="events_h2">Past Events</h2>
+                    <div class="cards_landscape_wrap-2" id="past_events">
+                    </div>
+                </div>
+
+            </div>
+
         </div>
-        <div class="modal-body">
-            <p>Your changes has been saved.</p>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-        </div>
-        </div>
-        </div>
+
     </div>
-    
     
     <!-- <script type="module" src="js/profile.js"></script> -->
     <script type="module" src="js/login-common.js"></script>
