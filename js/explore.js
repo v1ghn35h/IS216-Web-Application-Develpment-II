@@ -149,6 +149,12 @@ const explorePage = Vue.createApp({
     },
 
     methods: {
+        
+        check_date(date){
+            let current_date = new Date()
+            let e_date = new Date(date)
+            return e_date > current_date
+        },
 
         // filter works, to be completed
         format_date(date) {
