@@ -511,7 +511,7 @@ function UserPastEvents () {
                             <div class="modal-dialog modal-dialog-scrollable modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="InfoPageLabel">${club_of_event}</h1>
+                                        <h1 class="modal-title text-wrap fs-5" id="InfoPageLabel">${club_of_event}</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
@@ -546,7 +546,7 @@ function UserPastEvents () {
                                                 <img src="${photo_of_event}"
                                                     style="width:500px; height:250px" alt="..." class="center "/>
                                             </div>
-                                            <p class="display-6 lead text-center">${name_of_event}</p>
+                                            <p class="display-6 lead text-center text-wrap">${name_of_event}</p>
                                             <hr>
                                             <div class="container">
                                                 <p><textarea id="textarea_${event_id}" class="form-control" placeholder="Type your message here..."></textarea></p>
