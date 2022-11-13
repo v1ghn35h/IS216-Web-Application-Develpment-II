@@ -37,7 +37,10 @@ var new_db_size = 0
 var new_id = 0
 
 var all_events = []
-let current_user = "user1" // change according to user logged in
+// let current_user = "user1" // change according to user logged in
+
+import ResolvedUID from "./login-common.js";
+let current_user = ResolvedUID // change according to user logged in
 
 
 // ----------------------------------------
@@ -723,67 +726,68 @@ var apps = Vue.createApp({
 apps.mount("#category")
 
 
-document.addEventListener('DOMContentLoaded', function() {
-  var calendarEl = document.getElementById('calendar');
 
-  var calendar = new FullCalendar.Calendar(calendarEl, {
-    height: 700,
+var calendarEl = document.getElementById('calendar');
+console.log(calendarEl)
 
-    views: {
-      eventLimit: 2, // for all non-TimeGrid views
-    },
+var calendar = new FullCalendar.Calendar(calendarEl, {
+  height: 700,
 
-    customButtons: {
-      // Click + button to add event
-      addEvent: {
-        text: '+',
-        click: 
-          function() {
-            // get the modal
-            var modal = document.getElementById("myModal");
-            var add_success_modal = document.getElementById("addSuccessModal");
+  views: {
+    eventLimit: 2, // for all non-TimeGrid views
+  },
 
-            // get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
-          
-            // when the user clicks on the button, open the modal
-            modal.style.display = "block";
-          
-            // when the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-              modal.style.display = "none";
+  customButtons: {
+    // Click + button to add event
+    addEvent: {
+      text: '+',
+      click: 
+        function() {
+          // get the modal
+          var modal = document.getElementById("myModal");
+          var add_success_modal = document.getElementById("addSuccessModal");
+
+          // get the <span> element that closes the modal
+          var span = document.getElementsByClassName("close")[0];
+        
+          // when the user clicks on the button, open the modal
+          modal.style.display = "block";
+        
+          // when the user clicks on <span> (x), close the modal
+          span.onclick = function() {
+            modal.style.display = "none";
+          }
+        
+          // modal dropdown
+          let ele = document.getElementById("selectElements")
+        
+          // when button is clicked
+          document.getElementById('addEventButton').addEventListener("click", function() {
+
+            // fetch title
+            let title = document.getElementById('event_title').value
+        
+            // fetch start
+            let start = document.getElementById('startDate').value
+            let start_time = document.getElementById('startTime').value
+            if (start_time != "") { // add start time if it's stated
+              start += `T${start_time}:00`
             }
-          
-            // modal dropdown
-            let ele = document.getElementById("selectElements")
-          
-            // when button is clicked
-            document.getElementById('addEventButton').addEventListener("click", function() {
+        
+            // fetch end
+            let end = ""
+            let end_date = document.getElementById('endDate').value
+            if (end_date != "") { // add end date if it is stated
+              end += end_date
+            }
+            let end_time = document.getElementById('endTime').value
+            if (end_time != "") { // add end time if it's stated
+              end += `T${end_time}:00`
+            }
 
-              // fetch title
-              let title = document.getElementById('event_title').value
-          
-              // fetch start
-              let start = document.getElementById('startDate').value
-              let start_time = document.getElementById('startTime').value
-              if (start_time != "") { // add start time if it's stated
-                start += `T${start_time}:00`
-              }
-          
-              // fetch end
-              let end = ""
-              let end_date = document.getElementById('endDate').value
-              if (end_date != "") { // add end date if it is stated
-                end += end_date
-              }
-              let end_time = document.getElementById('endTime').value
-              if (end_time != "") { // add end time if it's stated
-                end += `T${end_time}:00`
-              }
-
-              // if form fields are valid
-              if (title != "" && start != "" && end != "") {
-                // fetch items from db
+            // if form fields are valid
+            if (title != "" && start != "" && end != "") {
+              // fetch items from db
               const dbRef = ref(getDatabase());
               get(child(dbRef, `users/${current_user}/user_events/`)).then((snapshot) => {
                 if (snapshot.exists()) {
@@ -793,477 +797,474 @@ document.addEventListener('DOMContentLoaded', function() {
                   all_events = Object.entries(db_values)
                   console.log(all_events)
                   new_db_size = all_events.length + 2
-
-                  // add event to array
-                  set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
-                    {
-                      title: title,
-                      start: start,
-                      end: end,
-                      category: event_class,
-                      id: new_db_size
-                    },
-                  )
-
-                  // empty and readd items
-                  all_events.push(db_values)
-                  console.log(all_events)
-
-                  // display added successfully
-                  add_success_modal.style.display = "block";
-
-                  // force page to reload
-                  setTimeout(function(){
-                    window.location.reload();
-                  }, 2000);
-              
-                  // reset modal 
-                  modal.style.display = "none";
-                  document.getElementById("addEvent").reset();
-                } 
-                
-
-                else {
+                } else {
                   console.log("No data available");
+                  new_db_size = all_events.length
+                  console.log(new_db_size)
                 }
+                // add event to array
+                set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
+                  {
+                    title: title,
+                    start: start,
+                    end: end,
+                    category: event_class,
+                    id: new_db_size
+                  },
+                )
+
+                // empty and readd items
+                all_events.push(db_values)
+                console.log(all_events)
+
+                // display added successfully
+                add_success_modal.style.display = "block";
+
+                // force page to reload
+                setTimeout(function(){
+                  window.location.reload();
+                }, 2000);
+            
+                // reset modal 
+                modal.style.display = "none";
+                document.getElementById("addEvent").reset();
               }).catch((error) => {
                 console.error(error);
               });
-              }
-            
-            // there are errors
-            else  {
-              console.log("there are errors")
-
-              var errors = []
-            
-              // get the modal
-              let error_modal = document.getElementById("formValidationModal")
-
-              // get the <span> element that closes the modal
-              var error_span = document.getElementsByClassName("close")[1];
-
-              let error_output = document.getElementById("form_errors")
-
-              // check for empty fields
-              if (title == "") {
-                errors.push("Event Title")
-              }
-              if (start == "") {
-                errors.push("Start Date")
-              }
-              if (end == "") {
-                errors.push("End Date")
-              }
-              console.log(errors)
-
-              // add errors
-              error_output.innerHTML = '<ul>'
-              for (let err of errors) {
-                error_output.innerHTML += `<li> ${err} </li>`
-              }
-              error_output.innerHTML += '</ul>'
-
-              error_modal.style.display = "block"
-
-               // when the user clicks on <span> (x), close the modal
-              error_span.onclick = function() {
-                error_modal.style.display = "none";
-              }
-            }
-
-
-
-
-            }
-          )}
-        }
-      },
-
-    headerToolbar: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'addEvent dayGridMonth,listYear',
-    },
-
-    buttonText: {
-        today:    'Today',
-        month:    'Month',
-        week:     'Week',
-        day:      'Day',
-        list:     'List'
-    },
-
-    themeSystem: 'bootstrap5',
-
-    displayEventTime: true,
-
-    firstDay: 1, // set first day of week to monday
-
-    // Click on date (to add event)
-    dateClick: 
-      function (info) {
-
-        // get the modal
-        var modal = document.getElementById("myModal");
-        var add_success_modal = document.getElementById("addSuccessModal");
-        // get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-
-        // when the user clicks on the button, open the modal
-        modal.style.display = "block";
-        add_success_modal.style.display = "none";
-
-        // when the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-          modal.style.display = "none";
-        }
-
-        // modal dropdown
-        let ele = document.getElementById("selectElements")
-
-        var dateStr = info.dateStr
-
-        // set HTML input value as date selected
-        let date_selected = document.getElementById("startDate")
-        date_selected.value = dateStr
-
-        console.log(date_selected)
-
-        // when button is clicked
-        document.getElementById('addEventButton').addEventListener("click", function() {
-
-          // fetch start
-          var start = document.getElementById('startDate').value
-          var start_time = document.getElementById('startTime').value
-          if (start_time != "") { // add start time if it's stated
-            start += `T${start_time}:00`
-          }
-
-          // fetch end
-          var end = ""
-          var end_date = document.getElementById('endDate').value
-          if (end_date != "") { // add end date if it is stated
-            end += end_date
-          }
-          var end_time = document.getElementById('endTime').value
-          if (end_time != "") { // add end time if it's stated
-            end += `T${end_time}:00`
           }
           
-          // fetch title
-          var title = document.getElementById('event_title').value
-      
-          // fetch start
-          var start = document.getElementById('startDate').value
-          var start_time = document.getElementById('startTime').value
-          if (start_time != "") { // add start time if it's stated
-            start += `T${start_time}:00`
-          }
-      
-          // fetch end
-          var end = ""
-          var end_date = document.getElementById('endDate').value
-          if (end_date != "") { // add end date if it is stated
-            end += end_date
-          }
-          var end_time = document.getElementById('endTime').value
-          if (end_time != "") { // add end time if it's stated
-            end += `T${end_time}:00`
-          }
+          // there are errors
+          else  {
+            console.log("there are errors")
 
-          // if form fields are valid
-          if (title != "" && start != "" && end != "") {
-            // fetch items from db
-          const dbRef = ref(getDatabase());
-          get(child(dbRef, `users/${current_user}/user_events/`)).then((snapshot) => {
-            if (snapshot.exists()) {
-              var db_values = snapshot.val();
-
-              // empty and readd items
-              all_events = Object.entries(db_values)
-              console.log(all_events)
-              new_db_size = all_events.length + 2
-
-              // add event to array
-              set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
-                {
-                  title: title,
-                  start: start,
-                  end: end,
-                  category: event_class,
-                  id: new_db_size
-                },
-              )
-
-              // empty and readd items
-              all_events.push(db_values)
-              console.log(all_events)
-
-              // display added successfully
-              add_success_modal.style.display = "block";
-
-              // force page to reload
-              setTimeout(function(){
-                window.location.reload();
-              }, 2000);
+            var errors = []
           
-              // reset modal 
-              modal.style.display = "none";
-              document.getElementById("addEvent").reset();
-            } 
-            
+            // get the modal
+            let error_modal = document.getElementById("formValidationModal")
 
-            else {
-              console.log("No data available");
+            // get the <span> element that closes the modal
+            var error_span = document.getElementsByClassName("close")[1];
+
+            let error_output = document.getElementById("form_errors")
+
+            // check for empty fields
+            if (title == "") {
+              errors.push("Event Title")
             }
-          }).catch((error) => {
-            console.error(error);
-          });
+            if (start == "") {
+              errors.push("Start Date")
+            }
+            if (end == "") {
+              errors.push("End Date")
+            }
+            console.log(errors)
+
+            // add errors
+            error_output.innerHTML = '<ul>'
+            for (let err of errors) {
+              error_output.innerHTML += `<li> ${err} </li>`
+            }
+            error_output.innerHTML += '</ul>'
+
+            error_modal.style.display = "block"
+
+              // when the user clicks on <span> (x), close the modal
+            error_span.onclick = function() {
+              error_modal.style.display = "none";
+            }
           }
-        
-        // there are errors
-        else  {
-          console.log("there are errors")
 
-          var errors = []
-        
-          // get the modal
-          let error_modal = document.getElementById("formValidationModal")
 
-          // get the <span> element that closes the modal
-          var error_span = document.getElementsByClassName("close")[1];
 
-          let error_output = document.getElementById("form_errors")
 
-          // check for empty fields
-          if (title == "") {
-            errors.push("Event Title")
           }
-          if (start == "") {
-            errors.push("Start Date")
-          }
-          if (end == "") {
-            errors.push("End Date")
-          }
-          console.log(errors)
-
-          // add errors
-          error_output.innerHTML = '<ul>'
-          for (let err of errors) {
-            error_output.innerHTML += `<li> ${err} </li>`
-          }
-          error_output.innerHTML += '</ul>'
-
-          error_modal.style.display = "block"
-
-           // when the user clicks on <span> (x), close the modal
-          error_span.onclick = function() {
-            error_modal.style.display = "none";
-          }
-        }
-          
+        )}
       }
-    )},
-
-    // API Key
-    googleCalendarApiKey: 'AIzaSyC4IyTr17PyenYfQSiFD3mI3xCGIV0LsOk',
-    // old: AIzaSyBLxGXn-ZzMfSKIobD-6C4chf4qI8XXRn8
-
-    // display events
-    events: 
-      function(info, successCallback, failureCallback) {
-
-        // Get a reference to the data 'title'
-        const users = ref(db, 'users') 
-
-        // Update user's calendar
-        onValue(users, (snapshot => {
-          const data = snapshot.val(); // get the new value
-          console.log(data)
-
-          // empty all past data fetched
-          all_events = []
-
-          let all_users = data
-          let user = data[current_user]
-
-          let upcoming_events = user.user_events
-
-          for (let event in upcoming_events) {
-            let new_event_obj = upcoming_events[event]
-            
-            // set event color by category
-            let new_event_category = new_event_obj.category
-
-            if (new_event_category == "") {
-              new_event_category = "Default"
-            }
-
-            try {
-              let find_object = colors.find(o => o.name === new_event_category); // find object with the name == new_event_category
-              let new_event_color = find_object.hex
-  
-              // add color to event object
-              new_event_obj["color"] = new_event_color
-            }
-
-            catch(error) {
-              // console.log(new_event_obj)
-              console.log(error)
-            }
-            
-            all_events.push(new_event_obj)
-          }
-
-        successCallback(all_events)
-
-      }));
-
     },
 
-    // When the user clicks on an event
-    eventClick: 
-      function(info) {
+  headerToolbar: {
+    left: 'prev,next today',
+    center: 'title',
+    right: 'addEvent dayGridMonth,listYear',
+  },
 
-        let event_info = info.event._def
-        console.log(event_info)
+  buttonText: {
+      today:    'Today',
+      month:    'Month',
+      week:     'Week',
+      day:      'Day',
+      list:     'List'
+  },
 
+  themeSystem: 'bootstrap5',
+
+  displayEventTime: true,
+
+  firstDay: 1, // set first day of week to monday
+
+  // Click on date (to add event)
+  dateClick: 
+    function (info) {
+
+      // get the modal
+      var modal = document.getElementById("myModal");
+      var add_success_modal = document.getElementById("addSuccessModal");
+      // get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // when the user clicks on the button, open the modal
+      modal.style.display = "block";
+      add_success_modal.style.display = "none";
+
+      // when the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+
+      // modal dropdown
+      let ele = document.getElementById("selectElements")
+
+      var dateStr = info.dateStr
+
+      // set HTML input value as date selected
+      let date_selected = document.getElementById("startDate")
+      date_selected.value = dateStr
+
+      console.log(date_selected)
+
+      // when button is clicked
+      document.getElementById('addEventButton').addEventListener("click", function() {
+
+        // fetch start
+        var start = document.getElementById('startDate').value
+        var start_time = document.getElementById('startTime').value
+        if (start_time != "") { // add start time if it's stated
+          start += `T${start_time}:00`
+        }
+
+        // fetch end
+        var end = ""
+        var end_date = document.getElementById('endDate').value
+        if (end_date != "") { // add end date if it is stated
+          end += end_date
+        }
+        var end_time = document.getElementById('endTime').value
+        if (end_time != "") { // add end time if it's stated
+          end += `T${end_time}:00`
+        }
+        
+        // fetch title
+        var title = document.getElementById('event_title').value
+    
+        // fetch start
+        var start = document.getElementById('startDate').value
+        var start_time = document.getElementById('startTime').value
+        if (start_time != "") { // add start time if it's stated
+          start += `T${start_time}:00`
+        }
+    
+        // fetch end
+        var end = ""
+        var end_date = document.getElementById('endDate').value
+        if (end_date != "") { // add end date if it is stated
+          end += end_date
+        }
+        var end_time = document.getElementById('endTime').value
+        if (end_time != "") { // add end time if it's stated
+          end += `T${end_time}:00`
+        }
+
+        // if form fields are valid
+        if (title != "" && start != "" && end != "") {
+          // fetch items from db
+        const dbRef = ref(getDatabase());
+        get(child(dbRef, `users/${current_user}/user_events/`)).then((snapshot) => {
+          if (snapshot.exists()) {
+            var db_values = snapshot.val();
+
+            // empty and readd items
+            all_events = Object.entries(db_values)
+            console.log(all_events)
+            new_db_size = all_events.length + 2
+          } 
+          
+
+          else {
+            console.log("No data available");
+            new_db_size = all_events.length
+          }
+          // add event to array
+          set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
+            {
+              title: title,
+              start: start,
+              end: end,
+              category: event_class,
+              id: new_db_size
+            },
+          )
+
+          // empty and readd items
+          all_events.push(db_values)
+          console.log(all_events)
+
+          // display added successfully
+          add_success_modal.style.display = "block";
+
+          // force page to reload
+          setTimeout(function(){
+            window.location.reload();
+          }, 2000);
+      
+          // reset modal 
+          modal.style.display = "none";
+          document.getElementById("addEvent").reset();
+        }).catch((error) => {
+          console.error(error);
+        });
+        }
+      
+      // there are errors
+      else  {
+        console.log("there are errors")
+
+        var errors = []
+      
         // get the modal
-        var modal = document.getElementById("myOtherModal");
-        var delete_success_modal = document.getElementById("deleteSuccessModal");
+        let error_modal = document.getElementById("formValidationModal")
 
         // get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[2]
+        var error_span = document.getElementsByClassName("close")[1];
 
-        // when the user clicks on the button, open the modal
-        modal.style.display = "block";
-        delete_success_modal.style.display = "none";
+        let error_output = document.getElementById("form_errors")
 
-        // when the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-          modal.style.display = "none";
+        // check for empty fields
+        if (title == "") {
+          errors.push("Event Title")
         }
-
-        // --- DISPLAY EVENT DETAILS ---
-        // for events that the user add
-        let event_id = event_info.publicId
-        console.log(event_id)
-
-        let event_category = info.event._def.extendedProps.category
-
-        // if event_category is selected, set icon based on category
-        if (event_category == "") {
-          event_category = "Default"
+        if (start == "") {
+          errors.push("Start Date")
         }
+        if (end == "") {
+          errors.push("End Date")
+        }
+        console.log(errors)
 
-        // if category is valid, set color based on category
-        try {
-          let obj = colors.find(o => o.name === event_category); // find object with the name == new_event_category
+        // add errors
+        error_output.innerHTML = '<ul>'
+        for (let err of errors) {
+          error_output.innerHTML += `<li> ${err} </li>`
+        }
+        error_output.innerHTML += '</ul>'
+
+        error_modal.style.display = "block"
+
+          // when the user clicks on <span> (x), close the modal
+        error_span.onclick = function() {
+          error_modal.style.display = "none";
+        }
+      }
         
-          let event_colour = obj.hex
-          let dot = document.getElementById("eventColor")
-          dot.style.background = event_colour
-
-          // set icon based on category
-          let event_icon = event_media[event_category][1]
-          let icon = document.getElementById("eventIcon")
-          icon.innerHTML = `<img src="img/${event_icon}" style='height: 50px;'>`
-        }
-
-        catch (error) {
-          console.log(event_id)
-          console.log(error)
-        }
-
-        // set event picture
-        let eventPicture = document.getElementById("eventPicture")
-        let photo = info.event._def.extendedProps.photo_url
-
-        // if picture retrieved from database
-        if (photo != undefined) {
-          eventPicture.innerHTML = `<img src=${photo} style="max-width: 100%; padding-bottom: 10px;">`
-        }
-
-        // else show default image
-        else {
-          let eventCategory = document.getElementById("eventCategory")
-
-          // event category is set
-          if (event_category != "") {
-            let event_pic = event_media[event_category][2]
-            eventPicture.innerHTML = `<img src="img/${event_pic}" style="width: 100%; padding-bottom: 10px;">`
-          }
-        }
-
-        // set event title
-        let eventTitle = document.getElementById("eventTitle")
-        eventTitle.innerHTML = info.event._def.title
-
-        // set event start details
-        let eventStart = document.getElementById("eventStart")
-        let start = info.event.start
-        let start_string = String(start)
-        let start_arr = start_string.split(" ")
-        let start_day = start_arr[0]
-        let start_month = start_arr[1]
-        let start_date = start_arr[2]
-        let start_year = start_arr[3]
-        let start_time = start_arr[4].slice(0,5)
-        let start_output = `${start_date} ${start_month} ${start_year} (${start_day}), ${start_time}`
-        eventStart.innerHTML = start_output
-
-        // set event end details
-        let eventEnd = document.getElementById("eventEnd")
-        let end = info.event.end
-        let end_output = "-"
-        if (end != null) { // if end date is specified
-          let end_string = String(end)
-          let end_arr = end_string.split(" ")
-          let end_day = end_arr[0]
-          let end_month = end_arr[1]
-          let end_date = end_arr[2]
-          let end_year = end_arr[3]
-          let end_time = end_arr[4].slice(0,5)
-          end_output = `${end_date} ${end_month} ${end_year} (${end_day}), ${end_time}`
-        }
-        eventEnd.innerHTML = end_output
-
-        // set event category
-        let eventCategory = document.getElementById("eventCategory")
-        if (event_category != undefined) {
-          eventCategory.innerHTML = event_category
-        }
-        else {
-          eventCategory = "Not specified"
-        }
-
-        // --- DELETE EVENT ---
-        document.getElementById('deleteEventButton').onclick = 
-        function() {
-
-          // Fetch event
-          let event_to_delete = calendar.getEventById(event_id)
-          console.log(event_to_delete)
-
-          // Delete event
-          const tasksRef = ref(db, 'users/' + current_user + '/user_events/event_' + event_id);
-
-          remove(tasksRef).then(() => {
-
-            // display deleted successfully
-            delete_success_modal.style.display = "block";
-
-            // force page to reload
-            setTimeout(function(){
-              window.location.reload();
-              }, 2000);
-          });
-
-      };
     }
+  )},
 
-  });
+  // API Key
+  googleCalendarApiKey: 'AIzaSyC4IyTr17PyenYfQSiFD3mI3xCGIV0LsOk',
+  // old: AIzaSyBLxGXn-ZzMfSKIobD-6C4chf4qI8XXRn8
 
-  calendar.render();
+  // display events
+  events: 
+    function(info, successCallback, failureCallback) {
+
+      // Get a reference to the data 'title'
+      const users = ref(db, 'users') 
+
+      // Update user's calendar
+      onValue(users, (snapshot => {
+        const data = snapshot.val(); // get the new value
+        console.log(data)
+
+        // empty all past data fetched
+        all_events = []
+
+        let all_users = data
+        let user = data[current_user]
+
+        let upcoming_events = user.user_events
+
+        for (let event in upcoming_events) {
+          let new_event_obj = upcoming_events[event]
+          
+          // set event color by category
+          let new_event_category = new_event_obj.category
+
+          if (new_event_category == "") {
+            new_event_category = "Default"
+          }
+
+          try {
+            let find_object = colors.find(o => o.name === new_event_category); // find object with the name == new_event_category
+            let new_event_color = find_object.hex
+
+            // add color to event object
+            new_event_obj["color"] = new_event_color
+          }
+
+          catch(error) {
+            // console.log(new_event_obj)
+            console.log(error)
+          }
+          
+          all_events.push(new_event_obj)
+        }
+
+      successCallback(all_events)
+
+    }));
+
+  },
+
+  // When the user clicks on an event
+  eventClick: 
+    function(info) {
+
+      let event_info = info.event._def
+      console.log(event_info)
+
+      // get the modal
+      var modal = document.getElementById("myOtherModal");
+      var delete_success_modal = document.getElementById("deleteSuccessModal");
+
+      // get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[2]
+
+      // when the user clicks on the button, open the modal
+      modal.style.display = "block";
+      delete_success_modal.style.display = "none";
+
+      // when the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+
+      // --- DISPLAY EVENT DETAILS ---
+      // for events that the user add
+      let event_id = event_info.publicId
+      console.log(event_id)
+
+      let event_category = info.event._def.extendedProps.category
+
+      // if event_category is selected, set icon based on category
+      if (event_category == "") {
+        event_category = "Default"
+      }
+
+      // if category is valid, set color based on category
+      try {
+        let obj = colors.find(o => o.name === event_category); // find object with the name == new_event_category
+      
+        let event_colour = obj.hex
+        let dot = document.getElementById("eventColor")
+        dot.style.background = event_colour
+
+        // set icon based on category
+        let event_icon = event_media[event_category][1]
+        let icon = document.getElementById("eventIcon")
+        icon.innerHTML = `<img src="img/${event_icon}" style='height: 50px;'>`
+      }
+
+      catch (error) {
+        console.log(event_id)
+        console.log(error)
+      }
+
+      // set event picture
+      let eventPicture = document.getElementById("eventPicture")
+      let photo = info.event._def.extendedProps.photo_url
+
+      // if picture retrieved from database
+      if (photo != undefined) {
+        eventPicture.innerHTML = `<img src=${photo} style="max-width: 100%; padding-bottom: 10px;">`
+      }
+
+      // else show default image
+      else {
+        let eventCategory = document.getElementById("eventCategory")
+
+        // event category is set
+        if (event_category != "") {
+          let event_pic = event_media[event_category][2]
+          eventPicture.innerHTML = `<img src="img/${event_pic}" style="width: 100%; padding-bottom: 10px;">`
+        }
+      }
+
+      // set event title
+      let eventTitle = document.getElementById("eventTitle")
+      eventTitle.innerHTML = info.event._def.title
+
+      // set event start details
+      let eventStart = document.getElementById("eventStart")
+      let start = info.event.start
+      let start_string = String(start)
+      let start_arr = start_string.split(" ")
+      let start_day = start_arr[0]
+      let start_month = start_arr[1]
+      let start_date = start_arr[2]
+      let start_year = start_arr[3]
+      let start_time = start_arr[4].slice(0,5)
+      let start_output = `${start_date} ${start_month} ${start_year} (${start_day}), ${start_time}`
+      eventStart.innerHTML = start_output
+
+      // set event end details
+      let eventEnd = document.getElementById("eventEnd")
+      let end = info.event.end
+      let end_output = "-"
+      if (end != null) { // if end date is specified
+        let end_string = String(end)
+        let end_arr = end_string.split(" ")
+        let end_day = end_arr[0]
+        let end_month = end_arr[1]
+        let end_date = end_arr[2]
+        let end_year = end_arr[3]
+        let end_time = end_arr[4].slice(0,5)
+        end_output = `${end_date} ${end_month} ${end_year} (${end_day}), ${end_time}`
+      }
+      eventEnd.innerHTML = end_output
+
+      // set event category
+      let eventCategory = document.getElementById("eventCategory")
+      if (event_category != undefined) {
+        eventCategory.innerHTML = event_category
+      }
+      else {
+        eventCategory = "Not specified"
+      }
+
+      // --- DELETE EVENT ---
+      document.getElementById('deleteEventButton').onclick = 
+      function() {
+
+        // Fetch event
+        let event_to_delete = calendar.getEventById(event_id)
+        console.log(event_to_delete)
+
+        // Delete event
+        const tasksRef = ref(db, 'users/' + current_user + '/user_events/event_' + event_id);
+
+        remove(tasksRef).then(() => {
+
+          // display deleted successfully
+          delete_success_modal.style.display = "block";
+
+          // force page to reload
+          setTimeout(function(){
+            window.location.reload();
+            }, 2000);
+        });
+
+    };
+  }
+
 });
+
+calendar.render();

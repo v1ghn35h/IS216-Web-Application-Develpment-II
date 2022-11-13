@@ -24,7 +24,7 @@ function call_weather_api() {
         let temp = Number(response.data.main.temp) - 273.15
         let rounded = Math.round((temp + Number.EPSILON) * 100) / 100   //rounded to 2 decimal places
         let country_weather = response.data.weather
-        let text = `Today's temperature is ${rounded} °C`
+        let text = `Current temperature is ${rounded} °C`
         body.innerText = text;
         img_text = document.getElementById("api");
         weather_text = `<div style = "color: white">`
