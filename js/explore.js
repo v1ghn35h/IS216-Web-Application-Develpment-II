@@ -65,6 +65,9 @@ const explorePage = Vue.createApp({
             current_page: 1,
             number_of_pages: 0,
 
+            //event error
+            event_error: '',
+
         };
     }, // data
  
@@ -366,8 +369,20 @@ const explorePage = Vue.createApp({
 
             console.log(this.number_of_pages);
 
+            this.event_error = ''
+
             if (events.length == 0) {
-                alert("No events found")
+                // alert("No events found")
+                this.event_error = `
+                <div class="alert alert-warning" role="alert">
+                <h5 class="alert-heading">
+
+                <i class="fa fa-frown-o" style="font-size:30px" ></i>
+                    No results found!
+
+                </h5>
+
+              </div>`
             }
             
             if (events.length > 12) {
@@ -416,34 +431,34 @@ const explorePage = Vue.createApp({
         },
 
         addEvent(name, club, photo, date, location, time, type, id) {
-            const dbRef = ref(getDatabase());
+            
 
-                  set(ref(db, 'users/' + this.current_user + '/user_events/event_' + id), 
-                    {
-                        title: name,
-                        start: this.formatting_start_date(date, time),
-                        end: this.formatting_end_date(date, time),
-                        category: type,
-                        id: id,
-                        event_club: club,
-                        photo_url: photo,
-                        event_date: date,
-                        event_location: location,
-                        event_time: time,
-                    },
-                  )
-                
-                .then(() => {
-                    console.log('Data updated successfully!');
-                })
-                .catch((error) => {
-                console.error(error);
-              });  
-              // force page to reload
-              setTimeout(function(){
-                window.location.reload();
-              }, 500);
-          },
+            set(ref(db, 'users/' + this.current_user + '/user_events/event_' + id), 
+                {
+                    title: name,
+                    start: this.formatting_start_date(date, time),
+                    end: this.formatting_end_date(date, time),
+                    category: type,
+                    id: id,
+                    event_club: club,
+                    photo_url: photo,
+                    event_date: date,
+                    event_location: location,
+                    event_time: time,
+                },
+                )
+            
+            .then(() => {
+                console.log('Data updated successfully!');
+            })
+            .catch((error) => {
+            console.error(error);
+            });  
+            // force page to reload
+            setTimeout(function(){
+            window.location.reload();
+            }, 500);
+        },
 
 
         formatting_start_date(date, time){
