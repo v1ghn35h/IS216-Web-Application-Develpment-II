@@ -417,6 +417,20 @@ onValue(users, (snapshot => {
 function UserPastEvents () {
     let tempHTML = ""
     let counter = 0
+    let num_to_month = {
+        "01": 'January',
+        "02": 'February',
+        "03": 'March',
+        "04": 'April',
+        "05": 'May',
+        "06": 'June',
+        "07": 'July',
+        "08": 'August',
+        "09": 'September',
+        "10": 'October',
+        "11": 'November',
+        "12": 'December',
+      }
     for (let event in user_events) {
 		if (Object.hasOwnProperty.call(user_events, event)) {
             // console.log(event);
@@ -428,6 +442,11 @@ function UserPastEvents () {
                 let photo_of_event= user_events[event].photo_url
                 let date_of_event= user_events[event].event_date
                 let time_of_event= user_events[event].event_time
+                let date_arr = date_of_event.split("-")
+                let day = date_arr[2]
+                let month = num_to_month[date_arr[1]]
+                let year = date_arr[0]
+
                 // let location_of_event= user_events[event].event_location
                 let event_id= user_events[event].event_id
                 let event_date= user_events[event].start.slice(0,10)
@@ -448,7 +467,7 @@ function UserPastEvents () {
                                     <h6 class="card-subtitle mb-2 "> ${type_of_event} </h6>
                                     <!-- BODY -->
                                     <p class="card-text text-wrap">
-                                        Date: ${date_of_event}
+                                        Date: ${day} ${month} ${year} 
                                         <br>
                                         Time: ${time_of_event}
                                         <br>
