@@ -1197,7 +1197,9 @@
                         "Sports"
                     ]
                 },
-                "profile_picture": "url('https://firebasestorage.googleapis.com/v0/b/calendaready-g7t7.appspot.com/o/images%2Fnatasha1.png?alt=media&token=998da93a-be5a-4431-b762-f611b63180c1')",
+                "profile_picture": {
+                    "picture_url": "url('https://firebasestorage.googleapis.com/v0/b/calendaready-g7t7.appspot.com/o/images%2Fnatasha1.png?alt=media&token=998da93a-be5a-4431-b762-f611b63180c1')"
+                },
                 "school": "SCIS",
                 "username": "natasha.2021"
             },

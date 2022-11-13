@@ -586,20 +586,25 @@ function UserPastEvents () {
             }
 
     }}
-    document.getElementById('past_events').innerHTML = tempHTML
 
     if (counter == 0) {
         console.log(counter);
         document.getElementById('events-tab-pane').innerHTML = `
         <div id="sign_up">
-            <div style="padding-top: 30%">
-                <h2>You have not signed up for any events.</h2>
+            <div style="padding-top: 25%">
+                <h2>You do not have past events</h2>
+                <br>
                 <h3>Sign up now!</h3>
+                <br>
                 <a class="btn" href="home.html">Home</a>
+                <span> &nbsp; &nbsp; </span>
                 <a class="btn" href="explore.html">Events</a>
             </div>
         </div>
         ` 
+    } else {
+        document.getElementById('past_events').innerHTML = tempHTML
+
     }
 
 }
