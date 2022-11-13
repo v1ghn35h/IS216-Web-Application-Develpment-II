@@ -45,7 +45,7 @@ onAuthStateChanged(auth, (user) => {
             if (userData == null) {
                 set (dbUser, {
                     "user_profile_info": {
-                        "name": "New User - Update Profile Page",
+                        "name": "New User",
                         "username": "<Unknown>",
                         "gender": "<Unknown>",
                         "birthday": "<Unknown>",
