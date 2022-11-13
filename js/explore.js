@@ -21,7 +21,8 @@ const db = getDatabase();
 const users = ref(db, 'users') 
 // const clubs = ref(db, 'clubs')
 const allEvents = ref(db, 'events')
-
+import ResolvedUID from "./login-common.js";
+let current_user = ResolvedUID
 
 //////////////////////////////////////////////////
 
@@ -35,7 +36,7 @@ const explorePage = Vue.createApp({
             db_events: '', // this stores all events extracted from db
             userInfo: '',
             userInfo: '',
-            current_user: "user1",
+            current_user: current_user,
             sorted_events_by_type: null,
             sorted_events_by_fees: null,
             sorted_events_by_date: null,
@@ -86,7 +87,7 @@ const explorePage = Vue.createApp({
             const data = snapshot.val()
             console.log("-------In user mounted------");
             console.log(data);
-            this.userInfo = data.user1.user_profile_info
+            this.userInfo = data[current_user].user_profile_info
             console.log(this.userInfo);
             console.log("-------end user  mounted------");
         })
