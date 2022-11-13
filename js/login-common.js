@@ -63,10 +63,10 @@ onAuthStateChanged(auth, (user) => {
                     "user_tasks": {},
                     "user_events": {}
                 })
-            } else if (userData.user_profile_info.name == "New User - Update Profile Page") {
+            } else if (userData.user_profile_info.name == "New User") {
                 let location_arr = window.location.href.split("/")
                 if (location_arr[location_arr.length -1] !== "profile.html") {
-                    // window.location.href = "profile.html"
+                    window.location.href = "profile.html"
                 }
             }
             // Otherwise, make sure user's account details can be retrieved in other pages (login-common.js)
