@@ -263,7 +263,7 @@ function UserUpcomingSchoolEvents (number_of_upcoming_events) {
       "11": 'November',
       "12": 'December',
     }
-    let counter = 0;
+    let counter = 1;
     for (let event in user_upcoming_events) {
     if (Object.hasOwnProperty.call(user_upcoming_events, event)) {
             let name_of_event = user_upcoming_events[event].title
@@ -305,7 +305,7 @@ function UserUpcomingSchoolEvents (number_of_upcoming_events) {
             let e_date = new Date(formatted_event_date)
             let check = e_date > current_date
 
-            if (counter == "0" && check){
+            if (counter == "1" && check){
                 tempHTML += `
                 <div class="carousel-item active">
                 <img src=${photo_of_event} class="d-block w-100" height="300" width="600">
@@ -315,8 +315,9 @@ function UserUpcomingSchoolEvents (number_of_upcoming_events) {
                   </div>
                 </div>
                 `
+                counter += 1
             }
-            else if (check){
+            else if (counter <= 6 && check){
                 tempHTML += `
                 <div class="carousel-item">
                 <img src="${photo_of_event}" class="d-block w-100" height="300" width="600">
@@ -326,8 +327,8 @@ function UserUpcomingSchoolEvents (number_of_upcoming_events) {
                   </div>
                 </div>
                 `
+                counter += 1
             }
-            counter += 1
         }}
     
     tempHTML += `
@@ -343,6 +344,8 @@ function UserUpcomingSchoolEvents (number_of_upcoming_events) {
     </div>
     </div>
     `
+    console.log("hello")
+    console.log(tempHTML)
     document.getElementById('carousel_user_events').innerHTML = tempHTML
   }
   else if (number_of_upcoming_events == 0){
@@ -461,6 +464,7 @@ function UserUpcomingSchoolEvents (number_of_upcoming_events) {
     </div>
     </div>
     `
+   
     document.getElementById('carousel_user_events').innerHTML = tempHTML
 
   }
