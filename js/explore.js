@@ -2,7 +2,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
 import { getDatabase, ref, onValue , set, query, orderByChild, get, child, update } from
 "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
-import { getStorage, ref as sref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-storage.js";
 
 //////////////////////////////////////////////////
 // FIREBASE VARIABLES
@@ -72,20 +71,7 @@ const explorePage = Vue.createApp({
     }, // data
  
     beforeMount() { 
-        console.log("====Function-GETALLEVENTS===")
-        // onValue(allEvents, (snapshot) => {
-        //     let events = []
-        //     const data = snapshot.val()
-        //     console.log("-------In event mounted------");
-        //     console.log(data);
-        //     this.db_events = data
-        //     this.display_events = data
-        //     // console.log(this.display_events);
-
-        //     console.log("-------end event mounted------");
-        // })
-
-
+        // console.log("====Function-GETALLEVENTS===")
         onValue(users, (snapshot) => {
             const data = snapshot.val()
             console.log("-------In user mounted------");
@@ -115,10 +101,6 @@ const explorePage = Vue.createApp({
             // console.log(this.all_display_events);
 
             this.paginate(this.all_display_events)
-            // this.all_display_events = this.db_events.slice(0,12)
-            // console.log(this.all_display_events)
-            // this.number_of_pages = (this.db_events.length)/12
-            // console.log(this.number_of_pages)
         })
 
 
@@ -169,7 +151,6 @@ const explorePage = Vue.createApp({
                     sort_date.push(event)
                 }
 
-
             })
             this.sorted_events_by_date = sort_date
         })
@@ -201,9 +182,6 @@ const explorePage = Vue.createApp({
             let all_event_types = []
 
             for (let [event, details] of Object.entries(this.db_events)) {
-                // if (!this.organising_clubs.includes[details.club]) {
-                //     this.organising_clubs.push(details.club)
-                // }
                 if (!all_event_types.includes[details.type]) {
                     // console.log(all_event_types);
                     all_event_types.push(details.type)
@@ -217,9 +195,6 @@ const explorePage = Vue.createApp({
             let organising_clubs = []
 
             for (let [event, details] of Object.entries(this.db_events)) {
-                // if (!this.organising_clubs.includes[details.club]) {
-                //     this.organising_clubs.push(details.club)
-                // }
                 if (!organising_clubs.includes[details.club]) {
                     // console.log(organising_clubs);
                     organising_clubs.push(details.club)
@@ -227,50 +202,13 @@ const explorePage = Vue.createApp({
             }
             return  [...new Set(organising_clubs)]
         },
-
-        // bookmarked_events() {
-        //     get(query(allEvents, orderByChild("isBookmarked"))).then((snapshot) => {
-        //         let bkMarked_events = []
-            
-        //         snapshot.forEach(childSnapshot => {
-        //             let event = childSnapshot.val()
-                    
-        //             if (event.isBookmarked) {
-        //                 bkMarked_events.push(event)
-        //             }
     
-    
-        //         })
-        //         this.bookmarked_events = bkMarked_events
-        //     })
-        //     // return this.bookmarked_events
-        // }
-
-        // bookmarked_events() {
-        //     let bookmarked_events = []
-
-        //     onValue(users, (snapshot) => {
-        //         const data = snapshot.val()
-        //         console.log("-------In user mounted------");
-        //         console.log(data);
-        //         let db_bkmark_events = data.user1.user_bkmark_events
-
-        //         for (let [event, details] of Object.entries(db_bkmark_events)) {
-        //             bookmarked_events.push(details)
-        //         }
-        //         console.log(bookmarked_events);
-        //         console.log("-------end user  mounted------");
-        //     })
-        //     return bookmarked_events
-        // }
-    
-
     },
 
     methods: {
 
         show_bkmarked_events() {
-            console.log(this.bookmarked_events);
+            // console.log(this.bookmarked_events);
 
             if (!this.bookmark_active) { 
 
@@ -292,17 +230,10 @@ const explorePage = Vue.createApp({
         },
 
         bookmark_event(event, details) {
-            console.log("====Function-bookmark_event()===")
-            console.log(details);
-            console.log(event);
-            console.log(details.eventId);
-            console.log(details.isBookmarked);
+            // console.log("====Function-bookmark_event()===")
             
-
-
-            // this.addBkMarkEvent(details.club, details.date, details.eventId, details.fees, details.location, details.name, details.photo, details.time, details.type)
             let new_bkmark_val = !details.isBookmarked
-            // console.log(btn);
+            
             this.updateBkMarkEvent(details.eventId, new_bkmark_val)
 
             // instead of reloading the page, the cards is bkmarked/un bkmarked
@@ -358,21 +289,18 @@ const explorePage = Vue.createApp({
             .catch((error) => {
                 console.error(error);
             });  
-              // force page to reload
-            // setTimeout(function(){
-            // window.location.reload();
-            // }, 500);
+
           },
     
         paginate (events){
-            console.log(events);
+            // console.log(events);
 
-            console.log(this.number_of_pages);
+            // console.log(this.number_of_pages);
 
             this.event_error = ''
 
             if (events.length == 0) {
-                // alert("No events found")
+                
                 this.event_error = `
                 <div class="alert alert-warning" role="alert">
                 <h5 class="alert-heading">
@@ -391,18 +319,18 @@ const explorePage = Vue.createApp({
             else {
                 this.number_of_pages = 1
             }
-            console.log(this.number_of_pages);
+            // console.log(this.number_of_pages);
             
             if (this.number_of_pages > 1) {
-                // this.number_of_pages = Math.ceil(this.number_of_pages)
+                
                 this.curr_display_events = events.slice(0,12)
-                console.log(this.curr_display_events)
-                console.log(this.number_of_pages)
+                // console.log(this.curr_display_events)
+                // console.log(this.number_of_pages)
             }
 
             else {
                 this.curr_display_events = events
-                console.log(this.curr_display_events)
+                // console.log(this.curr_display_events)
             }
         },
         
@@ -512,9 +440,8 @@ const explorePage = Vue.createApp({
         },
 
         filter_events() {
-            console.log("====Function-filter_events()===")
+            // console.log("====Function-filter_events()===")
 
-            console.log(this.db_events);
             let all_events= this.db_events
 
             let old_filtered_arr = []
@@ -522,15 +449,10 @@ const explorePage = Vue.createApp({
 
             this.selected_badge = ''
 
-            console.log(this.filter_event_type);
-            console.log(this.filter_club);
-
-
             // check if user selected any clubs to filter and if they did, extract those events
             if (this.filter_club.length > 0) {
                 
                 for (let event of all_events) {
-                    // console.log(event);
 
                     if (this.filter_club.includes(event.club)) {
                         
@@ -540,7 +462,7 @@ const explorePage = Vue.createApp({
                 }
                 console.log(old_filtered_arr);
             }
-            // console.log(old_filtered_arr);
+            
             
             // check if user selected any event types to filter and if they did, extract those events
             if (this.filter_event_type.length > 0) {
@@ -559,13 +481,13 @@ const explorePage = Vue.createApp({
                         new_filtered_arr.push(event)
                     }
                 }
-                console.log(new_filtered_arr);
+                // console.log(new_filtered_arr);
                 old_filtered_arr = new_filtered_arr
             }
             
             new_filtered_arr = []
-            console.log(old_filtered_arr);
-            console.log(new_filtered_arr);
+            // console.log(old_filtered_arr);
+            // console.log(new_filtered_arr);
 
             // check if user selected any date to filter and if they did, extract those events
             let filter_start_date_obj = new Date(this.filter_start_date)
@@ -606,8 +528,8 @@ const explorePage = Vue.createApp({
             }
 
             new_filtered_arr = []
-            console.log(old_filtered_arr);
-            console.log(new_filtered_arr);
+            // console.log(old_filtered_arr);
+            // console.log(new_filtered_arr);
 
 
             // check if user selected any price to filter and if they did, extract those events
@@ -642,7 +564,7 @@ const explorePage = Vue.createApp({
 
              
 
-            console.log(old_filtered_arr);
+            // console.log(old_filtered_arr);
             this.all_display_events = old_filtered_arr
             this.paginate(this.all_display_events)
 
@@ -663,12 +585,12 @@ const explorePage = Vue.createApp({
                 `
             }
 
-            console.log("====FunctionEND-filter_events()===")
+            // console.log("====FunctionEND-filter_events()===")
             
         },
 
         sort_events() {
-            console.log("====Function-sort_events()===")
+            // console.log("====Function-sort_events()===")
             
             if (this.sort_by == "event") {
                 this.all_display_events = this.sorted_events_by_type
@@ -682,7 +604,7 @@ const explorePage = Vue.createApp({
 
             this.paginate(this.all_display_events)
 
-            console.log("====FunctionEND-sort_events()===")
+            // console.log("====FunctionEND-sort_events()===")
         },
 
         clear_selections() {

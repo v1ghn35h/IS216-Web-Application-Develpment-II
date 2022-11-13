@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <!-- Events Task to dos
-    9. Pagination of events (especially when we have a lot) (i added more events but dk why not showing up even)-->
-    
 
 <head>
     <meta charset="UTF-8">
@@ -20,11 +17,7 @@
     <!--navbar css-->
     <link rel="stylesheet" href="css/navbar.css">
 
-    <!-- icon -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- bookmark icon -->
-    <!-- <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> -->
 
     <script type="module" src="js/explore.js"></script>
     <script type="module" src="js/login-common.js"></script>
@@ -46,10 +39,11 @@
         <div class="container">
             <img src="img/logo/logo-white.png" style="width:64px; height:64px">
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myMenu" aria-controls="myMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myMenu"
+                aria-controls="myMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <div class="collapse navbar-collapse" id="myMenu">
                 <div class="navbar-nav ms-auto">
                     <a class="nav-item nav-link text-white" href="home.html">Home</a>
@@ -59,168 +53,175 @@
                     <a class="nav-item nav-link text-white" href="login.html" onclick="logoutFunction()">Logout</a>
                 </div>
             </div>
-        
+
         </div>
     </nav>
 
-    <!-- {{ sort_events }} -->
 
     <!-- SEARCH BAR -START -->
     <div class="search-container-fluid justify-content-center">
         <!--Search bar-->
-    <div id="search-bar">
-        <form action="" class="row justify-content-center mw-80">
-            <div class="col mw-70 p-10" style = " max-width: 500px; padding: 35px;">
-                <!-- search input box-->
-                <!--Search button-->
-                <div class="input-group ">
-                    <input class="form-control"  type="text" placeholder="Eg. Tennis" v-model="search_input_value" >
+        <div id="search-bar">
+            <form action="" class="row justify-content-center mw-80">
+                <div class="col mw-70 p-10" style=" max-width: 500px; padding: 35px;">
+                    <!-- search input box-->
+                    <!--Search button-->
+                    <div class="input-group ">
+                        <input class="form-control" type="text" placeholder="Eg. Tennis" v-model="search_input_value">
 
-                    <!-- auto completion for now- can be further improved on - check past samples-->
+                        <button type="button" class="filter-btn fil-button-green"
+                            @click="search_input()">Search</button>
+
+                    </div>
+                    <div v-html="selected_badge"></div>
+
+                    <div class="col_buttons">
+                        <!--  Sort button -->
+                        <button type="button" class="sort-btn fil-sort mt-2" data-bs-toggle="modal"
+                            data-bs-target="#sort-modal" style=" margin-right: 10px;">
+                            Sort By
+                        </button>
+
+                        <!--Filter Button trigger modal -->
+                        <button type="button" class="sort-btn fil-sort mt-2" data-bs-toggle="modal"
+                            data-bs-target="#filter-modal">
+                            Filter By
+                        </button>
+
                     
-                    <button type="button" class="filter-btn fil-button-green" @click="search_input()">Search</button>
-                    
-                </div>
-                <div v-html="selected_badge"></div>
+                        <!-- Modal for filter -->
+                        <div class="modal fade" id="filter-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Filter by</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
 
-            <div class="col_buttons">
-                <!--  Sort button -->
-                <button type="button" class="sort-btn fil-sort mt-2" data-bs-toggle="modal"
-                    data-bs-target="#sort-modal"  style = " margin-right: 10px;">
-                    Sort By
-                </button>
+                                        <div class="row mb-3 justify-content-center">
+                                            <div class="col-10">
 
-                <!--Filter Button trigger modal -->
-                <button type="button" class="sort-btn fil-sort mt-2" data-bs-toggle="modal"
-                    data-bs-target="#filter-modal" >
-                    Filter By
-                </button>
+                                                <label for="org_club">Organising Club: </label>
+                                                <br>
+                                                <select class="form-select" id="org_club" v-model="filter_club" multiple
+                                                    size="4">
+                                                    <option v-for="a_club of all_clubs" :value="a_club"> {{ a_club }}
+                                                    </option>
+                                                </select>
+                                            </div>
 
-                <!-- <button type="button" class="btn" @click="show_bkmarked_events()" style="background-color: #104547; color: white;">Bookmarked</button> -->
+                                        </div>
 
-                <!-- Modal for filter -->
-                <div class="modal fade" id="filter-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Filter by</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+
+
+                                        <div class="row mb-3 justify-content-center">
+                                            <div class="col-10">
+                                                <!-- Event Type -->
+                                                <label for="event_type">Event Type: </label>
+                                                <br>
+                                                <select class="form-select" multiple size="4" id="event_type"
+                                                    v-model="filter_event_type">
+                                                    <option v-for="anEventType of event_types" :value="anEventType">{{
+                                                        anEventType }}</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3 justify-content-center">
+                                            <!--start date-->
+                                            <div class="col-5">
+                                                <label for="start-date">Start Date: </label>
+                                                <input class="form-control" id="start_date" type="date"
+                                                    v-model="filter_start_date">
+                                            </div>
+
+                                            <!-- end date-->
+                                            <div class="col-5">
+                                                <label for="end-date">End Date: </label>
+                                                <input class="form-control" id="end_date" type="date"
+                                                    v-model="filter_end_date">
+
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row mb-3 justify-content-center">
+                                            <div class="col-5">
+                                                <!--min price-->
+                                                <label for="min-price">Min Price: </label>
+                                                <input class="form-control" id="min_price" min="0" type="number"
+                                                    v-model.number="filter_min_price">
+                                            </div>
+                                            <div class="col-5">
+                                                <!--max price-->
+                                                <label for="max-price">Max Price: </label>
+                                                <input class="form-control" id="max_price" min="0" type="number"
+                                                    v-model.number='filter_max_price'>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" @click="clear_selections()"
+                                            data-bs-dismiss="modal">Clear</button>
+                                        <button type="button" @click="filter_events()" data-bs-dismiss="modal"
+                                            class="btn" style="background-color: #104547; color: white;">Apply </button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="modal-body">
+                        </div> <!-- end of div model filter-->
 
-                                <div class="row mb-3 justify-content-center">
-                                    <div class="col-10">
-                                        
-                                        <label for="org_club">Organising Club: </label>
-                                        <br>
-                                        <select class="form-select" id= "org_club" v-model="filter_club" multiple size="4">
-                                            <option v-for="a_club of all_clubs" :value="a_club"> {{ a_club }} </option>
-                                        </select>
+                        <!-- Modal for sort -->
+                        <div class="modal fade" id="sort-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Sort By</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
                                     </div>
+                                    <div class="modal-body">
+                                        <div class="row mb-3 justify-content-center">
+                                            <div class="col-10">
+                                                <select class="form-select multiple form-select-sm"
+                                                    aria-label=".form-select-sm example" v-model="sort_by">
+                                                    <option disabled value="">Sort By</option>
+                                                    <option value="event">Event</option>
+                                                    <option value="date">Date</option>
+                                                    <option value="fees">Fee</option>
+                                                </select>
+                                            </div>
+                                        </div>
 
-                                </div>
 
+                                    </div> <!-- end of div modal body-->
 
-
-                                <div class="row mb-3 justify-content-center">
-                                    <div class="col-10">
-                                        <!-- Event Type -->
-                                        <label for="event_type">Event Type: </label>
-                                        <br>
-                                        <select class="form-select" multiple size="4"  id= "event_type" v-model="filter_event_type">
-                                            <option v-for="anEventType of event_types" :value="anEventType">{{ anEventType }}</option>
-                                        </select>
-
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3 justify-content-center">
-                                    <!--start date-->
-                                    <div class="col-5">
-                                        <label for="start-date">Start Date: </label>
-                                        <input class="form-control" id="start_date" type="date" v-model="filter_start_date">
-                                    </div>
-
-                                    <!-- end date-->
-                                    <div class="col-5">
-                                        <label for="end-date">End Date: </label>
-                                        <input class="form-control" id="end_date" type="date" v-model="filter_end_date">
-
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" @click="clear_selections()"
+                                            data-bs-dismiss="modal">Clear</button>
+                                        <button type="button" class="btn" @click="sort_events()" data-bs-dismiss="modal"
+                                            style="background-color: #104547; color: white;">Apply</button>
                                     </div>
                                 </div>
-
-
-                                <div class="row mb-3 justify-content-center">
-                                    <div class="col-5">
-                                        <!--min price-->
-                                        <label for="min-price">Min Price: </label>
-                                        <input class="form-control" id="min_price" min="0" type="number" v-model.number="filter_min_price">
-                                    </div>
-                                    <div class="col-5">
-                                        <!--max price-->
-                                        <label for="max-price">Max Price: </label>
-                                        <input class="form-control" id="max_price" min="0" type="number" v-model.number='filter_max_price' >
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" @click="clear_selections()" 
-                                data-bs-dismiss="modal" >Clear</button>
-                                <button type="button" @click="filter_events()" data-bs-dismiss="modal" class="btn" style="background-color: #104547; color: white;">Apply </button>
                             </div>
                         </div>
                     </div>
-                </div> <!-- end of div model filter-->
 
-                <!-- Modal for sort -->
-                <div class="modal fade" id="sort-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Sort By</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row mb-3 justify-content-center">
-                                    <div class="col-10">
-                                        <select class="form-select multiple form-select-sm"
-                                            aria-label=".form-select-sm example" v-model="sort_by">
-                                            <option disabled value="">Sort By</option>
-                                            <option value="event">Event</option>
-                                            <option value="date">Date</option>
-                                            <option value="fees">Fee</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-
-                            </div> <!-- end of div modal body-->
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" @click="clear_selections()" data-bs-dismiss="modal">Clear</button>
-                                <button type="button" class="btn" @click="sort_events()"data-bs-dismiss="modal" style="background-color: #104547; color: white;">Apply</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-            </div> <!-- end of div col-4-->
-        </form> <!-- end of form-->
-    </div> <!-- end of div search bar-->
+                </div> <!-- end of div col-4-->
+            </form> <!-- end of form-->
+        </div> <!-- end of div search bar-->
     </div>
     <!-- SEARCH BAR -END -->
 
+    
     <!-- Event Cards -->
     <div id="" class="mt-0 cards_landscape_wrap-2">
-        
+
         <div class="container py-0">
             <div class="row">
                 <h2>All Events</h2>
@@ -229,10 +230,12 @@
             <div class="row justify-content-md-end justify-content-center">
                 <div class="col-2 col-md-3 col-sm-4 col-5 " align="end">
 
-                    <button id="bkmark_btn" type="button" class="btn bookmark_btn" @click="show_bkmarked_events()" style="background-color: f7f7f7; color: #104547; border-color: #104547;">                        <i class="fa fa-bookmark bookmark_icon-o pe-1" style="font-size:15px;" ></i>
+                    <button id="bkmark_btn" type="button" class="btn bookmark_btn" @click="show_bkmarked_events()"
+                        style="background-color: f7f7f7; color: #104547; border-color: #104547;"> <i
+                            class="fa fa-bookmark bookmark_icon-o pe-1" style="font-size:15px;"></i>
                         Bookmarked</button>
                 </div>
-                
+
 
             </div>
             <hr>
@@ -244,28 +247,31 @@
         </div>
         <div class="container pt-0 px-auto">
 
-            <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 justify-content-center justify-content-sm-start justify-content-md-start justify-content-lg-start justify-content-xl-start  align-items-start ">
+            <div
+                class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 justify-content-center justify-content-sm-start justify-content-md-start justify-content-lg-start justify-content-xl-start  align-items-start ">
                 <!--dynamically retrieved events from db-->
                 <!--template for an event-->
-                <div class="col-8" align="center" v-for="(details, event) of curr_display_events" >
+                <div class="col-8" align="center" v-for="(details, event) of curr_display_events">
                     <!-- start of card-->
                     <!-- {{ event }} -->
 
                     <div class="card" :id="`eventCard${details.eventId}`">
-                        <div class="text-box" >
+                        <div class="text-box">
                             <div class="image-box">
                                 <img :src="details.photo" />
                             </div>
                             <div class="text-container">
-                               
+
 
                                 <div :id="`#bookmark${details.eventId}`" @click="bookmark_event(event, details)">
-                                    <i v-if="details.isBookmarked === false"  class="fa fa-bookmark-o bookmark_icon" style="font-size:30px" ></i>
-                                    <i v-else  class="fa fa-bookmark bookmark_icon" style="font-size:30px; color:red" ></i>
+                                    <i v-if="details.isBookmarked === false" class="fa fa-bookmark-o bookmark_icon"
+                                        style="font-size:30px"></i>
+                                    <i v-else class="fa fa-bookmark bookmark_icon"
+                                        style="font-size:30px; color:red"></i>
                                 </div>
-                                
+
                                 <h5 class="card-title"> {{ details.name }} </h5>
-    
+
                                 <!-- SUBTITLE -->
                                 <h6 class="card-subtitle mb-2 "> {{ details.type }} </h6>
                                 <!-- BODY -->
@@ -276,15 +282,16 @@
                                     <br>
                                     Club: {{ details.club }}
                                     <br>
-                                    <span v-if='details.fees == 0'> Fees: Free </span> 
-                                    <span v-else> Fees: {{ details.fees }} SGD </span> 
+                                    <span v-if='details.fees == 0'> Fees: Free </span>
+                                    <span v-else> Fees: {{ details.fees }} SGD </span>
                                 </p>
                             </div>
                         </div>
                         <!-- sign up button-->
                         <div class="card_footer">
-                            <button type="button" class="btn details-btn mt-1 " :data-bs-target="`#infoPage${details.eventId}`"
-                                data-bs-toggle="modal">More info</button>
+                            <button type="button" class="btn details-btn mt-1 "
+                                :data-bs-target="`#infoPage${details.eventId}`" data-bs-toggle="modal">More
+                                info</button>
                         </div>
                     </div>
                     <!-- end of card-->
@@ -293,8 +300,8 @@
                     <!-- BUTTON -->
 
                     <!-- More Info Modal -->
-                    <div class="modal fade" :id="`infoPage${details.eventId}`" tabindex="-1" aria-labelledby="InfoPageLabel"
-                aria-hidden="true">
+                    <div class="modal fade" :id="`infoPage${details.eventId}`" tabindex="-1"
+                        aria-labelledby="InfoPageLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-scrollable modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -304,48 +311,53 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="container p-2">
-                                        <img :src="details.photo"
-                                            style="width:500px; height:250px" alt="..." class="center "/>
+                                        <img :src="details.photo" style="width:500px; height:250px" alt="..."
+                                            class="center " />
                                     </div>
                                     <p class="display-6 lead text-center">{{ details.name }}</p>
                                     <hr>
                                     <div class="container pt-1 pb-1">
-                                        
-                                        <table class = "table table-striped text-start" width="50%">
+
+                                        <table class="table table-striped text-start" width="50%">
                                             <tr>
                                                 <th>
-                                                    <img src = "https://cdn-icons-png.flaticon.com/128/3990/3990804.png" height = 20 width = 20> 
-                                                    Club 
+                                                    <img src="https://cdn-icons-png.flaticon.com/128/3990/3990804.png"
+                                                        height=20 width=20>
+                                                    Club
                                                 </th>
                                                 <td>{{ details.club }}</td>
                                             </tr>
                                             <tr>
-                                                <th> 
-                                                    <img src = "https://cdn-icons-png.flaticon.com/128/591/591607.png" height = 20 width = 20> 
+                                                <th>
+                                                    <img src="https://cdn-icons-png.flaticon.com/128/591/591607.png"
+                                                        height=20 width=20>
                                                     Date
                                                 </th>
                                                 <td>{{ format_date(details.date) }}</td>
                                             </tr>
                                             <tr>
                                                 <th>
-                                                    <img src = "https://cdn-icons-png.flaticon.com/128/2997/2997985.png" height = 20 width = 20> 
-                                                    Time 
+                                                    <img src="https://cdn-icons-png.flaticon.com/128/2997/2997985.png"
+                                                        height=20 width=20>
+                                                    Time
                                                 </th>
                                                 <td>{{ details.time }}</td>
                                             </tr>
                                             <tr>
-                                                <th> 
-                                                    <img src = "https://cdn-icons-png.flaticon.com/128/1052/1052866.png" height = 20 width = 20> 
+                                                <th>
+                                                    <img src="https://cdn-icons-png.flaticon.com/128/1052/1052866.png"
+                                                        height=20 width=20>
                                                     Fees
                                                 </th>
                                                 <td>
-                                                    <span v-if='details.fees == 0'> Fees: Free </span> 
-                                                    <span v-else> Fees: {{ details.fees }} SGD </span> 
+                                                    <span v-if='details.fees == 0'> Fees: Free </span>
+                                                    <span v-else> Fees: {{ details.fees }} SGD </span>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <th> 
-                                                    <img src = "https://cdn-icons-png.flaticon.com/128/819/819814.png" height = 20 width = 20> 
+                                                <th>
+                                                    <img src="https://cdn-icons-png.flaticon.com/128/819/819814.png"
+                                                        height=20 width=20>
                                                     Location
                                                 </th>
                                                 <td>{{ details.location }}</td>
@@ -354,13 +366,15 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer mt-0">
-                                    <span  v-if='userInfo.matric_no == "<Unknown>"'>
-                                        <button type="button" class="btn sign_up_btn" :data-bs-target="`#signUpPage${details.eventId}`"
-                                        data-bs-toggle="modal" disabled>Sign up now</button>
+                                    <span v-if='userInfo.matric_no == "<Unknown>"'>
+                                        <button type="button" class="btn sign_up_btn"
+                                            :data-bs-target="`#signUpPage${details.eventId}`" data-bs-toggle="modal"
+                                            disabled>Sign up now</button>
                                     </span>
-                                    <span  v-else>
-                                        <button type="button" class="btn sign_up_btn" :data-bs-target="`#signUpPage${details.eventId}`"
-                                        data-bs-toggle="modal">Sign up now</button>
+                                    <span v-else>
+                                        <button type="button" class="btn sign_up_btn"
+                                            :data-bs-target="`#signUpPage${details.eventId}`"
+                                            data-bs-toggle="modal">Sign up now</button>
                                     </span>
                                 </div>
                             </div>
@@ -369,8 +383,8 @@
                     <!-- end of More infomodal -->
 
                     <!-- SIGN UP Modal-->
-                    <div class="modal fade" :id="`signUpPage${details.eventId}`" aria-hidden="true" aria-labelledby="SignUpPageLabel"
-                tabindex="-1">
+                    <div class="modal fade" :id="`signUpPage${details.eventId}`" aria-hidden="true"
+                        aria-labelledby="SignUpPageLabel" tabindex="-1">
                         <div class="modal-dialog modal-dia  log-scrollable modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -387,38 +401,40 @@
                                         <br>
                                         School: {{ userInfo.school }}
                                         <br>
-                                        Payment: 
+                                        Payment:
                                         <span v-if='details.fees == 0'>Free</span>
                                         <span v-else>{{ details.fees }} SGD</span>
                                     </div>
 
                                     <div class="d-grid gap-2 col-6 mx-auto">
-                                    
+
                                         <button class="btn confirm-btn center"
-                                        @click="addEvent(details.name, details.club, details.photo, details.date, details.location, details.time, details.type, details.eventId)"
-                                        :data-bs-target="`#addSuccessModal`" data-bs-toggle="modal">Confirm</button>
+                                            @click="addEvent(details.name, details.club, details.photo, details.date, details.location, details.time, details.type, details.eventId)"
+                                            :data-bs-target="`#addSuccessModal`" data-bs-toggle="modal">Confirm</button>
 
                                     </div>
 
                                 </div>
                                 <div class="modal-footer">
-                                    <button class="btn btn-dark" :data-bs-target="`#infoPage${details.eventId}`" data-bs-toggle="modal">Go
+                                    <button class="btn btn-dark" :data-bs-target="`#infoPage${details.eventId}`"
+                                        data-bs-toggle="modal">Go
                                         back</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!--Confirmation Page-->
-                    <div class="modal fade" :id="`addSuccessModal`" aria-hidden="true" aria-labelledby="addSuccessModalLabel" tabindex="-1">
+                    <div class="modal fade" :id="`addSuccessModal`" aria-hidden="true"
+                        aria-labelledby="addSuccessModalLabel" tabindex="-1">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title"> Add Event </h5>
-                            </div>
-                            <div class="modal-body text-center">
-                                <img src="img/icons/happy.png" style="width: 50%">
-                                <p class="pt-3"> Event Added Successfully </p>
-                            </div>
+                                <div class="modal-header">
+                                    <h5 class="modal-title"> Add Event </h5>
+                                </div>
+                                <div class="modal-body text-center">
+                                    <img src="img/icons/happy.png" style="width: 50%">
+                                    <p class="pt-3"> Event Added Successfully </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -426,20 +442,26 @@
 
                 </div> <!-- end of event div-->
 
-                
+
             </div>
-            
+
             <div class="container pb-0">
-    
-                <button type="button" class="btn page_btn btn-sm mx-3" v-on:click="pagination_prev(all_display_events)" v-if="current_page != 1"><i class="fa fa-angle-left" style="font-size:24px"></i></button>
-                <button type="button" class="btn page_btn btn-sm mx-3" v-on:click="pagination_prev(all_display_events)" v-else disabled><i class="fa fa-angle-left" style="font-size:24px"></i></button>
-                <button class = "rounded-pill mx-3 text-bg-light    " disabled style = "color:#104547">{{ current_page }}</button>
-                <button type="button" class="btn page_btn btn-sm mx-3" v-on:click="pagination_next(all_display_events)" v-if="current_page < number_of_pages"><i class="fa fa-angle-right" style="font-size:24px"></i></button>
-                <button type="button" class="btn page_btn btn-sm mx-3" v-on:click="pagination_next(all_display_events)" v-else disabled><i class="fa fa-angle-right" style="font-size:24px"></i></button>
-                
+
+                <button type="button" class="btn page_btn btn-sm mx-3" v-on:click="pagination_prev(all_display_events)"
+                    v-if="current_page != 1"><i class="fa fa-angle-left" style="font-size:24px"></i></button>
+                <button type="button" class="btn page_btn btn-sm mx-3" v-on:click="pagination_prev(all_display_events)"
+                    v-else disabled><i class="fa fa-angle-left" style="font-size:24px"></i></button>
+                <button class="rounded-pill mx-3 text-bg-light    " disabled style="color:#104547">{{ current_page
+                    }}</button>
+                <button type="button" class="btn page_btn btn-sm mx-3" v-on:click="pagination_next(all_display_events)"
+                    v-if="current_page < number_of_pages"><i class="fa fa-angle-right"
+                        style="font-size:24px"></i></button>
+                <button type="button" class="btn page_btn btn-sm mx-3" v-on:click="pagination_next(all_display_events)"
+                    v-else disabled><i class="fa fa-angle-right" style="font-size:24px"></i></button>
+
             </div>
         </div>
-  
+
 
     </div>
 
