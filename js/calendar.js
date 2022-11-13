@@ -84,9 +84,6 @@ get(child(dbRef, `users/${current_user}/user_tasks/`)).then((snapshot) => {
       task_list_div.innerHTML += output
     }
   } 
-  else {
-    console.log("No data available");
-  }
 })
 
 
@@ -111,7 +108,6 @@ function allEventListners() {
 
 // TO-DO ADD TO DB
 function to_do_addDB(id, title, status) {
-  console.log(id)
   set(ref(db, 'users/' + current_user + '/user_tasks/task_' + id), 
     {
       id: id,
@@ -121,7 +117,6 @@ function to_do_addDB(id, title, status) {
   )
 
   // add to task obj
-  console.log(id)
   all_tasks[`task_${id}`] = {"title": title, "status": status}
 }
 
@@ -181,7 +176,6 @@ function addTodo(e) {
 
         // add to database
         new_id += 1
-        console.log(new_id)
         let task_id = new_id
         let task_title = todoInput.value
         let task_status = ""
@@ -190,7 +184,6 @@ function addTodo(e) {
 
         // add id to task li element
         li.id = new_id
-        console.log(li)
         
         // Clear input
         todoInput.value = '';
@@ -232,9 +225,6 @@ function removeTodo(e) {
 
     let event = e.target.parentElement
     let event_id = event.id
-
-    console.log(event)
-    console.log(event_id)
 
     let event_title = event.getElementsByClassName("todo-text")[0].innerHTML
 
@@ -298,7 +288,6 @@ function removeTodo(e) {
 
         // delete from db
         const tasksRef = ref(db, 'users/' + current_user + '/user_tasks/task_' + event_id);
-        console.log(tasksRef)
         remove(tasksRef).then(() => {
         });
 
@@ -728,7 +717,6 @@ apps.mount("#category")
 
 
 var calendarEl = document.getElementById('calendar');
-console.log(calendarEl)
 
 var calendar = new FullCalendar.Calendar(calendarEl, {
   height: 700,
@@ -795,12 +783,10 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
 
                   // empty and readd items
                   all_events = Object.entries(db_values)
-                  console.log(all_events)
                   new_db_size = all_events.length + 2
-                } else {
-                  console.log("No data available");
+                } 
+                else {
                   new_db_size = all_events.length
-                  console.log(new_db_size)
                 }
                 // add event to array
                 set(ref(db, 'users/' + current_user + '/user_events/event_' + new_db_size), 
@@ -815,7 +801,6 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
 
                 // empty and readd items
                 all_events.push(db_values)
-                console.log(all_events)
 
                 // display added successfully
                 add_success_modal.style.display = "block";
@@ -829,7 +814,6 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
                 modal.style.display = "none";
                 document.getElementById("addEvent").reset();
               }).catch((error) => {
-                console.error(error);
               });
           }
           
@@ -931,8 +915,6 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
       let date_selected = document.getElementById("startDate")
       date_selected.value = dateStr
 
-      console.log(date_selected)
-
       // when button is clicked
       document.getElementById('addEventButton').addEventListener("click", function() {
 
@@ -985,13 +967,10 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
 
             // empty and readd items
             all_events = Object.entries(db_values)
-            console.log(all_events)
             new_db_size = all_events.length + 2
           } 
-          
 
           else {
-            console.log("No data available");
             new_db_size = all_events.length
           }
           // add event to array
@@ -1007,7 +986,6 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
 
           // empty and readd items
           all_events.push(db_values)
-          console.log(all_events)
 
           // display added successfully
           add_success_modal.style.display = "block";
@@ -1021,7 +999,6 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
           modal.style.display = "none";
           document.getElementById("addEvent").reset();
         }).catch((error) => {
-          console.error(error);
         });
         }
       
@@ -1084,7 +1061,6 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
       // Update user's calendar
       onValue(users, (snapshot => {
         const data = snapshot.val(); // get the new value
-        console.log(data)
 
         // empty all past data fetched
         all_events = []
@@ -1113,8 +1089,6 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
           }
 
           catch(error) {
-            // console.log(new_event_obj)
-            console.log(error)
           }
           
           all_events.push(new_event_obj)
@@ -1131,7 +1105,6 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
     function(info) {
 
       let event_info = info.event._def
-      console.log(event_info)
 
       // get the modal
       var modal = document.getElementById("myOtherModal");
@@ -1152,7 +1125,6 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
       // --- DISPLAY EVENT DETAILS ---
       // for events that the user add
       let event_id = event_info.publicId
-      console.log(event_id)
 
       let event_category = info.event._def.extendedProps.category
 
@@ -1176,8 +1148,6 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
       }
 
       catch (error) {
-        console.log(event_id)
-        console.log(error)
       }
 
       // set event picture
@@ -1248,7 +1218,6 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
 
         // Fetch event
         let event_to_delete = calendar.getEventById(event_id)
-        console.log(event_to_delete)
 
         // Delete event
         const tasksRef = ref(db, 'users/' + current_user + '/user_events/event_' + event_id);
