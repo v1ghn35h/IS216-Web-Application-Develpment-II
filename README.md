@@ -8,7 +8,7 @@
 
 ---
 
-SMU undergraduates find it hard to keep track of the many events happening in university. While the main method that students use for event tracking is their school email, their inboxes are constantly overloaded with a weekly average of 120 event invitation emails. Additionally, while there are other information transmitting platforms such as eLearn, Telegram and Oasis, the lack of a centralized platform makes it challenging for students to effectively explore extracurricular activities and keep up with important updates from faculty members. As a result, the effectiveness of transmitting information effectively by these platforms to students and other stakeholders (faculty members and student bodies) is diminished, leaving students unable to keep proper track of university events.
+SMU undergraduates find it hard to keep track of the many events happening in university. While the main method that students use for event tracking is their school email, their inboxes are constantly overloaded with a weekly average of 120 event invitation emails. Additionally, while there are other information transmitting platforms such as outlook, telegram, instagram that clubs utilise to send out their events, the lack of a centralized platform makes it challenging for students to effectively explore extracurricular activities. Not to forget, the student bodies and clubs uses a wide range of different platforms to collect necessary information that is often time duplicated such as name, school, year, matriculation number etc. As a result, the effectiveness of transmitting information effectively by these platforms to students and other stakeholders is diminished. Students face uncnecesary roadblcoks in exploring and signing up for events to enrich their university life.
 
 The reason why we chose our target group is due to the prevalence of this issue among our fellow undergraduates. This is backed up by interviews we conducted with students from different faculties, student body marketing representatives, and professors. Given that undergraduates are still learning about time management skills, while also attempting to explore their horizons through university events and activities, it is important that they should be able to plan out their university lives in a more effective and convenient manner while living their most exciting university life.
 
@@ -74,9 +74,10 @@ Our project, CalendaREADY enables students to view events based on their persona
 
 ### Profile
 
-- **Edit profile**:
-- **Preference**:
-- **Events**:
+- **Personal information**: View and edit profile information
+- **Preference**: Add or remove preferences based on categories
+- **Event Statistics**: Display statistics of events signed up grouped by categories
+- **Past Event**: View and add caption for past events
 
 ## Team
 
