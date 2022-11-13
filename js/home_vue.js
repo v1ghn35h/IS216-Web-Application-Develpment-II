@@ -44,12 +44,6 @@ onValue(users, (snapshot => {
     if (userInfo.preference_info.preference != ["preference"]){
       user_preference = userInfo.preference_info.preference
     }
-    var typed = new Typed(".auto-type", {
-      strings: [ `Welcome ${user_name}!`, `How are you doing today?`],
-      typeSpeed: 100,
-      backspeed: 300,
-      loop: false
-  })
     let text = "Hello " + user_name + "!"
     document.getElementById("greeting").innerHTML = text
 }))
