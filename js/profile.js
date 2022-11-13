@@ -434,8 +434,7 @@ function UserPastEvents () {
     for (let event in user_events) {
 		if (Object.hasOwnProperty.call(user_events, event)) {
             // console.log(event);
-            if (Object.hasOwnProperty.call(user_events[event], "event_id")) {
-
+            if (typeof user_events[event].id != "number") {
                 let name_of_event = user_events[event].title
                 let type_of_event = user_events[event].category
                 let club_of_event = user_events[event].event_club
@@ -448,7 +447,7 @@ function UserPastEvents () {
                 let year = date_arr[0]
 
                 // let location_of_event= user_events[event].event_location
-                let event_id= user_events[event].event_id
+                let event_id= user_events[event].id
                 let event_date= user_events[event].start.slice(0,10)
                 let current_date = new Date().toJSON().slice(0, 10);
                 if (current_date > event_date){
@@ -575,9 +574,9 @@ function UserPastEvents () {
     }}
     document.getElementById('past_events').innerHTML = tempHTML
 
-    if (counter == 0) {
-        document.getElementById('events_h2').innerText = "";
-    }
+    // if (counter == 0) {
+    //     document.getElementById('events_h2').innerText = "";
+    // }
 
 }
 
@@ -585,32 +584,34 @@ function UserPastEvents () {
 //////////////////////////////////////////////////
 // ADD EVENT LISTENER
 function addClickMessage() {
-    for (let event in user_events) {
-        if (Object.hasOwnProperty.call(user_events, event)) {
-            if (Object.hasOwnProperty.call(user_events[event], "event_id")) {
-                if (!Object.hasOwnProperty.call(user_events[event], "event_msg")) {
+    for (let event in user_events_original) {
+        if (Object.hasOwnProperty.call(user_events_original, event)) {
 
-                    let event_date= user_events[event].start.slice(0,10)
+            if (typeof user_events_original[event].id != "number") {
+                if (!Object.hasOwnProperty.call(user_events_original[event], "event_msg")) {
+
+                    let event_date= user_events_original[event].start.slice(0,10)
                     let current_date = new Date().toJSON().slice(0, 10);
                     if (current_date > event_date){
+
     
-                        let event_id = user_events[event]["event_id"]
+                        let event_id = user_events_original[event]["id"]
                         document.getElementById(`add_msg_${event_id}`).addEventListener("click", function() {addMessage(this)} )
                     }
-                } else if (user_events[event]["event_msg"]["msg"] == "") {
-                    let event_date= user_events[event].start.slice(0,10)
+                } else if (user_events_original[event]["event_msg"]["msg"] == "") {
+                    let event_date= user_events_original[event].start.slice(0,10)
                     let current_date = new Date().toJSON().slice(0, 10);
                     if (current_date > event_date){
     
-                        let event_id = user_events[event]["event_id"]
+                        let event_id = user_events_original[event]["id"]
                         document.getElementById(`add_msg_${event_id}`).addEventListener("click", function() {addMessage(this)} )
                     }
                 } else {
-                    let event_date= user_events[event].start.slice(0,10)
+                    let event_date= user_events_original[event].start.slice(0,10)
                     let current_date = new Date().toJSON().slice(0, 10);
                     if (current_date > event_date){
     
-                        let event_id = user_events[event]["event_id"]
+                        let event_id = user_events_original[event]["id"]
                         document.getElementById(`edit_msg_${event_id}`).addEventListener("click", function() { displayEdit(this)} )
                         document.getElementById(`save_msg_${event_id}`).addEventListener("click", function() { displayEdited(this)} )
                     }             
@@ -643,7 +644,7 @@ function displayEdited(ele) {
     let event_key = ""
 
     for (let event in user_events_original) {
-        if (user_events_original[event]["event_id"] == event_id) {
+        if (user_events_original[event]["id"] == event_id) {
             event_key = event
         }
     }
@@ -666,7 +667,7 @@ function addMessage(ele) {
 
     // console.log(user_events);
     for (let event in user_events_original) {
-        if (user_events_original[event]["event_id"] == event_id) {
+        if (user_events_original[event]["id"] == event_id) {
             event_key = event
         }
     }
