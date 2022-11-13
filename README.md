@@ -48,11 +48,11 @@ Our project, CalendaREADY enables students to view events based on their persona
 
 ### Events
 
-- **All Events**:
-- **Filter**:
-- **Sort**:
-- **Search**:
-- **Bookmark**:
+- **All Events**: Display all events in the database, starting from the current date
+- **Filter**: Filter events based on Organising Club, Event Type, Start Date, End Date, Min Price, Max Price
+- **Sort**: Sort events based on Fees, Starting Date, and Event Type
+- **Search**: Search for events based on keywords (i.e Clubs, Event Types and Event Name)
+- **Bookmark**: Easily check (Bookmark) and uncheck events for future reference
 
 ### Calendar
 
