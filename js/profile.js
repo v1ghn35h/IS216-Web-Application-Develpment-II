@@ -142,8 +142,18 @@ function readURL(input) {
         }, 
     () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            // console.log('File available at', downloadURL);
-            });
+            console.log('File available at', downloadURL);
+
+            let picture_url = `url("${downloadURL}")`
+
+            const db = getDatabase();
+            set(ref(db, 'users/' + current_user + '/user_profile_info/profile_picture'), {
+                picture_url
+            })
+
+            $('#successModal').modal('show');
+        });
+
         }
     );
 
@@ -154,15 +164,9 @@ function readURL(input) {
     getDownloadURL(profileRef)
         .then((url) => {
             // UPDATE JSON WITH THIS URL
-            // console.log(url);
-            let picture_url = `url(${url})`
+            console.log(url);
 
-            const db = getDatabase();
-            set(ref(db, 'users/' + current_user + '/user_profile_info/profile_picture'), {
-                picture_url
-            })
-
-            $('#successModal').modal('show');
+            
 
         })
         .catch((error) => {
