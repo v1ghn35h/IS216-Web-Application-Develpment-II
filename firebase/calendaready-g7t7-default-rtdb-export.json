@@ -1144,20 +1144,20 @@
         "WPkD28XwpzScqEiWWXLh4X8HNHo2": {
             "user_events": {
                 "event_1": {
-                    "category": "Arts & Culture",
-                    "end": "2022-11-15T19:00:00",
+                    "category": "Adventure",
+                    "end": "2022-11-15T17:40:00",
                     "id": 1,
                     "photo_url": "https://static.thehoneycombers.com/wp-content/uploads/sites/2/2017/10/zouk-party-venue-singapore.jpg",
                     "start": "2022-11-15T16:40:00",
-                    "title": "VOIX Concert"
+                    "title": "Test Firebase"
                 },
                 "event_2": {
-                    "category": "Community",
+                    "category": "Sports",
                     "end": "2022-11-10T10:40:00",
                     "id": 2,
                     "photo_url": "https://www.incimages.com/uploaded_files/image/1920x1080/getty_1035462384_395932.jpg",
                     "start": "2022-11-9T09:40:00",
-                    "title": "Writing Workshop"
+                    "title": "Test Again"
                 },
                 "event_3": {
                     "category": "Sports",
