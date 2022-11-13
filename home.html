@@ -86,7 +86,7 @@
                     <div class="text-container">
                         <h5 class="card-title text-wrap"> {{ details.name }} </h5>
                         <!-- SUBTITLE -->
-                        <h6 class="card-subtitle mb-2 "> {{ details.type }} </h6>
+                        <h6 class="card-subtitle mb-2 text-wrap"> {{ details.type }} </h6>
                         <!-- BODY -->
                         <p class="card-text text-wrap">
                             Date: {{ format_date(details.date) }}
@@ -126,9 +126,9 @@
                                 <img :src="details.photo"
                                     style="width:500px; height:250px" alt="..." class="center "/>
                             </div>
-                            <p class="display-6 lead text-center">{{ details.name }}</p>
+                            <p class="display-6 lead text-center text-wrap">{{ details.name }}</p>
                             <hr>
-                            <div class="container">
+                            <div class="container text-wrap">
                                 <table class = "table table-striped text-start" width="50%">
                                     <tr>
                                         <th>
@@ -192,8 +192,8 @@
                                 aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <p class="display-6 lead text-center mt-3"> {{ details.name }} </p>
-                            <div class="container text-break p-3 mt-3 fs-6">
+                            <p class="display-6 lead text-center mt-3 text-wrap" > {{ details.name }} </p>
+                            <div class="container text-break p-3 mt-3 fs-6 text-wrap">
                                 Name: {{ userInfo.name }}
                                 <br>
                                 Matriculation number: {{ userInfo.matric_no }}
@@ -225,7 +225,7 @@
                       </div>
                       <div class="modal-body text-center">
                         <img src="img/icons/happy.png" style="width: 50%">
-                        <p class="pt-3"> Event Added Successfully </p>
+                        <p class="pt-3 text-wrap"> Event Added Successfully </p>
                       </div>
                     </div>
                   </div>
@@ -249,7 +249,7 @@
                         <div class="text-container">
                             <h5 class="card-title text-wrap"> {{ details.name }} </h5>
                             <!-- SUBTITLE -->
-                            <h6 class="card-subtitle mb-2 "> {{ details.type }} </h6>
+                            <h6 class="card-subtitle mb-2 text-wrap"> {{ details.type }} </h6>
                             <!-- BODY -->
                             <p class="card-text text-wrap">
                                 Date: {{ format_date(details.date) }}
@@ -290,7 +290,7 @@
                                     <img :src="details.photo"
                                         style="width:500px; height:250px" alt="..." class="center "/>
                                 </div>
-                                <p class="display-6 lead text-center">{{ details.name }}</p>
+                                <p class="display-6 lead text-center text-wrap">{{ details.name }}</p>
                                 <hr>
                                 <div class="container">
                                     <table class = "table table-striped text-start">
@@ -356,8 +356,8 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <p class="display-6 lead text-center mt-3"> {{ details.name }} </p>
-                                <div class="container text-break p-3 mt-3 fs-6">
+                                <p class="display-6 lead text-center mt-3 text-wrap"> {{ details.name }} </p>
+                                <div class="container text-break p-3 mt-3 fs-6 text-wrap">
                                     Name: {{ userInfo.name }}
                                     <br>
                                     Matriculation number: {{ userInfo.matric_no }}
