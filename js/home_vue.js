@@ -31,16 +31,22 @@ let for_you = {}
 let userInfo = {}
 let user_upcoming_events = {}
 let user_events_keys = []
+import ResolvedUID from "./login-common.js";
+let current_user = ResolvedUID
+console.log(current_user)
 
 // FIREBASE POPULATE DETAILS [USER INFO]
 onValue(users, (snapshot => {
 	  const data = snapshot.val(); 
-	  userInfo = data.user1.user_profile_info
+	  userInfo = data[current_user].user_profile_info
+    // console.log(data[current_user].user_profile_info)
     user_name = userInfo.name
-    user_preference = userInfo.preference_info.preference
+    if (userInfo.preference_info.preference != [""]){
+      user_preference = userInfo.preference_info.preference
+    }
     let text = "Hello " + user_name + "!"
     document.getElementById("greeting").innerHTML = text
-    user_upcoming_events = data.user1.user_events
+    user_upcoming_events = data[current_user].user_events
     let counter = 0
     let current_date = new Date()
     for(let event_info in user_upcoming_events){
@@ -97,7 +103,7 @@ const homePage = Vue.createApp({
             display_events:[],
             db_events: {}, 
             userInfo: '',
-            current_user: "user1",
+            page_current_user: current_user,
             for_you_events: [],
             month_to_num: {
               "January": '01',
@@ -150,20 +156,18 @@ const homePage = Vue.createApp({
         })
         onValue(users, (snapshot => {
           const data = snapshot.val(); 
-          this.userInfo = data.user1.user_profile_info
+          this.userInfo = data[current_user].user_profile_info
         }))
     },
     methods: {
         // ADD ID AND CHANGE DATE
         addEvent(name, club, photo, date, location, time, type, id) {
           const dbRef = ref(getDatabase());
-            get(child(dbRef, `users/` + this.current_user + `/user_events/`)).then((snapshot) => {
+            get(child(dbRef, `users/` + this.page_current_user + `/user_events/`)).then((snapshot) => {
               if (snapshot.exists()) {
-                var db_values = snapshot.val();
-                var db_size = Object.keys(db_values).length
-                var new_db_size = db_size + 2
+              
               //   add event to array
-                set(ref(db, 'users/' + this.current_user + '/user_events/event_' + new_db_size), 
+                set(ref(db, 'users/' + this.page_current_user + '/user_events/event_' + id), 
                   {
                       title: name,
                       start: this.formatting_start_date(date, time),
@@ -325,8 +329,8 @@ function UserUpcomingSchoolEvents (number_of_upcoming_events) {
     document.getElementById('carousel_user_events').innerHTML = tempHTML
   }
   else if (number_of_upcoming_events == 0){
-    tempHTML = `
-    <div class = "container text-center m-3 p-5 display-6 rounded" style = "border: 1px solid #ccc; background-color: #104547; color: white">
+    let tempHTML = `
+    <div class = "container text-center p-5 display-6 rounded" style = "border: 1px solid #ccc; background-color: #4b5358; color: white">
         No upcoming events!
     </div>
     `
