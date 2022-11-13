@@ -250,7 +250,6 @@ function updateUserInfo() {
         matric_no: document.getElementById('matric_no').value,
         phone_no: document.getElementById('phone_no').value, 
         profile_picture: {"picture_url": document.getElementById('imagePreview').style.backgroundImage},
-
         // preference: userInfo.preference,
         preference_info: userInfo.preference_info
     })

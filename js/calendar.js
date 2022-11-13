@@ -835,7 +835,6 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
           
           // there are errors
           else  {
-            console.log("there are errors")
 
             var errors = []
           
@@ -849,15 +848,17 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
 
             // check for empty fields
             if (title == "") {
-              errors.push("Event Title")
+              errors.push("Missing event title")
             }
             if (start == "") {
-              errors.push("Start Date")
+              errors.push("Missing start date")
             }
             if (end == "") {
-              errors.push("End Date")
+              errors.push("Missing end date")
             }
-            console.log(errors)
+            if (new Date(end) < new Date(start)) {
+              errors.push("End date cannot be before start date")
+            }
 
             // add errors
             error_output.innerHTML = '<ul>'
@@ -1026,7 +1027,6 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
       
       // there are errors
       else  {
-        console.log("there are errors")
 
         var errors = []
       
@@ -1040,15 +1040,17 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
 
         // check for empty fields
         if (title == "") {
-          errors.push("Event Title")
+          errors.push("Missing event title")
         }
         if (start == "") {
-          errors.push("Start Date")
+          errors.push("Missing start date")
         }
         if (end == "") {
-          errors.push("End Date")
+          errors.push("Missing end date")
         }
-        console.log(errors)
+        if (new Date(end) < new Date(start)) {
+          errors.push("End cannot be before start")
+        }
 
         // add errors
         error_output.innerHTML = '<ul>'

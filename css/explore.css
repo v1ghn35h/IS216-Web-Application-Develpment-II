@@ -1,5 +1,10 @@
 /*----  Explore Page CSS   ----*/
-
+.body {
+    background-color: #f7f7f7;
+    height: 100%;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
 .search-container {
     width: 60%;
     background: #FFFFFF;
@@ -97,10 +102,10 @@
     letter-spacing: 1px;
     color: #104547;
 }
-.cards_landscape_wrap-2 .card .text-box .signup-btn{
+/* .cards_landscape_wrap-2 .card .text-box .signup-btn{
     background-color: #00acc1;
     color: #FFFFFF;
-}
+} */
 
 .details-btn {
     border-color: #104547;
@@ -162,10 +167,15 @@ background-color: #104547;
 color: white;
 }
 
-.sign_up_btn {
+.sign_up_btn{
     background-color: #104547;
     color: white;
-    /* color: 104547; */
+}
+
+.sign_up_btn:hover{
+    background-color: white;
+    color: #104547;
+    border: 1px solid #104547;
 }
 
 .confirm-btn{

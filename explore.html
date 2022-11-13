@@ -74,7 +74,7 @@
                 <!-- search input box-->
                 <!--Search button-->
                 <div class="input-group ">
-                    <input class="form-control"  type="text" placeholder="Search" v-model="search_input_value" >
+                    <input class="form-control"  type="text" placeholder="Eg. Tennis" v-model="search_input_value" >
 
                     <!-- auto completion for now- can be further improved on - check past samples-->
                     
@@ -167,7 +167,8 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" @click="clear_selections()" >Clear</button>
+                                <button type="button" class="btn btn-secondary" @click="clear_selections()" 
+                                data-bs-dismiss="modal" >Clear</button>
                                 <button type="button" @click="filter_events()" data-bs-dismiss="modal" class="btn" style="background-color: #104547; color: white;">Apply </button>
                             </div>
                         </div>
@@ -201,7 +202,7 @@
                             </div> <!-- end of div modal body-->
 
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" @click="clear_selections()">Clear</button>
+                                <button type="button" class="btn btn-secondary" @click="clear_selections()" data-bs-dismiss="modal">Clear</button>
                                 <button type="button" class="btn" @click="sort_events()"data-bs-dismiss="modal" style="background-color: #104547; color: white;">Apply</button>
                             </div>
                         </div>
@@ -234,6 +235,12 @@
                 
 
             </div>
+            <hr>
+
+            <div v-html="event_error">
+
+            </div>
+
         </div>
         <div class="container pt-0 px-auto">
 
@@ -348,11 +355,11 @@
                                 </div>
                                 <div class="modal-footer mt-0">
                                     <span  v-if='userInfo.matric_no == "<Unknown>"'>
-                                        <button type="button" class="btn signup-btn" :data-bs-target="`#signUpPage${details.eventId}`"
+                                        <button type="button" class="btn sign_up_btn" :data-bs-target="`#signUpPage${details.eventId}`"
                                         data-bs-toggle="modal" disabled>Sign up now</button>
                                     </span>
                                     <span  v-else>
-                                        <button type="button" class="btn signup-btn" :data-bs-target="`#signUpPage${details.eventId}`"
+                                        <button type="button" class="btn sign_up_btn" :data-bs-target="`#signUpPage${details.eventId}`"
                                         data-bs-toggle="modal">Sign up now</button>
                                     </span>
                                 </div>

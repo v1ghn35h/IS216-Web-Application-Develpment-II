@@ -65,6 +65,9 @@ const explorePage = Vue.createApp({
             current_page: 1,
             number_of_pages: 0,
 
+            //event error
+            event_error: '',
+
         };
     }, // data
  
@@ -365,6 +368,23 @@ const explorePage = Vue.createApp({
             console.log(events);
 
             console.log(this.number_of_pages);
+
+            this.event_error = ''
+
+            if (events.length == 0) {
+                // alert("No events found")
+                this.event_error = `
+                <div class="alert alert-warning" role="alert">
+                <h5 class="alert-heading">
+
+                <i class="fa fa-frown-o" style="font-size:30px" ></i>
+                    No results found!
+
+                </h5>
+
+              </div>`
+            }
+            
             if (events.length > 12) {
                 this.number_of_pages = (events.length)/12
             }
@@ -411,34 +431,34 @@ const explorePage = Vue.createApp({
         },
 
         addEvent(name, club, photo, date, location, time, type, id) {
-            const dbRef = ref(getDatabase());
+            
 
-                  set(ref(db, 'users/' + this.current_user + '/user_events/event_' + id), 
-                    {
-                        title: name,
-                        start: this.formatting_start_date(date, time),
-                        end: this.formatting_end_date(date, time),
-                        category: type,
-                        id: id,
-                        event_club: club,
-                        photo_url: photo,
-                        event_date: date,
-                        event_location: location,
-                        event_time: time,
-                    },
-                  )
-                
-                .then(() => {
-                    console.log('Data updated successfully!');
-                })
-                .catch((error) => {
-                console.error(error);
-              });  
-              // force page to reload
-              setTimeout(function(){
-                window.location.reload();
-              }, 500);
-          },
+            set(ref(db, 'users/' + this.current_user + '/user_events/event_' + id), 
+                {
+                    title: name,
+                    start: this.formatting_start_date(date, time),
+                    end: this.formatting_end_date(date, time),
+                    category: type,
+                    id: id,
+                    event_club: club,
+                    photo_url: photo,
+                    event_date: date,
+                    event_location: location,
+                    event_time: time,
+                },
+                )
+            
+            .then(() => {
+                console.log('Data updated successfully!');
+            })
+            .catch((error) => {
+            console.error(error);
+            });  
+            // force page to reload
+            setTimeout(function(){
+            window.location.reload();
+            }, 500);
+        },
 
 
         formatting_start_date(date, time){
@@ -520,6 +540,7 @@ const explorePage = Vue.createApp({
                 }
                 console.log(old_filtered_arr);
             }
+            // console.log(old_filtered_arr);
             
             // check if user selected any event types to filter and if they did, extract those events
             if (this.filter_event_type.length > 0) {
@@ -529,9 +550,10 @@ const explorePage = Vue.createApp({
                 console.log(use_db_events);
                 
                 for (let event of use_db_events) {
+
                     
+                    console.log(event);
                     if (this.filter_event_type.includes( event.type )) {
-                        // console.log(details);
                         console.log(event.type);
                         
                         new_filtered_arr.push(event)
@@ -541,8 +563,52 @@ const explorePage = Vue.createApp({
                 old_filtered_arr = new_filtered_arr
             }
             
-    
             new_filtered_arr = []
+            console.log(old_filtered_arr);
+            console.log(new_filtered_arr);
+
+            // check if user selected any date to filter and if they did, extract those events
+            let filter_start_date_obj = new Date(this.filter_start_date)
+            let filter_end_date_obj = new Date(this.filter_end_date)
+            let today = new Date().toISOString().slice(0, 10)
+
+            if (this.filter_end_date != null) {
+            
+                let use_db_events = old_filtered_arr.length == 0 ? all_events : old_filtered_arr
+
+              
+                for (let event of use_db_events) {
+                    let event_date = event.date
+                    let event_date_obj = new Date(event_date)
+
+                    if ( event_date_obj >= filter_start_date_obj && event_date_obj <= filter_end_date_obj) {
+                    
+                        new_filtered_arr.push(event)
+                    }
+                }
+                
+                old_filtered_arr = new_filtered_arr
+            }
+            else if (this.filter_start_date != today) {
+                let use_db_events = old_filtered_arr.length == 0 ? all_events : old_filtered_arr
+
+                for (let event of use_db_events) {
+                    let event_date = event.date
+                    let event_date_obj = new Date(event_date)
+
+                    if ( event_date_obj >= filter_start_date_obj) {
+                        
+                        new_filtered_arr.push(event)
+                    }
+                }
+    
+                old_filtered_arr = new_filtered_arr
+            }
+
+            new_filtered_arr = []
+            console.log(old_filtered_arr);
+            console.log(new_filtered_arr);
+
 
             // check if user selected any price to filter and if they did, extract those events
             if (this.filter_min_price != null || this.filter_max_price != null) {
@@ -572,45 +638,9 @@ const explorePage = Vue.createApp({
                 old_filtered_arr = new_filtered_arr
             }
 
-            new_filtered_arr = []
 
 
-             // check if user selected any date to filter and if they did, extract those events
-            let filter_start_date_obj = new Date(this.filter_start_date)
-            let filter_end_date_obj = new Date(this.filter_end_date)
-
-            if (this.filter_end_date != null) {
-            
-                let use_db_events = old_filtered_arr.length == 0 ? all_events : old_filtered_arr
-
-              
-                for (let event of use_db_events) {
-                    let event_date = event.date
-                    let event_date_obj = new Date(event_date)
-
-                    if ( event_date_obj >= filter_start_date_obj && event_date_obj <= filter_end_date_obj) {
-                    
-                        new_filtered_arr.push(event)
-                    }
-                }
-                
-                old_filtered_arr = new_filtered_arr
-            }
-            else {
-                let use_db_events = old_filtered_arr.length == 0 ? all_events : old_filtered_arr
-
-                for (let event of use_db_events) {
-                    let event_date = event.date
-                    let event_date_obj = new Date(event_date)
-
-                    if ( event_date_obj >= filter_start_date_obj) {
-                        
-                        new_filtered_arr.push(event)
-                    }
-                }
-    
-                old_filtered_arr = new_filtered_arr
-            }
+             
 
             console.log(old_filtered_arr);
             this.all_display_events = old_filtered_arr

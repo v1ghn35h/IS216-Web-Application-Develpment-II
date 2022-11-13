@@ -39,7 +39,9 @@ onValue(users, (snapshot => {
 	  const data = snapshot.val(); 
 	  userInfo = data[current_user].user_profile_info
     user_name = userInfo.name
-    if (userInfo.preference_info.preference != [""]){
+    console.log(userInfo)
+    console.log(data[current_user])
+    if (userInfo.preference_info.preference != ["preference"]){
       user_preference = userInfo.preference_info.preference
     }
     let text = "Hello " + user_name + "!"
@@ -327,7 +329,7 @@ function UserUpcomingSchoolEvents (number_of_upcoming_events) {
                 tempHTML += `
                 <div class="carousel-item">
                 <img src="${photo_of_event}" class="d-block w-100" height="300" width="600">
-                  <div class="carousel-caption d-block" style = "background-color: white; color: black; font-family: Georgia, 'Times New Roman', Times, serif">
+                  <div class="carousel-caption d-block" style = "background-color: white; opacity color: black; font-family: Georgia, 'Times New Roman', Times, serif">
                     <h5>${name_of_event}</h5>
                     <p>${info_of_event}</p>
                   </div>
