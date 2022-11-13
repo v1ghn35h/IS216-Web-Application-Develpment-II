@@ -40,6 +40,7 @@ function call_weather_api() {
             let counter = 0
             for (let weather of country_weather){
                 image = weather_type_images[weather.main]
+                // img_html += "<img src="+image+" height='50' width='50'>"
                 if (counter==0){
                     weather_text += `<span class= 'lead mt-5' style = 'font-size:30px'>Weather: ${weather.main}  <img src='${image}' height='30' width='30'></span>`
                     counter += 1
@@ -100,6 +101,9 @@ function call_quote_api() {
 
         let body = document.getElementById("api");
         let quote = response.data.content
+        if (quote.length>150){
+            quote = quote.slice(0,140) + "..."
+        }
         let author = response.data.author
         body.innerHTML = 
         `<figure>

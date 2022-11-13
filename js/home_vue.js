@@ -227,16 +227,16 @@ const homePage = Vue.createApp({
 const vm = homePage.mount('#homePage'); 
 
 function GetPhotoURL(type){
-  let event_media = {'Adventure': ['#ffb700', 'icons/adventure.png', 'event-img/adventure.jpg'], 
-                    'Arts & Culture': ['#ffc2d1', 'icons/artsculture.png', 'event-img/artsculture.jpg'],
-                    'Community': ['#ffd81a', 'icons/community.png', 'event-img/community.jpg'],
-                    'Global Culture': ['#ecbcfd', 'icons/globalculture.png', 'event-img/globalculture.jpg'],
-                    'School Society': ['#adc178', 'icons/schoolsociety.png', 'event-img/schoolsociety.jpg'],
-                    'Sports': ['#01497c', 'icons/sports.png', 'event-img/sports.jpg'],
-                    'Student Bodies': ['#8ecae6', 'icons/studentbodies.png', 'event-img/studentbodies.jpg'],
-                    'Academics': ['#ff8fab', 'icons/academics.png', 'event-img/academics.jpg'],
-                    'Miscellaneous': ['#ced4da', 'icons/miscellaneous.png', 'event-img/miscellaneous.jpg'],
-                    'Default': ['#4d4d4d', 'icons/default.png', 'event-img/default.jpg']
+  let event_media = {'Adventure': './img/event-img/adventure.jpg', 
+                    'Arts & Culture': './img/event-img/artsculture.jpg',
+                    'Community': './img/event-img/community.jpg',
+                    'Global Culture': './img/event-img/globalculture.jpg',
+                    'School Society': './img/event-img/schoolsociety.jpg',
+                    'Sports': './img/event-img/sports.jpg',
+                    'Student Bodies': './img/event-img/studentbodies.jpg',
+                    'Academics': './img/event-img/academics.jpg',
+                    'Miscellaneous': './img/event-img/miscellaneous.jpg',
+                    'Default': './img/event-img/default.jpg'
                     }
   return(event_media[type])
 }
@@ -275,11 +275,11 @@ function UserUpcomingSchoolEvents (number_of_upcoming_events) {
     if (Object.hasOwnProperty.call(user_upcoming_events, event)) {
             let name_of_event = user_upcoming_events[event].title
             let photo_of_event = ""
-            if(photo_url in user_upcoming_events[event]){
+            if("photo_url" in user_upcoming_events[event]){
               photo_of_event= user_upcoming_events[event].photo_url
             }
             else {
-              if(category in user_upcoming_events[event]){
+              if("category" in user_upcoming_events[event]){
                 photo_of_event= GetPhotoURL(user_upcoming_events[event].category)
               }
               else{
@@ -315,7 +315,7 @@ function UserUpcomingSchoolEvents (number_of_upcoming_events) {
             if (counter == "0" && check){
                 tempHTML += `
                 <div class="carousel-item active">
-                <img src="${photo_of_event}" class="d-block w-100" height="300" width="600">
+                <img src=${photo_of_event} class="d-block w-100" height="300" width="600">
                   <div class="carousel-caption d-block" style = "background-color: white; color: black; font-family: font-family: Georgia, 'Times New Roman', Times, serif">
                       <h5>${name_of_event}</h5>
                       <p>${info_of_event}</p>
@@ -395,11 +395,11 @@ function UserUpcomingSchoolEvents (number_of_upcoming_events) {
     if (Object.hasOwnProperty.call(user_upcoming_events, event)) {
             let name_of_event = user_upcoming_events[event].title
             let photo_of_event = ""
-            if(photo_url in user_upcoming_events[event]){
+            if("photo_url" in user_upcoming_events[event]){
               photo_of_event= user_upcoming_events[event].photo_url
             }
             else {
-              if(category in user_upcoming_events[event]){
+              if("category" in user_upcoming_events[event]){
                 photo_of_event= GetPhotoURL(user_upcoming_events[event].category)
               }
               else{
@@ -433,7 +433,7 @@ function UserUpcomingSchoolEvents (number_of_upcoming_events) {
             if (counter == "0" && check){
                 tempHTML += `
                 <div class="carousel-item active">
-                <img src="${photo_of_event}" class="d-block w-100" height="300" width="600">
+                <img src=${photo_of_event} class="d-block w-100" height="300" width="600">
                   <div class="carousel-caption d-block" style = "background-color: white; color: black; font-family: font-family: Georgia, 'Times New Roman', Times, serif">
                       <h5>${name_of_event}</h5>
                       <p>${info_of_event}</p>
