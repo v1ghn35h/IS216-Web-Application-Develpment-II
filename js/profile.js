@@ -13,7 +13,7 @@ $(document).ready(function(){
 //////////////////////////////////////////////////
 // FIREBASE IMPORT
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
-import { getDatabase, ref, onValue , set , get , query , orderByChild , child } from
+import { getDatabase, ref, onValue , set , get , query , orderByChild } from
 "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
 import { getStorage, ref as sref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-storage.js";
 
@@ -22,6 +22,7 @@ import { getStorage, ref as sref, uploadBytesResumable, getDownloadURL } from "h
 // FIREBASE VARIABLES
 import ResolvedUID from "./login-common.js"
 let current_user = ResolvedUID
+// current_user = "user1"
 console.log(current_user);
 
 
@@ -141,8 +142,18 @@ function readURL(input) {
         }, 
     () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            // console.log('File available at', downloadURL);
-            });
+            console.log('File available at', downloadURL);
+
+            let picture_url = `url("${downloadURL}")`
+
+            const db = getDatabase();
+            set(ref(db, 'users/' + current_user + '/user_profile_info/profile_picture'), {
+                picture_url
+            })
+
+            $('#successModal').modal('show');
+        });
+
         }
     );
 
@@ -153,15 +164,9 @@ function readURL(input) {
     getDownloadURL(profileRef)
         .then((url) => {
             // UPDATE JSON WITH THIS URL
-            // console.log(url);
-            let picture_url = `url(${url})`
+            console.log(url);
 
-            const db = getDatabase();
-            set(ref(db, 'users/' + current_user + '/user_profile_info/profile_picture'), {
-                picture_url
-            })
-
-            $('#successModal').modal('show');
+            
 
         })
         .catch((error) => {
@@ -585,11 +590,26 @@ function UserPastEvents () {
             }
 
     }}
-    document.getElementById('past_events').innerHTML = tempHTML
 
-    // if (counter == 0) {
-    //     document.getElementById('events_h2').innerText = "";
-    // }
+    if (counter == 0) {
+        console.log(counter);
+        document.getElementById('events-tab-pane').innerHTML = `
+        <div id="sign_up">
+            <div style="padding-top: 25%">
+                <h2>You do not have past events</h2>
+                <br>
+                <h3>Sign up now!</h3>
+                <br>
+                <a class="btn" href="home.html">Home</a>
+                <span> &nbsp; &nbsp; </span>
+                <a class="btn" href="explore.html">Events</a>
+            </div>
+        </div>
+        ` 
+    } else {
+        document.getElementById('past_events').innerHTML = tempHTML
+
+    }
 
 }
 
