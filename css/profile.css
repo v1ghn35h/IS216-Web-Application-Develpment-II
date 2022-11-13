@@ -405,7 +405,7 @@ td {
 }
 
 #app {
-    background-color: #f0f2f5;
+    /* background-color: #f0f2f5; */
     border-radius: 20px;
 }
 
@@ -425,7 +425,7 @@ td {
     max-width: 350px;
     background-color: #ffffff;
     border-radius: 12px;
-    box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+    /* box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%); */
 }
 
 #app .card2 {
@@ -436,6 +436,19 @@ td {
     width: -webkit-fill-available;
     min-width: 140px;
     max-width: 350px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    /* box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%); */
+}
+
+#app .card3 {
+    margin: 20px;
+    padding: 15px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: -webkit-fill-available;
+    min-width: 140px;
+    max-width: auto;
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
@@ -490,7 +503,7 @@ td {
 
 #app svg {
     display: block;
-    margin: 0 auto 10px;
+    /* margin: 0 auto 10px; */
     transform: rotate(-90deg);
     
 }
