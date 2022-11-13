@@ -108,6 +108,7 @@ function allEventListners() {
 
 // TO-DO ADD TO DB
 function to_do_addDB(id, title, status) {
+  console.log(id)
   set(ref(db, 'users/' + current_user + '/user_tasks/task_' + id), 
     {
       id: id,
@@ -117,6 +118,7 @@ function to_do_addDB(id, title, status) {
   )
 
   // add to task obj
+  console.log(id)
   all_tasks[`task_${id}`] = {"title": title, "status": status}
 }
 
@@ -170,6 +172,7 @@ function addTodo(e) {
         span.appendChild(document.createTextNode(todoInput.value));
         // Append span to li
         li.appendChild(span);
+
         // Append li to ul (todoList)
         todoList.appendChild(li);
 
@@ -181,6 +184,10 @@ function addTodo(e) {
         let task_status = ""
 
         to_do_addDB(task_id, task_title, task_status) 
+
+        // add id to task li element
+        li.id = new_id
+        console.log(li)
         
         // Clear input
         todoInput.value = '';
@@ -223,6 +230,9 @@ function removeTodo(e) {
     let event = e.target.parentElement
     let event_id = event.id
 
+    console.log(event)
+    console.log(event_id)
+
     let event_title = event.getElementsByClassName("todo-text")[0].innerHTML
 
     // Complete todo
@@ -242,11 +252,11 @@ function removeTodo(e) {
           status = ""
         }
 
-    // re add data to DB
-    to_do_addDB(event_id, event_title, status)
+        // re add data to DB
+        to_do_addDB(event_id, event_title, status)
 
-    // refetch from database (to update contents)
-    to_do_fetchDB()
+        // refetch from database (to update contents)
+        to_do_fetchDB()
 
   }
 
@@ -254,6 +264,7 @@ function removeTodo(e) {
     if (e.target.classList.contains('fa-trash-alt')) {
 
       let event = e.target.parentElement
+      let event_id = event.id
       let event_title = event.getElementsByClassName("todo-text")[0].innerHTML
 
       // prompt user to double confirm
