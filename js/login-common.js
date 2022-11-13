@@ -54,7 +54,7 @@ onAuthStateChanged(auth, (user) => {
                         "matric_no": "<Unknown>",
                         "phone_no": "<Unknown>",
                         "preference_info": {
-                            "preference": [""]
+                            "preference": ["preference"]
                         },
                         "profile_picture": {
                             "picture_url": "url('img/default_pfp.png')"
