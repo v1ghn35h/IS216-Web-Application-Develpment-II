@@ -5,13 +5,12 @@
     margin-bottom: 0;
     padding-bottom: 0;
 }
+
 .search-container {
     width: 60%;
     background: #FFFFFF;
     display: flex; 
-    /* flex is to contain element within this element */
     justify-content: center;
-    /* justify center to tell it to put the inner content in the position */
 }
 
 #search-bar {
@@ -19,64 +18,66 @@
     padding: 20px;
     
 }
+
 .cards_landscape_wrap-2{
     text-align: center;
     background: #F7F7F7;
 }
+
 .cards_landscape_wrap-2 .container{ 
     padding-top: 80px; 
     padding-bottom: 100px;
 }
-/* .cards_landscape_wrap-2 a{
-    text-decoration: none;
-    outline: none; */
-/* } */
+
 .cards_landscape_wrap-2 .card {
     border-radius: 5px; 
     position: relative;
     width: 100%;
     height: 440px;
-    /* initially 420 but due to some long heading, got to increase height */
     max-width: 280px;
-
     display: absolute;
-
 }
+
 .cards_landscape_wrap-2 .card .image-box{
     background: #ffffff;
     overflow: hidden;
     box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.50);
     border-radius: 5px;
 }
+
 .cards_landscape_wrap-2 .card .image-box img{
     transition: all 1s ease;
     width: 100%;
     height: 170px;
 }
+
 .cards_landscape_wrap-2 .card:hover .image-box img{
     opacity: 0.7;
     transform: scale(1.15);
 }
+
 .cards_landscape_wrap-2 .card .text-box{
     text-align: left;
-    
 }
+
 .cards_landscape_wrap-2 .card .text-box .text-container{
     padding: 35px 18px;
-    
 }
+
 .cards_landscape_wrap-2 .card{
     background: #FFFFFF;
     margin-top: 50px;
     transition: all 0.2s ease-in;
     box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.40);
 }
+
 .cards_landscape_wrap-2 .card:hover{
     background: #fff;
     box-shadow: 0px 15px 26px rgba(0, 0, 0, 0.50);
     transition: all 0.2s ease-in;
     margin-top: 50px;
 }
+
 .cards_landscape_wrap-2 .card .text-box p{
     margin-top: 10px;
     margin-bottom: 0px;
@@ -85,6 +86,7 @@
     letter-spacing: 1px;
     color: #000000;
 }
+
 .cards_landscape_wrap-2 .card .text-box h6{
     margin-top: 0px;
     margin-bottom: 4px; 
@@ -94,6 +96,7 @@
     letter-spacing: 1px;
     color: #9ea7a8;
 }
+
 .cards_landscape_wrap-2 .card .text-box h5{
     margin-top: 0px;
     margin-bottom: 4px; 
@@ -102,15 +105,12 @@
     letter-spacing: 1px;
     color: #104547;
 }
-/* .cards_landscape_wrap-2 .card .text-box .signup-btn{
-    background-color: #00acc1;
-    color: #FFFFFF;
-} */
 
 .details-btn {
     border-color: #104547;
     color: 104547;
 }
+
 .card_footer {
     position: absolute;
     bottom: 15px;
@@ -121,7 +121,7 @@
 .details-btn:hover {
     background-color: #104547;
     color: white;   
-  }
+}
 
 .filter-btn {
     border: 1px solid black;
@@ -145,6 +145,7 @@ background-color: lightgray;
 background-color: #104547;
 color: white;
 }
+
 /* for sort and filter button  */
 .sort-btn {
 border: 1px solid 104547;
@@ -199,32 +200,7 @@ color: white;
 
 }
 
-/* .bookmark_btn { */
-    /* display: inline-block; */
-    /* vertical-align: middle;
-    background: none;
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
-    outline: 0;
-    border: none;
-  } */
-
-  
-
-  .bookmark_icon {
-    /* display: inline-block; */
-    float: right;
-    /* vertical-align: middle; */
-    /* background: none; */
-    cursor: pointer;
-    /* padding: 0;
-    margin: 0;
-    outline: 0;
-    border: none; */
-  }
-  .bookmark_btn {
-    /* float: right; */
-  }
-
- 
+.bookmark_icon {
+float: right;
+cursor: pointer;
+}
