@@ -221,7 +221,6 @@ const homePage = Vue.createApp({
       }
     } 
 });
-
 const vm = homePage.mount('#homePage'); 
 
 function UserUpcomingSchoolEvents (number_of_upcoming_events) {
