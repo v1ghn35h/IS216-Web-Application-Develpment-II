@@ -56,7 +56,7 @@
                     <input class="btn btn-light me-3" type="button" value="Are you bored?" onclick="call_bored_api()">
                     <input class="btn btn-light" type="button" value="Read a quote" onclick="call_quote_api()">
                     <br>
-                    <span id = "api" style = "color: #fde7ef;"></span>
+                    <span id = "api" class = "container" style = "color: #fde7ef"></span>
                 </div>
             </div>
         </div>
@@ -228,6 +228,7 @@
         </div> <!-- end of event div-->
     </div>
 
+    <span v-if="for_you_event_present">
     <h3 class = "display-5 my-4">For You</h3>
     <hr style = "color: #104547">
     <div class="cards_landscape_wrap-2" id = "for_you">
@@ -368,6 +369,7 @@
                 <!-- END OF SIGN UP & MORE INFO -->
             </div> <!-- end of event div-->
     </div>
+    </span>
     </div>
 
 </body>
