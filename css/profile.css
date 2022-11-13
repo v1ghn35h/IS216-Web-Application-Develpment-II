@@ -146,7 +146,7 @@ form.is-readonly .btn-save {
 }
 form.is-readonly input[disabled], form.is-readonly textarea[disabled], form.is-readonly select[disabled] {
     cursor: text;
-    background-color: #fff;
+    background-color: #f7f7f7;
     border-color: transparent;
     outline-color: transparent;
     box-shadow: none;
@@ -237,6 +237,7 @@ td {
     margin-left: 5px;
     margin-right: 5px;
     margin-top: 0px;
+    background-color: #f7f7f7;
 }
 #upcoming {
     overflow-x: scroll;

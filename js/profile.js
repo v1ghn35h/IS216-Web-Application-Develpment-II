@@ -23,7 +23,7 @@ import { getStorage, ref as sref, uploadBytesResumable, getDownloadURL } from "h
 import ResolvedUID from "./login-common.js"
 let current_user = ResolvedUID
 // current_user = "user1"
-console.log(current_user);
+// console.log(current_user);
 
 
 //////////////////////////////////////////////////
@@ -72,8 +72,6 @@ onValue(users, (snapshot => {
 
     userInfo = data[current_user].user_profile_info
     
-    console.log(userInfo);
-
     preference = userInfo.preference_info.preference
 
     displayDetails()
@@ -236,9 +234,6 @@ function displayDetails() {
 // UDPATE USER INFO
 function updateUserInfo() {
 
-    console.log(userInfo);
-    console.log(userInfo.preference_info);
-
     const db = getDatabase();
     set(ref(db, 'users/' + current_user + '/user_profile_info'), {
         name: document.getElementById('name').value,
@@ -262,52 +257,54 @@ function updateUserInfo() {
 
 function formControl() {
 
-    let error_msg = ""
+    let error_msg = "<ul>"
 
     if (document.getElementById('name').value == "") {
-        error_msg += "Fill in your name \n"
+        error_msg += "<li>Fill in your name</li>"
     }
 
     if (document.getElementById('username').value == "") {
-        error_msg += "Fill in your username \n"
+        error_msg += "<li>Fill in your username </li>"
     }
 
     if (document.getElementById('birthday').value == "") {
-        error_msg += "Fill in your birthday \n"
+        error_msg += "<li>Fill in your birthday </li>"
     }
 
     if (document.getElementById('email').value == "") {
-        error_msg += "Fill in your email \n"
+        error_msg += "<li>Fill in your email </li>"
     } else if (!document.getElementById('email').value.includes("@")) {
-        error_msg += "Enter a valid email \n"
+        error_msg += "<li>Enter a valid email </li>"
     } else if (document.getElementById('email').value.indexOf("@") == 0) {
-        error_msg += "Enter a valid email \n"
+        error_msg += "<li>Enter a valid email </li>"
     } else if (document.getElementById('email').value.indexOf("@") == document.getElementById('email').value.length - 1) {
-        error_msg += "Enter a valid email \n"
+        error_msg += "<li>Enter a valid email </li>"
     } else if ((document.getElementById('email').value.match(/@/g) || []).length > 1) {
-        error_msg += "Enter a valid email \n"
+        error_msg += "<li>Enter a valid email </li>"
     }
 
 
     if (document.getElementById('matric_no').value == "") {
-        error_msg += "Fill in your matric no. \n"
+        error_msg += "<li>Fill in your matric no. </li>"
     } else if (document.getElementById('matric_no').value.length != 8) {
-        error_msg += "Enter a valid 8 digit matric no. \n"
+        error_msg += "<li>Enter a valid 8 digit matric no. </li>"
     }
 
     if (document.getElementById('phone_no').value == "") {
-        error_msg += "Fill in your phone no. \n"
+        error_msg += "<li>Fill in your phone no. </li>"
     } else if (document.getElementById('phone_no').value.length != 8) {
-        error_msg += "Enter a valid 8 digit phone no. \n"
+        error_msg += "<li>Enter a valid 8 digit phone no. </li>"
     }
 
-    if (error_msg != "") {
+    error_msg += "</ul>"
+
+    if (error_msg != "<ul></ul>") {
         var $form = $(this).closest('form');
         $form.toggleClass('is-readonly is-editing');
         var isReadonly = $form.hasClass('is-readonly');
         $form.find('input,textarea,select').prop('disabled', isReadonly);
 
-        document.getElementById('error_msg').innerText = error_msg;
+        document.getElementById('error_msg').innerHTML = error_msg;
 
         $('#errorModal').modal('show');
 
@@ -392,21 +389,15 @@ function updatePreference(cat_id) {
             
     }
 
-    console.log(preference, "0");
-
     if (preference.length == 0) {
         preference = ["preference"]
     }
-
-    console.log(preference, "after");
 
     // update database
     const db = getDatabase();
     set(ref(db, 'users/' + current_user + '/user_profile_info/preference_info'), {
         preference
     })
-
-    console.log(userInfo);
 
 
 }
@@ -602,7 +593,7 @@ function UserPastEvents () {
     }}
 
     if (counter == 0) {
-        console.log(counter);
+        // console.log(counter);
         document.getElementById('events-tab-pane').innerHTML = `
         <div id="sign_up">
             <div style="padding-top: 25%">
