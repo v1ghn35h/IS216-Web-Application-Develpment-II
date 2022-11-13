@@ -136,7 +136,7 @@
                 "club": "SMU Basketball",
                 "eventId": "2022-11-10-basketball-basketball-tryouts",
                 "type": "Sports",
-                "photo": "https://images.pexels.com/photos/1752757/pexels-photo-1752757.jpeg",
+                "photo": "https://images.pexels.com/photos/358042/pexels-photo-358042.jpeg",
                 "date": "2022-11-10",
                 "time": "1130-1700",
                 "fees": 0,
@@ -147,7 +147,7 @@
                 "club": "SMU Artdicted",
                 "eventId": "2022-11-13-artdicted-art-jam",
                 "type": "Arts & Culture",
-                "photo": "https://mymodernmet.com/wp/wp-content/uploads/2018/05/painting-ideas-thumbnail-jpg.jpg",
+                "photo": "https://images.pexels.com/photos/2258795/pexels-photo-2258795.jpeg",
                 "date": "2022-11-13",
                 "time": "1700-1900",
                 "fees": 0,
@@ -290,7 +290,7 @@
                 "club": "SMU Artdicted",
                 "eventId": "2022-11-23-artdicted-tiedye-workshop",
                 "type": "Arts & Culture",
-                "photo": "https://images.pexels.com/photos/1143758/pexels-photo-1143758.jpeg",
+                "photo": "https://images.pexels.com/photos/6851285/pexels-photo-6851285.jpeg",
                 "date": "2022-11-23",
                 "time": "1700-1900",
                 "fees": 10,
@@ -301,7 +301,7 @@
                 "club": "SMU SSU",
                 "eventId": "2022-11-24-ssu-martial-arts-exploration",
                 "type": "Sports",
-                "photo": "https://images.pexels.com/photos/4428290/pexels-photo-4428290.jpeg",
+                "photo": "https://images.pexels.com/photos/7780086/pexels-photo-7780086.jpeg",
                 "date": "2022-11-24",
                 "time": "1700-1900",
                 "fees": 10,
@@ -323,7 +323,7 @@
                 "club": "SMU Literati",
                 "eventId": "2022-12-26-literati-poem-competition",
                 "type": "Arts & Culture",
-                "photo": "https://images.pexels.com/photos/904616/pexels-photo-904616.jpeg",
+                "photo": "https://images.pexels.com/photos/3928938/pexels-photo-3928938.jpeg",
                 "date": "2022-12-26",
                 "time": "1900-2100",
                 "fees": 0,
@@ -334,7 +334,7 @@
                 "club": "SMU Samba Masala",
                 "eventId": "2022-12-27-samba-masala-samba-masala-festival",
                 "type": "Arts & Culture",
-                "photo": "https://images.pexels.com/photos/13395761/pexels-photo-13395761.jpeg",
+                "photo": "https://images.pexels.com/photos/5113064/pexels-photo-5113064.jpeg",
                 "date": "2022-12-27",
                 "time": "1400-1900",
                 "fees": 0,
@@ -356,7 +356,7 @@
                 "club": "SMU Ivory Keys",
                 "eventId": "2022-12-11-ivory-keys-melodica-concert",
                 "type": "Arts & Culture",
-                "photo": "https://images.pexels.com/photos/210764/pexels-photo-210764.jpeg",
+                "photo": "https://images.pexels.com/photos/13539213/pexels-photo-13539213.jpeg",
                 "date": "2022-12-11",
                 "time": "1400-1900",
                 "fees": 12,
@@ -422,7 +422,7 @@
                 "club": "SMU-X Skating",
                 "eventId": "2022-12-14-smux-skating-skating-session",
                 "type": "Sports",
-                "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
+                "photo": "https://images.pexels.com/photos/11990078/pexels-photo-11990078.jpeg",
                 "date": "2022-12-14",
                 "time": "1700-1900",
                 "fees": 15,
@@ -433,7 +433,7 @@
                 "club": "SMU-X Skating",
                 "eventId": "2022-12-21-smux-skating-christmas-skate",
                 "type": "Sports",
-                "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
+                "photo": "https://images.pexels.com/photos/7335257/pexels-photo-7335257.jpeg",
                 "date": "2022-12-21",
                 "time": "1700-1900",
                 "fees": 15,
@@ -455,7 +455,7 @@
                 "club": "SMU-X Skating",
                 "eventId": "2023-01-04-smux-skating-new-year-skate",
                 "type": "Sports",
-                "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
+                "photo": "https://images.pexels.com/photos/11990078/pexels-photo-11990078.jpeg",
                 "date": "2023-01-04",
                 "time": "1700-1900",
                 "fees": 15,
@@ -532,13 +532,13 @@
                 "club": "SMU-X Xseed",
                 "eventId": "2023-02-14-smux-xseed-ski-x-bike",
                 "type": "Sports",
-                "photo": "https://images.pexels.com/photos/623919/pexels-photo-623919.jpeg",
+                "photo": "https://images.pexels.com/photos/128202/pexels-photo-128202.jpeg",
                 "date": "2023-02-14",
                 "time": "1700-1900",
                 "fees": 22,
                 "location":"East Coast Park"
-            }
-            ,"event40": {
+            },
+            "event40": {
                 "name": "Board Exploration Day",
                 "club": "SMU-X Xseed",
                 "eventId": "2023-01-02-smux-xseed-board-exploration-day",
@@ -549,7 +549,7 @@
                 "fees": 25,
                 "location":"National Stadium Gate 7"
             },
-            "event42": {
+            "event41": {
                 "name": "Traditional Food Exploration",
                 "photo": "https://images.pexels.com/photos/2349277/pexels-photo-2349277.jpeg",
                 "club": "ICON",
@@ -560,7 +560,7 @@
                 "fees": 5,
                 "location":"SMU Greenhouse"
             },
-            "event43": {
+            "event42": {
                 "name": "Technology Career Fair",
                 "club": "SMU",
                 "eventId": "2022-11-29-smu-career-fair",
@@ -571,7 +571,7 @@
                 "fees": 0,
                 "location":"SMU Greenhouse"
             },
-            "event44": {
+            "event43": {
                 "name": "SME Internship Fair",
                 "club": "SMU",
                 "eventId": "2022-12-21-smu-sme-internship-fair",
@@ -582,7 +582,7 @@
                 "fees": 0,
                 "location":"YPHSL SR B1"
             },
-            "event45": {
+            "event44": {
                 "name": "Internship Fair",
                 "club": "SMU",
                 "eventId": "2023-01-19-smu-internship-fair",
@@ -593,29 +593,29 @@
                 "fees": 0,
                 "location":"SMU Greenhouse"
             },
-            "event46": {
+            "event45": {
                 "name": "Networking Night",
                 "club": "SMU",
                 "eventId": "2023-02-29-smu-networking-night",
                 "type": "School Society",
-                "photo": "https://images.pexels.com/photos/3771097/pexels-photo-3771097.jpeg",
+                "photo": "https://images.pexels.com/photos/1181605/pexels-photo-1181605.jpeg",
                 "date": "2023-02-29",
                 "time": "1400-1900",
                 "fees": 0,
                 "location":"SOB Seminar Room 3-2"
             },
-            "event47": {
+            "event46": {
                 "name": "Industry Experience Talk",
                 "club": "SMU",
                 "eventId": "2022-11-03-smu-industry-experience-talk",
                 "type": "School Society",
-                "photo": "https://images.pexels.com/photos/3771097/pexels-photo-3771097.jpeg",
+                "photo": "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg",
                 "date": "2022-11-03",
                 "time": "1400-1900",
                 "fees": 0,
                 "location":"SMU Connexion Level 5 Event Square"
             },
-            "event48": {
+            "event47": {
                 "name": "Behind The Scene",
                 "club": "SMU Broadcast & Entertainment",
                 "eventId": "2023-01-27-broadcast-&-entertainment-behind-the-scene",
@@ -626,18 +626,18 @@
                 "fees": 25,
                 "location":"SMU SOA Classroom 2-1"
             },
-            "event49": {
-                "name": "Chacha with us",
-                "club": "SMU Caderas Latinas",
-                "eventId": "2022-12-11-caderas-latinas-chacha-with-us",
+            "event48": {
+                "name": "HipHop Dancefloor",
+                "club": "SMU Eurhythmix",
+                "eventId": "2023-02-11-eurhythmix-hiphop-dancefloor",
                 "type": "Arts & Culture",
-                "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Cha-Cha-Cha_Valente_Cruz_9543.JPG",
-                "date": "2022-12-11",
+                "photo": "https://images.pexels.com/photos/8027797/pexels-photo-8027797.jpeg",
+                "date": "2023-02-11",
                 "time": "1900-2100",
-                "fees": 7,
+                "fees": 0,
                 "location":"SMU B1 Dance Studio"
             },
-            "event50": {
+            "event49": {
                 "name": "Get Funky",
                 "club": "SMU Funk Movement",
                 "eventId": "2022-11-11-funk-movement-get-funky",
@@ -649,7 +649,7 @@
                 "location":"SMU Ngee Ann Auditorium"
             }
             ,
-            "event51": {
+            "event50": {
                 "name": "Photography Challenge",
                 "club": "SMUSAIC",
                 "eventId": "2023-01-17-smusaic-photography-challenge",
@@ -659,30 +659,551 @@
                 "time": "1900-2100",
                 "fees": 0,
                 "location":"SMU SCIS Classroom 4-1"
-            }
-            ,
+            },
+            "event51": {
+                "name": "Coastal Clean Up",
+                "club": "SMU Verts",
+                "eventId": "2023-02-07-verts-coastal-clean-up",
+                "type": "Community",
+                "photo": "https://images.squarespace-cdn.com/content/v1/5c39a8f55ffd2092c1c46d7e/1629738296149-42USDKGHV1WSC5M4U4UR/how+to+organise+a+beach+clean-up.jpg",
+                "date": "2023-02-07",
+                "time": "1130-1300",
+                "fees": 0,
+                "location":"East Coast Park near Carpark 4"
+            },
             "event52": {
                 "name": "Breakout Concert",
                 "club": "SMU Stereometa",
                 "eventId": "2023-01-11-stereomata-breakout-concert",
                 "type": "Arts & Culture",
-                "photo": "https://vivace.smu.edu.sg/sites/vivace.smu.edu.sg/files/styles/gallery/public/2020-08/1%20_%20club%20logo.jpg",
+                "photo": "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg",
                 "date": "2023-01-11",
                 "time": "1900-2100",
                 "fees": 25,
                 "location":"Esplanade Auditorium 3"
-            }
-            ,
+            },
             "event53": {
                 "name": "Chacha with us",
                 "club": "SMU Caderas Latinas",
-                "eventId": "2023-02-05-chacha-with-us",
+                "eventId": "2023-02-05-caderas-latinas-chacha-with-us",
                 "type": "Arts & Culture",
-                "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Cha-Cha-Cha_Valente_Cruz_9543.JPG",
+                "photo": "https://images.pexels.com/photos/2188012/pexels-photo-2188012.jpeg",
                 "date": "2023-02-05",
                 "time": "1900-2100",
                 "fees": 5,
                 "location":"SMU B1 Dance Studio"
+            },
+            "event54": {
+                "name": "Industry Experience Talk",
+                "club": "SMU",
+                "eventId": "2022-01-03-smu-industry-experience-talk",
+                "type": "School Society",
+                "photo": "https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg",
+                "date": "2022-01-03",
+                "time": "1400-1900",
+                "fees": 0,
+                "location":"SMU Connexion Level 5 Event Square"
+            },
+            "event55": {
+                "name": "Leadership Talk",
+                "club": "SMU",
+                "eventId": "2022-01-03-smu-industry-experience-talk",
+                "type": "School Society",
+                "photo": "https://images.pexels.com/photos/4427430/pexels-photo-4427430.jpeg",
+                "date": "2022-01-23",
+                "time": "1400-1900",
+                "fees": 0,
+                "location":"SMU Connexion Level 5 Event Square"
+            },
+            "event56": {
+                "name": "Leadership Seminar",
+                "club": "SMU",
+                "eventId": "2022-12-03-smu-industry-experience-talk",
+                "type": "School Society",
+                "photo": "https://images.pexels.com/photos/3184405/pexels-photo-3184405.jpeg",
+                "date": "2022-12-23",
+                "time": "1400-1900",
+                "fees": 0,
+                "location":"SMU Connexion Level 5 Event Square"
+            },
+            "event57": {
+                "name": "Taekwondo Showcase",
+                "club": "SMU Taekwondo",
+                "eventId": "2023-12-08-taekwondo-taekwondo-showcase",
+                "type": "Sports",
+                "photo": "https://images.pexels.com/photos/7990068/pexels-photo-7990068.jpeg",
+                "date": "2023-12-08",
+                "time": "1700-1900",
+                "fees": 15,
+                "location":"SMU Administration Building Rooftop"
+            },
+            "event58": {
+                "name": "Surfboarding",
+                "club": "SMU-X Xseed",
+                "eventId": "2022-12-07-smux-xseed-surfboarding",
+                "type": "Sports",
+                "photo": "https://images.pexels.com/photos/1667018/pexels-photo-1667018.jpeg",
+                "date": "2022-12-17",
+                "time": "1700-1900",
+                "fees": 30,
+                "location":"East Coast Park"
+            },
+            "event59": {
+                "name": "Stationary Surfing",
+                "club": "SMU-X Xseed",
+                "eventId": "2023-02-14-smux-xseed-stationary_surfing",
+                "type": "Sports",
+                "photo": "https://images.pexels.com/photos/10825337/pexels-photo-10825337.jpeg",
+                "date": "2023-02-14",
+                "time": "1700-1900",
+                "fees": 22,
+                "location":"East Coast Park"
+            }
+            ,"event60": {
+                "name": "Cable Skiing",
+                "club": "SMU-X Xseed",
+                "eventId": "2022-12-02-smux-xseed-cable-ski",
+                "type": "Sports",
+                "photo": "https://images.pexels.com/photos/17606/night-street-skateboard-urban-17606.jpg",
+                "date": "2022-12-02",
+                "time": "1700-1900",
+                "fees": 25,
+                "location":"East Coast Park"
+            },
+            "event61": {
+                "name": "Food Trail Exploration",
+                "photo": "https://images.pexels.com/photos/6003065/pexels-photo-6003065.jpeg",
+                "club": "SMU-X Trekking",
+                "eventId": "2023-02-13-smux-trekking-food-trail-exploration",
+                "type": "Arts & Culture",
+                "date": "2023-02-13",
+                "time": "1700-1900",
+                "fees": 0,
+                "location":"Chinatown MRT"
+            },
+            "event62": {
+                "name": "Camping 101",
+                "photo": "https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg",
+                "club": "SMU-X Trekking",
+                "eventId": "2022-11-22-smux-trekking-camping-101",
+                "type": "Arts & Culture",
+                "date": "2022-11-22",
+                "time": "1700-1900",
+                "fees": 5,
+                "location":"SMU Greenhouse"
+            },
+            "event63": {
+                "name": "Artificial Intellgience Introduction",
+                "club": "SMU Ellipsis",
+                "eventId": "2022-11-20-ellipsis-artificial-intellgience-introduction",
+                "type": "School Society",
+                "photo": "https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg",
+                "date": "2022-11-20",
+                "time": "1400-1900",
+                "fees": 0,
+                "location":"SMU Greenhouse"
+            },
+            "event64": {
+                "name": "Python Workshop",
+                "club": "SMU Ellipsis",
+                "eventId": "2022-11-19-ellipsis-python-workshop",
+                "type": "School Society",
+                "photo": "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg",
+                "date": "2022-11-19",
+                "time": "1400-1900",
+                "fees": 0,
+                "location":"SMU SOE Seminar Room 4-1"
+            },
+            "event65": {
+                "name": "Global Internship Fair",
+                "club": "SMU",
+                "eventId": "2023-01-19-smu-global-internship-fair",
+                "type": "School Society",
+                "photo": "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg",
+                "date": "2023-01-19",
+                "time": "1400-1900",
+                "fees": 0,
+                "location":"SMU Greenhouse"
+            },
+            "event66": {
+                "name": "Networking Circle",
+                "club": "SMU",
+                "eventId": "2023-02-29-smu-networking-circle",
+                "type": "School Society",
+                "photo": "https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg",
+                "date": "2023-01-02",
+                "time": "1400-1900",
+                "fees": 0,
+                "location":"SOB Seminar Room 3-2"
+            },
+            "event67": {
+                "name": "Industry Sharing Session",
+                "club": "SMU",
+                "eventId": "2022-12-13-smu-industry-sharing-session",
+                "type": "School Society",
+                "photo": "https://images.pexels.com/photos/2608517/pexels-photo-2608517",
+                "date": "2022-12-13",
+                "time": "1400-1900",
+                "fees": 0,
+                "location":"SMU Connexion Level 5 Event Square"
+            },
+            "event68": {
+                "name": "In the Scene",
+                "club": "SMU Broadcast & Entertainment",
+                "eventId": "2022-11-25-broadcast-&-entertainment-behind-the-scene",
+                "type": "Arts & Culture",
+                "photo": "https://images.pexels.com/photos/3379934/pexels-photo-3379934.jpeg",
+                "date": "2022-11-25",
+                "time": "1900-2100",
+                "fees": 0,
+                "location":"SMU SOB Classroom 2-1"
+            },
+            "event69": {
+                "name": "Tango with us",
+                "club": "SMU Caderas Latinas",
+                "eventId": "2023-01-19-caderas-latinas-tango-with-us",
+                "type": "Arts & Culture",
+                "photo": "https://images.pexels.com/photos/270789/pexels-photo-270789.jpeg",
+                "date": "2023-01-19",
+                "time": "1900-2100",
+                "fees": 4,
+                "location":"SMU B1 Dance Studio"
+            },
+            "event70": {
+                "name": "Get Moving",
+                "club": "SMU Funk Movement",
+                "eventId": "2022-02-11-funk-movement-get-moving",
+                "type": "Arts & Culture",
+                "photo": "https://images.pexels.com/photos/1701202/pexels-photo-1701202.jpeg",
+                "date": "2023-02-11",
+                "time": "1900-2100",
+                "fees": 5,
+                "location":"SMU B1 Dance Studio"
+            }
+            ,
+            "event71": {
+                "name": "Food Photography Challenge",
+                "club": "SMUSAIC",
+                "eventId": "2022-11-23-smusaic-food-photography-challenge",
+                "type": "Arts & Culture",
+                "photo": "https://images.pexels.com/photos/5028919/pexels-photo-5028919.jpeg",
+                "date": "2022-11-23",
+                "time": "1900-2100",
+                "fees": 0,
+                "location":"SMU SOE Classroom 2-5"
+            }
+            ,
+            "event72": {
+                "name": "Flyaway Concert",
+                "club": "SMU SoundFoundry",
+                "eventId": "2023-02-01-soundfoundry-Flyaway-concert",
+                "type": "Arts & Culture",
+                "photo": "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg",
+                "date": "2023-02-01",
+                "time": "1900-2100",
+                "fees": 18,
+                "location":"Esplanade Auditorium 3"
+            }
+            ,
+            "event73": {
+                "name": "Vocal Warmup",
+                "club": "SMU  Voix",
+                "eventId": "2023-02-25-voix-vocal-warmup",
+                "type": "Arts & Culture",
+                "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Cha-Cha-Cha_Valente_Cruz_9543.JPG",
+                "date": "2023-02-25",
+                "time": "1900-2100",
+                "fees": 0,
+                "location":"SMU B1 Dance Studio"
+            },
+            "event74": {
+                "name": "Shoot for the Hoop",
+                "club": "SMU Basketball",
+                "eventId": "2023-01-18-basketball-shoot-for-the-hoop",
+                "type": "Sports",
+                "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
+                "date": "2023-01-18",
+                "time": "1700-1900",
+                "fees": 0,
+                "location":"SMU Administration Building MPSH"
+            },
+            "event75": {
+                "name": "Arrow Dynamics",
+                "club": "SMU Archery",
+                "eventId": "2022-11-25-archery-arrow-dynamics",
+                "type": "Sports",
+                "photo": "https://images.pexels.com/photos/6540714/pexels-photo-6540714.jpeg",
+                "date": "2022-11-25",
+                "time": "1700-1900",
+                "fees": 12,
+                "location":"SMU Administration Building MPSH"
+            },
+            "event76": {
+                "name": "Learn De-Fencing Moves",
+                "club": "SMU Fencing",
+                "eventId": "2023-02-01-fencing-learn-de-fencing-moves",
+                "type": "Sports",
+                "photo": "https://images.pexels.com/photos/6831998/pexels-photo-6831998.jpeg",
+                "date": "2023-02-01",
+                "time": "1700-1900",
+                "fees": 15,
+                "location":" Outside SCIS Level 1"
+            },
+            "event77": {
+                "name": "Up and beyond Climb Session",
+                "club": "SMU Climb Team",
+                "eventId": "2022-12-08-climb-team-up-and-beyond-climb-session",
+                "type": "Sports",
+                "photo": "https://images.pexels.com/photos/1058958/pexels-photo-1058958.jpeg",
+                "date": "2022-12-08",
+                "time": "1700-1900",
+                "fees": 8,
+                "location":"Bras Basah MRT"
+            },
+            "event78": {
+                "name": "Gear Up",
+                "club": "SMU-X Biking",
+                "eventId": "2023-03-07-smux-biking-gear-up",
+                "type": "Sports",
+                "photo": "https://images.pexels.com/photos/161172/cycling-bike-trail-sport-161172.jpeg",
+                "date": "2023-03-07",
+                "time": "1700-1900",
+                "fees": 30,
+                "location":"East Coast Park"
+            },
+            "event79": {
+                "name": "Longboard Cruising",
+                "club": "SMU-X Xseed",
+                "eventId": "2022-12-11-smux-xseed-longboard-cruising",
+                "type": "Sports",
+                "photo": "https://images.pexels.com/photos/623919/pexels-photo-623919.jpeg",
+                "date": "2022-12-11",
+                "time": "1700-1900",
+                "fees": 3,
+                "location":"Dhoby Ghaut MRT"
+            },
+            "event80": {
+                "name": "Water Exploration Day",
+                "club": "SMU-X Xseed",
+                "eventId": "2023-03-02-smux-xseed-water-exploration-day",
+                "type": "Sports",
+                "photo": "https://images.pexels.com/photos/1604869/pexels-photo-1604869.jpeg",
+                "date": "2023-03-02",
+                "time": "1500-1900",
+                "fees": 30,
+                "location":"Sentosa"
+            },
+            "event82": {
+                "name": "Traditional Culture Exploration",
+                "photo": "https://images.pexels.com/photos/2349277/pexels-photo-2349277.jpeg",
+                "club": "ICON",
+                "eventId": "2022-12-09-icon-traditional-culture-exploration",
+                "type": "Arts & Culture",
+                "date": "2022-12-09",
+                "time": "1700-1800",
+                "fees": 0,
+                "location":"SMU Greenhouse"
+            },
+            "event83": {
+                "name": "Mircosoft Career Fair",
+                "club": "SMU",
+                "eventId": "2023-02-29-smu-microsoft-career-fair",
+                "type": "School Society",
+                "photo": "https://images.pexels.com/photos/9683980/pexels-photo-9683980.jpeg",
+                "date": "2023-02-29",
+                "time": "1300-1700",
+                "fees": 0,
+                "location":"SMU Greenhouse"
+            },
+            "event84": {
+                "name": "SME Culture Sharing",
+                "club": "SMU",
+                "eventId": "2023-02-21-smu-sme-culture-fair",
+                "type": "School Society",
+                "photo": "https://images.pexels.com/photos/860227/pexels-photo-860227.jpeg",
+                "date": "2023-02-21",
+                "time": "1100-1900",
+                "fees": 0,
+                "location":"SMU SOB Classroom 3-1"
+            },
+            "event85": {
+                "name": "Exchange Opportunities Sharing",
+                "club": "SMU",
+                "eventId": "2022-11-19-smu-exchange-opportunities-sharing",
+                "type": "School Society",
+                "photo": "https://images.pexels.com/photos/1454360/pexels-photo-1454360.jpeg",
+                "date": "2022-11-19",
+                "time": "1400-1930",
+                "fees": 0,
+                "location":"SMU Greenhouse"
+            },
+            "event86": {
+                "name": "Talking Point",
+                "club": "SMU",
+                "eventId": "2022-12-25-smu-talking-point",
+                "type": "School Society",
+                "photo": "https://images.pexels.com/photos/2422280/pexels-photo-2422280.jpeg",
+                "date": "2022-12-25",
+                "time": "1430-1900",
+                "fees": 0,
+                "location":"SOB Seminar Room 3-2"
+            },
+            "event87": {
+                "name": "Interning Workshop",
+                "club": "SMU",
+                "eventId": "2022-12-23-smu-interning-workshop",
+                "type": "School Society",
+                "photo": "https://images.pexels.com/photos/3771097/pexels-photo-3771097.jpeg",
+                "date": "2022-12-23",
+                "time": "1400-1900",
+                "fees": 0,
+                "location":"SMU Connexion Level 5 Event Square"
+            },
+            "event88": {
+                "name": "Tea Appreciation Session",
+                "club": "SMU Japanese Cultural Club",
+                "eventId": "2023-02-27-japanese-cultural-club-tea-appreciation-session",
+                "type": "Arts & Culture",
+                "photo": "https://images.pexels.com/photos/11182806/pexels-photo-11182806.jpeg",
+                "date": "2023-02-27",
+                "time": "1100-1300",
+                "fees": 5,
+                "location":"Campus Green"
+            },
+            "event89": {
+                "name": "Managing Workload Workshop",
+                "club": "SMU",
+                "eventId": "2022-11-12-smu-managing-workload-workshop",
+                "type": "School Society",
+                "photo": "https://images.pexels.com/photos/1595391/pexels-photo-1595391.jpeg",
+                "date": "2022-11-12",
+                "time": "0800-0900",
+                "fees": 0,
+                "location":"SMU Connexion Level 5 Event Square"
+            },
+            "event90": {
+                "name": "Managing Stress Workshop",
+                "club": "SMU",
+                "eventId": "2022-12-02-smu-managing-stress-workshop",
+                "type": "School Society",
+                "photo": "https://images.pexels.com/photos/8638769/pexels-photo-8638769.jpeg",
+                "date": "2022-12-02",
+                "time": "0830-0930",
+                "fees": 0,
+                "location":"MU Administration Building Level 5"
+            }
+            ,
+            "event91": {
+                "name": "Healthy Relationship Workshop",
+                "club": "SMU",
+                "eventId": "2022-02-09-smu-healthy-relationship-workshop",
+                "type": "School Society",
+                "photo": "https://images.pexels.com/photos/6754013/pexels-photo-6754013.jpeg",
+                "date": "2022-02-09",
+                "time": "1830-1930",
+                "fees": 0,
+                "location":"SMU SCIS Classroom 4-1"
+            }
+            ,
+            "event92": {
+                "name": "Pineapple Tart Baking Session",
+                "club": "SMU Gourmet Club",
+                "eventId": "2023-01-11-gourmet-club-pineapple-tart-baking-session",
+                "type": "School Society",
+                "photo": "https://vivace.smu.edu.sg/sites/vivace.smu.edu.sg/files/styles/gallery/public/2020-08/1%20_%20club%20logo.jpg",
+                "date": "2023-01-11",
+                "time": "1900-2100",
+                "fees": 30,
+                "location":"SMU Connexion Level 3"
+            }
+            ,
+            "event93": {
+                "name": "Chocolate Making Session",
+                "club": "SMU Gourmet Club",
+                "eventId": "2022-11-04-gourmet-club-chocolate-making-session",
+                "type": "School Society",
+                "photo": "https://images.pexels.com/photos/2021889/pexels-photo-2021889.jpeg",
+                "date": "2022-11-04",
+                "time": "1400-1700",
+                "fees": 20,
+                "location":"SMU Connexion Level 3"
+            },
+            "event94": {
+                "name": "Making Christmas Cookies",
+                "club": "SMU Gourmet Club",
+                "eventId": "2022-11-26-gourmet-club-making-christmas-cookies",
+                "type": "School Society",
+                "photo": "https://images.pexels.com/photos/752499/pexels-photo-752499.jpeg",
+                "date": "2022-11-26",
+                "time": "1400-1700",
+                "fees": 20,
+                "location":"SMU Connexion Level 3"
+            },
+            "event95": {
+                "name": "Valorant Match",
+                "club": "SMU E-Sports",
+                "eventId": "2023-02-01-e-sports-valorant-match",
+                "type": "School Society",
+                "photo": "https://images.pexels.com/photos/7915237/pexels-photo-7915237.jpeg",
+                "date": "2023-02-01",
+                "time": "1100-1300",
+                "fees": 0,
+                "location":"SMU Greenhouse"
+            },
+            "event96": {
+                "name": "PUBG Matchoff",
+                "club": "SMU E-Sports",
+                "eventId": "2022-11-29-e-sports-pubg-matchoff",
+                "type": "School Society",
+                "photo": "https://images.pexels.com/photos/275033/pexels-photo-275033.jpeg",
+                "date": "2022-1-29",
+                "time": "1200-1500",
+                "fees": 0,
+                "location":"SOA Seminar Room 2-11"
+            },
+            "event97": {
+                "name": "Penfolds Tasting",
+                "club": "SMU Wine Appreciation Club",
+                "eventId": "2022-12-12-wine-appreciation-club-penfolds-tasting",
+                "type": "School Society",
+                "photo": "https://images.pexels.com/photos/391213/pexels-photo-391213.jpeg",
+                "date": "2022-12-12",
+                "time": "1900-2100",
+                "fees": 40,
+                "location":"SMU Connexion Level 5 Event Square"
+            },
+            "event98": {
+                "name": "Modern Debate",
+                "club": "SMU Toastmasters",
+                "eventId": "2022-11-27-toastmasters-modern-debate",
+                "type": "Arts & Culture",
+                "photo": "https://images.pexels.com/photos/3379934/pexels-photo-3379934.jpeg",
+                "date": "2022-11-27",
+                "time": "1900-2100",
+                "fees": 0,
+                "location":"SMU SOA Classroom 2-1"
+            },
+            "event99": {
+                "name": "Chat with us",
+                "club": "SMU Women's Connection",
+                "eventId": "2022-11-13-women's-connection-chat-with-us",
+                "type": "Arts & Culture",
+                "photo": "https://images.pexels.com/photos/601170/pexels-photo-601170.jpeg",
+                "date": "2022-11-13",
+                "time": "1100-1500",
+                "fees": 0,
+                "location":"SMU YPHSL SR 2-3"
+            },
+            "event100": {
+                "name": "Tchoukball Tryout",
+                "club": "SMU Tchoukball",
+                "eventId": "2023-02-11-tchoukball-tryout",
+                "type": "Sports",
+                "photo": "https://images.pexels.com/photos/7513413/pexels-photo-7513413.jpeg",
+                "date": "2023-02-11",
+                "time": "1400-1900",
+                "fees": 0,
+                "location":"SMU Administration Building MPSH"
             }
             
         }

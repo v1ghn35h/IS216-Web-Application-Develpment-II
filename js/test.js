@@ -58,11 +58,11 @@ const app = Vue.createApp({
             if (snapshot.exists()) {
                 let db_values = snapshot.val();
 
-                console.log("===START - GET DATABASE VALUE SUCCESS====")
-                console.log(db_values)
-                console.log("===END - GET DATABASE VALUE SUCCESS====")
+                // console.log("===START - GET DATABASE VALUE SUCCESS====")
+                // console.log(db_values)
+                // console.log("===END - GET DATABASE VALUE SUCCESS====")
 
-                console.log("===START - MANIPULATING DATABASE VALUE SUCCESS====")
+                // console.log("===START - MANIPULATING DATABASE VALUE SUCCESS====")
                 
                 // event category counts (named: e_c_NUM_count)
 
@@ -71,20 +71,19 @@ const app = Vue.createApp({
             for (let an_event_obj in db_values) {
                 let event_obj = db_values[an_event_obj]
                 let event_cat = event_obj.category
-                console.log(event_obj)
-                console.log('PRINTING EVENT_CAT')
-
-                console.log(event_cat)
+                // console.log('PRINTING EVENT_CAT '+event_cat)
 
                 if (e_c_dict.hasOwnProperty(event_cat)) {
                     e_c_dict[event_cat] += 1;
                 } else {
                     e_c_dict[event_cat] = 1;
                 }
-                console.log('PRINTING E_C_DICT')
-                console.log(e_c_dict)
-                //NOTE: e_c_dict gives data like : {Adventure: 2, Sports: 4, School Society: 1, Community: 1, Arts & Culture: 1}
+                
             }
+            console.log('PRINTING E_C_DICT')
+            console.log(e_c_dict)
+            //NOTE: e_c_dict gives data like : {Adventure: 2, Sports: 4, School Society: 1, Community: 1, Arts & Culture: 1}
+
 
             //check can access vue data or not
             /* colour */
@@ -97,31 +96,62 @@ const app = Vue.createApp({
                 'Sports': ['#01497c', 'icons/sports.png'],
                 'Student Bodies': ['#8ecae6', 'icons/studentbodies.png']
             }
-            console.log(colors_dict)
+            // console.log(colors_dict)
 
             // create list of colours to use for piechart base on what events there are
             let event_keys = Object.keys(e_c_dict);
             let event_values = Object.values(e_c_dict);
-            console.log("THIS IS events type present")
-            console.log(event_keys)
-            console.log(event_values)
-            //NOTE: event_keys give data of event types used like: ['Adventure', 'Sports', 'School Society']
+                //NOTE: event_keys give data of event types used like: ['Adventure', 'Sports', 'School Society'
+                //event_keys and values have events category and its count which shd not be included
+
+            var event_keys_verified =[]
+            var event_values_verified = []
+
+            for (let each_key in event_keys) {
+                console.log("this is each_key: "+ event_keys[each_key])
+                if (['Adventure', 'Arts & Culture', 'Global Culture','Community','School Society','Sports','Student Bodies'].includes(event_keys[each_key])) {
+                // CHECK IF ITS IN ARRAY BEFORE ADDING INTO EVENT KEY VERIFYED
+                    var event1 = String(event_keys[each_key])
+                    event_keys_verified.push(event1)
+                    console.log("verified event: "+event1)
+                    event_values_verified.push(e_c_dict[event1])
+                }
+            }
+            console.log("this is event_keys_verified "+ typeof(event_keys_verified) + event_keys_verified)
+            console.log("this is event_values_verified "+ typeof(event_values_verified) + event_values_verified)
+            console.log(event_values_verified)
             //getting colours to match
 
             var color_list = []
-            for (let event_cat of event_keys) {
+            for (let event_cat of event_keys_verified) {
+                if (event_cat!=="") {
                 console.log("this is event_cat :"+event_cat)
                 let color_code = colors_dict[event_cat][0]
                 console.log("this is event_cat_colour :"+colors_dict[event_cat][0])
                 color_list.push(color_code)
+                }
             }
             let color_list1 = Array.from(color_list)
             console.log(color_list1)
             console.log(Object.prototype.toString.call(color_list))
+            console.log("this is color_list1" + color_list1, "type:" + typeof(color_list1))
+
+            let event_keys_verified1 = Array.from(event_keys_verified)
+            console.log(event_keys_verified1)
+            console.log(Object.prototype.toString.call(event_keys_verified1))
+            console.log("this is event_keys_verified1: " + event_keys_verified1, "type:" + typeof(event_keys_verified1))
+            
+            let event_values_verified1 = Array.from(event_values_verified)
+            console.log(event_values_verified1)
+            console.log(Object.prototype.toString.call(event_values_verified1))
+            console.log("this is event_values_verified1: " + event_values_verified1, "type:" + typeof(event_keys_verified1))
 
             this.colors = color_list1
-            this.numbers = event_values
-            this.event_legend = event_keys
+            this.numbers = event_values_verified1
+            this.event_legend = event_keys_verified1
+            console.log("this is event_legend: " + event_keys_verified1)
+
+
             // NOTE: color_list give list of color codes used like: ['#ffb700', '#01497c', '#adc178']
             
             console.log("===END - MANIPULATING DATABASE VALUE SUCCESS====")
@@ -150,12 +180,12 @@ const app = Vue.createApp({
             },
             radius: {
                 type: Number,
-                default: 46
+                default: 100
             },
             // 邊框寬度(border width)
             strokeWidth: {
                 type: Number,
-                default: 8
+                default: 40
             },
             event_legend: {
 
@@ -196,7 +226,7 @@ const app = Vue.createApp({
               const diff = (this.radius - this.strokeWidth / 2) * SCALE / (1 + SCALE)
               const width = diff * 2 + this.strokeWidth
               this.$refs[`circle${index}`].style.cssText = `
-                opacity: 0.8;
+                opacity: 0.7;
                 stroke-width: ${width};
                 transform: scale(${1 + SCALE});
                 `
