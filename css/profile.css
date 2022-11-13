@@ -377,3 +377,129 @@ td {
     }
     
 }
+
+
+
+#app .container {
+    margin: 20px;
+    padding: 15px;
+    width: -webkit-fill-available;
+    min-width: 140px;
+    max-width: 350px;
+    background-color: #ffffff;
+    border-radius: 12px;
+
+
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+#app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 180px;
+    min-height: 100%;
+    background-color: #f0f2f5;
+}
+
+#app .card {
+    margin: 20px;
+    padding: 15px;
+    width: -webkit-fill-available;
+    min-width: 140px;
+    max-width: 350px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+}
+
+#app .total {
+    margin: 0 auto 10px;
+    width: fit-content;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    
+}
+/* EDITS TO .total,span */
+
+#app .span{ 
+    /* margin: 0 auto 10px;
+    width: fit-content;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0.5px; */
+    color: #bebebe;
+    font-size: 12px;
+}
+/* EDITS TO .total,span */
+
+#app .pie-chart {
+    position: relative;
+    
+}
+
+#app .temp-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: #bebebe;
+    padding: 0;
+    color: #ffffff;
+    font-size: 14px;
+    border-radius: 8px;
+    transform: translate(-50%, -50%);
+    transition: padding 0.2s;
+    }
+
+#app .has-value {
+    padding: 5px;
+    font-size: 18px;
+    }
+
+/* EDITS TO SVG */
+#app svg {
+    display: block;
+    margin: 0 auto 10px;
+    transform: rotate(-90deg);
+    
+}
+
+#app circle:not(:first-child) {
+    cursor: pointer;
+    transition: opacity linear 0.2s, stroke-width linear 0.2s, transform linear 0.2s;
+    transform-origin: center;
+}
+
+#app .items {
+    width: 18px;
+    height: 14px;
+    margin: 5px 10px 5px 0;
+    border-radius: 4px;
+}
+#app .items-container {
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    justify-content: center;
+
+}
+
+#app .items-wrap {
+    display: flex;
+    align-items: center;
+    transition: opacity 0.1s;
+
+}
+#app .items:hover {
+    opacity: 0.8;
+}
+#app .amount {
+    margin-right: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}

@@ -26,6 +26,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
+var FirebaseUID = null;
 
 // ----------------------------------------------------------------
 // LOGIN FUNCTIONS SECTION
@@ -34,6 +35,8 @@ const auth = getAuth(app);
 // Check if user is logged in
 onAuthStateChanged(auth, (user) => {
     if (user && user.emailVerified) {
+        FirebaseUID = user.uid;
+
         // Check if user account existed before, if not, create in Firebase
         const dbUser = ref(getDatabase(), `users/${user.uid}`);
         onValue (dbUser, (snapshot) => {
@@ -59,7 +62,12 @@ onAuthStateChanged(auth, (user) => {
                     "user_tasks": {},
                     "user_events": {}
                 })
-            };
+            } else if (userData.user_profile_info.name == "New User - Update Profile Page") {
+                let location_arr = window.location.href.split("/")
+                if (location_arr[location_arr.length -1] !== "profile.html") {
+                    // window.location.href = "profile.html"
+                }
+            }
             // Otherwise, make sure user's account details can be retrieved in other pages (login-common.js)
         });
         // User is signed in, see docs for a list of available properties
@@ -82,3 +90,19 @@ function logoutFunction() {
         });
 }
 document.logoutFunction = logoutFunction;
+
+// ----------------------------------------------------------------
+// EXPORT FIREBASE USER UID SECTION
+// ----------------------------------------------------------------
+
+let ResolvedUID = new Promise(function(resolve) {
+    let check = setInterval(function() {
+        if (FirebaseUID) {
+            console.log(FirebaseUID);
+            clearInterval(check);
+            resolve(FirebaseUID)
+        }
+    }, 10);
+})
+
+export default await ResolvedUID;
