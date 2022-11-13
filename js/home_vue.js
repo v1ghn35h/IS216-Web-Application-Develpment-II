@@ -327,8 +327,8 @@ function UserUpcomingSchoolEvents (number_of_upcoming_events) {
   }
   else if (number_of_upcoming_events == 0){
     let tempHTML = `
-    <div class = "container text-center p-5 display-6 rounded" style = "border: 1px solid #ccc; background-color: #4b5358; color: white">
-        No upcoming events!
+    <div class = "container text-center mt-5 p-5 display-6 rounded" style = "border: 1px solid #ccc; background-color: #4b5358; color: white;" height = 700 >
+        No upcoming events
     </div>
     `
     document.getElementById('carousel_user_events').innerHTML = tempHTML
