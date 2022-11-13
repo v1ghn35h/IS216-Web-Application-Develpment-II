@@ -96,7 +96,7 @@
                     Filter By
                 </button>
 
-                <button type="button" class="btn" @click="show_bkmarked_events()" style="background-color: #104547; color: white;">Bookmarked</button>
+                <!-- <button type="button" class="btn" @click="show_bkmarked_events()" style="background-color: #104547; color: white;">Bookmarked</button> -->
 
                 <!-- Modal for filter -->
                 <div class="modal fade" id="filter-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -219,8 +219,22 @@
 
     <!-- Event Cards -->
     <div id="" class="mt-0 cards_landscape_wrap-2">
+        
+        <div class="container py-0">
+            <div class="row">
+                <h2>All Events</h2>
 
-        <h2>All Events</h2>
+            </div>
+            <div class="row justify-content-start">
+                <div class="col" align="end">
+
+                    <button type="button" class="btn bookmark_btn" @click="show_bkmarked_events()" style="background-color: #104547; color: white;">
+                        <i class="fa fa-bookmark bookmark_icon-o pe-1" style="font-size:15px;" ></i>
+                        Bookmarked</button>
+                </div>
+
+            </div>
+        </div>
         <div class="container pt-0 px-auto">
 
             <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 justify-content-center justify-content-sm-start justify-content-md-start justify-content-lg-start justify-content-xl-start  align-items-start ">

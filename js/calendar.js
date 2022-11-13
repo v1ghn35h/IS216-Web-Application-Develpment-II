@@ -1080,6 +1080,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update user's calendar
         onValue(users, (snapshot => {
           const data = snapshot.val(); // get the new value
+          console.log(data)
 
           // empty all past data fetched
           all_events = []
@@ -1126,6 +1127,7 @@ document.addEventListener('DOMContentLoaded', function() {
       function(info) {
 
         let event_info = info.event._def
+        console.log(event_info)
 
         // get the modal
         var modal = document.getElementById("myOtherModal");
@@ -1144,7 +1146,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // --- DISPLAY EVENT DETAILS ---
+        // for events that the user add
         let event_id = event_info.publicId
+        console.log(event_id)
+
         let event_category = info.event._def.extendedProps.category
 
         // if event_category is selected, set icon based on category
@@ -1239,6 +1244,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
           // Fetch event
           let event_to_delete = calendar.getEventById(event_id)
+          console.log(event_to_delete)
 
           // Delete event
           const tasksRef = ref(db, 'users/' + current_user + '/user_events/event_' + event_id);

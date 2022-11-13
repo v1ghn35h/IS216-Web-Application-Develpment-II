@@ -221,23 +221,41 @@ const explorePage = Vue.createApp({
             return  [...new Set(organising_clubs)]
         },
 
-        bookmarked_events() {
-            let bookmarked_events = []
+        // bookmarked_events() {
+        //     get(query(allEvents, orderByChild("isBookmarked"))).then((snapshot) => {
+        //         let bkMarked_events = []
+            
+        //         snapshot.forEach(childSnapshot => {
+        //             let event = childSnapshot.val()
+                    
+        //             if (event.isBookmarked) {
+        //                 bkMarked_events.push(event)
+        //             }
+    
+    
+        //         })
+        //         this.bookmarked_events = bkMarked_events
+        //     })
+        //     // return this.bookmarked_events
+        // }
 
-            onValue(users, (snapshot) => {
-                const data = snapshot.val()
-                console.log("-------In user mounted------");
-                console.log(data);
-                let db_bkmark_events = data.user1.user_bkmark_events
+        // bookmarked_events() {
+        //     let bookmarked_events = []
 
-                for (let [event, details] of Object.entries(db_bkmark_events)) {
-                    bookmarked_events.push(details)
-                }
-                console.log(bookmarked_events);
-                console.log("-------end user  mounted------");
-            })
-            return bookmarked_events
-        }
+        //     onValue(users, (snapshot) => {
+        //         const data = snapshot.val()
+        //         console.log("-------In user mounted------");
+        //         console.log(data);
+        //         let db_bkmark_events = data.user1.user_bkmark_events
+
+        //         for (let [event, details] of Object.entries(db_bkmark_events)) {
+        //             bookmarked_events.push(details)
+        //         }
+        //         console.log(bookmarked_events);
+        //         console.log("-------end user  mounted------");
+        //     })
+        //     return bookmarked_events
+        // }
     
 
     },
@@ -246,6 +264,22 @@ const explorePage = Vue.createApp({
 
         show_bkmarked_events() {
             console.log(this.bookmarked_events);
+
+            get(query(allEvents, orderByChild("isBookmarked"))).then((snapshot) => {
+                let bkMarked_events = []
+            
+                snapshot.forEach(childSnapshot => {
+                    let event = childSnapshot.val()
+                    
+                    if (event.isBookmarked) {
+                        bkMarked_events.push(event)
+                    }
+    
+    
+                })
+                this.bookmarked_events = bkMarked_events
+            })
+
             this.all_display_events = this.bookmarked_events
 
             this.paginate(this.all_display_events)
@@ -265,6 +299,27 @@ const explorePage = Vue.createApp({
             // console.log(btn);
             this.updateBkMarkEvent(details.eventId, new_bkmark_val)
 
+            // instead of reloading the page, the cards is bkmarked/un bkmarked
+            get(query(allEvents, orderByChild("date"))).then((snapshot) => {
+                let events = []
+                snapshot.forEach(childSnapshot => {
+                    // events.push(childSnapshot.val())
+                    let event = childSnapshot.val()
+                    let event_date = new Date(event.date)
+    
+                    if (this.check_date(event_date)) {
+                        events.push(event)
+                    }
+                })
+                this.db_events = events
+    
+                this.all_display_events = this.db_events
+                // console.log(this.all_display_events);
+    
+                this.paginate(this.all_display_events)
+ 
+            })
+
             console.log("====END - Function-bookmark_event()===");
         },
         updateBkMarkEvent(eventId, isBookmark) {
@@ -283,9 +338,9 @@ const explorePage = Vue.createApp({
                 console.error(error);
             });  
               // force page to reload
-            setTimeout(function(){
-            window.location.reload();
-            }, 500);
+            // setTimeout(function(){
+            // window.location.reload();
+            // }, 500);
           },
     
         paginate (events){
@@ -339,19 +394,14 @@ const explorePage = Vue.createApp({
 
         addEvent(name, club, photo, date, location, time, type, id) {
             const dbRef = ref(getDatabase());
-              get(child(dbRef, `users/` + this.current_user + `/user_events/`)).then((snapshot) => {
-                if (snapshot.exists()) {
-                  var db_values = snapshot.val();
-                  var db_size = Object.keys(db_values).length
-                  var new_db_size = db_size + 2
-                //   add event to array
-                  set(ref(db, 'users/' + this.current_user + '/user_events/event_' + new_db_size), 
+
+                  set(ref(db, 'users/' + this.current_user + '/user_events/event_' + id), 
                     {
                         title: name,
                         start: this.formatting_start_date(date, time),
                         end: this.formatting_end_date(date, time),
                         category: type,
-                        event_id: id,
+                        id: id,
                         event_club: club,
                         photo_url: photo,
                         event_date: date,
@@ -359,11 +409,11 @@ const explorePage = Vue.createApp({
                         event_time: time,
                     },
                   )
-                } 
-                else {
-                  console.log("No data available");
-                }
-              }).catch((error) => {
+                
+                .then(() => {
+                    console.log('Data updated successfully!');
+                })
+                .catch((error) => {
                 console.error(error);
               });  
               // force page to reload
