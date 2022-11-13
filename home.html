@@ -170,8 +170,14 @@
                             </div>
                         </div>
                         <div class="modal-footer mt-0">
-                            <button type="button" class="btn signup-btn" :data-bs-target="`#signUpPage${details.eventId}`"
+                            <span  v-if='userInfo.matric_no == "<Unknown>"'>
+                                <button type="button" class="btn signup-btn" :data-bs-target="`#signUpPage${details.eventId}`"
+                                data-bs-toggle="modal" disabled>Sign up now</button>
+                            </span>
+                            <span  v-else>
+                                <button type="button" class="btn signup-btn" :data-bs-target="`#signUpPage${details.eventId}`"
                                 data-bs-toggle="modal">Sign up now</button>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -327,9 +333,15 @@
                                     </table>
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn signup-btn" :data-bs-target="`#signUpPage${details.eventId}`"
+                            <div class="modal-footer mt-0">
+                                <span  v-if='userInfo.matric_no == "<Unknown>"'>
+                                    <button type="button" class="btn signup-btn" :data-bs-target="`#signUpPage${details.eventId}`"
+                                    data-bs-toggle="modal" disabled>Sign up now</button>
+                                </span>
+                                <span  v-else>
+                                    <button type="button" class="btn signup-btn" :data-bs-target="`#signUpPage${details.eventId}`"
                                     data-bs-toggle="modal">Sign up now</button>
+                                </span>
                             </div>
                         </div>
                     </div>
