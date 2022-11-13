@@ -30,12 +30,22 @@ Our project, CalendaREADY enables students to view events based on their persona
   `<br>` Move cloned repository into `Applications/MAMP/htdocs` (for Mac)
 - Switch on WAMP and go to `http://localhost/` (for Windows)
   `<br>` Switch on MAMP and go to `http://localhost:8888/MAMP/` (for Mac)
+- Access the directory that contains the cloned github repository on your local machine (for Windows/Mac)
 
 ## Key Features
 
 ---
 
 ### Login
+
+- **Website Authentication**: Ensures that users are logged in with verified emails before accessing other pages
+- **Login with Google**: Skip the signup process by using a pre-existing Google account to login
+- **Account Creation / Sign Up**: Create an account with an email and password
+- **Email Verification**: All created accounts need their email to be verified through a link sent to their inbox
+- **Email/Password Login**: Access the website with a pre-existing email/password account
+- **Reset Password**: If password needs to be changed or reset, specified email will receive a link to do so
+- **Password Visibility**: Password fields can be independently toggled between masked and readable inputs
+- **Logout**: Logout of an account at any time, on any page, from the navigation bar
 
 ### Home
 
