@@ -1126,7 +1126,7 @@
         }
     },
     "users": {
-        "WPkD28XwpzScqEiWWXLh4X8HNHo2": {
+        "default_user": {
             "user_profile_info": {
                 "birthday": "<Unknown>",
                 "email": "is216g7t7@gmail.com",
@@ -1141,8 +1141,7 @@
                 "username": "<Unknown>"
             }
         },
-        "user1": {
-
+        "WPkD28XwpzScqEiWWXLh4X8HNHo2": {
             "user_events": {
                 "event_1": {
                     "category": "Adventure",
