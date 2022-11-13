@@ -614,10 +614,10 @@
             "isBookmarked": false,
             "location":"SMU Connexion Level 5 Event Square"
         },
-        "2023-12-08-taekwondo-taekwondo-showcase": {
+        "2022-12-08-taekwondo-taekwondo-showcase": {
             "name": "Taekwondo Showcase",
             "club": "SMU Taekwondo",
-            "eventId": "2023-12-08-taekwondo-taekwondo-showcase",
+            "eventId": "2022-12-08-taekwondo-taekwondo-showcase",
             "type": "Sports",
             "photo": "https://images.pexels.com/photos/7990068/pexels-photo-7990068.jpeg",
             "date": "2023-12-08",
@@ -770,10 +770,10 @@
             "isBookmarked": false,
             "location":"SMU B1 Dance Studio"
         },
-        "2022-02-11-funk-movement-get-moving": {
+        "2023-02-11-funk-movement-get-moving": {
             "name": "Get Moving",
             "club": "SMU Funk Movement",
-            "eventId": "2022-02-11-funk-movement-get-moving",
+            "eventId": "2023-02-11-funk-movement-get-moving",
             "type": "Arts & Culture",
             "photo": "https://images.pexels.com/photos/1701202/pexels-photo-1701202.jpeg",
             "date": "2023-02-11",
@@ -1153,69 +1153,69 @@
                 },
                 "event_2": {
                     "category": "Community",
-                    "end": "2022-11-10T10:40:00",
+                    "end": "2022-08-10T10:40:00",
                     "id": 2,
                     "photo_url": "https://www.incimages.com/uploaded_files/image/1920x1080/getty_1035462384_395932.jpg",
-                    "start": "2022-11-9T09:40:00",
+                    "start": "2022-08-9T09:40:00",
                     "title": "Writing Workshop"
                 },
                 "event_3": {
                     "category": "Sports",
-                    "end": "2022-11-12T14:40:00",
+                    "end": "2022-08-12T14:40:00",
                     "id": 3,
                     "photo_url": "https://images.everydayhealth.com/images/swimming-overview-guide-1440x810.jpg?sfvrsn=d3b9ee_1",
-                    "start": "2022-11-11T12:40:00",
+                    "start": "2022-08-11T12:40:00",
                     "title": "Swim Meet"
                 },
                 "event_4": {
                     "category": "Adventure",
-                    "end": "2022-11-30T21:40:00",
+                    "end": "2022-09-30T21:40:00",
                     "id": 4,
                     "photo_url": "https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/topic_centers/2019-8/couple-hiking-mountain-climbing-1296x728-header.jpg?w=1155&h=1528",
-                    "start": "2022-11-30T09:40:00",
+                    "start": "2022-09-30T09:40:00",
                     "title": "Macritchie Hike"
                 },
                 "event_5": {
-                    "category": "School Society",
-                    "end": "2022-11-30T20:40:00",
+                    "category": "Academics",
+                    "start": "2022-1-30T18:40:00",
+                    "end": "2022-1-30T20:40:00",
                     "id": 5,
                     "photo_url": "https://cdn.mos.cms.futurecdn.net/9QTpESGBXa32D29J77VR3d-1200-80.jpg",
-                    "start": "2022-11-30T18:40:00",
-                    "title": "WAD2 Lab Test"
+                    "title": "WAD2 Project Meeting"
                 },
                 "event_6": {
                     "category": "Academics",
-                    "end": "2022-11-14",
+                    "end": "2022-12-07",
                     "id": 7,
-                    "start": "2022-11-14",
-                    "title": "JL - Test Firebase"
+                    "start": "2022-12-07",
+                    "title": "CT Lab Submission"
                 },
                 "event_7": {
                     "category": "Academics",
-                    "end": "2022-11-13",
+                    "end": "2022-08-13",
                     "id": 8,
-                    "start": "2022-11-13",
-                    "title": "Revise WAD2 "
+                    "start": "2022-08-13",
+                    "title": "BPAS Group Assignment 1 "
                 },
                 "event_8": {
                     "category": "Academics",
-                    "end": "2022-11-13",
+                    "end": "2022-09-12",
                     "id": 8,
-                    "start": "2022-11-13",
-                    "title": "Revise WAD2 "
+                    "start": "2022-09-18",
+                    "title": "Prepare for WAD2 Labtest "
                 },
                 "event_9": {
                     "category": "Academics",
-                    "end": "2022-11-30",
+                    "end": "2022-02-22",
                     "id": 9,
-                    "start": "2022-11-30",
-                    "title": "WAD2 - Finals"
+                    "start": "2022-02-22",
+                    "title": "CT - Quiz"
                 },
                 "event_10": {
                     "category": "Sports",
-                    "end": "2022-11-25T22:00:00",
+                    "end": "2022-12-02T22:00:00",
                     "id": 10,
-                    "start": "2022-11-25T19:00:00",
+                    "start": "2022-12-02T19:00:00",
                     "title": "Taekwondo Training"
                 },
                 "event_11": {
@@ -1234,38 +1234,38 @@
                 },
                 "event_13": {
                     "category": "Arts & Culture",
-                    "end": "2022-12-30T18:00:00",
+                    "end": "2023-02-30T18:00:00",
                     "id": 13,
-                    "start": "2022-12-30T16:00:00",
+                    "start": "2023-02120T16:00:00",
                     "title": "Artdicted - Crotchet Session"
                 },
                 "event_14": {
                     "category": "Community",
-                    "end": "2022-11-15T18:00:00",
+                    "end": "2022-09-15T18:00:00",
                     "id": 14,
-                    "start": "2022-11-15T12:00:00",
-                    "title": "ICON - Welfare Drive"
+                    "start": "2022-09-15T12:00:00",
+                    "title": "Volunteering"
                 },
                 "event_15": {
                     "category": "School Society",
                     "end": "2022-12-21",
                     "id": 15,
                     "start": "2022-12-21",
-                    "title": "Dothack - Mini Hackathon"
+                    "title": "Ellipsis - Tech n Innovation Sharings"
                 },
                 "event_16": {
                     "category": "Sports",
-                    "end": "2023-01-08T15:00:00",
+                    "end": "2022-08-18T15:00:00",
                     "id": 16,
-                    "start": "2023-01-08T12:00:00",
+                    "start": "2022-08-18T12:00:00",
                     "title": "Archery - Training Session"
                 },
                 "event_17": {
-                "category": "Student Bodies",
-                "end": "2023-01-11T19:00:00",
-                "id": 17,
-                "start": "2023-01-11T12:00:00",
-                "title": "Ellipsis: SCIS Internship Opportunities"
+                    "category": "Student Bodies",
+                    "end": "2022-11-11T19:00:00",
+                    "id": 17,
+                    "start": "2022-11-11T12:00:00",
+                    "title": "SMUSA: School Feedback Forum"
                 },
                 "event_18": {
                     "category": "Global Culture",
@@ -1273,8 +1273,279 @@
                     "id": 18,
                     "start": "2023-01-28T12:00:00",
                     "title": "Japanese Cultural Club - Tea Appreciation Session "
-                }
+                },
+                "event_19": {
+                    "category": "Academics",
+                    "end": "2022-10-12",
+                    "id": 19,
+                    "start": "2022-10-12",
+                    "title": "CT Lab Submission"
+                },
+                "event_20": {
+                    "category": "Academics",
+                    "end": "2022-11-13",
+                    "id": 20,
+                    "start": "2022-11-13",
+                    "title": "Revise WAD2 "
+                },
+                "event_21": {
+                    "category": "Academics",
+                    "end": "2022-10-18",
+                    "id": 21,
+                    "start": "2022-10-18",
+                    "title": "Prepare for WAD2 Labtest "
+                },
+                "event_22": {
+                    "category": "Academics",
+                    "end": "2022-10-22",
+                    "id": 22,
+                    "start": "2022-10-22",
+                    "title": "WAD - Labtest"
+                },
+                "event_23": {
+                    "category": "Sports",
+                    "end": "2022-11-25T22:00:00",
+                    "id": 23,
+                    "start": "2022-11-25T19:00:00",
+                    "title": "Taekwondo Training"
+                },
+                "event_24": {
+                    "category": "Adventure",
+                    "end": "2023-02-10T12:00:00",
+                    "id": 24,
+                    "start": "2023-02-10T09:00:00",
+                    "title": "Xseed - Cable Ski Session"
+                },
+                "event_25": {
+                    "category": "Adventure",
+                    "end": "2023-02-14",
+                    "id": 25,
+                    "start": "2023-02-11",
+                    "title": "3D2N in JB"
+                },
+                "event_26": {
+                    "category": "Arts & Culture",
+                    "end": "2022-12-30T18:00:00",
+                    "id": 26,
+                    "start": "2022-12-30T16:00:00",
+                    "title": "Artdicted - Crotchet Session"
+                },
+                "event_27": {
+                    "category": "Community",
+                    "end": "2022-08-03T18:00:00",
+                    "id": 27,
+                    "start": "2022-08-03T12:00:00",
+                    "title": "Volunteering"
+                },
+                "event_28": {
+                    "category": "School Society",
+                    "end": "2022-11-21",
+                    "id": 28,
+                    "start": "2022-11-21",
+                    "title": "Dothack - Mini Hackathon"
+                },
+                "event_29": {
+                    "category": "Sports",
+                    "end": "2023-01-08T15:00:00",
+                    "id": 29,
+                    "start": "2023-01-08T12:00:00",
+                    "title": "Archery - Training Session"
+                },
+                "event_30": {
+                    "category": "Student Bodies",
+                    "end": "2023-01-11T19:00:00",
+                    "id": 30,
+                    "start": "2023-01-11T12:00:00",
+                    "title": "Ellipsis: SCIS Internship Opportunities"
+                },
+                "event_31": {
+                    "category": "Global Culture",
+                    "end": "2022-09-11T16:00:00",
+                    "id": 31,
+                    "start": "2022-09-11T12:00:00",
+                    "title": "Truly Malaysia - Food Jio "
+                },
+                "event_32": {
+                    "category": "Sports",
+                    "end": "2022-11-08T15:00:00",
+                    "id": 32,
+                    "start": "2022-11-08T12:00:00",
+                    "title": "Archery - Training Session"
+                },
+                "event_33": {
+                    "category": "Sports",
+                    "end": "2022-10-22T15:00:00",
+                    "id": 33,
+                    "start": "2022-10-22T12:00:00",
+                    "title": "Archery - Training Session"
+                },
+                "event_2022-02-09-smu-healthy-relationship-workshop": {
+                    "title": "Healthy Relationship Workshop",
+                    "event_club": "SMU",
+                    "id": "2022-02-09-smu-healthy-relationship-workshop",
+                    "event_type": "School Society",
+                    "photo_url": "https://images.pexels.com/photos/6754013/pexels-photo-6754013.jpeg",
+                    "event_date": "2022-02-09",
+                    "event_time": "1830-1930",
+                    "start": "2022-02-09T18:30:00",
+                    "end": "2022-02-09T19:30:00",
+                    "fees": 0,
+                    "isBookmarked": false,
+                    "event_location":"SMU SCIS Classroom 4-1",
+                    "category": "Student Bodies"
+                },
+                "event_2022-11-12-smu-managing-workload-workshop": {
+                    "title": "Managing Workload Workshop",
+                    "event_club": "SMU",
+                    "id": "2022-11-12-smu-managing-workload-workshop",
+                    "event_type": "School Society",
+                    "photo_url": "https://images.pexels.com/photos/1595391/pexels-photo-1595391.jpeg",
+                    "event_date": "2022-11-12",
+                    "event_time": "0800-0900",
+                    "start": "2022-11-12T08:00:00",
+                    "end": "2022-11-12T09:00:00",
+                    "fees": 0,
+                    "isBookmarked": false,
+                    "event_location":"SMU Connexion Level 5 Event Square",
+                    "category": "Student Bodies"
+                },
+                "event_2022-12-09-icon-traditional-culture-exploration": {
+                    "title": "Traditional Culture Exploration",
+                    "photo_url": "https://images.pexels.com/photos/2349277/pexels-photo-2349277.jpeg",
+                    "event_club": "ICON",
+                    "id": "2022-09-09-icon-traditional-culture-exploration",
+                    "event_type": "Arts & Culture",
+                    "event_date": "2022-09-09",
+                    "event_time": "1500-1800",
+                    "start": "2022-09-09T15:00:00",
+                    "end": "2022-09-09T18:00:00",
+                    "fees": 0,
+                    "isBookmarked": false,
+                    "event_location":"SMU Greenhouse",
+                    "category": "Global Culture"
+                },  
+                "event_2023-02-25-voix-vocal-warmup": {
+                    "title": "Vocal Warmup",
+                    "event_club": "SMU  Voix",
+                    "id": "2023-02-25-voix-vocal-warmup",
+                    "event_type": "Arts & Culture",
+                    "photo_url": "https://images.pexels.com/photos/2531728/pexels-photo-2531728.jpeg",
+                    "event_date": "2023-02-25",
+                    "event_time": "1900-2100",
+                    "start": "2023-02-25T19:00:00",
+                    "end": "2023-02-25T21:00:00",
+                    "fees": 0,
+                    "category": "Arts & Culture",
+                    "isBookmarked": false,
+                    "event_location":"SMU B1 Dance Studio"
+                },
+                "event_2023-01-18-basketball-shoot-for-the-hoop": {
+                    "title": "Shoot for the Hoop",
+                    "event_club": "SMU Basketball",
+                    "id": "2023-01-18-basketball-shoot-for-the-hoop",
+                    "event_type": "Sports",
+                    "photo_url": "https://images.pexels.com/photos/71103/basketball-sports-teams-players-71103.jpeg",
+                    "event_date": "2023-01-18",
+                    "event_time": "1700-1900",
+                    "start": "2023-01-18T17:00:00",
+                    "end": "2023-01-18T19:00:00",
+                    "fees": 0,
+                    "category": "Sports",
+                    "isBookmarked": false,
+                    "event_location":"SMU Administration Building MPSH"
             },
+            "event_2022-11-11-funk-movement-get-funky": {
+                "title": "Get Funky",
+                "event_club": "SMU Funk Movement",
+                "id": "2022-11-11-funk-movement-get-funky",
+                "event_type": "Arts & Culture",
+                "photo_url": "https://vivace.smu.edu.sg/sites/vivace.smu.edu.sg/files/styles/gallery/public/2021-08/funk%201.jpeg",
+                "event_date": "2022-11-11",
+                "event_time": "1900-2100",
+                "start": "2022-11-11T19:00:00",
+                "end": "2022-11-11T21:00:00",
+                "fees": 11,
+                "category": "Arts & Culture",
+                "isBookmarked": false,
+                "event_location":"SMU Ngee Ann Auditorium"
+            },
+            "event_2022-11-03-smu-industry-experience-talk": {
+                "title": "Industry Experience Talk",
+                "event_club": "SMU",
+                "id": "2022-11-03-smu-industry-experience-talk",
+                "event_type": "School Society",
+                "photo_url": "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg",
+                "event_date": "2022-11-03",
+                "event_time": "1400-1900",
+                "start": "2022-11-03T14:00:00",
+                "end": "2022-11-03T19:00:00",
+                "fees": 0,
+                "category": "Student Bodies",
+                "isBookmarked": false,
+                "event_location":"SMU Connexion Level 5 Event Square"
+            },
+            "event_2022-11-30-netball-netball-match": {
+                "title": "Netball Match",
+                "event_club": "SMU Netball",
+                "id": "2022-11-30-netball-netball-match",
+                "event_type": "Sports",
+                "photo_url": "https://images.pexels.com/photos/1263426/pexels-photo-1263426.jpeg",
+                "event_date": "2022-11-30",
+                "event_time": "1545-1915",
+                "start": "2022-11-30T15:45:00",
+                "end": "2022-11-30T19:15:00",
+                "fees": 25,
+                "category": "Sports",
+                "isBookmarked": false,
+                "event_location":"SMU Admin Building MPSH"
+            },
+            "event_2022-11-23-smux-skating-skating-session": {
+                "title": "Skating Session",
+                "event_club": "SMU-X Skating",
+                "id": "2022-11-23-smux-skating-skating-session",
+                "event_type": "Sports",
+                "photo_url": "https://images.pexels.com/photos/7335257/pexels-photo-7335257.jpeg",
+                "event_date": "2022-11-23",
+                "event_time": "1700-1900",
+                "start": "2022-11-23T17:00:00",
+                "end": "2022-11-23T19:00:00",
+                "fees": 15,
+                "category": "Adventure",
+                "isBookmarked": false,
+                "event_location":" Outside SCIS Level 1"
+            },
+            "event_2022-11-29-smux-skating-skating-session": {
+                "title": "Skating Session",
+                "event_club": "SMU-X Skating",
+                "id": "2022-11-29-smux-skating-skating-session",
+                "event_type": "Sports",
+                "photo_url": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
+                "event_date": "2022-11-29",
+                "event_time": "1700-1900",
+                "start": "2022-11-29T17:00:00",
+                "end": "2022-11-29T19:00:00",
+                "fees": 15,
+                "category": "Adventure",
+                "isBookmarked": false,
+                "event_location":" Outside SCIS Level 1"
+            },        
+            "event_2022-11-07-verts-beach-clean-up": {
+                "event_club": "SMU Verts",
+                "event_date": "2022-11-07",
+                "id": "2022-11-07-verts-beach-clean-up",
+                "start": "2022-11-07T11:30:00",
+                "end": "2022-11-07T20:00:00",
+                "fees": 0,
+                "event_location": "East Coast Park near Carpark 4",
+                "title": "Beach Clean Up",
+                "photo_url": "https://images.squarespace-cdn.com/content/v1/5c39a8f55ffd2092c1c46d7e/1629738296149-42USDKGHV1WSC5M4U4UR/how+to+organise+a+beach+clean-up.jpg",
+                "event_time": "1130-1300",
+                "event_type": "Community",
+                "isBookmarked": false,
+                "category": "School Society"
+            }
+        },
+
             "user_profile_info": {
                 "birthday": "1997-07-07",
                 "email": "natasha.2021@scis.smu.edu.sg",
