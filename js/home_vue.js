@@ -1,7 +1,7 @@
 //HOME PAGE FIREBASE
 // FIREBASE IMPORT
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
-import { getDatabase, ref, get, onValue , set, update, remove, child } from
+import { getDatabase, ref, get, query, orderByChild, onValue , set, update, remove, child } from
 "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
 import { getStorage, ref as sref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-storage.js";
 
@@ -44,7 +44,10 @@ onValue(users, (snapshot => {
     }
     let text = "Hello " + user_name + "!"
     document.getElementById("greeting").innerHTML = text
-    user_upcoming_events = data[current_user].user_events
+}))
+
+get(query(ref(db, `users/${current_user}/user_events/`), orderByChild("date"))).then((snapshot) => {
+    user_upcoming_events = snapshot.val(); 
     let counter = 0
     let current_date = new Date()
     for(let event_info in user_upcoming_events){
@@ -71,7 +74,7 @@ onValue(users, (snapshot => {
     }
     let number_of_upcoming_events = counter
     UserUpcomingSchoolEvents(number_of_upcoming_events)
-}));
+});
 
 // FIREBASE POPULATE UPCOMING EVENTS
 let upcoming_events = {}
@@ -123,7 +126,7 @@ const homePage = Vue.createApp({
     }, 
     beforeMount() { 
         this.signed_up_events = user_events_keys
-        onValue(events, (snapshot) => {
+        get(query(events, orderByChild("date"))).then((snapshot) => {
             const data = snapshot.val()
             this.db_events = data
             let current_upcoming_events = {}
@@ -223,6 +226,20 @@ const homePage = Vue.createApp({
 });
 const vm = homePage.mount('#homePage'); 
 
+function GetPhotoURL(type){
+  let event_media = {'Adventure': ['#ffb700', 'icons/adventure.png', 'event-img/adventure.jpg'], 
+                    'Arts & Culture': ['#ffc2d1', 'icons/artsculture.png', 'event-img/artsculture.jpg'],
+                    'Community': ['#ffd81a', 'icons/community.png', 'event-img/community.jpg'],
+                    'Global Culture': ['#ecbcfd', 'icons/globalculture.png', 'event-img/globalculture.jpg'],
+                    'School Society': ['#adc178', 'icons/schoolsociety.png', 'event-img/schoolsociety.jpg'],
+                    'Sports': ['#01497c', 'icons/sports.png', 'event-img/sports.jpg'],
+                    'Student Bodies': ['#8ecae6', 'icons/studentbodies.png', 'event-img/studentbodies.jpg'],
+                    'Academics': ['#ff8fab', 'icons/academics.png', 'event-img/academics.jpg'],
+                    'Miscellaneous': ['#ced4da', 'icons/miscellaneous.png', 'event-img/miscellaneous.jpg'],
+                    'Default': ['#4d4d4d', 'icons/default.png', 'event-img/default.jpg']
+                    }
+  return(event_media[type])
+}
 function UserUpcomingSchoolEvents (number_of_upcoming_events) {
   if (number_of_upcoming_events >= 6){
     let tempHTML = `
@@ -257,7 +274,18 @@ function UserUpcomingSchoolEvents (number_of_upcoming_events) {
     for (let event in user_upcoming_events) {
     if (Object.hasOwnProperty.call(user_upcoming_events, event)) {
             let name_of_event = user_upcoming_events[event].title
-            let photo_of_event= user_upcoming_events[event].photo_url
+            let photo_of_event = ""
+            if(photo_url in user_upcoming_events[event]){
+              photo_of_event= user_upcoming_events[event].photo_url
+            }
+            else {
+              if(category in user_upcoming_events[event]){
+                photo_of_event= GetPhotoURL(user_upcoming_events[event].category)
+              }
+              else{
+                photo_of_event= GetPhotoURL("Default")
+              }
+            }
             let info_of_event= user_upcoming_events[event].start
             let formatted_event_date = ""
             if (info_of_event.includes("T")){
@@ -366,7 +394,18 @@ function UserUpcomingSchoolEvents (number_of_upcoming_events) {
     for (let event in user_upcoming_events) {
     if (Object.hasOwnProperty.call(user_upcoming_events, event)) {
             let name_of_event = user_upcoming_events[event].title
-            let photo_of_event= user_upcoming_events[event].photo_url
+            let photo_of_event = ""
+            if(photo_url in user_upcoming_events[event]){
+              photo_of_event= user_upcoming_events[event].photo_url
+            }
+            else {
+              if(category in user_upcoming_events[event]){
+                photo_of_event= GetPhotoURL(user_upcoming_events[event].category)
+              }
+              else{
+                photo_of_event= GetPhotoURL("Default")
+              }
+            }
             let info_of_event= user_upcoming_events[event].start
             let formatted_event_date = ""
             if (info_of_event.includes("T")){
