@@ -28,23 +28,18 @@ function call_weather_api() {
         body.innerText = text;
         img_text = document.getElementById("api");
         weather_text = `<div style = "color: white">`
-        img_html = "<img src="
             if (temp < 5){
-                // img_html += " 'img/temperature/cold.png' height='50' width='50'>"
                 weather_text += "<span class= 'lead my-5' style = 'font-size:30px;'>Temperature: Cold  <img src='img/temperature/cold.png' height='30' width='30'></span><br>"
             }
             else if (temp > 5 && temp < 25){
-                // img_html += " 'img/temperature/okay.jpg' height='50' width='50'>"
                 weather_text += "<span class= 'lead mt-5' style = 'font-size:30px'>Temperature: Normal  <img src='img/temperature/okay.jpg' height='30' width='30'></span><br>"
             }
             else {
-                // img_html += " 'img/temperature/hot.png' height='50' width='50'>"
                 weather_text += "<span class= 'lead my-5' style = 'font-size:30px'>Temperature: Hot  <img src='img/temperature/hot.png' height='30' width='30'></span><br>"
             }
             let counter = 0
             for (let weather of country_weather){
                 image = weather_type_images[weather.main]
-                // img_html += "<img src="+image+" height='50' width='50'>"
                 if (counter==0){
                     weather_text += `<span class= 'lead mt-5' style = 'font-size:30px'>Weather: ${weather.main}  <img src='${image}' height='30' width='30'></span>`
                     counter += 1
@@ -54,7 +49,6 @@ function call_weather_api() {
                 }
             }
             weather_text += `</div>`
-            console.log(weather_text)
             img_text.innerHTML= weather_text
 
     }
