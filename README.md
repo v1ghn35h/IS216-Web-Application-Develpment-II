@@ -64,9 +64,10 @@ Our project, CalendaREADY enables students to view events based on their persona
 
 ### Profile
 
-- **Edit profile**:
-- **Preference**:
-- **Events**:
+- **Personal information**: View and edit profile information
+- **Preference**: Add or remove preferences based on categories
+- **Event Statistics**: Display statistics of events signed up grouped by categories
+- **Past Event**: View and add caption for past events
 
 ## Team
 
