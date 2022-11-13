@@ -56,7 +56,6 @@ function call_weather_api() {
     )
     .catch(error => {
         // In case of any error, see what it's about
-        console.log(error.message)
     })
 }
 
@@ -71,7 +70,6 @@ function call_bored_api() {
     .then(response => {
 
         // Inspect the response.data
-        console.log(response);
         //DOM manipulation
 
         let body = document.getElementById("api");
@@ -81,7 +79,6 @@ function call_bored_api() {
     )
     .catch(error => {
         // In case of any error, see what it's about
-        console.log(error.message)
     })
 }
 
@@ -96,7 +93,6 @@ function call_quote_api() {
     .then(response => {
 
         // Inspect the response.data
-        console.log(response);
         //DOM manipulation
 
         let body = document.getElementById("api");
@@ -118,6 +114,5 @@ function call_quote_api() {
     )
     .catch(error => {
         // In case of any error, see what it's about
-        console.log(error.message)
     })
 }

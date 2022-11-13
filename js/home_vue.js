@@ -344,8 +344,7 @@ function UserUpcomingSchoolEvents (number_of_upcoming_events) {
     </div>
     </div>
     `
-    console.log("hello")
-    console.log(tempHTML)
+    
     document.getElementById('carousel_user_events').innerHTML = tempHTML
   }
   else if (number_of_upcoming_events == 0){
