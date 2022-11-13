@@ -44,6 +44,12 @@ onValue(users, (snapshot => {
     if (userInfo.preference_info.preference != ["preference"]){
       user_preference = userInfo.preference_info.preference
     }
+    var typed = new Typed(".auto-type", {
+      strings: [ `Welcome ${user_name}!`, `How are you doing today?`],
+      typeSpeed: 100,
+      backspeed: 300,
+      loop: false
+  })
     let text = "Hello " + user_name + "!"
     document.getElementById("greeting").innerHTML = text
 }))
@@ -167,7 +173,6 @@ const homePage = Vue.createApp({
         addEvent(name, club, photo, date, location, time, type, id) {
           const dbRef = ref(getDatabase());
             get(child(dbRef, `users/` + this.page_current_user + `/user_events/`)).then((snapshot) => {
-              if (snapshot.exists()) {
               //   add event to array
                 set(ref(db, 'users/' + this.page_current_user + '/user_events/event_' + id), 
                   {
@@ -175,7 +180,7 @@ const homePage = Vue.createApp({
                       start: this.formatting_start_date(date, time),
                       end: this.formatting_end_date(date, time),
                       category: type,
-                      event_id: id,
+                      id: id,
                       event_club: club,
                       photo_url: photo,
                       event_date: date,
@@ -183,13 +188,7 @@ const homePage = Vue.createApp({
                       event_time: time,
                   },
                 )
-              } 
-              else {
-                console.log("No data available");
-              }
-            }).catch((error) => {
-              console.error(error);
-            });  
+            }) 
             // force page to reload
             setTimeout(function(){
               window.location.reload();
