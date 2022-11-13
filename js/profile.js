@@ -72,12 +72,9 @@ onValue(users, (snapshot => {
 
     userInfo = data[current_user].user_profile_info
     
+    console.log(userInfo);
 
     preference = userInfo.preference_info.preference
-
-    if (preference[0] == "") {
-        preference.pop()
-    }
 
     displayDetails()
 
@@ -192,7 +189,7 @@ $("#imageUpload").change(function() {
 
 function displayDetails() {
     for (let category in userInfo) {
-        if (category != "profile_picture" && category != "preference" && category != "preference_info") {
+        if (category != "profile_picture" && category != "preference_info") {
 
             if (userInfo[category] == "<Unknown>") {
                 document.getElementById(category).placeholder = "";
@@ -238,6 +235,9 @@ function displayDetails() {
 //////////////////////////////////////////////////
 // UDPATE USER INFO
 function updateUserInfo() {
+
+    console.log(userInfo);
+    console.log(userInfo.preference_info);
 
     const db = getDatabase();
     set(ref(db, 'users/' + current_user + '/user_profile_info'), {
@@ -373,6 +373,10 @@ function displayCategories() {
 // UPDATE PREFERENCE
 function updatePreference(cat_id) {
 
+    if (preference[0] == "preference") {
+        preference.pop()
+    }
+
     for (const category in categories_obj) {
 
         if (categories_obj[category]["id"] == cat_id) {
@@ -388,15 +392,22 @@ function updatePreference(cat_id) {
             
     }
 
+    console.log(preference, "0");
+
     if (preference.length == 0) {
-        preference.push("")
+        preference = ["preference"]
     }
+
+    console.log(preference, "after");
 
     // update database
     const db = getDatabase();
     set(ref(db, 'users/' + current_user + '/user_profile_info/preference_info'), {
         preference
     })
+
+    console.log(userInfo);
+
 
 }
 
