@@ -33,13 +33,11 @@ let user_upcoming_events = {}
 let user_events_keys = []
 import ResolvedUID from "./login-common.js";
 let current_user = ResolvedUID
-console.log(current_user)
 
 // FIREBASE POPULATE DETAILS [USER INFO]
 onValue(users, (snapshot => {
 	  const data = snapshot.val(); 
 	  userInfo = data[current_user].user_profile_info
-    // console.log(data[current_user].user_profile_info)
     user_name = userInfo.name
     if (userInfo.preference_info.preference != [""]){
       user_preference = userInfo.preference_info.preference
@@ -165,7 +163,6 @@ const homePage = Vue.createApp({
           const dbRef = ref(getDatabase());
             get(child(dbRef, `users/` + this.page_current_user + `/user_events/`)).then((snapshot) => {
               if (snapshot.exists()) {
-              
               //   add event to array
                 set(ref(db, 'users/' + this.page_current_user + '/user_events/event_' + id), 
                   {
