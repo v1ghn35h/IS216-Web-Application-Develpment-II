@@ -12,9 +12,13 @@ h2 {
     padding-bottom: 30px;
 }
 
+#app {
+    margin-top: 15px;
+}
+
 #events_h2 {
-    padding-top: 40px;
-    padding-bottom: 20px;
+    margin-top: 25px;
+    padding-bottom: 10px;
 }
 #info {
     padding-bottom: 20px;
@@ -380,7 +384,7 @@ td {
 
 
 
-#app .container {
+/* #app .container {
     margin: 20px;
     padding: 15px;
     width: -webkit-fill-available;
@@ -388,26 +392,27 @@ td {
     max-width: 350px;
     background-color: #ffffff;
     border-radius: 12px;
-
-
-}
+} */
 
 
 * {
     box-sizing: border-box;
 }
 
-
 #app {
+    background-color: #f0f2f5;
+    border-radius: 20px;
+}
+
+#app #pie {
     display: flex;
     justify-content: center;
     align-items: center;
     min-width: 180px;
-    min-height: 100%;
-    background-color: #f0f2f5;
+    /* min-height: 100%; */
 }
 
-#app .card {
+#app .card1 {
     margin: 20px;
     padding: 15px;
     width: -webkit-fill-available;
@@ -416,6 +421,23 @@ td {
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+}
+
+#app .card2 {
+    margin: 20px;
+    padding: 15px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: -webkit-fill-available;
+    min-width: 140px;
+    max-width: 350px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+}
+
+#app .event_type {
+    line-height: 35px;
 }
 
 #app .total {
@@ -441,7 +463,6 @@ td {
 
 #app .pie-chart {
     position: relative;
-    
 }
 
 #app .temp-item {
@@ -462,7 +483,6 @@ td {
     font-size: 18px;
     }
 
-/* EDITS TO SVG */
 #app svg {
     display: block;
     margin: 0 auto 10px;
@@ -483,10 +503,7 @@ td {
     border-radius: 4px;
 }
 #app .items-container {
-    /* display: flex; */
-    /* flex-wrap: wrap; */
     justify-content: center;
-
 }
 
 #app .items-wrap {
