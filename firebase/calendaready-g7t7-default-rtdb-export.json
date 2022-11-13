@@ -1182,6 +1182,97 @@
                     "photo_url": "https://cdn.mos.cms.futurecdn.net/9QTpESGBXa32D29J77VR3d-1200-80.jpg",
                     "start": "2022-11-30T18:40:00",
                     "title": "WAD2 Lab Test"
+                },
+                "event_6": {
+                    "category": "Academics",
+                    "end": "2022-11-14",
+                    "id": 7,
+                    "start": "2022-11-14",
+                    "title": "JL - Test Firebase"
+                },
+                "event_7": {
+                    "category": "Academics",
+                    "end": "2022-11-13",
+                    "id": 8,
+                    "start": "2022-11-13",
+                    "title": "Revise WAD2 "
+                },
+                "event_8": {
+                    "category": "Academics",
+                    "end": "2022-11-13",
+                    "id": 8,
+                    "start": "2022-11-13",
+                    "title": "Revise WAD2 "
+                },
+                "event_9": {
+                    "category": "Academics",
+                    "end": "2022-11-30",
+                    "id": 9,
+                    "start": "2022-11-30",
+                    "title": "WAD2 - Finals"
+                },
+                "event_10": {
+                    "category": "Sports",
+                    "end": "2022-11-25T22:00:00",
+                    "id": 10,
+                    "start": "2022-11-25T19:00:00",
+                    "title": "Taekwondo Training"
+                },
+                "event_11": {
+                    "category": "Adventure",
+                    "end": "2022-12-04T12:00:00",
+                    "id": 11,
+                    "start": "2022-12-04T09:00:00",
+                    "title": "Xseed - Cable Ski Session"
+                },
+                "event_12": {
+                    "category": "Adventure",
+                    "end": "2022-12-19",
+                    "id": 12,
+                    "start": "2022-12-11",
+                    "title": "Xseed - Japan Ski Trip"
+                },
+                "event_13": {
+                    "category": "Arts & Culture",
+                    "end": "2022-12-30T18:00:00",
+                    "id": 13,
+                    "start": "2022-12-30T16:00:00",
+                    "title": "Artdicted - Crotchet Session"
+                },
+                "event_14": {
+                    "category": "Community",
+                    "end": "2022-11-15T18:00:00",
+                    "id": 14,
+                    "start": "2022-11-15T12:00:00",
+                    "title": "ICON - Welfare Drive"
+                },
+                "event_15": {
+                    "category": "School Society",
+                    "end": "2022-12-21",
+                    "id": 15,
+                    "start": "2022-12-21",
+                    "title": "Dothack - Mini Hackathon"
+                },
+                "event_16": {
+                    "category": "Sports",
+                    "end": "2023-01-08T15:00:00",
+                    "id": 16,
+                    "start": "2023-01-08T12:00:00",
+                    "title": "Archery - Training Session"
+                },
+                "event_17": {
+                "category": "Student Bodies",
+                "end": "2023-01-11T19:00:00",
+                "id": 17,
+                "start": "2023-01-11T12:00:00",
+                "title": "Ellipsis: SCIS Internship Opportunities"
+                },
+                "event_18": {
+                    "category": "Global Culture",
+                    "end": "2023-01-28T16:00:00",
+                    "id": 18,
+                    "start": "2023-01-28T12:00:00",
+                    "title": "Japanese Cultural Club - Tea Appreciation Session "
                 }
             },
             "user_profile_info": {
