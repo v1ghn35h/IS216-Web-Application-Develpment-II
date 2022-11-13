@@ -87,7 +87,9 @@ const explorePage = Vue.createApp({
             const data = snapshot.val()
             console.log("-------In user mounted------");
             console.log(data);
-            this.userInfo = data[current_user].user_profile_info
+
+            console.log(data[current_user]);
+            this.userInfo = data[current_user]['user_profile_info']
             console.log(this.userInfo);
             console.log("-------end user  mounted------");
         })
@@ -500,6 +502,9 @@ const explorePage = Vue.createApp({
 
             this.selected_badge = ''
 
+            console.log(this.filter_event_type);
+            console.log(this.filter_club);
+
 
             // check if user selected any clubs to filter and if they did, extract those events
             if (this.filter_club.length > 0) {
@@ -513,6 +518,7 @@ const explorePage = Vue.createApp({
                         old_filtered_arr.push(event)
                     }
                 }
+                console.log(old_filtered_arr);
             }
             
             // check if user selected any event types to filter and if they did, extract those events
@@ -520,18 +526,18 @@ const explorePage = Vue.createApp({
 
                 let use_db_events = old_filtered_arr.length == 0 ? all_events : old_filtered_arr
                 
-                // console.log(use_db_events);
+                console.log(use_db_events);
                 
                 for (let event of use_db_events) {
                     
                     if (this.filter_event_type.includes( event.type )) {
                         // console.log(details);
-                        
+                        console.log(event.type);
                         
                         new_filtered_arr.push(event)
-                        // console.log(new_filtered_obj);
                     }
                 }
+                console.log(new_filtered_arr);
                 old_filtered_arr = new_filtered_arr
             }
             
