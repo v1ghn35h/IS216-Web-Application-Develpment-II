@@ -23,9 +23,13 @@ const analytics = getAnalytics(app1);
 import { getDatabase, ref, onValue, child, get, set, remove, push, update } from
 "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
 
+//////////////////////////////////////////////////
+// FIREBASE VARIABLES
+import ResolvedUID from "./login-common.js"
+let current_user = ResolvedUID
+
 // Connect to the realtime database
 const db = getDatabase();
-let current_user = "user1" // change according to user logged in
 
 // Vue Instance
 const app = Vue.createApp({
