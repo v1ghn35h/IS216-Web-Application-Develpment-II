@@ -21,7 +21,8 @@ const db = getDatabase();
 const users = ref(db, 'users') 
 // const clubs = ref(db, 'clubs')
 const allEvents = ref(db, 'events')
-
+import ResolvedUID from "./login-common.js";
+let current_user = ResolvedUID
 
 //////////////////////////////////////////////////
 
@@ -35,12 +36,13 @@ const explorePage = Vue.createApp({
             db_events: '', // this stores all events extracted from db
             userInfo: '',
             userInfo: '',
-            current_user: "user1",
+            current_user: current_user,
             sorted_events_by_type: null,
             sorted_events_by_fees: null,
             sorted_events_by_date: null,
 
             bookmarked_events: [],
+            bookmark_active: false,
 
             // search bar
             search_input_value: '',
@@ -85,7 +87,7 @@ const explorePage = Vue.createApp({
             const data = snapshot.val()
             console.log("-------In user mounted------");
             console.log(data);
-            this.userInfo = data.user1.user_profile_info
+            this.userInfo = data[current_user].user_profile_info
             console.log(this.userInfo);
             console.log("-------end user  mounted------");
         })
@@ -265,22 +267,21 @@ const explorePage = Vue.createApp({
         show_bkmarked_events() {
             console.log(this.bookmarked_events);
 
-            get(query(allEvents, orderByChild("isBookmarked"))).then((snapshot) => {
-                let bkMarked_events = []
-            
-                snapshot.forEach(childSnapshot => {
-                    let event = childSnapshot.val()
-                    
-                    if (event.isBookmarked) {
-                        bkMarked_events.push(event)
-                    }
-    
-    
-                })
-                this.bookmarked_events = bkMarked_events
-            })
+            if (!this.bookmark_active) { 
 
-            this.all_display_events = this.bookmarked_events
+
+                this.all_display_events = this.bookmarked_events
+                this.bookmark_active = true
+                document.getElementById("bkmark_btn").style.backgroundColor = "#104547"
+                document.getElementById("bkmark_btn").style.color = "white"
+            }
+            else {
+                this.all_display_events = this.db_events
+                this.bookmark_active = false
+                document.getElementById("bkmark_btn").style.backgroundColor = "#f7f7f7"
+                document.getElementById("bkmark_btn").style.color = "#104547"
+                document.getElementById("bkmark_btn").style.borderColor = "#104547"
+            }
 
             this.paginate(this.all_display_events)
         },
@@ -318,6 +319,21 @@ const explorePage = Vue.createApp({
     
                 this.paginate(this.all_display_events)
  
+            })
+
+            get(query(allEvents, orderByChild("isBookmarked"))).then((snapshot) => {
+                let bkMarked_events = []
+            
+                snapshot.forEach(childSnapshot => {
+                    let event = childSnapshot.val()
+                    
+                    if (event.isBookmarked) {
+                        bkMarked_events.push(event)
+                    }
+    
+    
+                })
+                this.bookmarked_events = bkMarked_events
             })
 
             console.log("====END - Function-bookmark_event()===");

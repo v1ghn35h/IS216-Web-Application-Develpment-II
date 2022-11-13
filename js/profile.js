@@ -17,6 +17,14 @@ import { getDatabase, ref, onValue , set , get , query , orderByChild , child } 
 "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
 import { getStorage, ref as sref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-storage.js";
 
+
+//////////////////////////////////////////////////
+// FIREBASE VARIABLES
+import ResolvedUID from "./login-common.js"
+let current_user = ResolvedUID
+console.log(current_user);
+
+
 //////////////////////////////////////////////////
 // FIREBASE VARIABLES
 const firebaseConfig = {
@@ -33,7 +41,7 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 const users = ref(db, 'users') 
 const categories = ref(db, 'categories')
-const all_user_events = ref(db, 'users/user1/user_events') 
+const all_user_events = ref(db, 'users/' + current_user + '/user_events') 
 
 //////////////////////////////////////////////////
 // FIREBASE GET categories
@@ -61,7 +69,7 @@ onValue(users, (snapshot => {
 
     document.getElementById('save').addEventListener("click", formControl);
 
-    userInfo = data.user1.user_profile_info
+    userInfo = data[current_user].user_profile_info
     
 
     preference = userInfo.preference_info.preference
@@ -149,7 +157,7 @@ function readURL(input) {
             let picture_url = `url(${url})`
 
             const db = getDatabase();
-            set(ref(db, 'users/' + "user1" + '/user_profile_info/profile_picture'), {
+            set(ref(db, 'users/' + current_user + '/user_profile_info/profile_picture'), {
                 picture_url
             })
 
@@ -181,8 +189,13 @@ function displayDetails() {
     for (let category in userInfo) {
         if (category != "profile_picture" && category != "preference" && category != "preference_info") {
 
-            document.getElementById(category).placeholder = userInfo[category];
-            document.getElementById(category).value = userInfo[category]
+            if (userInfo[category] == "<Unknown>") {
+                document.getElementById(category).placeholder = "";
+                document.getElementById(category).value = ""
+            } else {
+                document.getElementById(category).placeholder = userInfo[category];
+                document.getElementById(category).value = userInfo[category]
+            }
 
         }
     }
@@ -222,7 +235,7 @@ function displayDetails() {
 function updateUserInfo() {
 
     const db = getDatabase();
-    set(ref(db, 'users/' + "user1" + '/user_profile_info'), {
+    set(ref(db, 'users/' + current_user + '/user_profile_info'), {
         name: document.getElementById('name').value,
         username: document.getElementById('username').value,
         gender: document.getElementById('gender').value,
@@ -377,7 +390,7 @@ function updatePreference(cat_id) {
 
     // update database
     const db = getDatabase();
-    set(ref(db, 'users/' + "user1" + '/user_profile_info/preference_info'), {
+    set(ref(db, 'users/' + current_user + '/user_profile_info/preference_info'), {
         preference
     })
 
@@ -391,7 +404,7 @@ let user_events_original = {}
 onValue(users, (snapshot => {
     const data = snapshot.val(); // get the new value
 
-    user_events_original = data.user1.user_events
+    user_events_original = data[current_user].user_events
     // console.log(user_events);
     // UserForYouEvents()
 
@@ -434,8 +447,7 @@ function UserPastEvents () {
     for (let event in user_events) {
 		if (Object.hasOwnProperty.call(user_events, event)) {
             // console.log(event);
-            if (Object.hasOwnProperty.call(user_events[event], "event_id")) {
-
+            if (typeof user_events[event].id != "number") {
                 let name_of_event = user_events[event].title
                 let type_of_event = user_events[event].category
                 let club_of_event = user_events[event].event_club
@@ -448,7 +460,7 @@ function UserPastEvents () {
                 let year = date_arr[0]
 
                 // let location_of_event= user_events[event].event_location
-                let event_id= user_events[event].event_id
+                let event_id= user_events[event].id
                 let event_date= user_events[event].start.slice(0,10)
                 let current_date = new Date().toJSON().slice(0, 10);
                 if (current_date > event_date){
@@ -575,9 +587,9 @@ function UserPastEvents () {
     }}
     document.getElementById('past_events').innerHTML = tempHTML
 
-    if (counter == 0) {
-        document.getElementById('events_h2').innerText = "";
-    }
+    // if (counter == 0) {
+    //     document.getElementById('events_h2').innerText = "";
+    // }
 
 }
 
@@ -585,32 +597,34 @@ function UserPastEvents () {
 //////////////////////////////////////////////////
 // ADD EVENT LISTENER
 function addClickMessage() {
-    for (let event in user_events) {
-        if (Object.hasOwnProperty.call(user_events, event)) {
-            if (Object.hasOwnProperty.call(user_events[event], "event_id")) {
-                if (!Object.hasOwnProperty.call(user_events[event], "event_msg")) {
+    for (let event in user_events_original) {
+        if (Object.hasOwnProperty.call(user_events_original, event)) {
 
-                    let event_date= user_events[event].start.slice(0,10)
+            if (typeof user_events_original[event].id != "number") {
+                if (!Object.hasOwnProperty.call(user_events_original[event], "event_msg")) {
+
+                    let event_date= user_events_original[event].start.slice(0,10)
                     let current_date = new Date().toJSON().slice(0, 10);
                     if (current_date > event_date){
+
     
-                        let event_id = user_events[event]["event_id"]
+                        let event_id = user_events_original[event]["id"]
                         document.getElementById(`add_msg_${event_id}`).addEventListener("click", function() {addMessage(this)} )
                     }
-                } else if (user_events[event]["event_msg"]["msg"] == "") {
-                    let event_date= user_events[event].start.slice(0,10)
+                } else if (user_events_original[event]["event_msg"]["msg"] == "") {
+                    let event_date= user_events_original[event].start.slice(0,10)
                     let current_date = new Date().toJSON().slice(0, 10);
                     if (current_date > event_date){
     
-                        let event_id = user_events[event]["event_id"]
+                        let event_id = user_events_original[event]["id"]
                         document.getElementById(`add_msg_${event_id}`).addEventListener("click", function() {addMessage(this)} )
                     }
                 } else {
-                    let event_date= user_events[event].start.slice(0,10)
+                    let event_date= user_events_original[event].start.slice(0,10)
                     let current_date = new Date().toJSON().slice(0, 10);
                     if (current_date > event_date){
     
-                        let event_id = user_events[event]["event_id"]
+                        let event_id = user_events_original[event]["id"]
                         document.getElementById(`edit_msg_${event_id}`).addEventListener("click", function() { displayEdit(this)} )
                         document.getElementById(`save_msg_${event_id}`).addEventListener("click", function() { displayEdited(this)} )
                     }             
@@ -643,7 +657,7 @@ function displayEdited(ele) {
     let event_key = ""
 
     for (let event in user_events_original) {
-        if (user_events_original[event]["event_id"] == event_id) {
+        if (user_events_original[event]["id"] == event_id) {
             event_key = event
         }
     }
@@ -652,7 +666,7 @@ function displayEdited(ele) {
     $('#successModal').modal('show');
 
     const db = getDatabase();
-    set(ref(db, 'users/' + "user1" + '/user_events/' + event_key + '/event_msg' ), {
+    set(ref(db, 'users/' + current_user + '/user_events/' + event_key + '/event_msg' ), {
         msg
     })
 
@@ -666,7 +680,7 @@ function addMessage(ele) {
 
     // console.log(user_events);
     for (let event in user_events_original) {
-        if (user_events_original[event]["event_id"] == event_id) {
+        if (user_events_original[event]["id"] == event_id) {
             event_key = event
         }
     }
@@ -676,7 +690,7 @@ function addMessage(ele) {
     $('#successModal').modal('show');
 
     const db = getDatabase();
-    set(ref(db, 'users/' + "user1" + '/user_events/' + event_key + '/event_msg' ), {
+    set(ref(db, 'users/' + current_user + '/user_events/' + event_key + '/event_msg' ), {
         msg
     })
 
