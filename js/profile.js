@@ -13,7 +13,7 @@ $(document).ready(function(){
 //////////////////////////////////////////////////
 // FIREBASE IMPORT
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
-import { getDatabase, ref, onValue , set , get , query , orderByChild , child } from
+import { getDatabase, ref, onValue , set , get , query , orderByChild } from
 "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
 import { getStorage, ref as sref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-storage.js";
 
@@ -22,6 +22,7 @@ import { getStorage, ref as sref, uploadBytesResumable, getDownloadURL } from "h
 // FIREBASE VARIABLES
 import ResolvedUID from "./login-common.js"
 let current_user = ResolvedUID
+// current_user = "user1"
 console.log(current_user);
 
 
@@ -587,9 +588,19 @@ function UserPastEvents () {
     }}
     document.getElementById('past_events').innerHTML = tempHTML
 
-    // if (counter == 0) {
-    //     document.getElementById('events_h2').innerText = "";
-    // }
+    if (counter == 0) {
+        console.log(counter);
+        document.getElementById('events-tab-pane').innerHTML = `
+        <div id="sign_up">
+            <div style="padding-top: 30%">
+                <h2>You have not signed up for any events.</h2>
+                <h3>Sign up now!</h3>
+                <a class="btn" href="home.html">Home</a>
+                <a class="btn" href="explore.html">Events</a>
+            </div>
+        </div>
+        ` 
+    }
 
 }
 

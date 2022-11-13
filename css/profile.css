@@ -520,3 +520,13 @@ td {
     font-size: 14px;
     font-weight: bold;
 }
+
+
+#sign_up {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    /* border: 3px solid green; */
+}

@@ -43,7 +43,7 @@ const app = Vue.createApp({
     }},
 
     computed: {
-        get_yummy_pie() {
+        get_pie() {
 
             const users = ref(db, 'users') 
             onValue(users, (snapshot => {
@@ -150,7 +150,6 @@ const app = Vue.createApp({
                 type: Number,
                 default: 100
             },
-            // 邊框寬度(border width)
             strokeWidth: {
                 type: Number,
                 default: 40
