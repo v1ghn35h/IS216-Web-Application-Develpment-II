@@ -386,7 +386,7 @@ function UserUpcomingSchoolEvents (number_of_upcoming_events) {
       "11": 'November',
       "12": 'December',
     }
-    let counter = 0
+    let counter = 1
     for (let event in user_upcoming_events) {
     if (Object.hasOwnProperty.call(user_upcoming_events, event)) {
             let name_of_event = user_upcoming_events[event].title
@@ -436,8 +436,9 @@ function UserUpcomingSchoolEvents (number_of_upcoming_events) {
                   </div>
                 </div>
                 `
+                counter += 1
             }
-            else if (check){
+            else if (check && counter <= number_of_upcoming_events){
                 tempHTML += `
                 <div class="carousel-item">
                 <img src="${photo_of_event}" class="d-block w-100" height="300" width="600">
@@ -447,8 +448,9 @@ function UserUpcomingSchoolEvents (number_of_upcoming_events) {
                   </div>
                 </div>
                 `
+                counter += 1
             }
-            counter += 1
+            
         }}
     
     tempHTML += `
