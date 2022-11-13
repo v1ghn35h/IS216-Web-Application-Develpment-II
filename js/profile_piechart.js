@@ -55,11 +55,15 @@ const app = Vue.createApp({
                 for (let an_event_obj in db_values) {
                     let event_obj = db_values[an_event_obj]
                     let event_cat = event_obj.category
+                    let event_id = event_obj.id
 
-                    if (e_c_dict.hasOwnProperty(event_cat)) {
-                        e_c_dict[event_cat] += 1;
-                    } else {
-                        e_c_dict[event_cat] = 1;
+                    if (typeof event_id != "number") {
+
+                        if (e_c_dict.hasOwnProperty(event_cat)) {
+                            e_c_dict[event_cat] += 1;
+                        } else {
+                            e_c_dict[event_cat] = 1;
+                        }
                     }
                     
                 }
