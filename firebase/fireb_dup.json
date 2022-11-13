@@ -46,10 +46,9 @@
             "name": "Beach Clean Up",
             "photo": "https://images.squarespace-cdn.com/content/v1/5c39a8f55ffd2092c1c46d7e/1629738296149-42USDKGHV1WSC5M4U4UR/how+to+organise+a+beach+clean-up.jpg",
             "time": "1130-1300",
-            "type": "Community",
-            "isBookmarked": false
+            "type": "Community"
         },
-        "2022-11-17-ivory-keys-annual-production": {
+        "event10": {
             "club": "SMU Ivory Keys",
             "date": "2022-11-17",
             "eventId": "2022-11-17-ivory-keys-annual-production",
@@ -58,10 +57,9 @@
             "name": "Annual Production",
             "photo": "https://au.yamaha.com/en/files/header_cfx_02_7800dfe0f5d660a9f276d6e14d50accc.jpg",
             "time": "1400-1900",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         },
-        "2023-02-11-tchoukball-tryout": {
+        "event100": {
             "club": "SMU Tchoukball",
             "date": "2023-02-11",
             "eventId": "2023-02-11-tchoukball-tryout",
@@ -70,10 +68,9 @@
             "name": "Tchoukball Tryout",
             "photo": "https://images.pexels.com/photos/7513413/pexels-photo-7513413.jpeg",
             "time": "1400-1900",
-            "type": "Sports",
-            "isBookmarked": true
+            "type": "Sports"
         },
-        "2022-11-27-sailing-sailing-workshop": {
+        "event11": {
             "club": "SMU Sailing",
             "date": "2022-11-27",
             "eventId": "2022-11-27-sailing-sailing-workshop",
@@ -82,8 +79,7 @@
             "name": "Sailing Workshop",
             "photo": "https://www.rssailing.com/wp-content/uploads/2017/01/RS-Tera-Feature.jpg",
             "time": "1400-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event12": {
             "club": "SMU Netball",
@@ -94,8 +90,7 @@
             "name": "Aye Aye Captain",
             "photo": "https://netball.sport/wp-content/uploads/2016/11/452602974.jpg",
             "time": "1545-1915",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event13": {
             "club": "SMU Rotaract",
@@ -106,8 +101,7 @@
             "name": "Volunteering Opportunities",
             "photo": "https://images.pexels.com/photos/6590920/pexels-photo-6590920.jpeg",
             "time": "1130-1300",
-            "type": "Community",
-            "isBookmarked": false
+            "type": "Community"
         },
         "event14": {
             "club": "SMU Caretalyst",
@@ -118,8 +112,7 @@
             "name": "Volunteering with Caretalyst",
             "photo": "https://images.pexels.com/photos/3094208/pexels-photo-3094208.jpeg",
             "time": "1130-1700",
-            "type": "Community",
-            "isBookmarked": false
+            "type": "Community"
         },
         "event15": {
             "club": "SMU Artdicted",
@@ -130,8 +123,7 @@
             "name": "Laser Cutting Art Workshop",
             "photo": "https://images.pexels.com/photos/7254428/pexels-photo-7254428.jpeg",
             "time": "1700-1900",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         },
         "event16": {
             "club": "SMU Artdicted",
@@ -142,8 +134,7 @@
             "name": "TieDye Workshop",
             "photo": "https://images.pexels.com/photos/6851285/pexels-photo-6851285.jpeg",
             "time": "1700-1900",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         },
         "event17": {
             "club": "SMU SSU",
@@ -154,8 +145,7 @@
             "name": "Martial Arts Exploration",
             "photo": "https://images.pexels.com/photos/7780086/pexels-photo-7780086.jpeg",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event18": {
             "club": "SMU Tennis",
@@ -166,8 +156,7 @@
             "name": "Tennis with us",
             "photo": "https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event19": {
             "club": "SMU Literati",
@@ -178,8 +167,7 @@
             "name": "Poem Competition",
             "photo": "https://images.pexels.com/photos/3928938/pexels-photo-3928938.jpeg",
             "time": "1900-2100",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         },
         "event2": {
             "club": "SMU Basketball",
@@ -190,8 +178,7 @@
             "name": "Basketball Tryouts",
             "photo": "https://images.pexels.com/photos/358042/pexels-photo-358042.jpeg",
             "time": "1130-1700",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event20": {
             "club": "SMU Samba Masala",
@@ -202,8 +189,7 @@
             "name": "Samba Masala Festival",
             "photo": "https://images.pexels.com/photos/5113064/pexels-photo-5113064.jpeg",
             "time": "1400-1900",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         },
         "event21": {
             "club": "SMU Ardiente",
@@ -214,8 +200,7 @@
             "name": "Latin Dance Workshop",
             "photo": "https://images.pexels.com/photos/2188012/pexels-photo-2188012.jpeg",
             "time": "1400-1900",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         },
         "event22": {
             "club": "SMU Ivory Keys",
@@ -226,8 +211,7 @@
             "name": "Melodica Concert",
             "photo": "https://images.pexels.com/photos/13539213/pexels-photo-13539213.jpeg",
             "time": "1400-1900",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         },
         "event23": {
             "club": "SMU Dragonboat",
@@ -238,8 +222,7 @@
             "name": "Dragonboating Workshop",
             "photo": "https://www.google.com/logos/doodles/2020/dragon-boat-festival-2020-taiwan-6753651837108433-2x.jpg",
             "time": "1400-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event24": {
             "club": "SMU Netball",
@@ -250,8 +233,7 @@
             "name": "Netball Match",
             "photo": "https://www.sportshub.com.sg/sites/default/files/styles/convert_webp/public/2022-08/Banner%20Netball%20Academy%201784%20x%20675px_.png.webp",
             "time": "1545-1915",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event25": {
             "club": "SMU-X Skating",
@@ -262,8 +244,7 @@
             "name": "Skating Session",
             "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event26": {
             "club": "SMU-X Skating",
@@ -274,8 +255,7 @@
             "name": "Skating Session",
             "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event27": {
             "club": "SMU-X Skating",
@@ -286,8 +266,7 @@
             "name": "Skating Session",
             "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event28": {
             "club": "SMU-X Skating",
@@ -298,8 +277,7 @@
             "name": "Skating Session",
             "photo": "https://images.pexels.com/photos/11990078/pexels-photo-11990078.jpeg",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event29": {
             "club": "SMU-X Skating",
@@ -310,8 +288,7 @@
             "name": "Christmas Skate",
             "photo": "https://images.pexels.com/photos/7335257/pexels-photo-7335257.jpeg",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event3": {
             "club": "SMU Artdicted",
@@ -322,8 +299,7 @@
             "name": "Art Jam",
             "photo": "https://images.pexels.com/photos/2258795/pexels-photo-2258795.jpeg",
             "time": "1700-1900",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         },
         "event30": {
             "club": "SMU-X Skating",
@@ -334,8 +310,7 @@
             "name": "Skating Session",
             "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event31": {
             "club": "SMU-X Skating",
@@ -346,8 +321,7 @@
             "name": "New Year Skate",
             "photo": "https://images.pexels.com/photos/11990078/pexels-photo-11990078.jpeg",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event32": {
             "club": "SMU-X Skating",
@@ -358,8 +332,7 @@
             "name": "Skating Session",
             "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event34": {
             "club": "SMU-X Skating",
@@ -370,8 +343,7 @@
             "name": "Skating Session",
             "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event35": {
             "club": "SMU-X Skating",
@@ -382,8 +354,7 @@
             "name": "Skating Session",
             "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event36": {
             "club": "SMU-X Skating",
@@ -394,8 +365,7 @@
             "name": "Skating Session",
             "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event37": {
             "club": "SMU-X Skating",
@@ -406,8 +376,7 @@
             "name": "Skating Session",
             "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event38": {
             "club": "SMU-X Kayaking",
@@ -418,8 +387,7 @@
             "name": "Paddle X Pedal",
             "photo": "https://images.pexels.com/photos/161172/cycling-bike-trail-sport-161172.jpeg",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event39": {
             "club": "SMU-X Xseed",
@@ -430,8 +398,7 @@
             "name": "Ski X Bike",
             "photo": "https://images.pexels.com/photos/128202/pexels-photo-128202.jpeg",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event4": {
             "club": "SMU-X Skating",
@@ -442,8 +409,7 @@
             "name": "Skating Session",
             "photo": "https://cdn-japantimes.com/wp-content/uploads/2021/07/np_file_101079.jpeg",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event40": {
             "club": "SMU-X Xseed",
@@ -454,8 +420,7 @@
             "name": "Board Exploration Day",
             "photo": "https://images.pexels.com/photos/17606/night-street-skateboard-urban-17606.jpg",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event41": {
             "club": "ICON",
@@ -466,8 +431,7 @@
             "name": "Traditional Food Exploration",
             "photo": "https://images.pexels.com/photos/2349277/pexels-photo-2349277.jpeg",
             "time": "1700-1900",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         },
         "event42": {
             "club": "SMU",
@@ -478,8 +442,7 @@
             "name": "Technology Career Fair",
             "photo": "https://images.pexels.com/photos/4065876/pexels-photo-4065876.jpeg",
             "time": "1400-1900",
-            "type": "School Society",
-            "isBookmarked": false
+            "type": "School Society"
         },
         "event43": {
             "club": "SMU",
@@ -490,8 +453,7 @@
             "name": "SME Internship Fair",
             "photo": "https://images.pexels.com/photos/5673488/pexels-photo-5673488.jpeg",
             "time": "1400-1900",
-            "type": "School Society",
-            "isBookmarked": false
+            "type": "School Society"
         },
         "event44": {
             "club": "SMU",
@@ -502,8 +464,7 @@
             "name": "Internship Fair",
             "photo": "https://images.pexels.com/photos/3771097/pexels-photo-3771097.jpeg",
             "time": "1400-1900",
-            "type": "School Society",
-            "isBookmarked": false
+            "type": "School Society"
         },
         "event45": {
             "club": "SMU",
@@ -514,8 +475,7 @@
             "name": "Networking Night",
             "photo": "https://images.pexels.com/photos/1181605/pexels-photo-1181605.jpeg",
             "time": "1400-1900",
-            "type": "School Society",
-            "isBookmarked": false
+            "type": "School Society"
         },
         "event46": {
             "club": "SMU",
@@ -526,8 +486,7 @@
             "name": "Industry Experience Talk",
             "photo": "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg",
             "time": "1400-1900",
-            "type": "School Society",
-            "isBookmarked": false
+            "type": "School Society"
         },
         "event47": {
             "club": "SMU Broadcast & Entertainment",
@@ -538,8 +497,7 @@
             "name": "Behind The Scene",
             "photo": "https://images.pexels.com/photos/3379934/pexels-photo-3379934.jpeg",
             "time": "1900-2100",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         },
         "event48": {
             "club": "SMU Eurhythmix",
@@ -550,8 +508,7 @@
             "name": "HipHop Dancefloor",
             "photo": "https://images.pexels.com/photos/8027797/pexels-photo-8027797.jpeg",
             "time": "1900-2100",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         },
         "event49": {
             "club": "SMU Funk Movement",
@@ -562,8 +519,7 @@
             "name": "Get Funky",
             "photo": "https://vivace.smu.edu.sg/sites/vivace.smu.edu.sg/files/styles/gallery/public/2021-08/funk%201.jpeg",
             "time": "1900-2100",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         },
         "event5": {
             "club": "SMU Swimming",
@@ -574,8 +530,7 @@
             "name": "Aquathlon",
             "photo": "https://images.everydayhealth.com/images/swimming-overview-guide-1440x810.jpg?sfvrsn=d3b9ee_1",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event50": {
             "club": "SMUSAIC",
@@ -586,8 +541,7 @@
             "name": "Photography Challenge",
             "photo": "https://images.pexels.com/photos/403495/pexels-photo-403495.jpeg",
             "time": "1900-2100",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         },
         "event51": {
             "club": "SMU Verts",
@@ -598,8 +552,7 @@
             "name": "Coastal Clean Up",
             "photo": "https://images.squarespace-cdn.com/content/v1/5c39a8f55ffd2092c1c46d7e/1629738296149-42USDKGHV1WSC5M4U4UR/how+to+organise+a+beach+clean-up.jpg",
             "time": "1130-1300",
-            "type": "Community",
-            "isBookmarked": false
+            "type": "Community"
         },
         "event52": {
             "club": "SMU Stereometa",
@@ -610,8 +563,7 @@
             "name": "Breakout Concert",
             "photo": "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg",
             "time": "1900-2100",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         },
         "event53": {
             "club": "SMU Caderas Latinas",
@@ -622,8 +574,7 @@
             "name": "Chacha with us",
             "photo": "https://images.pexels.com/photos/2188012/pexels-photo-2188012.jpeg",
             "time": "1900-2100",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         },
         "event54": {
             "club": "SMU",
@@ -634,8 +585,7 @@
             "name": "Industry Experience Talk",
             "photo": "https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg",
             "time": "1400-1900",
-            "type": "School Society",
-            "isBookmarked": false
+            "type": "School Society"
         },
         "event55": {
             "club": "SMU",
@@ -646,8 +596,7 @@
             "name": "Leadership Talk",
             "photo": "https://images.pexels.com/photos/4427430/pexels-photo-4427430.jpeg",
             "time": "1400-1900",
-            "type": "School Society",
-            "isBookmarked": false
+            "type": "School Society"
         },
         "event56": {
             "club": "SMU",
@@ -658,8 +607,7 @@
             "name": "Leadership Seminar",
             "photo": "https://images.pexels.com/photos/3184405/pexels-photo-3184405.jpeg",
             "time": "1400-1900",
-            "type": "School Society",
-            "isBookmarked": false
+            "type": "School Society"
         },
         "event57": {
             "club": "SMU Taekwondo",
@@ -670,8 +618,7 @@
             "name": "Taekwondo Showcase",
             "photo": "https://images.pexels.com/photos/7990068/pexels-photo-7990068.jpeg",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event58": {
             "club": "SMU-X Xseed",
@@ -682,8 +629,7 @@
             "name": "Surfboarding",
             "photo": "https://images.pexels.com/photos/1667018/pexels-photo-1667018.jpeg",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event59": {
             "club": "SMU-X Xseed",
@@ -694,8 +640,7 @@
             "name": "Stationary Surfing",
             "photo": "https://images.pexels.com/photos/10825337/pexels-photo-10825337.jpeg",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event6": {
             "club": "SMU Tennis",
@@ -706,8 +651,7 @@
             "name": "Tennis Tryouts",
             "photo": "https://photoresources.wtatennis.com/photo-resources/2019/08/15/dbb59626-9254-4426-915e-57397b6d6635/tennis-origins-e1444901660593.jpg?width=1200&height=630",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event60": {
             "club": "SMU-X Xseed",
@@ -718,8 +662,7 @@
             "name": "Cable Skiing",
             "photo": "https://images.pexels.com/photos/17606/night-street-skateboard-urban-17606.jpg",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event61": {
             "club": "SMU-X Trekking",
@@ -730,8 +673,7 @@
             "name": "Food Trail Exploration",
             "photo": "https://images.pexels.com/photos/6003065/pexels-photo-6003065.jpeg",
             "time": "1700-1900",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         },
         "event62": {
             "club": "SMU-X Trekking",
@@ -742,8 +684,7 @@
             "name": "Camping 101",
             "photo": "https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg",
             "time": "1700-1900",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         },
         "event63": {
             "club": "SMU Ellipsis",
@@ -754,8 +695,7 @@
             "name": "Artificial Intellgience Introduction",
             "photo": "https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg",
             "time": "1400-1900",
-            "type": "School Society",
-            "isBookmarked": false
+            "type": "School Society"
         },
         "event64": {
             "club": "SMU Ellipsis",
@@ -766,8 +706,7 @@
             "name": "Python Workshop",
             "photo": "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg",
             "time": "1400-1900",
-            "type": "School Society",
-            "isBookmarked": false
+            "type": "School Society"
         },
         "event65": {
             "club": "SMU",
@@ -778,8 +717,7 @@
             "name": "Global Internship Fair",
             "photo": "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg",
             "time": "1400-1900",
-            "type": "School Society",
-            "isBookmarked": false
+            "type": "School Society"
         },
         "event66": {
             "club": "SMU",
@@ -790,8 +728,7 @@
             "name": "Networking Circle",
             "photo": "https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg",
             "time": "1400-1900",
-            "type": "School Society",
-            "isBookmarked": false
+            "type": "School Society"
         },
         "event67": {
             "club": "SMU",
@@ -802,8 +739,7 @@
             "name": "Industry Sharing Session",
             "photo": "https://images.pexels.com/photos/2608517/pexels-photo-2608517",
             "time": "1400-1900",
-            "type": "School Society",
-            "isBookmarked": false
+            "type": "School Society"
         },
         "event68": {
             "club": "SMU Broadcast & Entertainment",
@@ -814,8 +750,7 @@
             "name": "In the Scene",
             "photo": "https://images.pexels.com/photos/3379934/pexels-photo-3379934.jpeg",
             "time": "1900-2100",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         },
         "event69": {
             "club": "SMU Caderas Latinas",
@@ -826,8 +761,7 @@
             "name": "Tango with us",
             "photo": "https://images.pexels.com/photos/270789/pexels-photo-270789.jpeg",
             "time": "1900-2100",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         },
         "event7": {
             "club": "SMU Ballare",
@@ -838,8 +772,7 @@
             "name": "Ballet Night",
             "photo": "https://static.nationalgeographic.co.uk/files/styles/image_3200/public/mm9901_220313_01614.jpg",
             "time": "1900-2100",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         },
         "event70": {
             "club": "SMU Funk Movement",
@@ -850,8 +783,7 @@
             "name": "Get Moving",
             "photo": "https://images.pexels.com/photos/1701202/pexels-photo-1701202.jpeg",
             "time": "1900-2100",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         },
         "event71": {
             "club": "SMUSAIC",
@@ -862,8 +794,7 @@
             "name": "Food Photography Challenge",
             "photo": "https://images.pexels.com/photos/5028919/pexels-photo-5028919.jpeg",
             "time": "1900-2100",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         },
         "event72": {
             "club": "SMU SoundFoundry",
@@ -874,8 +805,7 @@
             "name": "Flyaway Concert",
             "photo": "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg",
             "time": "1900-2100",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         },
         "event73": {
             "club": "SMU  Voix",
@@ -886,8 +816,7 @@
             "name": "Vocal Warmup",
             "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Cha-Cha-Cha_Valente_Cruz_9543.JPG",
             "time": "1900-2100",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         },
         "event74": {
             "club": "SMU Basketball",
@@ -898,8 +827,7 @@
             "name": "Shoot for the Hoop",
             "photo": "https://images.pexels.com/photos/5837214/pexels-photo-5837214.jpeg",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event75": {
             "club": "SMU Archery",
@@ -910,8 +838,7 @@
             "name": "Arrow Dynamics",
             "photo": "https://images.pexels.com/photos/6540714/pexels-photo-6540714.jpeg",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event76": {
             "club": "SMU Fencing",
@@ -922,8 +849,7 @@
             "name": "Learn De-Fencing Moves",
             "photo": "https://images.pexels.com/photos/6831998/pexels-photo-6831998.jpeg",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event77": {
             "club": "SMU Climb Team",
@@ -934,8 +860,7 @@
             "name": "Up and beyond Climb Session",
             "photo": "https://images.pexels.com/photos/1058958/pexels-photo-1058958.jpeg",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event78": {
             "club": "SMU-X Biking",
@@ -946,8 +871,7 @@
             "name": "Gear Up",
             "photo": "https://images.pexels.com/photos/161172/cycling-bike-trail-sport-161172.jpeg",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event79": {
             "club": "SMU-X Xseed",
@@ -958,8 +882,7 @@
             "name": "Longboard Cruising",
             "photo": "https://images.pexels.com/photos/623919/pexels-photo-623919.jpeg",
             "time": "1700-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event8": {
             "club": "SMU",
@@ -970,8 +893,7 @@
             "name": "Career Fair",
             "photo": "https://www.ntu.edu.sg/images/default-source/cao/mass-recruitment/41d0833af-4623-42de-8aa6-6a4884c783a4.png?sfvrsn=c91a3e5d_5",
             "time": "1400-1900",
-            "type": "School Society",
-            "isBookmarked": false
+            "type": "School Society"
         },
         "event80": {
             "club": "SMU-X Xseed",
@@ -982,8 +904,7 @@
             "name": "Water Exploration Day",
             "photo": "https://images.pexels.com/photos/1604869/pexels-photo-1604869.jpeg",
             "time": "1500-1900",
-            "type": "Sports",
-            "isBookmarked": false
+            "type": "Sports"
         },
         "event82": {
             "club": "ICON",
@@ -994,8 +915,7 @@
             "name": "Traditional Culture Exploration",
             "photo": "https://images.pexels.com/photos/2349277/pexels-photo-2349277.jpeg",
             "time": "1700-1800",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         },
         "event83": {
             "club": "SMU",
@@ -1006,8 +926,7 @@
             "name": "Mircosoft Career Fair",
             "photo": "https://images.pexels.com/photos/9683980/pexels-photo-9683980.jpeg",
             "time": "1300-1700",
-            "type": "School Society",
-            "isBookmarked": false
+            "type": "School Society"
         },
         "event84": {
             "club": "SMU",
@@ -1018,8 +937,7 @@
             "name": "SME Culture Sharing",
             "photo": "https://images.pexels.com/photos/860227/pexels-photo-860227.jpeg",
             "time": "1100-1900",
-            "type": "School Society",
-            "isBookmarked": false
+            "type": "School Society"
         },
         "event85": {
             "club": "SMU",
@@ -1030,8 +948,7 @@
             "name": "Exchange Opportunities Sharing",
             "photo": "https://images.pexels.com/photos/1454360/pexels-photo-1454360.jpeg",
             "time": "1400-1930",
-            "type": "School Society",
-            "isBookmarked": false
+            "type": "School Society"
         },
         "event86": {
             "club": "SMU",
@@ -1042,8 +959,7 @@
             "name": "Talking Point",
             "photo": "https://images.pexels.com/photos/2422280/pexels-photo-2422280.jpeg",
             "time": "1430-1900",
-            "type": "School Society",
-            "isBookmarked": false
+            "type": "School Society"
         },
         "event87": {
             "club": "SMU",
@@ -1054,8 +970,7 @@
             "name": "Interning Workshop",
             "photo": "https://images.pexels.com/photos/3771097/pexels-photo-3771097.jpeg",
             "time": "1400-1900",
-            "type": "School Society",
-            "isBookmarked": false
+            "type": "School Society"
         },
         "event88": {
             "club": "SMU Japanese Cultural Club",
@@ -1066,8 +981,7 @@
             "name": "Tea Appreciation Session",
             "photo": "https://images.pexels.com/photos/11182806/pexels-photo-11182806.jpeg",
             "time": "1100-1300",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         },
         "event89": {
             "club": "SMU",
@@ -1078,8 +992,7 @@
             "name": "Managing Workload Workshop",
             "photo": "https://images.pexels.com/photos/1595391/pexels-photo-1595391.jpeg",
             "time": "0800-0900",
-            "type": "School Society",
-            "isBookmarked": false
+            "type": "School Society"
         },
         "event9": {
             "club": "SMU Ardiente",
@@ -1090,8 +1003,7 @@
             "name": "Latin Ballroom Workshop",
             "photo": "https://cdn2.hubspot.net/hubfs/408306/Types%20of%20latin%20dances%202.jpg",
             "time": "1400-1900",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         },
         "event90": {
             "club": "SMU",
@@ -1102,8 +1014,7 @@
             "name": "Managing Stress Workshop",
             "photo": "https://images.pexels.com/photos/8638769/pexels-photo-8638769.jpeg",
             "time": "0830-0930",
-            "type": "School Society",
-            "isBookmarked": false
+            "type": "School Society"
         },
         "event91": {
             "club": "SMU",
@@ -1114,8 +1025,7 @@
             "name": "Healthy Relationship Workshop",
             "photo": "https://images.pexels.com/photos/6754013/pexels-photo-6754013.jpeg",
             "time": "1830-1930",
-            "type": "School Society",
-            "isBookmarked": false
+            "type": "School Society"
         },
         "event92": {
             "club": "SMU Gourmet Club",
@@ -1126,8 +1036,7 @@
             "name": "Pineapple Tart Baking Session",
             "photo": "https://vivace.smu.edu.sg/sites/vivace.smu.edu.sg/files/styles/gallery/public/2020-08/1%20_%20club%20logo.jpg",
             "time": "1900-2100",
-            "type": "School Society",
-            "isBookmarked": false
+            "type": "School Society"
         },
         "event93": {
             "club": "SMU Gourmet Club",
@@ -1138,8 +1047,7 @@
             "name": "Chocolate Making Session",
             "photo": "https://images.pexels.com/photos/2021889/pexels-photo-2021889.jpeg",
             "time": "1400-1700",
-            "type": "School Society",
-            "isBookmarked": false
+            "type": "School Society"
         },
         "event94": {
             "club": "SMU Gourmet Club",
@@ -1150,8 +1058,7 @@
             "name": "Making Christmas Cookies",
             "photo": "https://images.pexels.com/photos/752499/pexels-photo-752499.jpeg",
             "time": "1400-1700",
-            "type": "School Society",
-            "isBookmarked": false
+            "type": "School Society"
         },
         "event95": {
             "club": "SMU E-Sports",
@@ -1162,8 +1069,7 @@
             "name": "Valorant Match",
             "photo": "https://images.pexels.com/photos/7915237/pexels-photo-7915237.jpeg",
             "time": "1100-1300",
-            "type": "School Society",
-            "isBookmarked": false
+            "type": "School Society"
         },
         "event96": {
             "club": "SMU E-Sports",
@@ -1174,8 +1080,7 @@
             "name": "PUBG Matchoff",
             "photo": "https://images.pexels.com/photos/275033/pexels-photo-275033.jpeg",
             "time": "1200-1500",
-            "type": "School Society",
-            "isBookmarked": false
+            "type": "School Society"
         },
         "event97": {
             "club": "SMU Wine Appreciation Club",
@@ -1186,8 +1091,7 @@
             "name": "Penfolds Tasting",
             "photo": "https://images.pexels.com/photos/391213/pexels-photo-391213.jpeg",
             "time": "1900-2100",
-            "type": "School Society",
-            "isBookmarked": false
+            "type": "School Society"
         },
         "event98": {
             "club": "SMU Toastmasters",
@@ -1198,8 +1102,7 @@
             "name": "Modern Debate",
             "photo": "https://images.pexels.com/photos/3379934/pexels-photo-3379934.jpeg",
             "time": "1900-2100",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         },
         "event99": {
             "club": "SMU Women's Connection",
@@ -1210,8 +1113,7 @@
             "name": "Chat with us",
             "photo": "https://images.pexels.com/photos/601170/pexels-photo-601170.jpeg",
             "time": "1100-1500",
-            "type": "Arts & Culture",
-            "isBookmarked": false
+            "type": "Arts & Culture"
         }
     },
     "users": {
@@ -1231,7 +1133,20 @@
             }
         },
         "user1": {
+            "user_bkmark_events": {
+                "event1": {
+                    "club": "SMU Women's Connection",
+                    "date": "2022-11-13",
+                    "eventId": "2022-11-13-women's-connection-chat-with-us",
+                    "fees": 0,
+                    "location": "SMU YPHSL SR 2-3",
+                    "name": "Chat with us",
+                    "photo": "https://images.pexels.com/photos/601170/pexels-photo-601170.jpeg",
+                    "time": "1100-1500",
+                    "type": "Arts & Culture"
+                }
 
+            },
             "user_events": {
                 "event_1": {
                     "category": "Adventure",
