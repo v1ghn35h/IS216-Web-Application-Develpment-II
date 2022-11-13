@@ -27,6 +27,7 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
 var FirebaseUID = null;
+var userData = null;
 
 // ----------------------------------------------------------------
 // LOGIN FUNCTIONS SECTION
@@ -40,7 +41,7 @@ onAuthStateChanged(auth, (user) => {
         // Check if user account existed before, if not, create in Firebase
         const dbUser = ref(getDatabase(), `users/${user.uid}`);
         onValue (dbUser, (snapshot) => {
-            const userData = snapshot.val();
+            userData = snapshot.val();
             if (userData == null) {
                 set (dbUser, {
                     "user_profile_info": {
@@ -53,7 +54,7 @@ onAuthStateChanged(auth, (user) => {
                         "matric_no": "<Unknown>",
                         "phone_no": "<Unknown>",
                         "preference_info": {
-                            "preference": []
+                            "preference": [""]
                         },
                         "profile_picture": {
                             "picture_url": "url('img/default_pfp.png')"
@@ -97,8 +98,7 @@ document.logoutFunction = logoutFunction;
 
 let ResolvedUID = new Promise(function(resolve) {
     let check = setInterval(function() {
-        if (FirebaseUID) {
-            console.log(FirebaseUID);
+        if (FirebaseUID && userData) {
             clearInterval(check);
             resolve(FirebaseUID)
         }
