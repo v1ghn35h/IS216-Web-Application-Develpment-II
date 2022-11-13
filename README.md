@@ -43,7 +43,7 @@ Our project, CalendaREADY enables students to view events based on their persona
 - **For-You**: View event based on personalised events suggestions based on preferences
 - **Upcoming School Events:** A quick glance into what would be happening in SMU
 - **Weather Update:** Be quickly informed and plan their day
-- **Are You Bored, Read a Quote buttons:** engage the user in the event that they are looking for activities to do
+- **Are You Bored, Read a Quote Buttons:** engage the user in the event that they are looking for activities to do
 - **Sign Up for Event**: SIgn up and add event to their calendar
 
 ### Events
@@ -57,10 +57,10 @@ Our project, CalendaREADY enables students to view events based on their persona
 ### Calendar
 
 - **To-Do List:** Add, delete, or mark task events as completed
-- **Pomodoro Timer:** Focus timer with background music
+- **Pomodoro Timer:** Focus timer with 5 different background music choices
 - **Search Events:** Search events in calendar based on specific keyword
-- **Calendar:** Display events in month and list view
-- **Add Personal Event**:
+- **Calendar:** Display events that the user signed up for in month and list view
+- **Add Personal Event**: Add own events to calendar
 
 ### Profile
 

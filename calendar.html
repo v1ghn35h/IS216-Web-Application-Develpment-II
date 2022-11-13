@@ -68,7 +68,7 @@
           <!-- Display Nav items -->
           <ul class="nav nav-tabs pt-4" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-              <button class="nav-link my-nav-link active" id="task-tab" data-bs-toggle="tab" data-bs-target="#task-tab-pane" type="button" role="tab" aria-controls="task-tab-pane" aria-selected="true" onclick="setButtonColor(this)"> Tasks </button>
+              <button class="nav-link my-nav-link active" id="task-tab" data-bs-toggle="tab" data-bs-target="#task-tab-pane" type="button" role="tab" aria-controls="task-tab-pane" aria-selected="true" onclick="setButtonColor(this)" style="color: white; background-color:#104547"> Tasks </button>
             </li>
             <li class="nav-item" role="presentation">
               <button class="nav-link my-nav-link" id="timer-tab" data-bs-toggle="tab" data-bs-target="#timer-tab-pane" type="button" role="tab" aria-controls="timer-tab-pane" aria-selected="true" onclick="setButtonColor(this)"> Timer </button>
@@ -169,13 +169,13 @@
 
                     <!-- OPTIONS-->
                     <div id="options">
-                      <div id="session">
+                      <div id="session" style="padding-right: 10px">
                         <i id="incrSession" class="fas fa-angle-double-up"></i>
                         <span class="option-title">Session</span>
                         <input id="sessionInput" type="number" value="30" max="60" min="5">
                         <i id="decrSession" class="fas fa-angle-double-down"></i>
                       </div>
-                      <div id="break">
+                      <div id="break" style="padding-left: 10px">
                         <i id="incrBreak" class="fas fa-angle-double-up"></i>
                         <span class="option-title">Break</span>
                         <input id="breakInput" type="number" value="5" max="10" min="1">
